@@ -6,6 +6,7 @@ type Item = {
   id: string;
   name: string;
   price: number;
+  image: string; // 👈 ضيفنا دي
 };
 
 type CartState = {
@@ -16,10 +17,12 @@ type CartState = {
 
 export const useCart = create<CartState>((set) => ({
   cart: [],
+
   add: (item) =>
     set((state) => ({
       cart: [...state.cart, item],
     })),
+
   remove: (id) =>
     set((state) => ({
       cart: state.cart.filter((i) => i.id !== id),
