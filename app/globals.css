@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  background: #f3f3f3;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+img {
+  display: block;
+}
+
+/* 👇 بدل ما يبقى على كل الأزرار */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transition: 0.4s;
+}
+
+.btn-premium:hover::after {
+  left: 100%;
+}
+.overlay:hover {
+  opacity: 1 !important;
+}
