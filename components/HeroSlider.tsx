@@ -4,12 +4,12 @@ export default function HeroSlider() {
   return (
     <div
       style={{
-        height: "70vh",
-        position: "relative",
+        width: "100%",
+        height: "220px", // قللناها شوية للموبايل 👌
         overflow: "hidden",
+        position: "relative", // مهم جدًا
       }}
     >
-      {/* الصورة */}
       <img
         src="/banner.jpg"
         style={{
@@ -19,7 +19,7 @@ export default function HeroSlider() {
         }}
       />
 
-      {/* Overlay خفيف */}
+      {/* Overlay */}
       <div
         style={{
           position: "absolute",
