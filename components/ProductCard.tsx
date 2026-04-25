@@ -18,9 +18,9 @@ export default function ProductCard({ p }: any) {
         transition={{ duration: 0.25 }}
         style={{
           background: "#fff",
-          borderRadius: 12,
+          borderRadius: 10,
           overflow: "hidden",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.06)",
+          boxShadow: "0 6px 15px rgba(0,0,0,0.05)",
           position: "relative",
         }}
       >
@@ -29,9 +29,9 @@ export default function ProductCard({ p }: any) {
           onClick={() => setFav(!fav)}
           style={{
             position: "absolute",
-            top: 10,
-            right: 10,
-            fontSize: 20,
+            top: 8,
+            right: 8,
+            fontSize: 18,
             cursor: "pointer",
             zIndex: 2,
           }}
@@ -43,13 +43,13 @@ export default function ProductCard({ p }: any) {
         <div
           style={{
             position: "absolute",
-            top: 10,
-            left: 10,
+            top: 8,
+            left: 8,
             background: "#000",
             color: "#fff",
-            padding: "4px 10px",
-            fontSize: 12,
-            borderRadius: 5,
+            padding: "3px 8px",
+            fontSize: 11,
+            borderRadius: 4,
             zIndex: 2,
           }}
         >
@@ -57,41 +57,40 @@ export default function ProductCard({ p }: any) {
         </div>
 
         <Link href={`/product/${p.id}`}>
-          <div style={{ overflow: "hidden", position: "relative" }}>
+          <div style={{ overflow: "hidden" }}>
             <motion.img
               src={p.image}
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
               style={{
                 width: "100%",
-                height: 300,
-                objectFit: "cover",
+                height: 180, // 👈 كان 300 (ده سبب الطول)
+                objectFit: "contain", // 👈 يخلي الشكل مظبوط
+                padding: 10,
               }}
-            />
-
-            {/* 🎯 Overlay */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(0,0,0,0.2)",
-                opacity: 0,
-                transition: "0.3s",
-              }}
-              className="overlay"
             />
           </div>
         </Link>
 
-        <div style={{ padding: 20 }}>
-          <h3 style={{ marginBottom: 8 }}>{p.name}</h3>
+        <div style={{ padding: 12 }}>
+          <h3
+            style={{
+              marginBottom: 6,
+              fontSize: 14,
+              fontWeight: 600,
+              lineHeight: "18px",
+              minHeight: 36, // 👈 يخلي الكروت متساوية
+            }}
+          >
+            {p.name}
+          </h3>
 
           {/* ⭐ Rating */}
-          <div style={{ color: "#f5a623", marginBottom: 5 }}>
+          <div style={{ color: "#f5a623", fontSize: 13, marginBottom: 4 }}>
             ★★★★☆
           </div>
 
-          <p style={{ color: "#aaa", fontSize: 14 }}>
+          <p style={{ color: "#888", fontSize: 13 }}>
             {p.price} جنيه
           </p>
 
@@ -103,12 +102,13 @@ export default function ProductCard({ p }: any) {
             }}
             style={{
               width: "100%",
-              padding: "12px",
+              padding: "10px",
               background: "#000",
               color: "#fff",
               border: "none",
-              borderRadius: 8,
-              marginTop: 10,
+              borderRadius: 6,
+              marginTop: 8,
+              fontSize: 13,
             }}
           >
             أضف للسلة

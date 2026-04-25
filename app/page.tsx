@@ -110,10 +110,10 @@ export default function Home() {
         </h2>
 
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-          gap: 30
-        }}>
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)", // 👈 موبايل 2 في الصف
+  gap: 15,
+}}>
           {currentItems.map((p) => (
             <ProductCard key={p.id} p={p} />
           ))}
