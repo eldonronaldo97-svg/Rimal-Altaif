@@ -7,15 +7,15 @@ export default function Toast({ show }: { show: boolean }) {
     <div
       style={{
         position: "fixed",
-        top: 20,
+        top: "50%",
         left: "50%",
-        transform: "translateX(-50%)",
+        transform: "translate(-50%, -50%)",
         background: "#000",
         color: "#fff",
-        padding: "12px 20px",
-        borderRadius: 10,
+        padding: "14px 22px",
+        borderRadius: 12,
         zIndex: 9999,
-        boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
         fontSize: 14,
       }}
     >
