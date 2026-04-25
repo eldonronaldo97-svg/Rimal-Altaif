@@ -59,7 +59,7 @@ export default function ProductCard({ p }: any) {
             whileHover={{ scale: 1.05 }}
             style={{
               width: "100%",
-              height: 140, // 👈 السر هنا
+              height: 200, // 👈 السر هنا
               objectFit: "contain",
               padding: 8,
             }}
