@@ -66,7 +66,7 @@ export default function ProductCard({ p }: any) {
           />
         </Link>
 
-        <div style={{ padding: 10 }}>
+        <div style={{ padding: 8 }}>
           <h3
             style={{
               fontSize: 13,

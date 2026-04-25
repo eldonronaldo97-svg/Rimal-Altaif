@@ -99,7 +99,7 @@ export default function Home() {
       </div>
 
       {/* 🔥 Products */}
-      <div style={{ padding: "60px 40px" }}>
+      <div style={{ padding: "40px 10px" }}>
         <h2 style={{
           textAlign: "center",
           marginBottom: 50,
@@ -112,8 +112,10 @@ export default function Home() {
         <div style={{
   display: "grid",
   gridTemplateColumns: "repeat(2, 1fr)",
-gap: 10,
-padding: "0 10px"
+  maxWidth: 500,
+margin: "auto"
+  gap: 8, // 👈 قللنا المسافة
+  padding: "0 6px" // 👈 مهم جدًا
 }}>
           {currentItems.map((p) => (
             <ProductCard key={p.id} p={p} />
