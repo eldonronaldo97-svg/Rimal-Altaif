@@ -79,11 +79,9 @@ export default function ProductCard({ p }: any) {
             {p.name}
           </h3>
 
-          <div style={{ fontSize: 12, color: "#f5a623" }}>
-            ★★★★☆
-          </div>
+          
 
-          <p style={{ fontSize: 12, color: "#777", marginTop: 4 }}>
+          <p style={{ fontSize: 12, color: "#ff0000", marginTop: 4 }}>
             {p.price} جنيه
           </p>
 
