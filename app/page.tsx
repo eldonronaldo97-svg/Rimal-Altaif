@@ -99,28 +99,25 @@ export default function Home() {
       </div>
 
       {/* 🔥 Products */}
-      <div style={{ padding: "40px 10px" }}>
-        <h2 style={{
-          textAlign: "center",
-          marginBottom: 50,
-          fontSize: 32,
-          textTransform: "capitalize"
-        }}>
-          {category}
-        </h2>
+      <div style={{ padding: "20px 6px" }}>
+  <h2 style={{
+    textAlign: "center",
+    marginBottom: 30,
+    fontSize: 28
+  }}>
+    {category}
+  </h2>
 
-        <div style={{
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  maxWidth: 500,
-margin: "auto"
-  gap: 8, // 👈 قللنا المسافة
-  padding: "0 6px" // 👈 مهم جدًا
-}}>
-          {currentItems.map((p) => (
-            <ProductCard key={p.id} p={p} />
-          ))}
-        </div>
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: 8
+  }}>
+    {currentItems.map((p) => (
+      <ProductCard key={p.id} p={p} />
+    ))}
+  </div>
+
 
         {/* 📄 Pagination */}
         <div style={{
