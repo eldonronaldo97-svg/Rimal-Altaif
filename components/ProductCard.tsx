@@ -15,41 +15,38 @@ export default function ProductCard({ p }: any) {
     <>
       <motion.div
         whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.25 }}
         style={{
           background: "#fff",
-          borderRadius: 10,
+          borderRadius: 8,
           overflow: "hidden",
-          boxShadow: "0 6px 15px rgba(0,0,0,0.05)",
           position: "relative",
         }}
       >
-        {/* ❤️ Wishlist */}
+        {/* ❤️ */}
         <div
           onClick={() => setFav(!fav)}
           style={{
             position: "absolute",
-            top: 8,
-            right: 8,
-            fontSize: 18,
-            cursor: "pointer",
+            top: 6,
+            right: 6,
+            fontSize: 16,
             zIndex: 2,
           }}
         >
           {fav ? "❤️" : "🤍"}
         </div>
 
-        {/* 🏷️ Badge */}
+        {/* NEW */}
         <div
           style={{
             position: "absolute",
-            top: 8,
-            left: 8,
+            top: 6,
+            left: 6,
             background: "#000",
             color: "#fff",
-            padding: "3px 8px",
-            fontSize: 11,
-            borderRadius: 4,
+            padding: "2px 6px",
+            fontSize: 10,
+            borderRadius: 3,
             zIndex: 2,
           }}
         >
@@ -57,40 +54,36 @@ export default function ProductCard({ p }: any) {
         </div>
 
         <Link href={`/product/${p.id}`}>
-          <div style={{ overflow: "hidden" }}>
-            <motion.img
-              src={p.image}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                width: "100%",
-                height: 180, // 👈 كان 300 (ده سبب الطول)
-                objectFit: "contain", // 👈 يخلي الشكل مظبوط
-                padding: 10,
-              }}
-            />
-          </div>
+          <motion.img
+            src={p.image}
+            whileHover={{ scale: 1.05 }}
+            style={{
+              width: "100%",
+              height: 140, // 👈 السر هنا
+              objectFit: "contain",
+              padding: 8,
+            }}
+          />
         </Link>
 
-        <div style={{ padding: 12 }}>
+        <div style={{ padding: 10 }}>
           <h3
             style={{
-              marginBottom: 6,
-              fontSize: 14,
-              fontWeight: 600,
-              lineHeight: "18px",
-              minHeight: 36, // 👈 يخلي الكروت متساوية
+              fontSize: 13,
+              marginBottom: 4,
+              lineHeight: "16px",
+              height: 32,
+              overflow: "hidden",
             }}
           >
             {p.name}
           </h3>
 
-          {/* ⭐ Rating */}
-          <div style={{ color: "#f5a623", fontSize: 13, marginBottom: 4 }}>
+          <div style={{ fontSize: 12, color: "#f5a623" }}>
             ★★★★☆
           </div>
 
-          <p style={{ color: "#888", fontSize: 13 }}>
+          <p style={{ fontSize: 12, color: "#777", marginTop: 4 }}>
             {p.price} جنيه
           </p>
 
@@ -102,13 +95,13 @@ export default function ProductCard({ p }: any) {
             }}
             style={{
               width: "100%",
-              padding: "10px",
+              padding: "8px",
+              fontSize: 12,
               background: "#000",
               color: "#fff",
               border: "none",
-              borderRadius: 6,
-              marginTop: 8,
-              fontSize: 13,
+              borderRadius: 5,
+              marginTop: 6,
             }}
           >
             أضف للسلة
