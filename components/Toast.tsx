@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Toast({ show }: { show: boolean }) {
   if (!show) return null;
 
@@ -7,19 +9,41 @@ export default function Toast({ show }: { show: boolean }) {
     <div
       style={{
         position: "fixed",
-        top: "50%",
+        bottom: 20,
         left: "50%",
-        transform: "translate(-50%, -50%)",
-        background: "#000",
-        color: "#fff",
-        padding: "14px 22px",
+        transform: "translateX(-50%)",
+        background: "#fff",
+        color: "#000",
+        padding: "12px 16px",
         borderRadius: 12,
         zIndex: 9999,
-        boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-        fontSize: 14,
+        boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        width: "90%",
+        maxWidth: 400,
       }}
     >
-      تم إضافة المنتج للسلة 🛒
+      <span style={{ fontSize: 14 }}>
+        تم إضافة المنتج للسلة 🛒
+      </span>
+
+      <Link href="/cart">
+        <button
+          style={{
+            marginLeft: "auto",
+            padding: "8px 12px",
+            background: "#000",
+            color: "#fff",
+            border: "none",
+            borderRadius: 6,
+            fontSize: 13,
+          }}
+        >
+          عرض السلة
+        </button>
+      </Link>
     </div>
   );
 }
