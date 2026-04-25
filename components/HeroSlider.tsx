@@ -23,12 +23,10 @@ export default function HeroSlider() {
     <div
       style={{
         width: "100%",
-        height: "100vh",
-        background: "#000", // مهم علشان الحواف تبان شيك
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        height: "60vh", // 👈 أهم حاجة
+        maxHeight: "700px",
         overflow: "hidden",
+        position: "relative",
       }}
     >
       {images.map((img, i) => (
@@ -39,7 +37,7 @@ export default function HeroSlider() {
             position: "absolute",
             width: "100%",
             height: "100%",
-            objectFit: "contain", // 🔥 المهم
+            objectFit: "cover", // 👈 رجعناها
             opacity: i === index ? 1 : 0,
             transition: "opacity 1s ease-in-out",
           }}
