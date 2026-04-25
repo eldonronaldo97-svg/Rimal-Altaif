@@ -23,11 +23,13 @@ export default function HeroSlider() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "220px",
-        overflow: "hidden",
-        position: "relative",
-      }}
+  width: "100%",
+  height: "40vh",
+  minHeight: "260px",
+  maxHeight: "420px",
+  overflow: "hidden",
+  position: "relative",
+}}
     >
       <img
         src={images[index]}
