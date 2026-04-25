@@ -94,15 +94,16 @@ export default function ProductCard({ p }: any) {
               setTimeout(() => setShow(false), 2000);
             }}
             style={{
-              width: "100%",
-              padding: "8px",
-              fontSize: 12,
-              background: "#000",
-              color: "#fff",
-              border: "none",
-              borderRadius: 5,
-              marginTop: 6,
-            }}
+  width: "100%",
+  padding: "10px",
+  fontSize: 12,
+  background: "#000",
+  color: "#fff",
+  border: "none",
+  borderRadius: 0,
+  marginTop: 6,
+  fontWeight: "bold",
+}}
           >
             أضف للسلة
           </button>
