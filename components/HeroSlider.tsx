@@ -1,30 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+const images = [
+  "/banner1.jpg",
+  "/banner2.jpg",
+  "/banner3.jpg",
+  "/banner4.jpg",
+];
+
 export default function HeroSlider() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 2000); // ⏱ كل 2 ثانية
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div
       style={{
         width: "100%",
-        height: "220px", // قللناها شوية للموبايل 👌
+        height: "220px",
         overflow: "hidden",
-        position: "relative", // مهم جدًا
+        position: "relative",
       }}
     >
       <img
-        src="/banner.jpg"
+        src={images[index]}
         style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
-        }}
-      />
-
-      {/* Overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.25)",
+          transition: "0.5s",
         }}
       />
     </div>
