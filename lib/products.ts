@@ -136,7 +136,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/afternoon.jpeg",
   },
@@ -147,9 +146,8 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
-    image: "/products/assaf/black-elixir.jpeg",
+    image: "/products/assaf/Frankel_Black_Elixir.jpeg",
   },
 
   {
@@ -158,9 +156,8 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
-    image: "/products/assaf/challenge.jpeg",
+    image: "/products/assaf/Challenge.jpeg",
   },
 
   {
@@ -169,7 +166,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/elysium.jpeg",
   },
@@ -180,7 +176,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/frankel-silver-elixir.jpeg",
   },
@@ -191,7 +186,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/green-irish.jpeg",
   },
@@ -202,9 +196,8 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2023,
     price: 1000,
-    image: "/products/assaf/gris-erik.jpeg",
+    image: "/products/assaf/Gris_Erik_Luxury.jpeg",
   },
 
   {
@@ -213,7 +206,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/i-am-here.jpeg",
   },
@@ -224,20 +216,18 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Women",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/miss-gris-intense.jpeg",
   },
 
   {
     id: 10,
-    name: "Miss Griss Dance",
+    name: "Miss Gris Dance",
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Women",
-    year: 2025,
     price: 1000,
-    image: "/products/assaf/miss-griss-dance.jpeg",
+    image: "/products/assaf/Miss_Gris_Dance.jpeg",
   },
 
   {
@@ -246,7 +236,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Women",
-    year: 2022,
     price: 1000,
     image: "/products/assaf/miss-sakura.jpeg",
   },
@@ -257,7 +246,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/no-comment.jpeg",
   },
@@ -268,7 +256,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/risk-comete.jpeg",
   },
@@ -279,9 +266,8 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
-    image: "/products/assaf/storm.jpeg",
+    image: "/products/assaf/Frankel_Storm.jpeg",
   },
 
   {
@@ -290,7 +276,6 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2022,
     price: 1000,
     image: "/products/assaf/wild-colt.jpeg",
   },
@@ -301,12 +286,9 @@ export const products = [
     brand: "Assaf",
     collection: "Assaf Main Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/reflection.jpeg",
   },
-
-  // Tobacco Collection
 
   {
     id: 17,
@@ -314,7 +296,6 @@ export const products = [
     brand: "Assaf",
     collection: "Tobacco Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/tobacco-black-40.jpeg",
   },
@@ -325,7 +306,6 @@ export const products = [
     brand: "Assaf",
     collection: "Tobacco Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/tobacco-jam.jpeg",
   },
@@ -336,7 +316,6 @@ export const products = [
     brand: "Assaf",
     collection: "Tobacco Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/tobacco-jam-50.jpeg",
   },
@@ -347,7 +326,6 @@ export const products = [
     brand: "Assaf",
     collection: "Tobacco Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/tobacco-rage-32.jpeg",
   },
@@ -358,12 +336,9 @@ export const products = [
     brand: "Assaf",
     collection: "Tobacco Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/wild-colt-tobacco.jpeg",
+    image: "/products/assaf/Wild_Colt_Tobacco.jpeg",
   },
-
-  // Arrogate Collection
 
   {
     id: 22,
@@ -371,9 +346,8 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
-    image: "/products/assaf/arrogate-addict.jpeg",
+    image: "/products/assaf/Arrogate_Addict_Elixir.jpeg",
   },
 
   {
@@ -382,7 +356,6 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/arrogate-bakhoor.jpeg",
   },
@@ -393,9 +366,8 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/arrogate-blue-de.jpeg",
+    image: "/products/assaf/Arrogate_Blue_De.jpeg",
   },
 
   {
@@ -404,9 +376,8 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/arrogate-comete.jpeg",
+    image: "/products/assaf/Arrogate_Comete.jpeg",
   },
 
   {
@@ -415,7 +386,6 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Women",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/arrogate-girl.jpeg",
   },
@@ -426,7 +396,6 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/arrogate-pink.jpeg",
   },
@@ -437,7 +406,6 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Men",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/attacks.jpeg",
   },
@@ -448,9 +416,8 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/dangerous-arrogate.jpeg",
+    image: "/products/assaf/Dangerous_Arrogate.jpeg",
   },
 
   {
@@ -459,7 +426,6 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/glitch.jpeg",
   },
@@ -470,12 +436,9 @@ export const products = [
     brand: "Assaf",
     collection: "Arrogate Collection",
     gender: "Women",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/miss-arrogate.jpeg",
+    image: "/products/assaf/Miss_Arrogate.jpeg",
   },
-
-  // Bakhoor Collection
 
   {
     id: 32,
@@ -483,7 +446,6 @@ export const products = [
     brand: "Assaf",
     collection: "Bakhoor Collection",
     gender: "Unisex",
-    year: 2026,
     price: 1000,
     image: "/products/assaf/oud-bakhur.jpeg",
   },
@@ -494,12 +456,9 @@ export const products = [
     brand: "Assaf",
     collection: "Bakhoor Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
     image: "/products/assaf/wild-colt-bakhur.jpeg",
   },
-
-  // Enable Collection
 
   {
     id: 34,
@@ -507,7 +466,6 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Men",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/alex.jpeg",
   },
@@ -518,7 +476,6 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Unisex",
-    year: 2023,
     price: 1000,
     image: "/products/assaf/king.jpeg",
   },
@@ -529,7 +486,6 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Men",
-    year: 2023,
     price: 1000,
     image: "/products/assaf/millionaire.jpeg",
   },
@@ -540,9 +496,8 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Men",
-    year: 2023,
     price: 1000,
-    image: "/products/assaf/rebel.jpeg",
+    image: "/products/assaf/Rebel_Enable.jpeg",
   },
 
   {
@@ -551,7 +506,6 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/nomad.jpeg",
   },
@@ -562,9 +516,8 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Women",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/pink-queen.jpeg",
+    image: "/products/assaf/Pink_Queen.jpeg",
   },
 
   {
@@ -573,7 +526,6 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/private-purple.jpeg",
   },
@@ -584,12 +536,9 @@ export const products = [
     brand: "Assaf",
     collection: "Enable Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/sherlock.jpeg",
   },
-
-  // Pegasus Collection
 
   {
     id: 42,
@@ -597,9 +546,8 @@ export const products = [
     brand: "Assaf",
     collection: "Pegasus Collection",
     gender: "Unisex",
-    year: 2025,
     price: 1000,
-    image: "/products/assaf/pegasus-first-night.jpeg",
+    image: "/products/assaf/First_Night.jpeg",
   },
 
   {
@@ -608,7 +556,6 @@ export const products = [
     brand: "Assaf",
     collection: "Pegasus Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
     image: "/products/assaf/pegasus-bakhoor.jpeg",
   },
@@ -619,9 +566,8 @@ export const products = [
     brand: "Assaf",
     collection: "Pegasus Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/pegasus-purino.jpeg",
+    image: "/products/assaf/Pegasus_Proino.jpeg",
   },
 
   {
@@ -630,8 +576,7 @@ export const products = [
     brand: "Assaf",
     collection: "Pegasus Collection",
     gender: "Unisex",
-    year: 2024,
     price: 1000,
-    image: "/products/assaf/pegasus-wild.jpeg",
+    image: "/products/assaf/Wild_Pegasus.jpeg",
   },
 ];
