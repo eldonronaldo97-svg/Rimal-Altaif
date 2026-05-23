@@ -549,7 +549,7 @@ export const products = [
     "name": "Balqees",
     "price": 1600,
     "image": "/products/dkhoon/Balqees.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -557,7 +557,7 @@ export const products = [
     "name": "Sapphire",
     "price": 1600,
     "image": "/products/dkhoon/Sapphire.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -565,7 +565,7 @@ export const products = [
     "name": "Dkhoon Oud",
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Oud.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -573,7 +573,7 @@ export const products = [
     "name": "Khayal",
     "price": 1600,
     "image": "/products/dkhoon/Khayal.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -581,7 +581,7 @@ export const products = [
     "name": "Dubai",
     "price": 1600,
     "image": "/products/dkhoon/Dubai.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -589,7 +589,7 @@ export const products = [
     "name": "Doha Skyline",
     "price": 1600,
     "image": "/products/dkhoon/Doha_Skyline.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -597,7 +597,7 @@ export const products = [
     "name": "Muscat",
     "price": 1600,
     "image": "/products/dkhoon/Muscat.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -605,7 +605,7 @@ export const products = [
     "name": "AbuDhabi",
     "price": 1600,
     "image": "/products/dkhoon/AbuDhabi.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -613,7 +613,7 @@ export const products = [
     "name": "Signature Gold",
     "price": 1600,
     "image": "/products/dkhoon/Signature_Gold.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -621,7 +621,7 @@ export const products = [
     "name": "Signature Black",
     "price": 1600,
     "image": "/products/dkhoon/Signature_Black.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -629,7 +629,7 @@ export const products = [
     "name": "Shiny",
     "price": 1600,
     "image": "/products/dkhoon/Shiny.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -637,7 +637,7 @@ export const products = [
     "name": "Dkhoon Desert",
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Desert.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -645,7 +645,7 @@ export const products = [
     "name": "Couture",
     "price": 1600,
     "image": "/products/dkhoon/Couture.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -653,7 +653,7 @@ export const products = [
     "name": "No One",
     "price": 1600,
     "image": "/products/dkhoon/No_One.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -661,7 +661,7 @@ export const products = [
     "name": "Dkhoon Rose",
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Rose.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -669,7 +669,7 @@ export const products = [
     "name": "Aura",
     "price": 1600,
     "image": "/products/dkhoon/Aura.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -677,7 +677,7 @@ export const products = [
     "name": "Tiamo",
     "price": 1600,
     "image": "/products/dkhoon/Tiamo.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -685,7 +685,7 @@ export const products = [
     "name": "Dkhoon Amber",
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Amber.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -693,7 +693,7 @@ export const products = [
     "name": "Haneet",
     "price": 1600,
     "image": "/products/dkhoon/Haneet.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   },
   {
@@ -701,7 +701,7 @@ export const products = [
     "name": "Khaylan",
     "price": 1600,
     "image": "/products/dkhoon/Khaylan.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -709,7 +709,7 @@ export const products = [
     "name": "Dkhoon Leather",
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Leather.jpg",
-    "category": "Dkhoon",
+    "category": "Unisex",
     "stock": true
   },
   {
@@ -717,7 +717,7 @@ export const products = [
     "name": "Crown Black",
     "price": 1600,
     "image": "/products/dkhoon/Crown_Black.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -725,7 +725,7 @@ export const products = [
     "name": "Khalifa",
     "price": 1600,
     "image": "/products/dkhoon/Khalifa.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -733,7 +733,7 @@ export const products = [
     "name": "Zayed",
     "price": 1600,
     "image": "/products/dkhoon/Zayed.jpg",
-    "category": "Dkhoon",
+    "category": "Men",
     "stock": true
   },
   {
@@ -741,7 +741,7 @@ export const products = [
     "name": "So Sweety",
     "price": 1600,
     "image": "/products/dkhoon/So_Sweety.jpg",
-    "category": "Dkhoon",
+    "category": "Women",
     "stock": true
   }
 ];
