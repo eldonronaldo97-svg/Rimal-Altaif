@@ -128,4 +128,510 @@ export const products = [
     image: "/products/diamond-7.jpg",
     category: "Men",
   },
+   // Assaf Main Collection
+
+  {
+    id: 1,
+    name: "Afternoon",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/afternoon.jpg",
+  },
+
+  {
+    id: 2,
+    name: "Black Elixir",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/black-elixir.jpg",
+  },
+
+  {
+    id: 3,
+    name: "Challenge",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/challenge.jpg",
+  },
+
+  {
+    id: 4,
+    name: "Elysium",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/elysium.jpg",
+  },
+
+  {
+    id: 5,
+    name: "Frankel Silver Elixir",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/frankel-silver-elixir.jpg",
+  },
+
+  {
+    id: 6,
+    name: "Green Irish",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/green-irish.jpg",
+  },
+
+  {
+    id: 7,
+    name: "Gris Erik",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2023,
+    price: 1000,
+    image: "/products/assaf/gris-erik.jpg",
+  },
+
+  {
+    id: 8,
+    name: "I Am Here",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/i-am-here.jpg",
+  },
+
+  {
+    id: 9,
+    name: "Miss Gris Intense",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Women",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/miss-gris-intense.jpg",
+  },
+
+  {
+    id: 10,
+    name: "Miss Griss Dance",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Women",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/miss-griss-dance.jpg",
+  },
+
+  {
+    id: 11,
+    name: "Miss Sakura",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Women",
+    year: 2022,
+    price: 1000,
+    image: "/products/assaf/miss-sakura.jpg",
+  },
+
+  {
+    id: 12,
+    name: "No Comment",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/no-comment.jpg",
+  },
+
+  {
+    id: 13,
+    name: "Risk Comete",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/risk-comete.jpg",
+  },
+
+  {
+    id: 14,
+    name: "Storm",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/storm.jpg",
+  },
+
+  {
+    id: 15,
+    name: "Wild Colt",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2022,
+    price: 1000,
+    image: "/products/assaf/wild-colt.jpg",
+  },
+
+  {
+    id: 16,
+    name: "Reflection",
+    brand: "Assaf",
+    collection: "Assaf Main Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/reflection.jpg",
+  },
+
+  // Tobacco Collection
+
+  {
+    id: 17,
+    name: "Tobacco Black 40",
+    brand: "Assaf",
+    collection: "Tobacco Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/tobacco-black-40.jpg",
+  },
+
+  {
+    id: 18,
+    name: "Tobacco Jam",
+    brand: "Assaf",
+    collection: "Tobacco Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/tobacco-jam.jpg",
+  },
+
+  {
+    id: 19,
+    name: "Tobacco Jam 50",
+    brand: "Assaf",
+    collection: "Tobacco Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/tobacco-jam-50.jpg",
+  },
+
+  {
+    id: 20,
+    name: "Tobacco Rage 32",
+    brand: "Assaf",
+    collection: "Tobacco Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/tobacco-rage-32.jpg",
+  },
+
+  {
+    id: 21,
+    name: "Wild Colt Tobacco",
+    brand: "Assaf",
+    collection: "Tobacco Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/wild-colt-tobacco.jpg",
+  },
+
+  // Arrogate Collection
+
+  {
+    id: 22,
+    name: "Arrogate Addict",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/arrogate-addict.jpg",
+  },
+
+  {
+    id: 23,
+    name: "Arrogate Bakhoor",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/arrogate-bakhoor.jpg",
+  },
+
+  {
+    id: 24,
+    name: "Arrogate Blue De",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/arrogate-blue-de.jpg",
+  },
+
+  {
+    id: 25,
+    name: "Arrogate Comete",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/arrogate-comete.jpg",
+  },
+
+  {
+    id: 26,
+    name: "Arrogate Girl",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Women",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/arrogate-girl.jpg",
+  },
+
+  {
+    id: 27,
+    name: "Arrogate Pink",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/arrogate-pink.jpg",
+  },
+
+  {
+    id: 28,
+    name: "Attacks",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Men",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/attacks.jpg",
+  },
+
+  {
+    id: 29,
+    name: "Dangerous Arrogate",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/dangerous-arrogate.jpg",
+  },
+
+  {
+    id: 30,
+    name: "Glitch",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/glitch.jpg",
+  },
+
+  {
+    id: 31,
+    name: "Miss Arrogate",
+    brand: "Assaf",
+    collection: "Arrogate Collection",
+    gender: "Women",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/miss-arrogate.jpg",
+  },
+
+  // Bakhoor Collection
+
+  {
+    id: 32,
+    name: "Oud Bakhur",
+    brand: "Assaf",
+    collection: "Bakhoor Collection",
+    gender: "Unisex",
+    year: 2026,
+    price: 1000,
+    image: "/products/assaf/oud-bakhur.jpg",
+  },
+
+  {
+    id: 33,
+    name: "Wild Colt Bakhur",
+    brand: "Assaf",
+    collection: "Bakhoor Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/wild-colt-bakhur.jpg",
+  },
+
+  // Enable Collection
+
+  {
+    id: 34,
+    name: "Alex",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Men",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/alex.jpg",
+  },
+
+  {
+    id: 35,
+    name: "King",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Unisex",
+    year: 2023,
+    price: 1000,
+    image: "/products/assaf/king.jpg",
+  },
+
+  {
+    id: 36,
+    name: "Millionaire",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Men",
+    year: 2023,
+    price: 1000,
+    image: "/products/assaf/millionaire.jpg",
+  },
+
+  {
+    id: 37,
+    name: "Rebel",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Men",
+    year: 2023,
+    price: 1000,
+    image: "/products/assaf/rebel.jpg",
+  },
+
+  {
+    id: 38,
+    name: "Nomad",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/nomad.jpg",
+  },
+
+  {
+    id: 39,
+    name: "Pink Queen",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Women",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/pink-queen.jpg",
+  },
+
+  {
+    id: 40,
+    name: "Private Purple",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/private-purple.jpg",
+  },
+
+  {
+    id: 41,
+    name: "Sherlock",
+    brand: "Assaf",
+    collection: "Enable Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/sherlock.jpg",
+  },
+
+  // Pegasus Collection
+
+  {
+    id: 42,
+    name: "Pegasus First Night",
+    brand: "Assaf",
+    collection: "Pegasus Collection",
+    gender: "Unisex",
+    year: 2025,
+    price: 1000,
+    image: "/products/assaf/pegasus-first-night.jpg",
+  },
+
+  {
+    id: 43,
+    name: "Pegasus Bakhoor",
+    brand: "Assaf",
+    collection: "Pegasus Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/pegasus-bakhoor.jpg",
+  },
+
+  {
+    id: 44,
+    name: "Pegasus Purino",
+    brand: "Assaf",
+    collection: "Pegasus Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/pegasus-purino.jpg",
+  },
+
+  {
+    id: 45,
+    name: "Pegasus Wild",
+    brand: "Assaf",
+    collection: "Pegasus Collection",
+    gender: "Unisex",
+    year: 2024,
+    price: 1000,
+    image: "/products/assaf/pegasus-wild.jpg",
+  },
 ];
