@@ -21,9 +21,8 @@ export default function Home() {
     .includes(search.toLowerCase());
 
   const matchCategory =
-    category.toLowerCase() === "all" ||
-    p.category.toLowerCase() === category.toLowerCase();
-
+  category.toLowerCase() === "all" ||
+  (p.category?.toLowerCase() === category.toLowerCase());
   return matchSearch && matchCategory;
 });
 
