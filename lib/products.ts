@@ -543,4 +543,206 @@ export const products = [
     price: 1850,
     image: "/products/assaf/wild-colt-bakhur.jpeg",
   },
+
+  {
+    "id": "dk1",
+    "name": "Balqees",
+    "price": 1600,
+    "image": "/products/dkhoon/Balqees.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk2",
+    "name": "Sapphire",
+    "price": 1600,
+    "image": "/products/dkhoon/Sapphire.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk3",
+    "name": "Dkhoon Oud",
+    "price": 1600,
+    "image": "/products/dkhoon/Dkhoon_Oud.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk4",
+    "name": "Khayal",
+    "price": 1600,
+    "image": "/products/dkhoon/Khayal.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk5",
+    "name": "Dubai",
+    "price": 1600,
+    "image": "/products/dkhoon/Dubai.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk6",
+    "name": "Doha Skyline",
+    "price": 1600,
+    "image": "/products/dkhoon/Doha_Skyline.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk7",
+    "name": "Muscat",
+    "price": 1600,
+    "image": "/products/dkhoon/Muscat.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk8",
+    "name": "AbuDhabi",
+    "price": 1600,
+    "image": "/products/dkhoon/AbuDhabi.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk9",
+    "name": "Signature Gold",
+    "price": 1600,
+    "image": "/products/dkhoon/Signature_Gold.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk10",
+    "name": "Signature Black",
+    "price": 1600,
+    "image": "/products/dkhoon/Signature_Black.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk11",
+    "name": "Shiny",
+    "price": 1600,
+    "image": "/products/dkhoon/Shiny.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk12",
+    "name": "Dkhoon Desert",
+    "price": 1600,
+    "image": "/products/dkhoon/Dkhoon_Desert.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk13",
+    "name": "Couture",
+    "price": 1600,
+    "image": "/products/dkhoon/Couture.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk14",
+    "name": "No One",
+    "price": 1600,
+    "image": "/products/dkhoon/No_One.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk15",
+    "name": "Dkhoon Rose",
+    "price": 1600,
+    "image": "/products/dkhoon/Dkhoon_Rose.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk16",
+    "name": "Aura",
+    "price": 1600,
+    "image": "/products/dkhoon/Aura.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk17",
+    "name": "Tuamo",
+    "price": 1600,
+    "image": "/products/dkhoon/Tuamo.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk18",
+    "name": "Dkhoon Amber",
+    "price": 1600,
+    "image": "/products/dkhoon/Dkhoon_Amber.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk19",
+    "name": "Haneet",
+    "price": 1600,
+    "image": "/products/dkhoon/Haneet.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk20",
+    "name": "Khaylan",
+    "price": 1600,
+    "image": "/products/dkhoon/Khaylan.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  }
+
+  {
+    "id": "dk31",
+    "name": "Dkhoon Leather",
+    "price": 1600,
+    "image": "/products/dkhoon/Dkhoon_Leather.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk32",
+    "name": "Crown Black",
+    "price": 1600,
+    "image": "/products/dkhoon/Crown_Black.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk33",
+    "name": "Khalifa",
+    "price": 1600,
+    "image": "/products/dkhoon/Khalifa.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk34",
+    "name": "Zayed",
+    "price": 1600,
+    "image": "/products/dkhoon/Zayed.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  },
+  {
+    "id": "dk35",
+    "name": "So Sweety",
+    "price": 1600,
+    "image": "/products/dkhoon/So_Sweety.jpg",
+    "category": "Dkhoon",
+    "stock": true
+  }
 ];
