@@ -211,14 +211,6 @@ export const products = [
   },
 
   {
-    id: 11,
-    name: "Bakhur Collection Set",
-    brand: "Assaf",
-    price: 1000,
-    image: "/products/assaf/Bakhur_Collection_Set.jpeg",
-  },
-
-  {
     id: 12,
     name: "Challenge",
     brand: "Assaf",
