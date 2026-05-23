@@ -704,45 +704,4 @@ export const products = [
     "category": "Dkhoon",
     "stock": true
   }
-
-  {
-    "id": "dk31",
-    "name": "Dkhoon Leather",
-    "price": 1600,
-    "image": "/products/dkhoon/Dkhoon_Leather.jpg",
-    "category": "Dkhoon",
-    "stock": true
-  },
-  {
-    "id": "dk32",
-    "name": "Crown Black",
-    "price": 1600,
-    "image": "/products/dkhoon/Crown_Black.jpg",
-    "category": "Dkhoon",
-    "stock": true
-  },
-  {
-    "id": "dk33",
-    "name": "Khalifa",
-    "price": 1600,
-    "image": "/products/dkhoon/Khalifa.jpg",
-    "category": "Dkhoon",
-    "stock": true
-  },
-  {
-    "id": "dk34",
-    "name": "Zayed",
-    "price": 1600,
-    "image": "/products/dkhoon/Zayed.jpg",
-    "category": "Dkhoon",
-    "stock": true
-  },
-  {
-    "id": "dk35",
-    "name": "So Sweety",
-    "price": 1600,
-    "image": "/products/dkhoon/So_Sweety.jpg",
-    "category": "Dkhoon",
-    "stock": true
-  }
 ];
