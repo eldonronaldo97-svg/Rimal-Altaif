@@ -130,453 +130,371 @@ export const products = [
   },
    // Assaf Main Collection
 
-  {
+   {
     id: 1,
-    name: "Afternoon",
+    name: "Arrogate Addict Elixir",
     brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/afternoon.jpeg",
-  },
-
-  {
-    id: 2,
-    name: "Black Elixir",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/Frankel_Black_Elixir.jpeg",
-  },
-
-  {
-    id: 3,
-    name: "Challenge",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/Challenge.jpeg",
-  },
-
-  {
-    id: 4,
-    name: "Elysium",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/elysium.jpeg",
-  },
-
-  {
-    id: 5,
-    name: "Frankel Silver Elixir",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/frankel-silver-elixir.jpeg",
-  },
-
-  {
-    id: 6,
-    name: "Green Irish",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/green-irish.jpeg",
-  },
-
-  {
-    id: 7,
-    name: "Gris Erik",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/Gris_Erik_Luxury.jpeg",
-  },
-
-  {
-    id: 8,
-    name: "I Am Here",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/i-am-here.jpeg",
-  },
-
-  {
-    id: 9,
-    name: "Miss Gris Intense",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Women",
-    price: 1000,
-    image: "/products/assaf/miss-gris-intense.jpeg",
-  },
-
-  {
-    id: 10,
-    name: "Miss Gris Dance",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Women",
-    price: 1000,
-    image: "/products/assaf/Miss_Gris_Dance.jpeg",
-  },
-
-  {
-    id: 11,
-    name: "Miss Sakura",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Women",
-    price: 1000,
-    image: "/products/assaf/miss-sakura.jpeg",
-  },
-
-  {
-    id: 12,
-    name: "No Comment",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/no-comment.jpeg",
-  },
-
-  {
-    id: 13,
-    name: "Risk Comete",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/risk-comete.jpeg",
-  },
-
-  {
-    id: 14,
-    name: "Storm",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/Frankel_Storm.jpeg",
-  },
-
-  {
-    id: 15,
-    name: "Wild Colt",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/wild-colt.jpeg",
-  },
-
-  {
-    id: 16,
-    name: "Reflection",
-    brand: "Assaf",
-    collection: "Assaf Main Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/reflection.jpeg",
-  },
-
-  {
-    id: 17,
-    name: "Tobacco Black 40",
-    brand: "Assaf",
-    collection: "Tobacco Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/tobacco-black-40.jpeg",
-  },
-
-  {
-    id: 18,
-    name: "Tobacco Jam",
-    brand: "Assaf",
-    collection: "Tobacco Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/tobacco-jam.jpeg",
-  },
-
-  {
-    id: 19,
-    name: "Tobacco Jam 50",
-    brand: "Assaf",
-    collection: "Tobacco Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/tobacco-jam-50.jpeg",
-  },
-
-  {
-    id: 20,
-    name: "Tobacco Rage 32",
-    brand: "Assaf",
-    collection: "Tobacco Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/tobacco-rage-32.jpeg",
-  },
-
-  {
-    id: 21,
-    name: "Wild Colt Tobacco",
-    brand: "Assaf",
-    collection: "Tobacco Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/Wild_Colt_Tobacco.jpeg",
-  },
-
-  {
-    id: 22,
-    name: "Arrogate Addict",
-    brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/Arrogate_Addict_Elixir.jpeg",
   },
 
   {
-    id: 23,
-    name: "Arrogate Bakhoor",
-    brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
-    price: 1000,
-    image: "/products/assaf/arrogate-bakhoor.jpeg",
-  },
-
-  {
-    id: 24,
+    id: 2,
     name: "Arrogate Blue De",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/Arrogate_Blue_De.jpeg",
   },
 
   {
-    id: 25,
+    id: 3,
     name: "Arrogate Comete",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/Arrogate_Comete.jpeg",
   },
 
   {
-    id: 26,
+    id: 4,
+    name: "Arrogate Euphoria",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Arrogate_Euphoria.jpeg",
+  },
+
+  {
+    id: 5,
+    name: "Arrogate Addict",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/arrogate-addict.jpeg",
+  },
+
+  {
+    id: 6,
     name: "Arrogate Girl",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Women",
     price: 1000,
     image: "/products/assaf/arrogate-girl.jpeg",
   },
 
   {
-    id: 27,
+    id: 7,
     name: "Arrogate Pink",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/arrogate-pink.jpeg",
   },
 
   {
-    id: 28,
+    id: 8,
+    name: "Arrogate Pink Rose",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/arrogate-pink-rose.jpeg",
+  },
+
+  {
+    id: 9,
     name: "Attacks",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Men",
     price: 1000,
     image: "/products/assaf/attacks.jpeg",
   },
 
   {
-    id: 29,
+    id: 10,
+    name: "Bakhur Collection Box",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Bakhur_Collection_Box.jpeg",
+  },
+
+  {
+    id: 11,
+    name: "Bakhur Collection Set",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Bakhur_Collection_Set.jpeg",
+  },
+
+  {
+    id: 12,
+    name: "Challenge",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Challenge.jpeg",
+  },
+
+  {
+    id: 13,
+    name: "Crown Spirit",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Crown_Spirit.jpeg",
+  },
+
+  {
+    id: 14,
     name: "Dangerous Arrogate",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/Dangerous_Arrogate.jpeg",
   },
 
   {
-    id: 30,
+    id: 15,
+    name: "First Night",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/First_Night.jpeg",
+  },
+
+  {
+    id: 16,
+    name: "Frankel Black Elixir",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Frankel_Black_Elixir.jpeg",
+  },
+
+  {
+    id: 17,
+    name: "Frankel Blue Elixir",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Frankel_Blue_Elixir.jpeg",
+  },
+
+  {
+    id: 18,
+    name: "Frankel Storm",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Frankel_Storm.jpeg",
+  },
+
+  {
+    id: 19,
+    name: "Frankel Imagination",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/frankel-imagination.jpeg",
+  },
+
+  {
+    id: 20,
+    name: "Frankel Silver Elixir",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/frankel-silver-elixir.jpeg",
+  },
+
+  {
+    id: 21,
     name: "Glitch",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/glitch.jpeg",
   },
 
   {
-    id: 31,
+    id: 22,
+    name: "Gris Erik Luxury",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Gris_Erik_Luxury.jpeg",
+  },
+
+  {
+    id: 23,
+    name: "Gris Erik Luxury Pink",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Gris_Erik_Luxury_Pink.jpeg",
+  },
+
+  {
+    id: 24,
+    name: "Lady",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/lady.jpeg",
+  },
+
+  {
+    id: 25,
+    name: "Lip Stick",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Lip_Stick.jpeg",
+  },
+
+  {
+    id: 26,
     name: "Miss Arrogate",
     brand: "Assaf",
-    collection: "Arrogate Collection",
-    gender: "Women",
     price: 1000,
     image: "/products/assaf/Miss_Arrogate.jpeg",
   },
 
   {
-    id: 32,
+    id: 27,
+    name: "Miss Gris Dance",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/Miss_Gris_Dance.jpeg",
+  },
+
+  {
+    id: 28,
+    name: "Miss Flora",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/miss-flora.jpeg",
+  },
+
+  {
+    id: 29,
+    name: "Miss Gris Intense",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/miss-gris-intense.jpeg",
+  },
+
+  {
+    id: 30,
+    name: "No Comment",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/no-comment.jpeg",
+  },
+
+  {
+    id: 31,
     name: "Oud Bakhur",
     brand: "Assaf",
-    collection: "Bakhoor Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/oud-bakhur.jpeg",
   },
 
   {
-    id: 33,
-    name: "Wild Colt Bakhur",
+    id: 32,
+    name: "Pegasus Proino",
     brand: "Assaf",
-    collection: "Bakhoor Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/wild-colt-bakhur.jpeg",
+    image: "/products/assaf/Pegasus_Proino.jpeg",
+  },
+
+  {
+    id: 33,
+    name: "Pegasus Aura",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/pegasus-aura.jpeg",
   },
 
   {
     id: 34,
-    name: "Alex",
+    name: "Pegasus Bakhoor",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Men",
     price: 1000,
-    image: "/products/assaf/alex.jpeg",
+    image: "/products/assaf/pegasus-bakhoor.jpeg",
   },
 
   {
     id: 35,
-    name: "King",
+    name: "Pink Lady",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/king.jpeg",
+    image: "/products/assaf/Pink_Lady.jpeg",
   },
 
   {
     id: 36,
-    name: "Millionaire",
+    name: "Pink Queen",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Men",
     price: 1000,
-    image: "/products/assaf/millionaire.jpeg",
+    image: "/products/assaf/Pink_Queen.jpeg",
   },
 
   {
     id: 37,
-    name: "Rebel",
+    name: "Rebel Enable",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Men",
     price: 1000,
     image: "/products/assaf/Rebel_Enable.jpeg",
   },
 
   {
     id: 38,
-    name: "Nomad",
+    name: "Risk Comete",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/nomad.jpeg",
+    image: "/products/assaf/risk-comete.jpeg",
   },
 
   {
     id: 39,
-    name: "Pink Queen",
+    name: "Tobacco Black 40",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Women",
     price: 1000,
-    image: "/products/assaf/Pink_Queen.jpeg",
+    image: "/products/assaf/tobacco-black-40.jpeg",
   },
 
   {
     id: 40,
-    name: "Private Purple",
+    name: "Tobacco Jam 50",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/private-purple.jpeg",
+    image: "/products/assaf/tobacco-jam-50.jpeg",
   },
 
   {
     id: 41,
-    name: "Sherlock",
+    name: "Tobacco Rage 32",
     brand: "Assaf",
-    collection: "Enable Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/sherlock.jpeg",
+    image: "/products/assaf/tobacco-rage-32.jpeg",
   },
 
   {
     id: 42,
-    name: "Pegasus First Night",
+    name: "Troy Enable",
     brand: "Assaf",
-    collection: "Pegasus Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/First_Night.jpeg",
+    image: "/products/assaf/Troy_Enable.jpeg",
   },
 
   {
     id: 43,
-    name: "Pegasus Bakhoor",
+    name: "Wild Colt",
     brand: "Assaf",
-    collection: "Pegasus Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/pegasus-bakhoor.jpeg",
+    image: "/products/assaf/Wild_Colt.jpeg",
   },
 
   {
     id: 44,
-    name: "Pegasus Purino",
+    name: "Wild Colt Tobacco",
     brand: "Assaf",
-    collection: "Pegasus Collection",
-    gender: "Unisex",
     price: 1000,
-    image: "/products/assaf/Pegasus_Proino.jpeg",
+    image: "/products/assaf/Wild_Colt_Tobacco.jpeg",
   },
 
   {
     id: 45,
-    name: "Pegasus Wild",
+    name: "Wild Pegasus",
     brand: "Assaf",
-    collection: "Pegasus Collection",
-    gender: "Unisex",
     price: 1000,
     image: "/products/assaf/Wild_Pegasus.jpeg",
+  },
+
+  {
+    id: 46,
+    name: "Wild Colt Bakhur",
+    brand: "Assaf",
+    price: 1000,
+    image: "/products/assaf/wild-colt-bakhur.jpeg",
   },
 ];
