@@ -54,17 +54,19 @@ export default function ProductCard({ p }: any) {
         </div>
 
         <Link href={`/product/${p.id}`}>
-          <motion.img
-            src={p.image}
-            whileHover={{ scale: 1.05 }}
-            style={{
-              width: "100%",
-              height: 200, // 👈 السر هنا
-              objectFit: "contain",
-              padding: 8,
-            }}
-          />
-        </Link>
+  <motion.img
+    src={p.image}
+    whileHover={{ scale: 1.05 }}
+    style={{
+      width: "100%",
+      height: 200,
+      objectFit: "contain",
+      padding: 8,
+      opacity: p.stock === false ? 0.4 : 1,
+      filter: p.stock === false ? "grayscale(100%)" : "none",
+    }}
+  />
+</Link>
 
         <div style={{ padding: 8 }}>
           <h3
@@ -84,10 +86,24 @@ export default function ProductCard({ p }: any) {
           <p style={{ fontSize: 12, color: "#ff0000", marginTop: 4 }}>
             {p.price} جنيه
           </p>
+          {p.stock === false && (
+  <div
+    style={{
+      color: "red",
+      fontSize: 12,
+      fontWeight: "bold",
+      marginTop: 4,
+    }}
+  >
+    نفذت الكمية
+  </div>
+)}
 
           <button
+  disabled={p.stock === false}
             onClick={() => {
-              add(p);
+              if (!p.stock) return;
+add(p);
               setShow(true);
               setTimeout(() => setShow(false), 2000);
             }}
@@ -101,6 +117,8 @@ export default function ProductCard({ p }: any) {
   borderRadius: 0,
   marginTop: 6,
   fontWeight: "bold",
+  opacity: p.stock === false ? 0.5 : 1,
+cursor: p.stock === false ? "not-allowed" : "pointer",
 }}
           >
             أضف للسلة
