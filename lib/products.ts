@@ -676,7 +676,7 @@ export const products = [
     "id": "dk17",
     "name": "Tiamo",
     "price": 1600,
-    "image": "/products/dkhoon/Tuamo.jpg",
+    "image": "/products/dkhoon/Tiamo.jpg",
     "category": "Dkhoon",
     "stock": true
   },
