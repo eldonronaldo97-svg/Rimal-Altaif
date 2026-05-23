@@ -153,7 +153,7 @@ export const products = [
     name: "Arrogate Addict Elixir",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2300,
     image: "/products/assaf/Arrogate_Addict_Elixir.jpeg",
   },
 
@@ -162,7 +162,7 @@ export const products = [
     name: "Arrogate Blue De",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2200,
     image: "/products/assaf/Arrogate_Blue_De.jpeg",
   },
 
@@ -170,8 +170,8 @@ export const products = [
     id: 3,
     name: "Arrogate Comete",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1850,
     image: "/products/assaf/Arrogate_Comete.jpeg",
   },
 
@@ -180,7 +180,7 @@ export const products = [
     name: "Arrogate Euphoria",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/Arrogate_Euphoria.jpeg",
   },
 
@@ -189,7 +189,7 @@ export const products = [
     name: "Arrogate Addict",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/arrogate-addict.jpeg",
   },
 
@@ -198,7 +198,7 @@ export const products = [
     name: "Arrogate Girl",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/arrogate-girl.jpeg",
   },
 
@@ -207,7 +207,7 @@ export const products = [
     name: "Arrogate Pink",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/arrogate-pink.jpeg",
   },
 
@@ -215,8 +215,8 @@ export const products = [
     id: 8,
     name: "Arrogate Pink Rose",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 2000,
     image: "/products/assaf/arrogate-pink-rose.jpeg",
   },
 
@@ -224,8 +224,8 @@ export const products = [
     id: 9,
     name: "Attacks",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 2000,
     image: "/products/assaf/attacks.jpeg",
   },
 
@@ -233,8 +233,8 @@ export const products = [
     id: 10,
     name: "Bakhur Collection Box",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 3500,
     image: "/products/assaf/Bakhur_Collection_Box.jpeg",
   },
 
@@ -243,7 +243,7 @@ export const products = [
     name: "Challenge",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1900,
     image: "/products/assaf/Challenge.jpeg",
   },
 
@@ -252,7 +252,7 @@ export const products = [
     name: "Crown Spirit",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/Crown_Spirit.jpeg",
   },
 
@@ -261,7 +261,7 @@ export const products = [
     name: "Dangerous Arrogate",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/Dangerous_Arrogate.jpeg",
   },
 
@@ -270,7 +270,7 @@ export const products = [
     name: "First Night",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2000,
     image: "/products/assaf/First_Night.jpeg",
   },
 
@@ -279,7 +279,7 @@ export const products = [
     name: "Frankel Black Elixir",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/Frankel_Black_Elixir.jpeg",
   },
 
@@ -288,7 +288,7 @@ export const products = [
     name: "Frankel Blue Elixir",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/Frankel_Blue_Elixir.jpeg",
   },
 
@@ -296,8 +296,8 @@ export const products = [
     id: 18,
     name: "Frankel Storm",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1250,
     image: "/products/assaf/Frankel_Storm.jpeg",
   },
 
@@ -306,7 +306,7 @@ export const products = [
     name: "Frankel Imagination",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/frankel-imagination.jpeg",
   },
 
@@ -315,7 +315,7 @@ export const products = [
     name: "Frankel Silver Elixir",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/frankel-silver-elixir.jpeg",
   },
 
@@ -324,16 +324,16 @@ export const products = [
     name: "Glitch",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2000,
     image: "/products/assaf/glitch.jpeg",
   },
 
   {
     id: 23,
-    name: "Gris Erik Luxury Pink",
+    name: "Gris Erik",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1750,
     image: "/products/assaf/Gris_Erik.jpeg",
   },
 
@@ -342,7 +342,7 @@ export const products = [
     name: "Lady",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/lady.jpeg",
   },
 
@@ -351,7 +351,7 @@ export const products = [
     name: "Lip Stick",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1900,
     image: "/products/assaf/Lip_Stick.jpeg",
   },
 
@@ -360,7 +360,7 @@ export const products = [
     name: "Miss Arrogate",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/Miss_Arrogate.jpeg",
   },
 
@@ -369,7 +369,7 @@ export const products = [
     name: "Miss Gris Dance",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/Miss_Gris_Dance.jpeg",
   },
 
@@ -377,8 +377,8 @@ export const products = [
     id: 28,
     name: "Miss Flora",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1250,
     image: "/products/assaf/miss-flora.jpeg",
   },
 
@@ -387,7 +387,7 @@ export const products = [
     name: "Miss Gris Intense",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/miss-gris-intense.jpeg",
   },
 
@@ -396,7 +396,7 @@ export const products = [
     name: "No Comment",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/no-comment.jpeg",
   },
 
@@ -405,7 +405,7 @@ export const products = [
     name: "Oud Bakhur",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2100,
     image: "/products/assaf/oud-bakhur.jpeg",
   },
 
@@ -414,7 +414,7 @@ export const products = [
     name: "Pegasus Proino",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1750,
     image: "/products/assaf/Pegasus_Proino.jpeg",
   },
 
@@ -423,7 +423,7 @@ export const products = [
     name: "Pegasus Aura",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/pegasus-aura.jpeg",
   },
 
@@ -432,7 +432,7 @@ export const products = [
     name: "Pegasus Bakhoor",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1750,
     image: "/products/assaf/pegasus-bakhoor.jpeg",
   },
 
@@ -441,7 +441,7 @@ export const products = [
     name: "Pink Lady",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1250,
     image: "/products/assaf/Pink_Lady.jpeg",
   },
 
@@ -450,7 +450,7 @@ export const products = [
     name: "Pink Queen",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 2200,
     image: "/products/assaf/Pink_Queen.jpeg",
   },
 
@@ -459,7 +459,7 @@ export const products = [
     name: "Rebel Enable",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1600,
     image: "/products/assaf/Rebel_Enable.jpeg",
   },
 
@@ -468,7 +468,7 @@ export const products = [
     name: "Risk Comete",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1999,
     image: "/products/assaf/risk-comete.jpeg",
   },
 
@@ -477,7 +477,7 @@ export const products = [
     name: "Tobacco Black 40",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/tobacco-black-40.jpeg",
   },
 
@@ -485,8 +485,8 @@ export const products = [
     id: 40,
     name: "Tobacco Jam 50",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1850,
     image: "/products/assaf/tobacco-jam-50.jpeg",
   },
 
@@ -495,7 +495,7 @@ export const products = [
     name: "Tobacco Rage 32",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/tobacco-rage-32.jpeg",
   },
 
@@ -504,7 +504,7 @@ export const products = [
     name: "Troy Enable",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1499,
     image: "/products/assaf/Troy_Enable.jpeg",
   },
 
@@ -513,7 +513,7 @@ export const products = [
     name: "Wild Colt",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/Wild_Colt.jpeg",
   },
 
@@ -521,8 +521,8 @@ export const products = [
     id: 44,
     name: "Wild Colt Tobacco",
     brand: "Assaf",
-    stock: false,
-    price: 1000,
+    stock: true,
+    price: 1850,
     image: "/products/assaf/Wild_Colt_Tobacco.jpeg",
   },
 
@@ -531,7 +531,7 @@ export const products = [
     name: "Wild Pegasus",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1750,
     image: "/products/assaf/Wild_Pegasus.jpeg",
   },
 
@@ -540,7 +540,7 @@ export const products = [
     name: "Wild Colt Bakhur",
     brand: "Assaf",
     stock: false,
-    price: 1000,
+    price: 1850,
     image: "/products/assaf/wild-colt-bakhur.jpeg",
   },
 ];
