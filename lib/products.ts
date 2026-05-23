@@ -291,19 +291,11 @@ export const products = [
   },
 
   {
-    id: 22,
-    name: "Gris Erik Luxury",
-    brand: "Assaf",
-    price: 1000,
-    image: "/products/assaf/Gris_Erik_Luxury.jpeg",
-  },
-
-  {
     id: 23,
     name: "Gris Erik Luxury Pink",
     brand: "Assaf",
     price: 1000,
-    image: "/products/assaf/Gris_Erik_Luxury_Pink.jpeg",
+    image: "/products/assaf/Gris_Erik.jpeg",
   },
 
   {
