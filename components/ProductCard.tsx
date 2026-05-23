@@ -62,8 +62,6 @@ export default function ProductCard({ p }: any) {
       height: 200,
       objectFit: "contain",
       padding: 8,
-      opacity: p.stock === false ? 0.4 : 1,
-      filter: p.stock === false ? "grayscale(100%)" : "none",
     }}
   />
 </Link>
