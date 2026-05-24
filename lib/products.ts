@@ -594,7 +594,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Balqees.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk2",
@@ -626,7 +626,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dubai.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk6",
@@ -634,7 +634,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Doha_Skyline.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk7",
@@ -642,7 +642,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Muscat.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk8",
@@ -650,7 +650,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/AbuDhabi.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk9",
@@ -658,7 +658,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Signature_Gold.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk10",
@@ -666,7 +666,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Signature_Black.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk11",
@@ -674,7 +674,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Shiny.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk12",
@@ -682,7 +682,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Desert.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk13",
@@ -698,7 +698,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/No_One.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk15",
@@ -706,7 +706,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Rose.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk16",
@@ -714,7 +714,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Aura.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk17",
@@ -730,7 +730,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Amber.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk19",
@@ -762,7 +762,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Crown_Black.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk33",
@@ -778,7 +778,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Zayed.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk35",
@@ -786,6 +786,222 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/So_Sweety.jpg",
     "category": "Women",
-    "stock": true
-  }
+    "stock": false
+  },
+  {
+    id: "L1",
+    name: "Fakhar Black",
+    brand: "Lattafa",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/fakhar-black-lattafa.jpg",
+  },
+  {
+    id: "L2",
+    name: "Khamrah",
+    brand: "Lattafa",
+    category: "Unisex",
+    stock: true,
+    price: 0,
+    image: "/products/khamrah-lattafa.jpg",
+  },
+  {
+    id: "L3",
+    name: "Fakhar Gold",
+    brand: "Lattafa",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/fakhar-gold-lattafa.jpg",
+  },
+  {
+    id: "L4",
+    name: "Teriaq",
+    brand: "Lattafa",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/teriaq-lattafa.jpg",
+  },
+  {
+    id: "L5",
+    name: "Yara",
+    brand: "Lattafa",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/yara-lattafa.jpg",
+  },
+  {
+    id: "L6",
+    name: "Khamrah Qahwa",
+    brand: "Lattafa",
+    category: "Unisex",
+    stock: true,
+    price: 0,
+    image: "/products/khamrah-qahwa-lattafa.jpg",
+  },
+  {
+    id: "L7",
+    name: "Asad Zanzibar",
+    brand: "Lattafa",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/asad-zanzibar-lattafa.jpg",
+  },
+  {
+    id: "L8",
+    name: "Asad",
+    brand: "Lattafa",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/asad-lattafa.jpg",
+  },
+  {
+    id: "L9",
+    name: "Ramz",
+    brand: "Lattafa",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/ramz-lattafa.jpg",
+  },
+  {
+    id: "A1",
+    name: "9AM",
+    brand: "Afnan",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/9am-afnan.jpg",
+  },
+  {
+    id: "A2",
+    name: "9PM",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/9pm-afnan.jpg",
+  },
+  {
+    id: "L10",
+    name: "Asad Elixir",
+    brand: "Lattafa",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/asad-elixir-lattafa.jpg",
+  },
+  {
+    id: "L11",
+    name: "Eclaire",
+    brand: "Lattafa",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/eclaire-lattafa.jpg",
+  },
+  {
+    id: "A3",
+    name: "Rare Reef",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/rare-reef-afnan.jpg",
+  },
+  {
+    id: "L12",
+    name: "Yara Moi",
+    brand: "Lattafa",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/yara-moi-lattafa.jpg",
+  },
+  {
+    id: "A4",
+    name: "Supremacy Collectors Edition",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/supremacy-collectors-edition-afnan.jpg",
+  },
+  {
+    id: "A5",
+    name: "Supremacy Not Only Intense",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/supremacy-not-only-intense-afnan.jpg",
+  },
+  {
+    id: "A6",
+    name: "Turathi Blue",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/turathi-blue-afnan.jpg",
+  },
+  {
+    id: "A7",
+    name: "Turathi Electric",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/turathi-electric-afnan.jpg",
+  },
+  {
+    id: "A8",
+    name: "9PM Rebel",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/9pm-rebel-afnan.jpg",
+  },
+  {
+    id: "A9",
+    name: "9AM Pour Femme",
+    brand: "Afnan",
+    category: "Women",
+    stock: true,
+    price: 0,
+    image: "/products/9am-pour-femme-afnan.jpg",
+  },
+  {
+    id: "A10",
+    name: "9AM Dive",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/9am-dive-afnan.jpg",
+  },
+  {
+    id: "A11",
+    name: "9PM Elixir",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/9pm-elixir-afnan.jpg",
+  },
+  {
+    id: "A12",
+    name: "9PM Classic",
+    brand: "Afnan",
+    category: "Men",
+    stock: true,
+    price: 0,
+    image: "/products/9pm-afnan-classic.jpg",
+  },
 ];
