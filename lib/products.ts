@@ -149,18 +149,17 @@ export const products = [
    // Assaf Main Collection
 
    {
-    id: 1,
+    id: "a1",
     name: "Arrogate Addict Elixir",
     brand: "Assaf",
     category: "Men",
-    "category": "Men",
     stock: false,
     price: 2300,
     image: "/products/assaf/Arrogate_Addict_Elixir.jpeg",
   },
 
   {
-    id: 2,
+    id: "a2",
     name: "Arrogate Blue De",
     brand: "Assaf",
     category: "Men",
@@ -170,7 +169,7 @@ export const products = [
   },
 
   {
-    id: 3,
+    id: "a3",
     name: "Arrogate Comete",
     brand: "Assaf",
     category: "Men",
@@ -180,7 +179,7 @@ export const products = [
   },
 
   {
-    id: 4,
+    id: "a4",
     name: "Arrogate Euphoria",
     brand: "Assaf",
     category: "Women",
@@ -190,7 +189,7 @@ export const products = [
   },
 
   {
-    id: 5,
+    id: "a5",
     name: "Arrogate Addict",
     brand: "Assaf",
     category: "Men",
@@ -200,7 +199,7 @@ export const products = [
   },
 
   {
-    id: 6,
+    id: "a6",
     name: "Arrogate Girl",
     brand: "Assaf",
     category: "Women",
@@ -210,7 +209,7 @@ export const products = [
   },
 
   {
-    id: 7,
+    id: "a7",
     name: "Arrogate Pink",
     brand: "Assaf",
     category: "Women",
@@ -220,7 +219,7 @@ export const products = [
   },
 
   {
-    id: 8,
+    id: "a8",
     name: "Arrogate Pink Rose",
     brand: "Assaf",
     category: "Women",
@@ -230,7 +229,7 @@ export const products = [
   },
 
   {
-    id: 9,
+    id: "a9",
     name: "Attacks",
     brand: "Assaf",
     category: "Men",
@@ -240,7 +239,7 @@ export const products = [
   },
 
   {
-    id: 10,
+    id: "a10",
     name: "Bakhur Collection Box",
     brand: "Assaf",
     category: "Men",
@@ -250,7 +249,7 @@ export const products = [
   },
 
   {
-    id: 12,
+    id: "a11",
     name: "Challenge",
     brand: "Assaf",
     category: "Men",
@@ -260,7 +259,7 @@ export const products = [
   },
 
   {
-    id: 13,
+    id: "a12",
     name: "Crown Spirit",
     brand: "Assaf",
     category: "Women",
@@ -270,7 +269,7 @@ export const products = [
   },
 
   {
-    id: 14,
+    id: "a13",
     name: "Dangerous Arrogate",
     brand: "Assaf",
     category: "unisex",
@@ -280,7 +279,7 @@ export const products = [
   },
 
   {
-    id: 15,
+    id: "a14",
     name: "First Night",
     brand: "Assaf",
     category: "Women",
@@ -290,7 +289,7 @@ export const products = [
   },
 
   {
-    id: 16,
+    id: "a15",
     name: "Frankel Black Elixir",
     brand: "Assaf",
     category: "Men",
@@ -300,7 +299,7 @@ export const products = [
   },
 
   {
-    id: 17,
+    id: "a16",
     name: "Frankel Blue Elixir",
     brand: "Assaf",
     category: "Men",
@@ -310,7 +309,7 @@ export const products = [
   },
 
   {
-    id: 18,
+    id: "a17",
     name: "Frankel Storm",
     brand: "Assaf",
     category: "Men",
@@ -320,7 +319,7 @@ export const products = [
   },
 
   {
-    id: 19,
+    id: "a18",
     name: "Frankel Imagination",
     brand: "Assaf",
     category: "Men",
@@ -330,7 +329,7 @@ export const products = [
   },
 
   {
-    id: 20,
+    id: "a19",
     name: "Frankel Silver Elixir",
     brand: "Assaf",
     category: "Men",
@@ -340,7 +339,7 @@ export const products = [
   },
 
   {
-    id: 21,
+    id: "a20",
     name: "Glitch",
     brand: "Assaf",
     category: "Men",
@@ -350,7 +349,7 @@ export const products = [
   },
 
   {
-    id: 23,
+    id: "a21",
     name: "Gris Erik",
     brand: "Assaf",
     category: "Men",
@@ -360,7 +359,7 @@ export const products = [
   },
 
   {
-    id: 24,
+    id: "a22",
     name: "Lady",
     brand: "Assaf",
     category: "Women",
@@ -370,7 +369,7 @@ export const products = [
   },
 
   {
-    id: 25,
+    id: "a23",
     name: "Lip Stick",
     brand: "Assaf",
     category: "Women",
@@ -380,7 +379,7 @@ export const products = [
   },
 
   {
-    id: 26,
+    id: "a24",
     name: "Miss Arrogate",
     brand: "Assaf",
     category: "Women",
@@ -390,7 +389,7 @@ export const products = [
   },
 
   {
-    id: 27,
+    id: "a25",
     name: "Miss Gris Dance",
     brand: "Assaf",
     category: "Women",
@@ -400,7 +399,7 @@ export const products = [
   },
 
   {
-    id: 28,
+    id: "a26",
     name: "Miss Flora",
     brand: "Assaf",
     category: "Women",
@@ -410,7 +409,7 @@ export const products = [
   },
 
   {
-    id: 29,
+    id: "a27",
     name: "Miss Gris Intense",
     brand: "Assaf",
     category: "Women",
@@ -420,7 +419,7 @@ export const products = [
   },
 
   {
-    id: 30,
+    id: "a28",
     name: "No Comment",
     brand: "Assaf",
     category: "unisex",
@@ -430,7 +429,7 @@ export const products = [
   },
 
   {
-    id: 31,
+    id: "a29",
     name: "Oud Bakhur",
     brand: "Assaf",
     category: "Men",
@@ -440,7 +439,7 @@ export const products = [
   },
 
   {
-    id: 32,
+    id: "a30",
     name: "Pegasus Proino",
     brand: "Assaf",
     category: "Men",
@@ -450,7 +449,7 @@ export const products = [
   },
 
   {
-    id: 33,
+    id: "a31",
     name: "Pegasus Aura",
     brand: "Assaf",
     category: "Men",
@@ -460,7 +459,7 @@ export const products = [
   },
 
   {
-    id: 34,
+    id: "a32",
     name: "Pegasus Bakhoor",
     brand: "Assaf",
     category: "Men",
@@ -470,7 +469,7 @@ export const products = [
   },
 
   {
-    id: 35,
+    id: "a33",
     name: "Pink Lady",
     brand: "Assaf",
     category: "Women",
@@ -480,7 +479,7 @@ export const products = [
   },
 
   {
-    id: 36,
+    id: "a34",
     name: "Pink Queen",
     brand: "Assaf",
     category: "Women",
@@ -490,7 +489,7 @@ export const products = [
   },
 
   {
-    id: 37,
+    id: "a35",
     name: "Rebel Enable",
     brand: "Assaf",
     category: "unisex",
@@ -500,7 +499,7 @@ export const products = [
   },
 
   {
-    id: 38,
+    id: "a36",
     name: "Risk Comete",
     brand: "Assaf",
     category: "unisex",
@@ -510,7 +509,7 @@ export const products = [
   },
 
   {
-    id: 39,
+    id: "a37",
     name: "Tobacco Black 40",
     brand: "Assaf",
     category: "Men",
@@ -520,7 +519,7 @@ export const products = [
   },
 
   {
-    id: 40,
+    id: "a38",
     name: "Tobacco Jam 50",
     brand: "Assaf",
     category: "Men",
@@ -530,7 +529,7 @@ export const products = [
   },
 
   {
-    id: 41,
+    id: "a39",
     name: "Tobacco Rage 32",
     brand: "Assaf",
     category: "Men",
@@ -540,7 +539,7 @@ export const products = [
   },
 
   {
-    id: 42,
+    id: "a40",
     name: "Troy Enable",
     brand: "Assaf",
     category: "Men",
@@ -550,7 +549,7 @@ export const products = [
   },
 
   {
-    id: 43,
+    id: "a41",
     name: "Wild Colt",
     brand: "Assaf",
     category: "Men",
@@ -560,7 +559,7 @@ export const products = [
   },
 
   {
-    id: 44,
+    id: "a42",
     name: "Wild Colt Tobacco",
     brand: "Assaf",
     category: "Men",
@@ -570,7 +569,7 @@ export const products = [
   },
 
   {
-    id: 45,
+    id: "a43",
     name: "Wild Pegasus",
     brand: "Assaf",
     category: "Men",
@@ -580,7 +579,7 @@ export const products = [
   },
 
   {
-    id: 46,
+    id: "a44",
     name: "Wild Colt Bakhur",
     brand: "Assaf",
     category: "Men",
