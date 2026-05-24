@@ -870,22 +870,13 @@ export const products = [
     image: "/products/ramz-lattafa.jpg",
   },
   {
-    id: "A1",
-    name: "9AM",
-    brand: "Afnan",
-    category: "Women",
-    stock: true,
-    price: 0,
-    image: "/products/9am-afnan.jpg",
-  },
-  {
     id: "A2",
     name: "9PM nightout",
     brand: "Afnan",
     category: "Men",
     stock: true,
     price: 0,
-    image: "/products/9pm-nightout-afnan.jpg.jpg",
+    image: "/products/9pm-nightout-afnan.jpg",
   },
   {
     id: "L10",
