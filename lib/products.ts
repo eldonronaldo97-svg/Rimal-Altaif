@@ -880,12 +880,12 @@ export const products = [
   },
   {
     id: "A2",
-    name: "9PM",
+    name: "9PM nightout",
     brand: "Afnan",
     category: "Men",
     stock: true,
     price: 0,
-    image: "/products/9pm-afnan.jpg",
+    image: "/products/9pm-nightout-afnan.jpg.jpg",
   },
   {
     id: "L10",
