@@ -76,7 +76,7 @@ export const products = [
     id: "d10",
     name: "Nude Coral Diamond",
     price: 1600,
-    image: "/products/دايموند.jpg",
+    image: "/products/diamond-0.jpg",
     category: "Unisex",
     stock: true,
   },
