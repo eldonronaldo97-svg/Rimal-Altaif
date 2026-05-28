@@ -99,7 +99,7 @@ export default function Home() {
               <div
                 key={p.id}
                 style={{
-                  width: 180, // أصغر عرض للكارت
+                  width: 180, // عرض ثابت
                   height: 400, // طول ثابت
                   flexShrink: 0,
                   display: "flex",
@@ -120,7 +120,7 @@ export default function Home() {
                   <h3
                     style={{
                       fontSize: 14,
-                      height: 40, // ثابت عشان الاسم الطويل مش يكبر الكارت
+                      height: 40,
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
@@ -132,6 +132,30 @@ export default function Home() {
                 </div>
               </div>
             ))}
+        </div>
+
+        {/* ADD TO CART BUTTON BELOW BEST SELLERS */}
+        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <button
+            style={{
+              background: "#000",
+              color: "#fff",
+              border: "none",
+              padding: "12px 30px",
+              fontSize: 12,
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              // لنأخذ أول منتج Best Seller كمثال للانتقال لصفحة المنتج
+              const firstBestSeller = products.find((p) => p.bestSeller);
+              if (firstBestSeller) {
+                window.location.href = `/product/${firstBestSeller.id}`;
+              }
+            }}
+          >
+            Add to Cart
+          </button>
         </div>
       </section>
 
