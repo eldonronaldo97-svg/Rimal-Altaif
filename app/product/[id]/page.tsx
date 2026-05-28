@@ -23,10 +23,10 @@ export default function ProductPage() {
   }
 
   return (
-    <main className="bg-white min-h-screen pb-32">
+    <main className="bg-white min-h-screen overflow-x-hidden pb-32">
 
       {/* PRODUCT */}
-      <div className="max-w-md mx-auto">
+      <div className="w-full max-w-[100vw] mx-auto">
 
         {/* IMAGE */}
         <div className="bg-[#f7f7f7] relative">
@@ -54,15 +54,16 @@ export default function ProductPage() {
             alt={product.name}
             className="
               w-full
-              h-[420px]
+              h-[320px]
               object-contain
-              p-6
+              p-4
+              block
             "
           />
         </div>
 
         {/* INFO */}
-        <div className="px-4 py-6">
+        <div className="px-4 py-6 text-center">
 
           {/* BRAND */}
           <p className="
@@ -77,9 +78,10 @@ export default function ProductPage() {
 
           {/* NAME */}
           <h1 className="
-            text-[28px]
-            font-light
-            leading-[1.1]
+            text-[22px]
+            break-words
+            leading-[1.2]
+            font-semibold
             mb-3
           ">
             {product.name}
@@ -87,9 +89,9 @@ export default function ProductPage() {
 
           {/* PRICE */}
           <p className="
-            text-[22px]
+            text-[20px]
             tracking-[1px]
-            mb-6
+            mb-5
           ">
             EGP {product.price}
           </p>
@@ -107,10 +109,10 @@ export default function ProductPage() {
           </p>
 
           {/* QUANTITY */}
-          <div className="mb-5">
+          <div className="mb-6">
 
             <p className="
-              text-[12px]
+              text-[11px]
               uppercase
               tracking-[2px]
               mb-3
@@ -121,38 +123,52 @@ export default function ProductPage() {
             <div className="
               flex
               items-center
-              border
-              border-zinc-300
-              w-[120px]
-              h-[46px]
+              justify-center
             ">
-              <button
-                onClick={() =>
-                  setQty((prev) =>
-                    prev > 1 ? prev - 1 : 1
-                  )
-                }
-                className="flex-1 h-full text-xl"
-              >
-                -
-              </button>
-
               <div className="
-                flex-1
-                text-center
-                text-sm
+                flex
+                items-center
+                border
+                border-zinc-300
+                w-[120px]
+                h-[44px]
               ">
-                {qty}
-              </div>
+                <button
+                  onClick={() =>
+                    setQty((prev) =>
+                      prev > 1 ? prev - 1 : 1
+                    )
+                  }
+                  className="
+                    flex-1
+                    h-full
+                    text-lg
+                  "
+                >
+                  -
+                </button>
 
-              <button
-                onClick={() =>
-                  setQty((prev) => prev + 1)
-                }
-                className="flex-1 h-full text-xl"
-              >
-                +
-              </button>
+                <div className="
+                  flex-1
+                  text-center
+                  text-sm
+                ">
+                  {qty}
+                </div>
+
+                <button
+                  onClick={() =>
+                    setQty((prev) => prev + 1)
+                  }
+                  className="
+                    flex-1
+                    h-full
+                    text-lg
+                  "
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
 
@@ -163,23 +179,25 @@ export default function ProductPage() {
             gap-3
           ">
             <button className="
-              h-[54px]
+              h-[52px]
               bg-black
               text-white
               uppercase
               tracking-[2px]
               text-[11px]
+              w-full
             ">
               Add To Cart
             </button>
 
             <button className="
-              h-[54px]
+              h-[52px]
               border
               border-black
               uppercase
               tracking-[2px]
               text-[11px]
+              w-full
             ">
               Buy It Now
             </button>
@@ -190,6 +208,7 @@ export default function ProductPage() {
             mt-10
             grid
             gap-3
+            text-left
           ">
             <div className="
               border
@@ -239,9 +258,10 @@ export default function ProductPage() {
         <div className="px-4 mt-14">
 
           <h2 className="
-            text-[26px]
+            text-[24px]
             font-light
             mb-5
+            text-center
           ">
             You May Also Like
           </h2>
@@ -271,21 +291,23 @@ export default function ProductPage() {
                       alt={p.name}
                       className="
                         w-full
-                        h-[160px]
+                        h-[150px]
                         object-contain
+                        block
                       "
                     />
 
                     <h3 className="
-                      text-[13px]
+                      text-[12px]
                       mt-3
                       leading-5
+                      break-words
                     ">
                       {p.name}
                     </h3>
 
                     <p className="
-                      text-[12px]
+                      text-[11px]
                       text-zinc-500
                       mt-1
                     ">
