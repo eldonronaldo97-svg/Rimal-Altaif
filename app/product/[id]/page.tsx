@@ -79,20 +79,20 @@ export default function ProductPage() {
   )}
 
   <img
-    src={product.image}
-    alt={product.name}
-    className="
-      w-full
-      h-[280px]
-      object-contain
-      p-8
-      block
-      mx-auto
-    "
-    style={{
-      objectPosition: "center",
-    }}
-  />
+  src={product.image}
+  alt={product.name}
+  className="
+    w-full
+    h-[280px]
+    object-contain
+    p-8
+    block
+  "
+  style={{
+    objectPosition: "center",
+    transform: "translateX(6px)",
+  }}
+/>
 </div>
 
         {/* INFO */}
