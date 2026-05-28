@@ -233,7 +233,7 @@ export default function Home() {
         style={{
           maxWidth: 1600,
           margin: "0 auto",
-          padding: "0 4px 80px",
+          padding: "0 1px 80px",
         }}
       >
         <h2
