@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useState } from "react";
 import { products } from "@/lib/products";
 
 export default function ProductPage() {
@@ -11,9 +12,11 @@ export default function ProductPage() {
     (p) => p.id === id
   );
 
+  const [qty, setQty] = useState(1);
+
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-lg">
+      <div className="min-h-screen flex items-center justify-center">
         Product not found
       </div>
     );
@@ -21,15 +24,27 @@ export default function ProductPage() {
 
   return (
     <main className="bg-white min-h-screen pb-32">
-      
+
       {/* PRODUCT */}
-      <div className="max-w-md mx-auto px-4 pt-4">
+      <div className="max-w-md mx-auto">
 
         {/* IMAGE */}
-        <div className="relative bg-[#f7f7f7] mb-8">
+        <div className="bg-[#f7f7f7] relative">
 
           {!product.stock && (
-            <div className="absolute top-3 left-3 z-10 bg-black text-white text-[10px] tracking-[2px] uppercase px-3 py-2">
+            <div className="
+              absolute
+              top-3
+              left-3
+              z-10
+              bg-black
+              text-white
+              text-[10px]
+              tracking-[2px]
+              uppercase
+              px-3
+              py-2
+            ">
               Sold Out
             </div>
           )}
@@ -39,21 +54,21 @@ export default function ProductPage() {
             alt={product.name}
             className="
               w-full
-              h-[380px]
+              h-[420px]
               object-contain
-              p-5
+              p-6
             "
           />
         </div>
 
         {/* INFO */}
-        <div className="text-center">
+        <div className="px-4 py-6">
 
           {/* BRAND */}
           <p className="
             text-[10px]
-            tracking-[4px]
             uppercase
+            tracking-[4px]
             text-zinc-500
             mb-3
           ">
@@ -62,10 +77,10 @@ export default function ProductPage() {
 
           {/* NAME */}
           <h1 className="
-            text-[30px]
-            leading-[1.1]
+            text-[28px]
             font-light
-            mb-4
+            leading-[1.1]
+            mb-3
           ">
             {product.name}
           </h1>
@@ -73,8 +88,8 @@ export default function ProductPage() {
           {/* PRICE */}
           <p className="
             text-[22px]
-            tracking-[2px]
-            mb-5
+            tracking-[1px]
+            mb-6
           ">
             EGP {product.price}
           </p>
@@ -82,44 +97,151 @@ export default function ProductPage() {
           {/* DESCRIPTION */}
           <p className="
             text-[14px]
-            leading-7
             text-zinc-600
+            leading-7
             mb-8
           ">
-            Premium luxury fragrance with elegant
-            performance, long-lasting scent and a
-            sophisticated signature experience.
+            Premium luxury fragrance with
+            long-lasting performance and
+            elegant signature scent.
           </p>
 
-          {/* EXTRA */}
-          <div className="
-            border-t
-            border-zinc-200
-            pt-6
-            text-sm
-            text-zinc-700
-          ">
-            <p className="mb-3">
-              Category: {product.category}
+          {/* QUANTITY */}
+          <div className="mb-5">
+
+            <p className="
+              text-[12px]
+              uppercase
+              tracking-[2px]
+              mb-3
+            ">
+              Quantity
             </p>
 
-            <p>
-              Availability:{" "}
-              {product.stock
-                ? "In Stock"
-                : "Sold Out"}
-            </p>
+            <div className="
+              flex
+              items-center
+              border
+              border-zinc-300
+              w-[120px]
+              h-[46px]
+            ">
+              <button
+                onClick={() =>
+                  setQty((prev) =>
+                    prev > 1 ? prev - 1 : 1
+                  )
+                }
+                className="flex-1 h-full text-xl"
+              >
+                -
+              </button>
+
+              <div className="
+                flex-1
+                text-center
+                text-sm
+              ">
+                {qty}
+              </div>
+
+              <button
+                onClick={() =>
+                  setQty((prev) => prev + 1)
+                }
+                className="flex-1 h-full text-xl"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* BUTTONS */}
+          <div className="
+            flex
+            flex-col
+            gap-3
+          ">
+            <button className="
+              h-[54px]
+              bg-black
+              text-white
+              uppercase
+              tracking-[2px]
+              text-[11px]
+            ">
+              Add To Cart
+            </button>
+
+            <button className="
+              h-[54px]
+              border
+              border-black
+              uppercase
+              tracking-[2px]
+              text-[11px]
+            ">
+              Buy It Now
+            </button>
+          </div>
+
+          {/* BENEFITS */}
+          <div className="
+            mt-10
+            grid
+            gap-3
+          ">
+            <div className="
+              border
+              border-zinc-200
+              p-4
+            ">
+              <p className="
+                text-sm
+                font-medium
+                mb-1
+              ">
+                Free Shipping
+              </p>
+
+              <p className="
+                text-[13px]
+                text-zinc-500
+              ">
+                Orders over EGP 3000
+              </p>
+            </div>
+
+            <div className="
+              border
+              border-zinc-200
+              p-4
+            ">
+              <p className="
+                text-sm
+                font-medium
+                mb-1
+              ">
+                Cash On Delivery
+              </p>
+
+              <p className="
+                text-[13px]
+                text-zinc-500
+              ">
+                Available all over Egypt
+              </p>
+            </div>
           </div>
         </div>
 
         {/* RELATED */}
-        <div className="mt-20">
+        <div className="px-4 mt-14">
 
           <h2 className="
-            text-[28px]
+            text-[26px]
             font-light
-            text-center
-            mb-6
+            mb-5
           ">
             You May Also Like
           </h2>
@@ -135,33 +257,37 @@ export default function ProductPage() {
                 <Link
                   key={p.id}
                   href={`/product/${p.id}`}
-                  className="text-black no-underline"
+                  className="
+                    no-underline
+                    text-black
+                  "
                 >
-                  <div className="bg-[#f7f7f7] p-3">
-
+                  <div className="
+                    bg-[#f7f7f7]
+                    p-3
+                  ">
                     <img
                       src={p.image}
                       alt={p.name}
                       className="
                         w-full
-                        h-[170px]
+                        h-[160px]
                         object-contain
                       "
                     />
 
                     <h3 className="
-                      mt-3
                       text-[13px]
-                      font-medium
+                      mt-3
                       leading-5
                     ">
                       {p.name}
                     </h3>
 
                     <p className="
-                      mt-1
                       text-[12px]
                       text-zinc-500
+                      mt-1
                     ">
                       EGP {p.price}
                     </p>
@@ -170,51 +296,6 @@ export default function ProductPage() {
               ))}
           </div>
         </div>
-      </div>
-
-      {/* FIXED BUTTONS */}
-      <div className="
-        fixed
-        bottom-0
-        left-0
-        w-full
-        bg-white
-        border-t
-        border-zinc-200
-        p-3
-        grid
-        grid-cols-2
-        gap-2
-        z-50
-      ">
-        <button className="
-          h-[52px]
-          bg-black
-          text-white
-          text-[11px]
-          uppercase
-          tracking-[2px]
-        ">
-          Add To Cart
-        </button>
-
-        <a
-          href="https://wa.me/201000000000"
-          target="_blank"
-          className="
-            h-[52px]
-            border
-            border-black
-            flex
-            items-center
-            justify-center
-            text-[11px]
-            uppercase
-            tracking-[2px]
-          "
-        >
-          WhatsApp
-        </a>
       </div>
     </main>
   );
