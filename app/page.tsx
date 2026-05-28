@@ -20,28 +20,20 @@ export default function Home() {
     }
   }, []);
 
-  // 🔎 Filter
+  // Filter
   let filtered = products.filter((p) => {
-    const matchSearch = p.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
+    const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
     const matchCategory =
       category.toLowerCase() === "all" ||
       p.category?.toLowerCase() === category.toLowerCase();
-
     return matchSearch && matchCategory;
   });
 
-  // ↕️ Sort
-  if (sort === "low") {
-    filtered.sort((a, b) => a.price - b.price);
-  }
-  if (sort === "high") {
-    filtered.sort((a, b) => b.price - a.price);
-  }
+  // Sort
+  if (sort === "low") filtered.sort((a, b) => a.price - b.price);
+  if (sort === "high") filtered.sort((a, b) => b.price - a.price);
 
-  // 📄 Pagination
+  // Pagination
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const start = (page - 1) * itemsPerPage;
   const currentItems = filtered.slice(start, start + itemsPerPage);
@@ -52,90 +44,114 @@ export default function Home() {
       <HeroSlider />
 
       {/* BEST SELLERS */}
-<section
-  style={{
-    padding: "80px 20px",
-    background: "#fff",
-  }}
->
-  {/* TITLE */}
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: 40,
-      maxWidth: 1600,
-      marginInline: "auto",
-    }}
-  >
-    <div>
-      <p
-        style={{
-          letterSpacing: "4px",
-          fontSize: 12,
-          textTransform: "uppercase",
-          color: "#777",
-          marginBottom: 10,
-        }}
-      >
-        Signature Collection
-      </p>
-
-      <h2
-        style={{
-          fontSize: 42,
-          fontWeight: 300,
-        }}
-      >
-        Best Sellers
-      </h2>
-    </div>
-  </div>
-
-  {/* SLIDER */}
-  <div
-    ref={sliderRef}
-    style={{
-      display: "flex",
-      gap: 24,
-      overflowX: "auto",
-      scrollBehavior: "smooth",
-      paddingBottom: 10,
-    }}
-  >
-    {products
-      .filter((p) => p.bestSeller)
-      .map((p) => (
+      <section style={{ padding: "80px 20px", background: "#fff" }}>
+        {/* TITLE */}
         <div
-          key={p.id}
           style={{
-            width: 220, // أقل حجم للكارت
-            flexShrink: 0,
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 40,
+            maxWidth: 1600,
+            marginInline: "auto",
           }}
         >
-          <ProductCard p={p} />
-          <button
-            onClick={() => router.push(`/product/${p.id}`)}
-            style={{
-              marginTop: 10,
-              padding: "10px",
-              backgroundColor: "#000",
-              color: "#fff",
-              border: "none",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontSize: 14,
-            }}
-          >
-            اضف للسلة
-          </button>
+          <div>
+            <p
+              style={{
+                letterSpacing: "4px",
+                fontSize: 12,
+                textTransform: "uppercase",
+                color: "#777",
+                marginBottom: 10,
+              }}
+            >
+              Signature Collection
+            </p>
+            <h2 style={{ fontSize: 42, fontWeight: 300 }}>Best Sellers</h2>
+          </div>
         </div>
-      ))}
-  </div>
-</section>
+
+        {/* SLIDER */}
+        <div
+          ref={sliderRef}
+          style={{
+            display: "flex",
+            gap: 12,
+            overflowX: "auto",
+            scrollBehavior: "smooth",
+            paddingBottom: 10,
+            direction: "ltr",
+          }}
+        >
+          {products
+            .filter((p) => p.bestSeller)
+            .map((p) => (
+              <div
+                key={p.id}
+                style={{
+                  width: 180,
+                  height: 360,
+                  flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <a
+                  href={`/product/${p.id}`}
+                  style={{ textDecoration: "none", color: "#000" }}
+                >
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    style={{
+                      width: "100%",
+                      height: 220,
+                      objectFit: "contain",
+                    }}
+                  />
+                  <div style={{ padding: 6 }}>
+                    <h3
+                      style={{
+                        fontSize: 14,
+                        height: 40,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {p.name}
+                    </h3>
+                    <p style={{ fontSize: 13, color: "#000", marginTop: 4 }}>
+                      {p.price} جنيه
+                    </p>
+                  </div>
+                </a>
+
+                <button
+                  onClick={() =>
+                    window.location.href = `/product/${p.id}`
+                  }
+                  style={{
+                    width: "100%",
+                    height: 34,
+                    background: "#000",
+                    color: "#fff",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: 11,
+                    letterSpacing: "2px",
+                    textTransform: "uppercase",
+                    marginTop: 10,
+                  }}
+                >
+                  Add To Cart
+                </button>
+              </div>
+            ))}
+        </div>
+      </section>
 
       {/* FILTER BAR */}
       <div
@@ -147,7 +163,6 @@ export default function Home() {
           gap: 25,
         }}
       >
-        {/* TOP */}
         <div
           style={{
             display: "flex",
@@ -170,7 +185,6 @@ export default function Home() {
               letterSpacing: "1px",
             }}
           />
-
           <select
             onChange={(e) => setSort(e.target.value)}
             style={{
@@ -190,7 +204,6 @@ export default function Home() {
           </select>
         </div>
 
-        {/* CATEGORY BUTTONS */}
         <div
           style={{
             display: "flex",
@@ -227,13 +240,7 @@ export default function Home() {
       </div>
 
       {/* PRODUCTS */}
-      <div
-        style={{
-          maxWidth: 1600,
-          margin: "0 auto",
-          padding: "0 0px 80px",
-        }}
-      >
+      <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 0px 80px" }}>
         <h2
           style={{
             textAlign: "center",
@@ -247,20 +254,12 @@ export default function Home() {
           {category}
         </h2>
 
-        {/* GRID */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2,1fr)",
-            gap: 0,
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 0 }}>
           {currentItems.map((p) => (
             <ProductCard key={p.id} p={p} />
           ))}
         </div>
 
-        {/* PAGINATION */}
         <div
           style={{
             display: "flex",
@@ -277,8 +276,7 @@ export default function Home() {
               style={{
                 width: 45,
                 height: 45,
-                border:
-                  page === i + 1 ? "1px solid black" : "1px solid #d4d4d8",
+                border: page === i + 1 ? "1px solid black" : "1px solid #d4d4d8",
                 background: page === i + 1 ? "#000" : "#fff",
                 color: page === i + 1 ? "#fff" : "#000",
                 cursor: "pointer",
