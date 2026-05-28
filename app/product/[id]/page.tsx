@@ -52,6 +52,9 @@ export default function ProductPage() {
     overflow-hidden
     mx-4
     mt-4
+    flex
+    items-center
+    justify-center
   "
 >
 
@@ -84,7 +87,11 @@ export default function ProductPage() {
       object-contain
       p-8
       block
+      mx-auto
     "
+    style={{
+      objectPosition: "center",
+    }}
   />
 </div>
 
