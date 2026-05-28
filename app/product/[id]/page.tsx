@@ -187,14 +187,15 @@ export default function ProductPage() {
           }}
         >
           <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 300,
-              marginBottom: 22,
-            }}
-          >
-            You May Also Like
-          <h2 style={{ textAlign: "left" }}>
+  style={{
+    fontSize: 28,
+    fontWeight: 300,
+    marginBottom: 22,
+    textAlign: "left",
+  }}
+>
+  You May Also Like
+</h2>
 
           <div
   style={{
