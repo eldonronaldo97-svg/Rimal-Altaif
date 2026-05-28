@@ -233,7 +233,7 @@ export default function Home() {
         style={{
           maxWidth: 1600,
           margin: "0 auto",
-          padding: "0 20px 80px",
+          padding: "0 4px 80px",
         }}
       >
         <h2
@@ -255,7 +255,7 @@ export default function Home() {
             display: "grid",
             gridTemplateColumns:
               "repeat(2,1fr)",
-            gap: 8,
+            gap: 4,
           }}
         >
           {currentItems.map((p) => (
