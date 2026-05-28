@@ -255,7 +255,7 @@ export default function Home() {
             display: "grid",
             gridTemplateColumns:
               "repeat(2,1fr)",
-            gap: 4,
+            gap: 1,
           }}
         >
           {currentItems.map((p) => (
