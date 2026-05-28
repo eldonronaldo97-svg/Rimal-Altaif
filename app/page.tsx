@@ -12,6 +12,9 @@ export default function Home() {
   const [sort, setSort] = useState("none");
   const [page, setPage] = useState(1);
 
+  // 🛒 CART
+  const [cart, setCart] = useState<any[]>([]);
+
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const itemsPerPage = 10;
@@ -21,6 +24,13 @@ export default function Home() {
       sliderRef.current.scrollLeft = 0;
     }
   }, []);
+
+  // 🛒 ADD TO CART
+  const addToCart = (product: any) => {
+    setCart((prev) => [...prev, product]);
+
+    console.log("Cart:", [...cart, product]);
+  };
 
   // 🔎 Filter
   let filtered = products.filter((p) => {
@@ -181,11 +191,7 @@ export default function Home() {
                   onClick={(e) => {
                     e.preventDefault();
 
-                    // 👇 ADD TO CART
-                    console.log("Added To Cart:", p);
-
-                    // مثال:
-                    // addToCart(p)
+                    addToCart(p);
                   }}
                   style={{
                     width: "100%",
