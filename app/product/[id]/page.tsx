@@ -44,44 +44,49 @@ export default function ProductPage() {
         }}
       >
         {/* IMAGE */}
-        <div
-          style={{
-            background: "#f7f7f7",
-            position: "relative",
-            marginBottom: 28,
-          }}
-        >
-          {!product.stock && (
-            <div
-              style={{
-                position: "absolute",
-                top: 14,
-                left: 14,
-                background: "#111",
-                color: "#fff",
-                padding: "7px 12px",
-                fontSize: 10,
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                zIndex: 5,
-              }}
-            >
-              Sold Out
-            </div>
-          )}
+<div
+  className="
+    bg-[#f7f7f7]
+    relative
+    rounded-[12px]
+    overflow-hidden
+    mx-4
+    mt-4
+  "
+>
 
-          <img
-            src={product.image}
-            alt={product.name}
-            style={{
-              width: "100%",
-              height: "400px",
-              objectFit: "contain",
-              padding: 20,
-              cursor: "zoom-in",
-            }}
-          />
-        </div>
+  {!product.stock && (
+    <div
+      className="
+        absolute
+        top-3
+        left-3
+        z-10
+        bg-black
+        text-white
+        text-[10px]
+        tracking-[2px]
+        uppercase
+        px-3
+        py-2
+      "
+    >
+      Sold Out
+    </div>
+  )}
+
+  <img
+    src={product.image}
+    alt={product.name}
+    className="
+      w-full
+      h-[280px]
+      object-contain
+      p-8
+      block
+    "
+  />
+</div>
 
         {/* INFO */}
         <div>
