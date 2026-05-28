@@ -38,21 +38,20 @@ export default function ProductCard({ p }: any) {
 
         {/* NEW */}
         <div
-  style={{
-    position: "absolute",
-    top: 10,
-    left: 10,
-    background: p.stock ? "#000" : "#b91c1c",
-    color: "#fff",
-    padding: "6px 10px",
-    fontSize: 10,
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-    zIndex: 5,
-  }}
->
-  {p.stock ? "New" : "Sold Out"}
-</div>
+          style={{
+            position: "absolute",
+            top: 6,
+            left: 6,
+            background: "#000",
+            color: "#fff",
+            padding: "2px 6px",
+            fontSize: 10,
+            borderRadius: 3,
+            zIndex: 2,
+          }}
+        >
+          {p.stock ? "New" : "Sold Out"}
+        </div>
 
         <Link href={`/product/${p.id}`}>
   <motion.img
@@ -86,18 +85,7 @@ export default function ProductCard({ p }: any) {
           <p style={{ fontSize: 12, color: "#ff0000", marginTop: 4 }}>
             {p.price} جنيه
           </p>
-          {p.stock === false && (
-  <div
-    style={{
-  fontSize: 14,
-  letterSpacing: "2px",
-  color: "#111",
-  textAlign: "center",
-}}
-  >
-    نفذت الكمية
-  </div>
-)}
+          
 
           <button
   disabled={p.stock === false}
