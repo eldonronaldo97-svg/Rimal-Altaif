@@ -1,96 +1,130 @@
 "use client";
 
+import { useCart } from "../lib/store";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Toast from "./Toast";
 
 export default function ProductCard({ p }: any) {
+  const add = useCart((s) => s.add);
+  const [show, setShow] = useState(false);
+  const [fav, setFav] = useState(false);
+
   return (
-    <Link
-      href={`/product/${p.id}`}
-      style={{
-        textDecoration: "none",
-        color: "#000",
-      }}
-    >
-      <div
+    <>
+      <motion.div
+        whileHover={{ scale: 1.02 }}
         style={{
-          position: "relative",
-          overflow: "hidden",
           background: "#fff",
-          transition: "0.4s",
-          cursor: "pointer",
+          borderRadius: 8,
+          overflow: "hidden",
+          position: "relative",
         }}
       >
-        {/* IMAGE */}
+        {/* ❤️ */}
         <div
+          onClick={() => setFav(!fav)}
           style={{
-            overflow: "hidden",
-            background: "#f7f7f7",
+            position: "absolute",
+            top: 6,
+            right: 6,
+            fontSize: 16,
+            zIndex: 2,
           }}
         >
-          <img
-            src={p.image}
-            alt={p.name}
-            style={{
-              width: "100%",
-              height: "420px",
-              objectFit: "cover",
-              transition: "0.6s",
-            }}
-            className="product-image"
-          />
+          {fav ? "❤️" : "🤍"}
         </div>
 
-        {/* INFO */}
+        {/* NEW */}
         <div
           style={{
-            padding: "20px 10px 30px",
-            textAlign: "center",
+            position: "absolute",
+            top: 6,
+            left: 6,
+            background: "#000",
+            color: "#fff",
+            padding: "2px 6px",
+            fontSize: 10,
+            borderRadius: 3,
+            zIndex: 2,
           }}
         >
-          {/* NAME */}
+          NEW
+        </div>
+
+        <Link href={`/product/${p.id}`}>
+  <motion.img
+    src={p.image}
+    whileHover={{ scale: 1.05 }}
+    style={{
+      width: "100%",
+      height: 200,
+      objectFit: "contain",
+      padding: 8,
+    }}
+  />
+</Link>
+
+        <div style={{ padding: 8 }}>
           <h3
             style={{
-              fontSize: 18,
-              fontWeight: 500,
-              marginBottom: 12,
-              letterSpacing: "1px",
+              fontSize: 13,
+              marginBottom: 4,
+              lineHeight: "16px",
+              height: 32,
+              overflow: "hidden",
             }}
           >
             {p.name}
           </h3>
 
-          {/* BRAND */}
-          <p
-            style={{
-              fontSize: 12,
-              color: "#777",
-              letterSpacing: "3px",
-              textTransform: "uppercase",
-              marginBottom: 14,
-            }}
-          >
-            {p.brand}
-          </p>
+          
 
-          {/* PRICE */}
-          <p
-            style={{
-              fontSize: 16,
-              fontWeight: 600,
-              letterSpacing: "1px",
-            }}
-          >
-            EGP {p.price}
+          <p style={{ fontSize: 12, color: "#ff0000", marginTop: 4 }}>
+            {p.price} جنيه
           </p>
+          {p.stock === false && (
+  <div
+    style={{
+      color: "red",
+      fontSize: 12,
+      fontWeight: "bold",
+      marginTop: 4,
+    }}
+  >
+    نفذت الكمية
+  </div>
+)}
+
+          <button
+  disabled={p.stock === false}
+            onClick={() => {
+              if (!p.stock) return;
+add(p);
+              setShow(true);
+              setTimeout(() => setShow(false), 2000);
+            }}
+            style={{
+  width: "100%",
+  padding: "10px",
+  fontSize: 12,
+  background: "#000",
+  color: "#fff",
+  border: "none",
+  borderRadius: 0,
+  marginTop: 6,
+  fontWeight: "bold",
+  opacity: p.stock === false ? 0.5 : 1,
+cursor: p.stock === false ? "not-allowed" : "pointer",
+}}
+          >
+            أضف للسلة
+          </button>
         </div>
-      </div>
+      </motion.div>
 
-      {/* HOVER */}
-      <style jsx>{`
-        div:hover .product-image {
-          transform: scale(1.06);
-        }
-      `}</style>
-    </Link>
+      <Toast show={show} />
+    </>
   );
 }
