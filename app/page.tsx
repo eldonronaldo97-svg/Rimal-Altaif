@@ -101,13 +101,13 @@ export default function Home() {
 
   {/* SLIDER */}
   <div
-  dir="rtl"
     style={{
       display: "flex",
       gap: 24,
       overflowX: "auto",
       scrollBehavior: "smooth",
       paddingBottom: 10,
+      direction: "rtl",
     }}
   >
     {products.filter((p) => p.bestSeller).map((p) => (
