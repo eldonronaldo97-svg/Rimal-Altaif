@@ -39,7 +39,7 @@ export default function ProductPage() {
       <div
         style={{
           padding: "14px 14px 70px",
-          maxWidth: 1600,
+          maxWidth: 600,
           margin: "0 auto",
         }}
       >
@@ -48,7 +48,7 @@ export default function ProductPage() {
           style={{
             background: "#f7f7f7",
             position: "relative",
-            marginBottom: 28,
+            marginBottom: 30,
           }}
         >
           {!product.stock && (
@@ -75,16 +75,21 @@ export default function ProductPage() {
             alt={product.name}
             style={{
               width: "100%",
-              height: "400px",
+              height: "390px",
               objectFit: "contain",
               padding: 20,
               cursor: "zoom-in",
+              display: "block",
             }}
           />
         </div>
 
         {/* INFO */}
-        <div>
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
           {/* BRAND */}
           <p
             style={{
@@ -92,7 +97,7 @@ export default function ProductPage() {
               letterSpacing: "4px",
               textTransform: "uppercase",
               color: "#777",
-              marginBottom: 12,
+              marginBottom: 14,
             }}
           >
             {product.brand}
@@ -101,10 +106,10 @@ export default function ProductPage() {
           {/* NAME */}
           <h1
             style={{
-              fontSize: 32,
+              fontSize: 30,
               fontWeight: 300,
-              lineHeight: 1.1,
-              marginBottom: 16,
+              lineHeight: 1.15,
+              marginBottom: 18,
             }}
           >
             {product.name}
@@ -126,7 +131,7 @@ export default function ProductPage() {
             style={{
               color: "#666",
               lineHeight: 1.7,
-              marginBottom: 34,
+              marginBottom: 36,
               fontSize: 14,
             }}
           >
@@ -139,7 +144,7 @@ export default function ProductPage() {
           <div
             style={{
               borderTop: "1px solid #eee",
-              paddingTop: 22,
+              paddingTop: 24,
             }}
           >
             <p
@@ -174,7 +179,8 @@ export default function ProductPage() {
             style={{
               fontSize: 28,
               fontWeight: 300,
-              marginBottom: 22,
+              marginBottom: 24,
+              textAlign: "center",
             }}
           >
             You May Also Like
@@ -211,6 +217,7 @@ export default function ProductPage() {
                         width: "100%",
                         height: 170,
                         objectFit: "contain",
+                        display: "block",
                       }}
                     />
 
