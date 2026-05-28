@@ -112,7 +112,7 @@ export default function Home() {
     ref={sliderRef}
     style={{
       display: "flex",
-      gap: 24,
+      gap: 1,
       overflowX: "auto",       // يسمح بالتمرير أفقي
       scrollBehavior: "smooth",
       paddingBottom: 10,
