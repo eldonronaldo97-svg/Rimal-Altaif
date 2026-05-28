@@ -13,59 +13,23 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 18,
-        }}
-      >
+      <div className="min-h-screen flex items-center justify-center text-lg">
         Product not found
       </div>
     );
   }
 
   return (
-    <main
-      style={{
-        background: "#fff",
-        minHeight: "100vh",
-        paddingBottom: 140,
-      }}
-    >
+    <main className="bg-white min-h-screen pb-32">
+      
       {/* PRODUCT */}
-      <div
-        style={{
-          padding: "14px 14px 70px",
-          maxWidth: 600,
-          margin: "0 auto",
-        }}
-      >
+      <div className="max-w-md mx-auto px-4 pt-4">
+
         {/* IMAGE */}
-        <div
-          style={{
-            background: "#f7f7f7",
-            position: "relative",
-            marginBottom: 30,
-          }}
-        >
+        <div className="relative bg-[#f7f7f7] mb-8">
+
           {!product.stock && (
-            <div
-              style={{
-                position: "absolute",
-                top: 14,
-                left: 14,
-                background: "#111",
-                color: "#fff",
-                padding: "7px 12px",
-                fontSize: 10,
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                zIndex: 5,
-              }}
-            >
+            <div className="absolute top-3 left-3 z-10 bg-black text-white text-[10px] tracking-[2px] uppercase px-3 py-2">
               Sold Out
             </div>
           )}
@@ -73,94 +37,73 @@ export default function ProductPage() {
           <img
             src={product.image}
             alt={product.name}
-            style={{
-              width: "100%",
-              height: "390px",
-              objectFit: "contain",
-              padding: 20,
-              cursor: "zoom-in",
-              display: "block",
-            }}
+            className="
+              w-full
+              h-[380px]
+              object-contain
+              p-5
+            "
           />
         </div>
 
         {/* INFO */}
-        <div
-          style={{
-            textAlign: "center",
-          }}
-        >
+        <div className="text-center">
+
           {/* BRAND */}
-          <p
-            style={{
-              fontSize: 10,
-              letterSpacing: "4px",
-              textTransform: "uppercase",
-              color: "#777",
-              marginBottom: 14,
-            }}
-          >
+          <p className="
+            text-[10px]
+            tracking-[4px]
+            uppercase
+            text-zinc-500
+            mb-3
+          ">
             {product.brand}
           </p>
 
           {/* NAME */}
-          <h1
-            style={{
-              fontSize: 30,
-              fontWeight: 300,
-              lineHeight: 1.15,
-              marginBottom: 18,
-            }}
-          >
+          <h1 className="
+            text-[30px]
+            leading-[1.1]
+            font-light
+            mb-4
+          ">
             {product.name}
           </h1>
 
           {/* PRICE */}
-          <p
-            style={{
-              fontSize: 22,
-              marginBottom: 22,
-              letterSpacing: "2px",
-            }}
-          >
+          <p className="
+            text-[22px]
+            tracking-[2px]
+            mb-5
+          ">
             EGP {product.price}
           </p>
 
           {/* DESCRIPTION */}
-          <p
-            style={{
-              color: "#666",
-              lineHeight: 1.7,
-              marginBottom: 36,
-              fontSize: 14,
-            }}
-          >
+          <p className="
+            text-[14px]
+            leading-7
+            text-zinc-600
+            mb-8
+          ">
             Premium luxury fragrance with elegant
             performance, long-lasting scent and a
             sophisticated signature experience.
           </p>
 
           {/* EXTRA */}
-          <div
-            style={{
-              borderTop: "1px solid #eee",
-              paddingTop: 24,
-            }}
-          >
-            <p
-              style={{
-                marginBottom: 10,
-                fontSize: 14,
-              }}
-            >
+          <div className="
+            border-t
+            border-zinc-200
+            pt-6
+            text-sm
+            text-zinc-700
+          ">
+            <p className="mb-3">
               Category: {product.category}
             </p>
 
-            <p
-              style={{
-                fontSize: 14,
-              }}
-            >
+            <p>
               Availability:{" "}
               {product.stock
                 ? "In Stock"
@@ -170,75 +113,56 @@ export default function ProductPage() {
         </div>
 
         {/* RELATED */}
-        <div
-          style={{
-            marginTop: 80,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 300,
-              marginBottom: 24,
-              textAlign: "center",
-            }}
-          >
+        <div className="mt-20">
+
+          <h2 className="
+            text-[28px]
+            font-light
+            text-center
+            mb-6
+          ">
             You May Also Like
           </h2>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2,1fr)",
-              gap: 8,
-            }}
-          >
+          <div className="
+            grid
+            grid-cols-2
+            gap-[6px]
+          ">
             {products
               .slice(0, 4)
               .map((p) => (
                 <Link
                   key={p.id}
                   href={`/product/${p.id}`}
-                  style={{
-                    textDecoration: "none",
-                    color: "#000",
-                  }}
+                  className="text-black no-underline"
                 >
-                  <div
-                    style={{
-                      background: "#f7f7f7",
-                      padding: 12,
-                    }}
-                  >
+                  <div className="bg-[#f7f7f7] p-3">
+
                     <img
                       src={p.image}
                       alt={p.name}
-                      style={{
-                        width: "100%",
-                        height: 170,
-                        objectFit: "contain",
-                        display: "block",
-                      }}
+                      className="
+                        w-full
+                        h-[170px]
+                        object-contain
+                      "
                     />
 
-                    <h3
-                      style={{
-                        marginTop: 12,
-                        fontSize: 13,
-                        fontWeight: 500,
-                        lineHeight: 1.4,
-                      }}
-                    >
+                    <h3 className="
+                      mt-3
+                      text-[13px]
+                      font-medium
+                      leading-5
+                    ">
                       {p.name}
                     </h3>
 
-                    <p
-                      style={{
-                        marginTop: 5,
-                        color: "#666",
-                        fontSize: 12,
-                      }}
-                    >
+                    <p className="
+                      mt-1
+                      text-[12px]
+                      text-zinc-500
+                    ">
                       EGP {p.price}
                     </p>
                   </div>
@@ -249,51 +173,45 @@ export default function ProductPage() {
       </div>
 
       {/* FIXED BUTTONS */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          background: "#fff",
-          padding: 12,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 10,
-          borderTop: "1px solid #eee",
-          zIndex: 100,
-        }}
-      >
-        <button
-          style={{
-            height: 52,
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            fontSize: 11,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-          }}
-        >
+      <div className="
+        fixed
+        bottom-0
+        left-0
+        w-full
+        bg-white
+        border-t
+        border-zinc-200
+        p-3
+        grid
+        grid-cols-2
+        gap-2
+        z-50
+      ">
+        <button className="
+          h-[52px]
+          bg-black
+          text-white
+          text-[11px]
+          uppercase
+          tracking-[2px]
+        ">
           Add To Cart
         </button>
 
         <a
           href="https://wa.me/201000000000"
           target="_blank"
-          style={{
-            height: 52,
-            border: "1px solid #000",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            color: "#000",
-            fontSize: 11,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-            background: "#fff",
-          }}
+          className="
+            h-[52px]
+            border
+            border-black
+            flex
+            items-center
+            justify-center
+            text-[11px]
+            uppercase
+            tracking-[2px]
+          "
         >
           WhatsApp
         </a>
