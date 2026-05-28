@@ -254,8 +254,8 @@ export default function Home() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit,minmax(320px,1fr))",
-            gap: 30,
+              "repeat(2,1fr)",
+            gap: 14,
           }}
         >
           {currentItems.map((p) => (
