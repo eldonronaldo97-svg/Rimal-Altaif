@@ -52,112 +52,90 @@ export default function Home() {
       <HeroSlider />
 
       {/* BEST SELLERS */}
-      <section style={{ padding: "80px 20px", background: "#fff" }}>
-        {/* TITLE */}
+<section
+  style={{
+    padding: "80px 20px",
+    background: "#fff",
+  }}
+>
+  {/* TITLE */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 40,
+      maxWidth: 1600,
+      marginInline: "auto",
+    }}
+  >
+    <div>
+      <p
+        style={{
+          letterSpacing: "4px",
+          fontSize: 12,
+          textTransform: "uppercase",
+          color: "#777",
+          marginBottom: 10,
+        }}
+      >
+        Signature Collection
+      </p>
+
+      <h2
+        style={{
+          fontSize: 42,
+          fontWeight: 300,
+        }}
+      >
+        Best Sellers
+      </h2>
+    </div>
+  </div>
+
+  {/* SLIDER */}
+  <div
+    ref={sliderRef}
+    style={{
+      display: "flex",
+      gap: 24,
+      overflowX: "auto",
+      scrollBehavior: "smooth",
+      paddingBottom: 10,
+    }}
+  >
+    {products
+      .filter((p) => p.bestSeller)
+      .map((p) => (
         <div
+          key={p.id}
           style={{
+            width: 220, // أقل حجم للكارت
+            flexShrink: 0,
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 40,
-            maxWidth: 1600,
-            marginInline: "auto",
+            flexDirection: "column",
           }}
         >
-          <div>
-            <p
-              style={{
-                letterSpacing: "4px",
-                fontSize: 12,
-                textTransform: "uppercase",
-                color: "#777",
-                marginBottom: 10,
-              }}
-            >
-              Signature Collection
-            </p>
-
-            <h2 style={{ fontSize: 42, fontWeight: 300 }}>Best Sellers</h2>
-          </div>
-        </div>
-
-        {/* SLIDER */}
-        <div
-          ref={sliderRef}
-          style={{
-            display: "flex",
-            gap: 12,
-            overflowX: "auto",
-            scrollBehavior: "smooth",
-            paddingBottom: 10,
-            direction: "ltr",
-          }}
-        >
-          {products
-            .filter((p) => p.bestSeller)
-            .map((p) => (
-              <div
-                key={p.id}
-                style={{
-                  width: 180, // عرض ثابت
-                  height: 400, // طول ثابت
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  style={{
-                    width: "100%",
-                    height: 250,
-                    objectFit: "contain",
-                  }}
-                />
-                <div style={{ padding: 6 }}>
-                  <h3
-                    style={{
-                      fontSize: 14,
-                      height: 40,
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {p.name}
-                  </h3>
-                  <p style={{ fontSize: 13, color: "#000" }}>{p.price} جنيه</p>
-                </div>
-              </div>
-            ))}
-        </div>
-
-        {/* ADD TO CART BUTTON BELOW BEST SELLERS */}
-        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <ProductCard p={p} />
           <button
+            onClick={() => router.push(`/product/${p.id}`)}
             style={{
-              background: "#000",
+              marginTop: 10,
+              padding: "10px",
+              backgroundColor: "#000",
               color: "#fff",
               border: "none",
-              padding: "12px 30px",
-              fontSize: 12,
-              textTransform: "uppercase",
               cursor: "pointer",
-            }}
-            onClick={() => {
-              // لنأخذ أول منتج Best Seller كمثال للانتقال لصفحة المنتج
-              const firstBestSeller = products.find((p) => p.bestSeller);
-              if (firstBestSeller) {
-                window.location.href = `/product/${firstBestSeller.id}`;
-              }
+              textTransform: "uppercase",
+              fontSize: 14,
             }}
           >
-            Add to Cart
+            اضف للسلة
           </button>
         </div>
-      </section>
+      ))}
+  </div>
+</section>
 
       {/* FILTER BAR */}
       <div
