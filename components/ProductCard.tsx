@@ -58,23 +58,24 @@ export default function ProductCard({ p }: any) {
     src={p.image}
     whileHover={{ scale: 1.05 }}
     style={{
-      width: "100%",
-      height: 200,
-      objectFit: "contain",
-      padding: 8,
-    }}
+  width: "100%",
+  height: 260,
+  objectFit: "contain",
+  padding: 12,
+  transition: "0.5s",
+}}
   />
 </Link>
 
         <div style={{ padding: 8 }}>
           <h3
             style={{
-              fontSize: 13,
-              marginBottom: 4,
-              lineHeight: "16px",
-              height: 32,
-              overflow: "hidden",
-            }}
+  fontSize: 15,
+  fontWeight: 500,
+  letterSpacing: "1.5px",
+  marginBottom: 6,
+  textAlign: "center",
+}}
           >
             {p.name}
           </h3>
@@ -87,11 +88,11 @@ export default function ProductCard({ p }: any) {
           {p.stock === false && (
   <div
     style={{
-      color: "red",
-      fontSize: 12,
-      fontWeight: "bold",
-      marginTop: 4,
-    }}
+  fontSize: 14,
+  letterSpacing: "2px",
+  color: "#111",
+  textAlign: "center",
+}}
   >
     نفذت الكمية
   </div>
