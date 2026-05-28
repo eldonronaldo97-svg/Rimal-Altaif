@@ -194,7 +194,7 @@ export default function ProductPage() {
             }}
           >
             You May Also Like
-          </h2>
+          <h2 style={{ textAlign: "left" }}>
 
           <div
   style={{
