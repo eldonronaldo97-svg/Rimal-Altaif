@@ -101,6 +101,7 @@ export default function Home() {
 
   {/* SLIDER */}
   <div
+  dir="rtl"
     style={{
       display: "flex",
       gap: 24,
