@@ -138,12 +138,42 @@ export default function Home() {
       key={p.id}
       style={{
         width: 180,
+        height: 380,
         flexShrink: 0,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
-      <ProductCard p={p} />
+      {/* رابط للمنتج */}
+      <a
+        href={`/product/${p.id}`}
+        style={{
+          textDecoration: "none",
+          color: "#000",
+          flexGrow: 1,
+        }}
+      >
+        <ProductCard p={p} />
+      </a>
+
+      {/* زر Add to Cart */}
+      <button
+        onClick={() => addToCart(p)}
+        style={{
+          marginTop: 10,
+          backgroundColor: "#000",
+          color: "#fff",
+          padding: "10px 0",
+          fontWeight: "bold",
+          cursor: "pointer",
+          border: "none",
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
-))}
+  ))}
         </div>
       </section>
 
