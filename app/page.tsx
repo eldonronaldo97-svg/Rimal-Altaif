@@ -108,30 +108,31 @@ export default function Home() {
   </div>
 
   {/* SLIDER */}
-<div
-  ref={sliderRef}
-  style={{
-    display: "flex",
-    gap: 24,
-    overflowX: "auto",
-    scrollBehavior: "smooth",
-    paddingBottom: 10,
-  }}
->
-  {products
-    .filter((p) => p.bestSeller)
-    .map((p) => (
-      <div
-        key={p.id}
-        style={{
-          minWidth: 260,
-          flexShrink: 0,
-        }}
-      >
-        <ProductCard p={p} />
-      </div>
-    ))}
-</div>
+  <div
+    ref={sliderRef}
+    style={{
+      display: "flex",
+      gap: 24,
+      overflowX: "auto",       // يسمح بالتمرير أفقي
+      scrollBehavior: "smooth",
+      paddingBottom: 10,
+      direction: "ltr",        // يجبر التمرير من الشمال لليمين
+    }}
+  >
+    {products
+      .filter((p) => p.bestSeller)
+      .map((p) => (
+        <div
+          key={p.id}
+          style={{
+            minWidth: 260,
+            flexShrink: 0,
+          }}
+        >
+          <ProductCard p={p} />
+        </div>
+      ))}
+  </div>
 </section>
 
       {/* FILTER BAR */}
