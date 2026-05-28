@@ -197,12 +197,13 @@ export default function ProductPage() {
           </h2>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2,1fr)",
-              gap: 8,
-            }}
-          >
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(2,1fr)",
+    gap: 8,
+    textAlign: "left",
+  }}
+>
             {products
               .slice(0, 4)
               .map((p) => (
