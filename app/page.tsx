@@ -125,7 +125,7 @@ export default function Home() {
         <div
   key={p.id}
   style={{
-    minWidth: 200,   // صغرنا العرض
+    width: 200,   // صغرنا العرض
     flexShrink: 0,
     height: 400,     // height ثابت لكل الكروت
     display: "flex",
