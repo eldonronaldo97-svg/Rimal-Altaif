@@ -6,8 +6,6 @@ import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
 import { products } from "../lib/products";
 
-
-
 export default function Home() {
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
@@ -17,10 +15,10 @@ export default function Home() {
   const itemsPerPage = 10;
 
   useEffect(() => {
-  if (sliderRef.current) {
-    sliderRef.current.scrollLeft = 0;
-  }
-}, []);
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft = 0;
+    }
+  }, []);
 
   // 🔎 Filter
   let filtered = products.filter((p) => {
@@ -39,105 +37,103 @@ export default function Home() {
   if (sort === "low") {
     filtered.sort((a, b) => a.price - b.price);
   }
-
   if (sort === "high") {
     filtered.sort((a, b) => b.price - a.price);
   }
 
   // 📄 Pagination
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
-
   const start = (page - 1) * itemsPerPage;
-
-  const currentItems = filtered.slice(
-    start,
-    start + itemsPerPage
-  );
+  const currentItems = filtered.slice(start, start + itemsPerPage);
 
   return (
-    <main
-      style={{
-        background: "#fff",
-        minHeight: "100vh",
-      }}
-    >
+    <main style={{ background: "#fff", minHeight: "100vh" }}>
       <Navbar />
-
       <HeroSlider />
 
       {/* BEST SELLERS */}
-<section
-  style={{
-    padding: "80px 20px",
-    background: "#fff",
-  }}
->
-  {/* TITLE */}
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: 40,
-      maxWidth: 1600,
-      marginInline: "auto",
-    }}
-  >
-    <div>
-      <p
-        style={{
-          letterSpacing: "4px",
-          fontSize: 12,
-          textTransform: "uppercase",
-          color: "#777",
-          marginBottom: 10,
-        }}
-      >
-        Signature Collection
-      </p>
-
-      <h2
-        style={{
-          fontSize: 42,
-          fontWeight: 300,
-        }}
-      >
-        Best Sellers
-      </h2>
-    </div>
-  </div>
-
-  {/* SLIDER */}
-  <div
-    ref={sliderRef}
-    style={{
-      display: "flex",
-      gap: 1,
-      overflowX: "auto",       // يسمح بالتمرير أفقي
-      scrollBehavior: "smooth",
-      paddingBottom: 10,
-      direction: "ltr",        // يجبر التمرير من الشمال لليمين
-    }}
-  >
-    {products
-      .filter((p) => p.bestSeller)
-      .map((p) => (
+      <section style={{ padding: "80px 20px", background: "#fff" }}>
+        {/* TITLE */}
         <div
-  key={p.id}
-  style={{
-    minWidth: 100,   // صغرنا العرض
-    flexShrink: 0,
-    height: 400,     // height ثابت لكل الكروت
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  }}
->
-  <ProductCard p={p} />
-</div>
-      ))}
-  </div>
-</section>
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 40,
+            maxWidth: 1600,
+            marginInline: "auto",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                letterSpacing: "4px",
+                fontSize: 12,
+                textTransform: "uppercase",
+                color: "#777",
+                marginBottom: 10,
+              }}
+            >
+              Signature Collection
+            </p>
+
+            <h2 style={{ fontSize: 42, fontWeight: 300 }}>Best Sellers</h2>
+          </div>
+        </div>
+
+        {/* SLIDER */}
+        <div
+          ref={sliderRef}
+          style={{
+            display: "flex",
+            gap: 12,
+            overflowX: "auto",
+            scrollBehavior: "smooth",
+            paddingBottom: 10,
+            direction: "ltr",
+          }}
+        >
+          {products
+            .filter((p) => p.bestSeller)
+            .map((p) => (
+              <div
+                key={p.id}
+                style={{
+                  width: 180, // أصغر عرض للكارت
+                  height: 400, // طول ثابت
+                  flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  style={{
+                    width: "100%",
+                    height: 250,
+                    objectFit: "contain",
+                  }}
+                />
+                <div style={{ padding: 6 }}>
+                  <h3
+                    style={{
+                      fontSize: 14,
+                      height: 40, // ثابت عشان الاسم الطويل مش يكبر الكارت
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {p.name}
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#000" }}>{p.price} جنيه</p>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
 
       {/* FILTER BAR */}
       <div
@@ -158,7 +154,6 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          {/* SEARCH */}
           <input
             placeholder="Search perfumes..."
             value={search}
@@ -174,7 +169,6 @@ export default function Home() {
             }}
           />
 
-          {/* SORT */}
           <select
             onChange={(e) => setSort(e.target.value)}
             style={{
@@ -189,12 +183,8 @@ export default function Home() {
             }}
           >
             <option value="none">Featured</option>
-            <option value="low">
-              Price: Low → High
-            </option>
-            <option value="high">
-              Price: High → Low
-            </option>
+            <option value="low">Price: Low → High</option>
+            <option value="high">Price: High → Low</option>
           </select>
         </div>
 
@@ -207,40 +197,30 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          {["all", "men", "women", "unisex"].map(
-            (item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  setCategory(item);
-                  setPage(1);
-                }}
-                style={{
-                  height: 42,
-                  padding: "0 24px",
-                  border:
-                    category === item
-                      ? "1px solid black"
-                      : "1px solid #d4d4d8",
-                  background:
-                    category === item
-                      ? "#000"
-                      : "#fff",
-                  color:
-                    category === item
-                      ? "#fff"
-                      : "#000",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  fontSize: 12,
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
-              >
-                {item}
-              </button>
-            )
-          )}
+          {["all", "men", "women", "unisex"].map((item) => (
+            <button
+              key={item}
+              onClick={() => {
+                setCategory(item);
+                setPage(1);
+              }}
+              style={{
+                height: 42,
+                padding: "0 24px",
+                border:
+                  category === item ? "1px solid black" : "1px solid #d4d4d8",
+                background: category === item ? "#000" : "#fff",
+                color: category === item ? "#fff" : "#000",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                fontSize: 12,
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+            >
+              {item}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -269,8 +249,7 @@ export default function Home() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "repeat(2,1fr)",
+            gridTemplateColumns: "repeat(2,1fr)",
             gap: 0,
           }}
         >
@@ -289,9 +268,7 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {Array.from({
-            length: totalPages,
-          }).map((_, i) => (
+          {Array.from({ length: totalPages }).map((_, i) => (
             <button
               key={i}
               onClick={() => setPage(i + 1)}
@@ -299,17 +276,9 @@ export default function Home() {
                 width: 45,
                 height: 45,
                 border:
-                  page === i + 1
-                    ? "1px solid black"
-                    : "1px solid #d4d4d8",
-                background:
-                  page === i + 1
-                    ? "#000"
-                    : "#fff",
-                color:
-                  page === i + 1
-                    ? "#fff"
-                    : "#000",
+                  page === i + 1 ? "1px solid black" : "1px solid #d4d4d8",
+                background: page === i + 1 ? "#000" : "#fff",
+                color: page === i + 1 ? "#fff" : "#000",
                 cursor: "pointer",
                 transition: "0.3s",
                 fontSize: 14,
