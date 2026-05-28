@@ -96,10 +96,11 @@ export default function ProductPage() {
 </div>
 
         {/* INFO */}
-        <div>
-          style={{
-  textAlign: "left",
-}}
+        <div
+  style={{
+    textAlign: "left",
+  }}
+>
           {/* BRAND */}
           <p
             style={{
