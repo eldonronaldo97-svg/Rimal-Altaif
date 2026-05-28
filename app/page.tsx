@@ -6,14 +6,14 @@ import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
 import { products } from "../lib/products";
 
-const sliderRef = useRef<HTMLDivElement>(null);
+
 
 export default function Home() {
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("none");
   const [page, setPage] = useState(1);
-
+  const sliderRef = useRef<HTMLDivElement>(null);
   const itemsPerPage = 10;
 
   useEffect(() => {
