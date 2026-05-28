@@ -50,7 +50,7 @@ export default function ProductCard({ p }: any) {
             zIndex: 2,
           }}
         >
-          {p.stock ? "New" : "Sold Out"}
+          {p.stock ? "Sale" : "Sold Out"}
         </div>
 
         <Link href={`/product/${p.id}`}>
