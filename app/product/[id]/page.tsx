@@ -32,12 +32,13 @@ export default function ProductPage() {
       style={{
         background: "#fff",
         minHeight: "100vh",
+        paddingBottom: 140,
       }}
     >
       {/* PRODUCT */}
       <div
         style={{
-          padding: "20px 14px 70px",
+          padding: "14px 14px 70px",
           maxWidth: 1600,
           margin: "0 auto",
         }}
@@ -47,7 +48,7 @@ export default function ProductPage() {
           style={{
             background: "#f7f7f7",
             position: "relative",
-            marginBottom: 24,
+            marginBottom: 28,
           }}
         >
           {!product.stock && (
@@ -74,9 +75,10 @@ export default function ProductPage() {
             alt={product.name}
             style={{
               width: "100%",
-              height: "420px",
+              height: "400px",
               objectFit: "contain",
-              padding: 24,
+              padding: 20,
+              cursor: "zoom-in",
             }}
           />
         </div>
@@ -86,11 +88,11 @@ export default function ProductPage() {
           {/* BRAND */}
           <p
             style={{
-              fontSize: 11,
+              fontSize: 10,
               letterSpacing: "4px",
               textTransform: "uppercase",
               color: "#777",
-              marginBottom: 14,
+              marginBottom: 12,
             }}
           >
             {product.brand}
@@ -99,10 +101,10 @@ export default function ProductPage() {
           {/* NAME */}
           <h1
             style={{
-              fontSize: 38,
+              fontSize: 32,
               fontWeight: 300,
               lineHeight: 1.1,
-              marginBottom: 18,
+              marginBottom: 16,
             }}
           >
             {product.name}
@@ -112,7 +114,7 @@ export default function ProductPage() {
           <p
             style={{
               fontSize: 22,
-              marginBottom: 24,
+              marginBottom: 22,
               letterSpacing: "2px",
             }}
           >
@@ -123,7 +125,7 @@ export default function ProductPage() {
           <p
             style={{
               color: "#666",
-              lineHeight: 1.9,
+              lineHeight: 1.7,
               marginBottom: 34,
               fontSize: 14,
             }}
@@ -133,55 +135,11 @@ export default function ProductPage() {
             sophisticated signature experience.
           </p>
 
-          {/* BUTTONS */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-            }}
-          >
-            <button
-              style={{
-                height: 56,
-                background: "#000",
-                color: "#fff",
-                border: "none",
-                fontSize: 12,
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                cursor: "pointer",
-              }}
-            >
-              Add To Cart
-            </button>
-
-            <a
-              href="https://wa.me/201000000000"
-              target="_blank"
-              style={{
-                height: 56,
-                border: "1px solid #000",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-                color: "#000",
-                fontSize: 12,
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-              }}
-            >
-              Order via WhatsApp
-            </a>
-          </div>
-
           {/* EXTRA */}
           <div
             style={{
-              marginTop: 40,
               borderTop: "1px solid #eee",
-              paddingTop: 24,
+              paddingTop: 22,
             }}
           >
             <p
@@ -214,9 +172,9 @@ export default function ProductPage() {
         >
           <h2
             style={{
-              fontSize: 32,
+              fontSize: 28,
               fontWeight: 300,
-              marginBottom: 24,
+              marginBottom: 22,
             }}
           >
             You May Also Like
@@ -226,7 +184,7 @@ export default function ProductPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2,1fr)",
-              gap: 10,
+              gap: 8,
             }}
           >
             {products
@@ -243,7 +201,7 @@ export default function ProductPage() {
                   <div
                     style={{
                       background: "#f7f7f7",
-                      padding: 14,
+                      padding: 12,
                     }}
                   >
                     <img
@@ -251,15 +209,15 @@ export default function ProductPage() {
                       alt={p.name}
                       style={{
                         width: "100%",
-                        height: 180,
+                        height: 170,
                         objectFit: "contain",
                       }}
                     />
 
                     <h3
                       style={{
-                        marginTop: 14,
-                        fontSize: 14,
+                        marginTop: 12,
+                        fontSize: 13,
                         fontWeight: 500,
                         lineHeight: 1.4,
                       }}
@@ -269,9 +227,9 @@ export default function ProductPage() {
 
                     <p
                       style={{
-                        marginTop: 6,
+                        marginTop: 5,
                         color: "#666",
-                        fontSize: 13,
+                        fontSize: 12,
                       }}
                     >
                       EGP {p.price}
@@ -281,6 +239,57 @@ export default function ProductPage() {
               ))}
           </div>
         </div>
+      </div>
+
+      {/* FIXED BUTTONS */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          background: "#fff",
+          padding: 12,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 10,
+          borderTop: "1px solid #eee",
+          zIndex: 100,
+        }}
+      >
+        <button
+          style={{
+            height: 52,
+            background: "#000",
+            color: "#fff",
+            border: "none",
+            fontSize: 11,
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+          }}
+        >
+          Add To Cart
+        </button>
+
+        <a
+          href="https://wa.me/201000000000"
+          target="_blank"
+          style={{
+            height: 52,
+            border: "1px solid #000",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            color: "#000",
+            fontSize: 11,
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            background: "#fff",
+          }}
+        >
+          WhatsApp
+        </a>
       </div>
     </main>
   );
