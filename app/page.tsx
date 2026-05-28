@@ -29,7 +29,7 @@ export default function Home() {
   const addToCart = (product: any) => {
     setCart((prev) => [...prev, product]);
 
-    console.log("Cart:", [...cart, product]);
+    alert(`${product.name} added to cart`);
   };
 
   // 🔎 Filter
