@@ -120,21 +120,22 @@ export default function Home() {
     }}
   >
     {products
-  .filter((p) => p.bestSeller)
-  .map((p) => (
-    <div
-      key={p.id}
-      style={{
-        width: 200,
-        height: 380, // ثابت عشان الاسم مش يأثر على الحجم
-        flexShrink: 0,
-        display: "flex",
-        flexDirection: "column", // عشان الصورة والاسم يكونوا عمود
-      }}
-    >
-      <ProductCard p={p} />
-    </div>
-  ))}
+      .filter((p) => p.bestSeller)
+      .map((p) => (
+        <div
+  key={p.id}
+  style={{
+    minWidth: 200,   // صغرنا العرض
+    flexShrink: 0,
+    height: 400,     // height ثابت لكل الكروت
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  }}
+>
+  <ProductCard p={p} />
+</div>
+      ))}
   </div>
 </section>
 
