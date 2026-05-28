@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
 import { products } from "../lib/products";
+
+const sliderRef = useRef<HTMLDivElement>(null);
 
 export default function Home() {
   const [category, setCategory] = useState("all");
@@ -13,6 +15,12 @@ export default function Home() {
   const [page, setPage] = useState(1);
 
   const itemsPerPage = 10;
+
+  useEffect(() => {
+  if (sliderRef.current) {
+    sliderRef.current.scrollLeft = 0;
+  }
+}, []);
 
   // 🔎 Filter
   let filtered = products.filter((p) => {
@@ -100,28 +108,30 @@ export default function Home() {
   </div>
 
   {/* SLIDER */}
-  <div
-    style={{
-      display: "flex",
-      gap: 24,
-      overflowX: "auto",
-      scrollBehavior: "smooth",
-      paddingBottom: 10,
-      direction: "rtl",
-    }}
-  >
-    {products.filter((p) => p.bestSeller).map((p) => (
+<div
+  ref={sliderRef}
+  style={{
+    display: "flex",
+    gap: 24,
+    overflowX: "auto",
+    scrollBehavior: "smooth",
+    paddingBottom: 10,
+  }}
+>
+  {products
+    .filter((p) => p.bestSeller)
+    .map((p) => (
       <div
         key={p.id}
         style={{
-          minWidth: 320,
-          flex: "0 0 auto",
+          minWidth: 260,
+          flexShrink: 0,
         }}
       >
         <ProductCard p={p} />
       </div>
     ))}
-  </div>
+</div>
 </section>
 
       {/* FILTER BAR */}
