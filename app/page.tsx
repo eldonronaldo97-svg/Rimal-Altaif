@@ -125,7 +125,7 @@ export default function Home() {
         <div
           key={p.id}
           style={{
-            minWidth: 100,
+            width: 200,
             flexShrink: 0,
           }}
         >
