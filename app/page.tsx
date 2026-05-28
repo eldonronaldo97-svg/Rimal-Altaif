@@ -271,21 +271,24 @@ export default function Home() {
         >
           {Array.from({ length: totalPages }).map((_, i) => (
             <button
-              key={i}
-              onClick={() => setPage(i + 1)}
-              style={{
-                width: 45,
-                height: 45,
-                border: page === i + 1 ? "1px solid black" : "1px solid #d4d4d8",
-                background: page === i + 1 ? "#000" : "#fff",
-                color: page === i + 1 ? "#fff" : "#000",
-                cursor: "pointer",
-                transition: "0.3s",
-                fontSize: 14,
-              }}
-            >
-              {i + 1}
-            </button>
+  onClick={() => {
+    console.log(`Add ${p.name} to cart`);
+  }}
+  style={{
+    width: "100%",
+    height: 34,
+    background: "#000",
+    color: "#fff",
+    border: "none",
+    cursor: "pointer",
+    fontSize: 11,
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    marginTop: 10,
+  }}
+>
+  Add To Cart
+</button>
           ))}
         </div>
       </div>
