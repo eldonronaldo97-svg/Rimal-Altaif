@@ -178,10 +178,13 @@ export default function Home() {
 
                 {/* ADD TO CART */}
                 <button
-                  onClick={() => {
-                    console.log(`Add ${p.name} to cart`);
+                  onClick={(e) => {
+                    e.preventDefault();
 
-                    // 👇 حط هنا كود السلة بتاعك
+                    // 👇 ADD TO CART
+                    console.log("Added To Cart:", p);
+
+                    // مثال:
                     // addToCart(p)
                   }}
                   style={{
