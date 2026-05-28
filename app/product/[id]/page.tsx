@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
 import { products } from "@/lib/products";
 
 export default function ProductPage() {
@@ -12,39 +11,61 @@ export default function ProductPage() {
     (p) => p.id === id
   );
 
-  const [qty, setQty] = useState(1);
-
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 18,
+        }}
+      >
         Product not found
       </div>
     );
   }
 
   return (
-    <main className="bg-white min-h-screen overflow-x-hidden pb-32">
-
+    <main
+      style={{
+        background: "#fff",
+        minHeight: "100vh",
+        paddingBottom: 140,
+      }}
+    >
       {/* PRODUCT */}
-      <div className="w-full max-w-[100vw] mx-auto">
-
+      <div
+        style={{
+          padding: "14px 14px 70px",
+          maxWidth: 1600,
+          margin: "0 auto",
+        }}
+      >
         {/* IMAGE */}
-        <div className="bg-[#f7f7f7] relative">
-
+        <div
+          style={{
+            background: "#f7f7f7",
+            position: "relative",
+            marginBottom: 28,
+          }}
+        >
           {!product.stock && (
-            <div className="
-              absolute
-              top-3
-              left-3
-              z-10
-              bg-black
-              text-white
-              text-[10px]
-              tracking-[2px]
-              uppercase
-              px-3
-              py-2
-            ">
+            <div
+              style={{
+                position: "absolute",
+                top: 14,
+                left: 14,
+                background: "#111",
+                color: "#fff",
+                padding: "7px 12px",
+                fontSize: 10,
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                zIndex: 5,
+              }}
+            >
               Sold Out
             </div>
           )}
@@ -52,265 +73,165 @@ export default function ProductPage() {
           <img
             src={product.image}
             alt={product.name}
-            className="
-              w-full
-              h-[320px]
-              object-contain
-              p-4
-              block
-            "
+            style={{
+              width: "100%",
+              height: "400px",
+              objectFit: "contain",
+              padding: 20,
+              cursor: "zoom-in",
+            }}
           />
         </div>
 
         {/* INFO */}
-        <div className="px-4 py-6 text-center">
-
+        <div>
           {/* BRAND */}
-          <p className="
-            text-[10px]
-            uppercase
-            tracking-[4px]
-            text-zinc-500
-            mb-3
-          ">
+          <p
+            style={{
+              fontSize: 10,
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              color: "#777",
+              marginBottom: 12,
+            }}
+          >
             {product.brand}
           </p>
 
           {/* NAME */}
-          <h1 className="
-            text-[22px]
-            break-words
-            leading-[1.2]
-            font-semibold
-            mb-3
-          ">
+          <h1
+            style={{
+              fontSize: 32,
+              fontWeight: 300,
+              lineHeight: 1.1,
+              marginBottom: 16,
+            }}
+          >
             {product.name}
           </h1>
 
           {/* PRICE */}
-          <p className="
-            text-[20px]
-            tracking-[1px]
-            mb-5
-          ">
+          <p
+            style={{
+              fontSize: 22,
+              marginBottom: 22,
+              letterSpacing: "2px",
+            }}
+          >
             EGP {product.price}
           </p>
 
           {/* DESCRIPTION */}
-          <p className="
-            text-[14px]
-            text-zinc-600
-            leading-7
-            mb-8
-          ">
-            Premium luxury fragrance with
-            long-lasting performance and
-            elegant signature scent.
+          <p
+            style={{
+              color: "#666",
+              lineHeight: 1.7,
+              marginBottom: 34,
+              fontSize: 14,
+            }}
+          >
+            Premium luxury fragrance with elegant
+            performance, long-lasting scent and a
+            sophisticated signature experience.
           </p>
 
-          {/* QUANTITY */}
-          <div className="mb-6">
-
-            <p className="
-              text-[11px]
-              uppercase
-              tracking-[2px]
-              mb-3
-            ">
-              Quantity
+          {/* EXTRA */}
+          <div
+            style={{
+              borderTop: "1px solid #eee",
+              paddingTop: 22,
+            }}
+          >
+            <p
+              style={{
+                marginBottom: 10,
+                fontSize: 14,
+              }}
+            >
+              Category: {product.category}
             </p>
 
-            <div className="
-              flex
-              items-center
-              justify-center
-            ">
-              <div className="
-                flex
-                items-center
-                border
-                border-zinc-300
-                w-[120px]
-                h-[44px]
-              ">
-                <button
-                  onClick={() =>
-                    setQty((prev) =>
-                      prev > 1 ? prev - 1 : 1
-                    )
-                  }
-                  className="
-                    flex-1
-                    h-full
-                    text-lg
-                  "
-                >
-                  -
-                </button>
-
-                <div className="
-                  flex-1
-                  text-center
-                  text-sm
-                ">
-                  {qty}
-                </div>
-
-                <button
-                  onClick={() =>
-                    setQty((prev) => prev + 1)
-                  }
-                  className="
-                    flex-1
-                    h-full
-                    text-lg
-                  "
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* BUTTONS */}
-          <div className="
-            flex
-            flex-col
-            gap-3
-          ">
-            <button className="
-              h-[52px]
-              bg-black
-              text-white
-              uppercase
-              tracking-[2px]
-              text-[11px]
-              w-full
-            ">
-              Add To Cart
-            </button>
-
-            <button className="
-              h-[52px]
-              border
-              border-black
-              uppercase
-              tracking-[2px]
-              text-[11px]
-              w-full
-            ">
-              Buy It Now
-            </button>
-          </div>
-
-          {/* BENEFITS */}
-          <div className="
-            mt-10
-            grid
-            gap-3
-            text-left
-          ">
-            <div className="
-              border
-              border-zinc-200
-              p-4
-            ">
-              <p className="
-                text-sm
-                font-medium
-                mb-1
-              ">
-                Free Shipping
-              </p>
-
-              <p className="
-                text-[13px]
-                text-zinc-500
-              ">
-                Orders over EGP 3000
-              </p>
-            </div>
-
-            <div className="
-              border
-              border-zinc-200
-              p-4
-            ">
-              <p className="
-                text-sm
-                font-medium
-                mb-1
-              ">
-                Cash On Delivery
-              </p>
-
-              <p className="
-                text-[13px]
-                text-zinc-500
-              ">
-                Available all over Egypt
-              </p>
-            </div>
+            <p
+              style={{
+                fontSize: 14,
+              }}
+            >
+              Availability:{" "}
+              {product.stock
+                ? "In Stock"
+                : "Sold Out"}
+            </p>
           </div>
         </div>
 
         {/* RELATED */}
-        <div className="px-4 mt-14">
-
-          <h2 className="
-            text-[24px]
-            font-light
-            mb-5
-            text-center
-          ">
+        <div
+          style={{
+            marginTop: 80,
+          }}
+        >
+          <h2
+            style={{
+              fontSize: 28,
+              fontWeight: 300,
+              marginBottom: 22,
+            }}
+          >
             You May Also Like
           </h2>
 
-          <div className="
-            grid
-            grid-cols-2
-            gap-[6px]
-          ">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2,1fr)",
+              gap: 8,
+            }}
+          >
             {products
               .slice(0, 4)
               .map((p) => (
                 <Link
                   key={p.id}
                   href={`/product/${p.id}`}
-                  className="
-                    no-underline
-                    text-black
-                  "
+                  style={{
+                    textDecoration: "none",
+                    color: "#000",
+                  }}
                 >
-                  <div className="
-                    bg-[#f7f7f7]
-                    p-3
-                  ">
+                  <div
+                    style={{
+                      background: "#f7f7f7",
+                      padding: 12,
+                    }}
+                  >
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="
-                        w-full
-                        h-[150px]
-                        object-contain
-                        block
-                      "
+                      style={{
+                        width: "100%",
+                        height: 170,
+                        objectFit: "contain",
+                      }}
                     />
 
-                    <h3 className="
-                      text-[12px]
-                      mt-3
-                      leading-5
-                      break-words
-                    ">
+                    <h3
+                      style={{
+                        marginTop: 12,
+                        fontSize: 13,
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                      }}
+                    >
                       {p.name}
                     </h3>
 
-                    <p className="
-                      text-[11px]
-                      text-zinc-500
-                      mt-1
-                    ">
+                    <p
+                      style={{
+                        marginTop: 5,
+                        color: "#666",
+                        fontSize: 12,
+                      }}
+                    >
                       EGP {p.price}
                     </p>
                   </div>
@@ -318,6 +239,57 @@ export default function ProductPage() {
               ))}
           </div>
         </div>
+      </div>
+
+      {/* FIXED BUTTONS */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          background: "#fff",
+          padding: 12,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 10,
+          borderTop: "1px solid #eee",
+          zIndex: 100,
+        }}
+      >
+        <button
+          style={{
+            height: 52,
+            background: "#000",
+            color: "#fff",
+            border: "none",
+            fontSize: 11,
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+          }}
+        >
+          Add To Cart
+        </button>
+
+        <a
+          href="https://wa.me/201000000000"
+          target="_blank"
+          style={{
+            height: 52,
+            border: "1px solid #000",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            color: "#000",
+            fontSize: 11,
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            background: "#fff",
+          }}
+        >
+          WhatsApp
+        </a>
       </div>
     </main>
   );
