@@ -51,84 +51,89 @@ export default function Home() {
       <Navbar />
       <HeroSlider />
 
-      <div
-  ref={sliderRef}
-  style={{
-    display: "flex",
-    gap: 12,
-    overflowX: "auto",
-    scrollBehavior: "smooth",
-    paddingBottom: 10,
-    direction: "ltr",
-  }}
->
-  {products
-    .filter((p) => p.bestSeller)
-    .map((p) => (
-      <div
-        key={p.id}
-        style={{
-          width: 180,
-          height: 400,
-          flexShrink: 0,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          border: "1px solid #eee",
-          borderRadius: 8,
-          overflow: "hidden",
-        }}
-      >
-        {/* الصورة والاسم رابط للصفحة */}
-        <a href={`/product/${p.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-          <img
-            src={p.image}
-            alt={p.name}
-            style={{
-              width: "100%",
-              height: 250,
-              objectFit: "contain",
-            }}
-          />
-          <div style={{ padding: 6 }}>
-            <h3
+      {/* BEST SELLERS */}
+      <section style={{ padding: "80px 20px", background: "#fff" }}>
+        {/* TITLE */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 40,
+            maxWidth: 1600,
+            marginInline: "auto",
+          }}
+        >
+          <div>
+            <p
               style={{
-                fontSize: 14,
-                height: 40,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
+                letterSpacing: "4px",
+                fontSize: 12,
+                textTransform: "uppercase",
+                color: "#777",
+                marginBottom: 10,
               }}
             >
-              {p.name}
-            </h3>
-          </div>
-        </a>
+              Signature Collection
+            </p>
 
-        {/* السعر + Add to Cart */}
-        <div style={{ padding: "0 6px 6px" }}>
-          <p style={{ fontSize: 13, color: "#000", marginBottom: 6 }}>{p.price} جنيه</p>
-          <button
-            style={{
-              width: "100%",
-              height: 32,
-              background: "#000",
-              color: "#fff",
-              border: "none",
-              fontSize: 12,
-              textTransform: "uppercase",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              console.log(`Add ${p.name} to cart`); // هنا ممكن تربط الكود بسلة الشراء
-            }}
-          >
-            Add to Cart
-          </button>
+            <h2 style={{ fontSize: 42, fontWeight: 300 }}>Best Sellers</h2>
+          </div>
         </div>
-      </div>
-    ))}
-</div>
+
+        {/* SLIDER */}
+        <div
+          ref={sliderRef}
+          style={{
+            display: "flex",
+            gap: 12,
+            overflowX: "auto",
+            scrollBehavior: "smooth",
+            paddingBottom: 10,
+            direction: "ltr",
+          }}
+        >
+          {products
+            .filter((p) => p.bestSeller)
+            .map((p) => (
+              <div
+                key={p.id}
+                style={{
+                  width: 180, // أصغر عرض للكارت
+                  height: 400, // طول ثابت
+                  flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  style={{
+                    width: "100%",
+                    height: 250,
+                    objectFit: "contain",
+                  }}
+                />
+                <div style={{ padding: 6 }}>
+                  <h3
+                    style={{
+                      fontSize: 14,
+                      height: 40, // ثابت عشان الاسم الطويل مش يكبر الكارت
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {p.name}
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#000" }}>{p.price} جنيه</p>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
 
       {/* FILTER BAR */}
       <div
