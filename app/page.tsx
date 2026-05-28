@@ -32,7 +32,7 @@ export default function Home() {
     alert(`${product.name} added to cart`);
   };
 
-  // 🔎 Filter
+  // 🔎 FILTER
   let filtered = products.filter((p) => {
     const matchSearch = p.name
       .toLowerCase()
@@ -45,7 +45,7 @@ export default function Home() {
     return matchSearch && matchCategory;
   });
 
-  // ↕️ Sort
+  // ↕️ SORT
   if (sort === "low") {
     filtered.sort((a, b) => a.price - b.price);
   }
@@ -54,8 +54,10 @@ export default function Home() {
     filtered.sort((a, b) => b.price - a.price);
   }
 
-  // 📄 Pagination
-  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  // 📄 PAGINATION
+  const totalPages = Math.ceil(
+    filtered.length / itemsPerPage
+  );
 
   const start = (page - 1) * itemsPerPage;
 
@@ -136,7 +138,7 @@ export default function Home() {
                 key={p.id}
                 style={{
                   width: 180,
-                  height: 360,
+                  height: 380,
                   flexShrink: 0,
                   display: "flex",
                   flexDirection: "column",
