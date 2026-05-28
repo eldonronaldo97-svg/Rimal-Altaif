@@ -132,86 +132,18 @@ export default function Home() {
           }}
         >
           {products
-            .filter((p) => p.bestSeller)
-            .map((p) => (
-              <div
-                key={p.id}
-                style={{
-                  width: 180,
-                  height: 380,
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                {/* PRODUCT LINK */}
-                <a
-                  href={`/product/${p.id}`}
-                  style={{
-                    textDecoration: "none",
-                    color: "#000",
-                  }}
-                >
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    style={{
-                      width: "100%",
-                      height: 220,
-                      objectFit: "contain",
-                    }}
-                  />
-
-                  <div style={{ padding: 6 }}>
-                    <h3
-                      style={{
-                        fontSize: 14,
-                        height: 40,
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {p.name}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontSize: 13,
-                        color: "#000",
-                        marginTop: 4,
-                      }}
-                    >
-                      {p.price} جنيه
-                    </p>
-                  </div>
-                </a>
-
-                {/* ADD TO CART */}
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-
-                    addToCart(p);
-                  }}
-                  style={{
-                    width: "100%",
-                    height: 34,
-                    background: "#000",
-                    color: "#fff",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: 11,
-                    letterSpacing: "2px",
-                    textTransform: "uppercase",
-                    marginTop: 10,
-                  }}
-                >
-                  Add To Cart
-                </button>
-              </div>
-            ))}
+  .filter((p) => p.bestSeller)
+  .map((p) => (
+    <div
+      key={p.id}
+      style={{
+        width: 180,
+        flexShrink: 0,
+      }}
+    >
+      <ProductCard p={p} />
+    </div>
+))}
         </div>
       </section>
 
