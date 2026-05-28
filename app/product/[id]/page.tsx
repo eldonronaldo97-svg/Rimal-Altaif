@@ -90,7 +90,7 @@ export default function ProductPage() {
   "
   style={{
     objectPosition: "center",
-    transform: "translateX(6px)",
+    transform: "translateX(10px)",
   }}
 />
 </div>
