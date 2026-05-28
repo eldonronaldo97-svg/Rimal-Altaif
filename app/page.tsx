@@ -16,125 +16,287 @@ export default function Home() {
 
   // 🔎 Filter
   let filtered = products.filter((p) => {
-  const matchSearch = p.name
-    .toLowerCase()
-    .includes(search.toLowerCase());
+    const matchSearch = p.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
 
-  const matchCategory =
-  category.toLowerCase() === "all" ||
-  (p.category?.toLowerCase() === category.toLowerCase());
-  return matchSearch && matchCategory;
-});
+    const matchCategory =
+      category.toLowerCase() === "all" ||
+      p.category?.toLowerCase() === category.toLowerCase();
+
+    return matchSearch && matchCategory;
+  });
 
   // ↕️ Sort
   if (sort === "low") {
     filtered.sort((a, b) => a.price - b.price);
   }
+
   if (sort === "high") {
     filtered.sort((a, b) => b.price - a.price);
   }
 
   // 📄 Pagination
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
+
   const start = (page - 1) * itemsPerPage;
-  const currentItems = filtered.slice(start, start + itemsPerPage);
+
+  const currentItems = filtered.slice(
+    start,
+    start + itemsPerPage
+  );
 
   return (
-    <main>
+    <main
+      style={{
+        background: "#fff",
+        minHeight: "100vh",
+      }}
+    >
       <Navbar />
+
       <HeroSlider />
 
-      {/* 🔎 Search + Sort */}
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: 10,
-        marginTop: 30
-      }}>
-        <input
-          placeholder="Search perfumes..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: 10,
-            width: 250,
-            border: "1px solid #ddd",
-            borderRadius: 8
-          }}
-        />
+      {/* BEST SELLERS */}
+<section
+  style={{
+    padding: "80px 20px",
+    background: "#fff",
+  }}
+>
+  {/* TITLE */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 40,
+      maxWidth: 1600,
+      marginInline: "auto",
+    }}
+  >
+    <div>
+      <p
+        style={{
+          letterSpacing: "4px",
+          fontSize: 12,
+          textTransform: "uppercase",
+          color: "#777",
+          marginBottom: 10,
+        }}
+      >
+        Signature Collection
+      </p>
 
-        <select
-          onChange={(e) => setSort(e.target.value)}
-          style={{ padding: 10, borderRadius: 8 }}
-        >
-          <option value="none">Sort</option>
-          <option value="low">Price: Low → High</option>
-          <option value="high">Price: High → Low</option>
-        </select>
-      </div>
-
-      {/* 🔥 Categories */}
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: 15,
-        marginTop: 20
-      }}>
-        <button onClick={() => { setCategory("all"); setPage(1); }}>
-          All
-        </button>
-
-        <button onClick={() => { setCategory("men"); setPage(1); }}>
-          Men
-        </button>
-
-        <button onClick={() => { setCategory("women"); setPage(1); }}>
-          Women
-        </button>
-
-        <button onClick={() => { setCategory("unisex"); setPage(1); }}>
-          Unisex
-        </button>
-      </div>
-
-      {/* 🔥 Products */}
-      <div style={{ padding: "10px 4px" }}>
-  <h2 style={{
-    textAlign: "center",
-    marginBottom: 30,
-    fontSize: 28
-  }}>
-    {category}
-  </h2>
-
-  <div style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gap: 2
-  }}>
-    {currentItems.map((p) => (
-      <ProductCard key={p.id} p={p} />
-    ))}
+      <h2
+        style={{
+          fontSize: 42,
+          fontWeight: 300,
+        }}
+      >
+        Best Sellers
+      </h2>
+    </div>
   </div>
 
+  {/* SLIDER */}
+  <div
+    style={{
+      display: "flex",
+      gap: 24,
+      overflowX: "auto",
+      scrollBehavior: "smooth",
+      paddingBottom: 10,
+    }}
+  >
+    {products.filter((p) => p.bestSeller).map((p) => (
+      <div
+        key={p.id}
+        style={{
+          minWidth: 320,
+          flex: "0 0 auto",
+        }}
+      >
+        <ProductCard p={p} />
+      </div>
+    ))}
+  </div>
+</section>
 
-        {/* 📄 Pagination */}
-        <div style={{
+      {/* FILTER BAR */}
+      <div
+        style={{
+          padding: "70px 20px 30px",
           display: "flex",
-          justifyContent: "center",
-          gap: 10,
-          marginTop: 30
-        }}>
-          {Array.from({ length: totalPages }).map((_, i) => (
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 25,
+        }}
+      >
+        {/* TOP */}
+        <div
+          style={{
+            display: "flex",
+            gap: 15,
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {/* SEARCH */}
+          <input
+            placeholder="Search perfumes..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{
+              width: 320,
+              height: 52,
+              border: "1px solid #d4d4d8",
+              padding: "0 20px",
+              fontSize: 14,
+              outline: "none",
+              letterSpacing: "1px",
+            }}
+          />
+
+          {/* SORT */}
+          <select
+            onChange={(e) => setSort(e.target.value)}
+            style={{
+              width: 180,
+              height: 52,
+              border: "1px solid #d4d4d8",
+              padding: "0 16px",
+              fontSize: 14,
+              outline: "none",
+              background: "#fff",
+              cursor: "pointer",
+            }}
+          >
+            <option value="none">Featured</option>
+            <option value="low">
+              Price: Low → High
+            </option>
+            <option value="high">
+              Price: High → Low
+            </option>
+          </select>
+        </div>
+
+        {/* CATEGORY BUTTONS */}
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {["all", "men", "women", "unisex"].map(
+            (item) => (
+              <button
+                key={item}
+                onClick={() => {
+                  setCategory(item);
+                  setPage(1);
+                }}
+                style={{
+                  height: 42,
+                  padding: "0 24px",
+                  border:
+                    category === item
+                      ? "1px solid black"
+                      : "1px solid #d4d4d8",
+                  background:
+                    category === item
+                      ? "#000"
+                      : "#fff",
+                  color:
+                    category === item
+                      ? "#fff"
+                      : "#000",
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  fontSize: 12,
+                  cursor: "pointer",
+                  transition: "0.3s",
+                }}
+              >
+                {item}
+              </button>
+            )
+          )}
+        </div>
+      </div>
+
+      {/* PRODUCTS */}
+      <div
+        style={{
+          maxWidth: 1600,
+          margin: "0 auto",
+          padding: "0 20px 80px",
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+            marginBottom: 40,
+            fontSize: 42,
+            fontWeight: 300,
+            textTransform: "capitalize",
+            letterSpacing: "2px",
+          }}
+        >
+          {category}
+        </h2>
+
+        {/* GRID */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(320px,1fr))",
+            gap: 30,
+          }}
+        >
+          {currentItems.map((p) => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+
+        {/* PAGINATION */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 10,
+            marginTop: 60,
+            flexWrap: "wrap",
+          }}
+        >
+          {Array.from({
+            length: totalPages,
+          }).map((_, i) => (
             <button
               key={i}
               onClick={() => setPage(i + 1)}
               style={{
-                padding: "8px 12px",
-                borderRadius: 6,
-                border: "1px solid #ddd",
-                background: page === i + 1 ? "#000" : "#fff",
-                color: page === i + 1 ? "#fff" : "#000"
+                width: 45,
+                height: 45,
+                border:
+                  page === i + 1
+                    ? "1px solid black"
+                    : "1px solid #d4d4d8",
+                background:
+                  page === i + 1
+                    ? "#000"
+                    : "#fff",
+                color:
+                  page === i + 1
+                    ? "#fff"
+                    : "#000",
+                cursor: "pointer",
+                transition: "0.3s",
+                fontSize: 14,
               }}
             >
               {i + 1}

@@ -1,7 +1,9 @@
 import "./globals.css";
-import { Cairo } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const font = Cairo({ subsets: ["arabic"] });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+});
 
 // 🔥 اسم الموقع (Title اللي بيظهر فوق في التاب)
 export const metadata = {
@@ -16,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={font.className}>
+      <body className={montserrat.className}>
         {children}
       </body>
     </html>

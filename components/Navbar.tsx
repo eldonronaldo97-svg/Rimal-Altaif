@@ -14,9 +14,19 @@ export default function Navbar() {
       }}
     >
       {/* Logo */}
-      <h2 style={{ letterSpacing: 2 }}>
-        RIMAL ALTAIF
-      </h2>
+<Link
+  href="/"
+  style={{
+  textDecoration: "none",
+  color: "#000",
+  fontSize: 18,
+  fontWeight: 500,
+  letterSpacing: "4px",
+  textTransform: "uppercase",
+}}
+>
+  RIMAL ALTAIF
+</Link>
 
       {/* Cart */}
       <Link href="/cart">
