@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
+import MobileBottomBar from "@/components/MobileBottomBar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -7,8 +8,7 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Rimal Altaif",
-  description:
-    "Luxury Perfumes",
+  description: "Luxury Perfumes",
 };
 
 export default function RootLayout({
@@ -27,6 +27,8 @@ export default function RootLayout({
         }
       >
         {children}
+
+        <MobileBottomBar />
       </body>
     </html>
   );

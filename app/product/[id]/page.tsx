@@ -3,9 +3,11 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/lib/products";
+import { useCart } from "@/lib/store";
 
 export default function ProductPage() {
   const { id } = useParams();
+  const add = useCart((s) => s.add);
 
   const product = products.find(
     (p) => p.id === id
@@ -265,18 +267,26 @@ export default function ProductPage() {
         }}
       >
         <button
-          style={{
-            height: 52,
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            fontSize: 11,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-          }}
-        >
-          Add To Cart
-        </button>
+  onClick={() =>
+    add({
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      price: product.price,
+    })
+  }
+  style={{
+    height: 52,
+    background: "#000",
+    color: "#fff",
+    border: "none",
+    fontSize: 11,
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+  }}
+>
+  Add To Cart
+</button>
 
         <a
           href="https://wa.me/201000000000"
