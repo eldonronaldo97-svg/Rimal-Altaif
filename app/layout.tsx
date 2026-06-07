@@ -5,10 +5,9 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-// 🔥 اسم الموقع (Title اللي بيظهر فوق في التاب)
 export const metadata = {
-  title: "رمال الطائف | Rimal Altaif",
-  description: "عطور عربية فاخرة بثبات عالي وجودة أصلية",
+  title: "Rimal Altaif",
+  description: "Luxury Perfumes",
 };
 
 export default function RootLayout({
@@ -17,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="en" dir="ltr">
       <body className={montserrat.className}>
         {children}
       </body>
