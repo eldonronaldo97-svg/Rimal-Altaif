@@ -1,75 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
 import { products } from "../lib/products";
 
 export default function Home() {
-  const [category, setCategory] = useState("all");
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("none");
-  const [page, setPage] = useState(1);
+  const bestSellers = products.filter((p) => p.bestSeller).slice(0, 8);
 
-  // 🛒 CART
-  const [cart, setCart] = useState<any[]>([]);
+  const latestProducts = [...products].reverse().slice(0, 8);
 
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  const itemsPerPage = 10;
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft = 0;
-    }
-  }, []);
-
-  // 🛒 ADD TO CART
-  const addToCart = (product: any) => {
-    setCart((prev) => [...prev, product]);
-
-    alert(`${product.name} added to cart`);
-  };
-
-  // 🔎 FILTER
-  let filtered = products.filter((p) => {
-    const matchSearch = p.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchCategory =
-      category.toLowerCase() === "all" ||
-      p.category?.toLowerCase() === category.toLowerCase();
-
-    return matchSearch && matchCategory;
-  });
-
-  // ↕️ SORT
-  if (sort === "low") {
-    filtered.sort((a, b) => a.price - b.price);
-  }
-
-  if (sort === "high") {
-    filtered.sort((a, b) => b.price - a.price);
-  }
-
-  // 📄 PAGINATION
-  const totalPages = Math.ceil(
-    filtered.length / itemsPerPage
-  );
-
-  const start = (page - 1) * itemsPerPage;
-
-  const currentItems = filtered.slice(
-    start,
-    start + itemsPerPage
-  );
+  const allProducts = products.slice(0, 12);
 
   return (
     <main
       style={{
-        background: "#fff",
+        background: "#f8f8f8",
         minHeight: "100vh",
       }}
     >
@@ -77,289 +23,257 @@ export default function Home() {
 
       <HeroSlider />
 
-      {/* BEST SELLERS */}
+      {/* BRANDS */}
       <section
         style={{
-          padding: "80px 20px",
-          background: "#fff",
+          maxWidth: 1400,
+          margin: "40px auto",
+          padding: "0 20px",
         }}
       >
-        {/* TITLE */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 40,
-            maxWidth: 1600,
-            marginInline: "auto",
+            marginBottom: 25,
           }}
         >
-          <div>
-            <p
-              style={{
-                letterSpacing: "4px",
-                fontSize: 12,
-                textTransform: "uppercase",
-                color: "#777",
-                marginBottom: 10,
-              }}
-            >
-              Signature Collection
-            </p>
+          <h2
+            style={{
+              fontSize: 34,
+              fontWeight: 700,
+            }}
+          >
+            All Brands
+          </h2>
 
-            <h2
-              style={{
-                fontSize: 42,
-                fontWeight: 300,
-              }}
-            >
-              Best Sellers
-            </h2>
-          </div>
+          <a
+            href="#"
+            style={{
+              color: "#000",
+              fontWeight: 600,
+            }}
+          >
+            View All
+          </a>
         </div>
 
-        {/* SLIDER */}
         <div
-          ref={sliderRef}
           style={{
             display: "flex",
-            gap: 12,
+            gap: 20,
             overflowX: "auto",
-            scrollBehavior: "smooth",
             paddingBottom: 10,
-            direction: "ltr",
           }}
         >
-          {products
-  .filter((p) => p.bestSeller)
-  .map((p) => (
-    <div
-      key={p.id}
-      style={{
-        width: 180,
-        height: 380,
-        flexShrink: 0,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      {/* رابط للمنتج */}
-      <a
-        href={`/product/${p.id}`}
-        style={{
-          textDecoration: "none",
-          color: "#000",
-          flexGrow: 1,
-        }}
-      >
-        <ProductCard p={p} />
-      </a>
-
-      {/* زر Add to Cart */}
-      <button
-        onClick={() => addToCart(p)}
-        style={{
-          marginTop: 10,
-          backgroundColor: "#000",
-          color: "#fff",
-          padding: "10px 0",
-          fontWeight: "bold",
-          cursor: "pointer",
-          border: "none",
-        }}
-      >
-        Add to Cart
-      </button>
-    </div>
-  ))}
+          {[
+            "Rimal Altaif",
+            "Assaf",
+            "Afnan",
+            "Lattafa",
+            "Dkhoon",
+            "Ibraq",
+            "French Avenue",
+            "Arabiyat",
+          ].map((brand) => (
+            <div
+              key={brand}
+              style={{
+                minWidth: 140,
+                height: 140,
+                borderRadius: "50%",
+                background: "#fff",
+                border: "1px solid #eee",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontWeight: 600,
+                textAlign: "center",
+                padding: 10,
+              }}
+            >
+              {brand}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* FILTER BAR */}
-      <div
+      {/* BEST SELLERS */}
+      <section
         style={{
-          padding: "70px 20px 30px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 25,
+          maxWidth: 1400,
+          margin: "60px auto",
+          padding: "0 20px",
         }}
       >
-        {/* TOP */}
         <div
           style={{
             display: "flex",
-            gap: 15,
-            flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            marginBottom: 25,
           }}
         >
-          {/* SEARCH */}
-          <input
-            placeholder="Search perfumes..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+          <h2
             style={{
-              width: 320,
-              height: 52,
-              border: "1px solid #d4d4d8",
-              padding: "0 20px",
-              fontSize: 14,
-              outline: "none",
-              letterSpacing: "1px",
-            }}
-          />
-
-          {/* SORT */}
-          <select
-            onChange={(e) => setSort(e.target.value)}
-            style={{
-              width: 180,
-              height: 52,
-              border: "1px solid #d4d4d8",
-              padding: "0 16px",
-              fontSize: 14,
-              outline: "none",
-              background: "#fff",
-              cursor: "pointer",
+              fontSize: 34,
+              fontWeight: 700,
             }}
           >
-            <option value="none">Featured</option>
+            Best Selling
+          </h2>
 
-            <option value="low">
-              Price: Low → High
-            </option>
-
-            <option value="high">
-              Price: High → Low
-            </option>
-          </select>
+          <a
+            href="#"
+            style={{
+              color: "#000",
+              fontWeight: 600,
+            }}
+          >
+            View All
+          </a>
         </div>
 
-        {/* CATEGORY BUTTONS */}
+        <div className="product-grid">
+          {bestSellers.map((p) => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+      </section>
+
+      {/* LATEST RELEASE */}
+      <section
+        style={{
+          maxWidth: 1400,
+          margin: "60px auto",
+          padding: "0 20px",
+        }}
+      >
         <div
           style={{
             display: "flex",
-            gap: 12,
-            flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            marginBottom: 25,
           }}
         >
-          {["all", "men", "women", "unisex"].map(
-            (item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  setCategory(item);
-                  setPage(1);
-                }}
-                style={{
-                  height: 42,
-                  padding: "0 24px",
-                  border:
-                    category === item
-                      ? "1px solid black"
-                      : "1px solid #d4d4d8",
-                  background:
-                    category === item
-                      ? "#000"
-                      : "#fff",
-                  color:
-                    category === item
-                      ? "#fff"
-                      : "#000",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  fontSize: 12,
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
-              >
-                {item}
-              </button>
-            )
-          )}
-        </div>
-      </div>
+          <h2
+            style={{
+              fontSize: 34,
+              fontWeight: 700,
+            }}
+          >
+            Latest Release
+          </h2>
 
-      {/* PRODUCTS */}
-      <div
+          <a
+            href="#"
+            style={{
+              color: "#000",
+              fontWeight: 600,
+            }}
+          >
+            View All
+          </a>
+        </div>
+
+        <div className="product-grid">
+          {latestProducts.map((p) => (
+            <ProductCard key={p.id} p={p} />
+          ))}
+        </div>
+      </section>
+
+      {/* SHOP BY GENDER */}
+      <section
         style={{
-          maxWidth: 1600,
-          margin: "0 auto",
-          padding: "0 0px 80px",
+          maxWidth: 1400,
+          margin: "70px auto",
+          padding: "0 20px",
         }}
       >
         <h2
           style={{
-            textAlign: "center",
-            marginBottom: 40,
-            fontSize: 42,
-            fontWeight: 300,
-            textTransform: "capitalize",
-            letterSpacing: "2px",
+            fontSize: 34,
+            fontWeight: 700,
+            marginBottom: 25,
           }}
         >
-          {category}
+          Shop By Gender
         </h2>
 
-        {/* GRID */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "repeat(2,1fr)",
-            gap: 0,
+            gridTemplateColumns: "repeat(3,1fr)",
+            gap: 25,
           }}
         >
-          {currentItems.map((p) => (
-            <ProductCard key={p.id} p={p} />
-          ))}
-        </div>
+          <div className="gender-card">
+            <img
+              src="https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+              alt=""
+            />
+            <h3>MEN</h3>
+          </div>
 
-        {/* PAGINATION */}
+          <div className="gender-card">
+            <img
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c"
+              alt=""
+            />
+            <h3>WOMEN</h3>
+          </div>
+
+          <div className="gender-card">
+            <img
+              src="https://images.unsplash.com/photo-1515377905703-c4788e51af15"
+              alt=""
+            />
+            <h3>UNISEX</h3>
+          </div>
+        </div>
+      </section>
+
+      {/* ALL PRODUCTS */}
+      <section
+        style={{
+          maxWidth: 1400,
+          margin: "70px auto",
+          padding: "0 20px 100px",
+        }}
+      >
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
-            gap: 10,
-            marginTop: 60,
-            flexWrap: "wrap",
+            justifyContent: "space-between",
+            marginBottom: 25,
           }}
         >
-          {Array.from({
-            length: totalPages,
-          }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i + 1)}
-              style={{
-                width: 45,
-                height: 45,
-                border:
-                  page === i + 1
-                    ? "1px solid black"
-                    : "1px solid #d4d4d8",
-                background:
-                  page === i + 1
-                    ? "#000"
-                    : "#fff",
-                color:
-                  page === i + 1
-                    ? "#fff"
-                    : "#000",
-                cursor: "pointer",
-                transition: "0.3s",
-                fontSize: 14,
-              }}
-            >
-              {i + 1}
-            </button>
+          <h2
+            style={{
+              fontSize: 34,
+              fontWeight: 700,
+            }}
+          >
+            All Products
+          </h2>
+
+          <a
+            href="#"
+            style={{
+              color: "#000",
+              fontWeight: 600,
+            }}
+          >
+            View All
+          </a>
+        </div>
+
+        <div className="product-grid">
+          {allProducts.map((p) => (
+            <ProductCard key={p.id} p={p} />
           ))}
         </div>
-      </div>
+      </section>
     </main>
   );
 }
