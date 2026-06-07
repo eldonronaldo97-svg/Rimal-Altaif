@@ -35,7 +35,6 @@ export default function ProductPage() {
         paddingBottom: 140,
       }}
     >
-      {/* PRODUCT */}
       <div
         style={{
           padding: "14px 14px 70px",
@@ -44,64 +43,63 @@ export default function ProductPage() {
         }}
       >
         {/* IMAGE */}
-<div
-  className="
-    bg-[#f7f7f7]
-    relative
-    rounded-[12px]
-    overflow-hidden
-    mx-4
-    mt-4
-    flex
-    items-center
-    justify-center
-  "
->
+        <div
+          className="
+            bg-[#f7f7f7]
+            relative
+            rounded-[12px]
+            overflow-hidden
+            mx-4
+            mt-4
+            flex
+            items-center
+            justify-center
+          "
+        >
+          {!product.stock && (
+            <div
+              className="
+                absolute
+                top-3
+                left-3
+                z-10
+                bg-black
+                text-white
+                text-[10px]
+                tracking-[2px]
+                uppercase
+                px-3
+                py-2
+              "
+            >
+              Sold Out
+            </div>
+          )}
 
-  {!product.stock && (
-    <div
-      className="
-        absolute
-        top-3
-        left-3
-        z-10
-        bg-black
-        text-white
-        text-[10px]
-        tracking-[2px]
-        uppercase
-        px-3
-        py-2
-      "
-    >
-      Sold Out
-    </div>
-  )}
-
-  <img
-  src={product.image}
-  alt={product.name}
-  className="
-    w-full
-    h-[280px]
-    object-contain
-    p-8
-    block
-  "
-  style={{
-    objectPosition: "center",
-    transform: "translateX(40px)",
-  }}
-/>
-</div>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="
+              w-full
+              h-[280px]
+              object-contain
+              p-8
+              block
+            "
+            style={{
+              objectPosition: "center center",
+              margin: "0 auto",
+              display: "block",
+            }}
+          />
+        </div>
 
         {/* INFO */}
         <div
-  style={{
-    textAlign: "left",
-  }}
->
-          {/* BRAND */}
+          style={{
+            textAlign: "left",
+          }}
+        >
           <p
             style={{
               fontSize: 10,
@@ -114,7 +112,6 @@ export default function ProductPage() {
             {product.brand}
           </p>
 
-          {/* NAME */}
           <h1
             style={{
               fontSize: 32,
@@ -126,7 +123,6 @@ export default function ProductPage() {
             {product.name}
           </h1>
 
-          {/* PRICE */}
           <p
             style={{
               fontSize: 22,
@@ -137,7 +133,6 @@ export default function ProductPage() {
             EGP {product.price}
           </p>
 
-          {/* DESCRIPTION */}
           <p
             style={{
               color: "#666",
@@ -151,7 +146,6 @@ export default function ProductPage() {
             sophisticated signature experience.
           </p>
 
-          {/* EXTRA */}
           <div
             style={{
               borderTop: "1px solid #eee",
@@ -187,24 +181,24 @@ export default function ProductPage() {
           }}
         >
           <h2
-  style={{
-    fontSize: 28,
-    fontWeight: 300,
-    marginBottom: 22,
-    textAlign: "left",
-  }}
->
-  You May Also Like
-</h2>
+            style={{
+              fontSize: 28,
+              fontWeight: 300,
+              marginBottom: 22,
+              textAlign: "left",
+            }}
+          >
+            You May Also Like
+          </h2>
 
           <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(2,1fr)",
-    gap: 8,
-    textAlign: "left",
-  }}
->
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2,1fr)",
+              gap: 8,
+              textAlign: "left",
+            }}
+          >
             {products
               .slice(0, 4)
               .map((p) => (
