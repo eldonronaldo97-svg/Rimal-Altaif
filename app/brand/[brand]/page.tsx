@@ -52,8 +52,9 @@ export default async function BrandPage({
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(2, 1fr)",
+              "repeat(auto-fill,minmax(160px,1fr))",
             gap: 12,
+            paddingBottom: 30,
           }}
         >
           {filteredProducts.map((p: any) => (
