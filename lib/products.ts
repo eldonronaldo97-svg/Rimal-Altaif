@@ -160,7 +160,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2300,
-    image: "/products/assaf/Arrogate_Addict_Elixir.jpeg",
+    image: "/products/assaf/Arrogate_Addict_Elixir.jpg",
   },
 
   {
@@ -170,7 +170,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2200,
-    image: "/products/assaf/Arrogate_Blue_De.jpeg",
+    image: "/products/assaf/Arrogate_Blue_De.jpg",
   },
 
   {
@@ -181,7 +181,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 1850,
-    image: "/products/assaf/Arrogate_Comete.jpeg",
+    image: "/products/assaf/Arrogate_Comete.jpg",
   },
 
   {
@@ -191,7 +191,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2100,
-    image: "/products/assaf/Arrogate_Euphoria.jpeg",
+    image: "/products/assaf/Arrogate_Euphoria.jpg",
   },
 
   {
@@ -201,7 +201,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2100,
-    image: "/products/assaf/arrogate-addict.jpeg",
+    image: "/products/assaf/arrogate-addict.jpg",
   },
 
   {
@@ -211,7 +211,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2100,
-    image: "/products/assaf/arrogate-girl.jpeg",
+    image: "/products/assaf/arrogate-girl.jpg",
   },
 
   {
@@ -222,7 +222,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 2100,
-    image: "/products/assaf/arrogate-pink.jpeg",
+    image: "/products/assaf/arrogate-pink.jpg",
   },
 
   {
@@ -233,7 +233,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 2000,
-    image: "/products/assaf/arrogate-pink-rose.jpeg",
+    image: "/products/assaf/arrogate-pink-rose.jpg",
   },
 
   {
@@ -244,7 +244,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 2000,
-    image: "/products/assaf/attacks.jpeg",
+    image: "/products/assaf/attacks.jpg",
   },
 
   {
@@ -255,7 +255,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 3500,
-    image: "/products/assaf/Bakhur_Collection_Box.jpeg",
+    image: "/products/assaf/Bakhur_Collection_Box.jpg",
   },
 
   {
@@ -265,7 +265,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1900,
-    image: "/products/assaf/Challenge.jpeg",
+    image: "/products/assaf/Challenge.jpg",
   },
 
   {
@@ -275,7 +275,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1850,
-    image: "/products/assaf/Crown_Spirit.jpeg",
+    image: "/products/assaf/Crown_Spirit.jpg",
   },
 
   {
@@ -285,7 +285,7 @@ export const products = [
     category: "unisex",
     stock: false,
     price: 2100,
-    image: "/products/assaf/Dangerous_Arrogate.jpeg",
+    image: "/products/assaf/Dangerous_Arrogate.jpg",
   },
 
   {
@@ -295,7 +295,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2000,
-    image: "/products/assaf/First_Night.jpeg",
+    image: "/products/assaf/First_Night.jpg",
   },
 
   {
@@ -305,7 +305,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/Frankel_Black_Elixir.jpeg",
+    image: "/products/assaf/Frankel_Black_Elixir.jpg",
   },
 
   {
@@ -315,7 +315,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/Frankel_Blue_Elixir.jpeg",
+    image: "/products/assaf/Frankel_Blue_Elixir.jpg",
   },
 
   {
@@ -325,7 +325,7 @@ export const products = [
     category: "Men",
     stock: true,
     price: 1250,
-    image: "/products/assaf/Frankel_Storm.jpeg",
+    image: "/products/assaf/Frankel_Storm.jpg",
   },
 
   {
@@ -335,7 +335,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/frankel-imagination.jpeg",
+    image: "/products/assaf/frankel-imagination.jpg",
   },
 
   {
@@ -345,7 +345,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/frankel-silver-elixir.jpeg",
+    image: "/products/assaf/frankel-silver-elixir.jpg",
   },
 
   {
@@ -355,7 +355,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2000,
-    image: "/products/assaf/glitch.jpeg",
+    image: "/products/assaf/glitch.jpg",
   },
 
   {
@@ -366,7 +366,7 @@ export const products = [
     stock: true,
     bestSeller: true,
     price: 1750,
-    image: "/products/assaf/Gris_Erik.jpeg",
+    image: "/products/assaf/Gris_Erik.jpg",
   },
 
   {
@@ -376,7 +376,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1850,
-    image: "/products/assaf/lady.jpeg",
+    image: "/products/assaf/lady.jpg",
   },
 
   {
@@ -386,7 +386,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1900,
-    image: "/products/assaf/Lip_Stick.jpeg",
+    image: "/products/assaf/Lip_Stick.jpg",
   },
 
   {
@@ -396,7 +396,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2100,
-    image: "/products/assaf/Miss_Arrogate.jpeg",
+    image: "/products/assaf/Miss_Arrogate.jpg",
   },
 
   {
@@ -406,7 +406,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1850,
-    image: "/products/assaf/Miss_Gris_Dance.jpeg",
+    image: "/products/assaf/Miss_Gris_Dance.jpg",
   },
 
   {
@@ -416,7 +416,7 @@ export const products = [
     category: "Women",
     stock: true,
     price: 1250,
-    image: "/products/assaf/miss-flora.jpeg",
+    image: "/products/assaf/miss-flora.jpg",
   },
 
   {
@@ -426,7 +426,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1850,
-    image: "/products/assaf/miss-gris-intense.jpeg",
+    image: "/products/assaf/miss-gris-intense.jpg",
   },
 
   {
@@ -436,7 +436,7 @@ export const products = [
     category: "unisex",
     stock: false,
     price: 1850,
-    image: "/products/assaf/no-comment.jpeg",
+    image: "/products/assaf/no-comment.jpg",
   },
 
   {
@@ -446,7 +446,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2100,
-    image: "/products/assaf/oud-bakhur.jpeg",
+    image: "/products/assaf/oud-bakhur.jpg",
   },
 
   {
@@ -456,7 +456,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1750,
-    image: "/products/assaf/Pegasus_Proino.jpeg",
+    image: "/products/assaf/Pegasus_Proino.jpg",
   },
 
   {
@@ -466,7 +466,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/pegasus-aura.jpeg",
+    image: "/products/assaf/pegasus-aura.jpg",
   },
 
   {
@@ -476,7 +476,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1750,
-    image: "/products/assaf/pegasus-bakhoor.jpeg",
+    image: "/products/assaf/pegasus-bakhoor.jpg",
   },
 
   {
@@ -486,7 +486,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 1250,
-    image: "/products/assaf/Pink_Lady.jpeg",
+    image: "/products/assaf/Pink_Lady.jpg",
   },
 
   {
@@ -496,7 +496,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2200,
-    image: "/products/assaf/Pink_Queen.jpeg",
+    image: "/products/assaf/Pink_Queen.jpg",
   },
 
   {
@@ -506,7 +506,7 @@ export const products = [
     category: "unisex",
     stock: false,
     price: 1600,
-    image: "/products/assaf/Rebel_Enable.jpeg",
+    image: "/products/assaf/Rebel_Enable.jpg",
   },
 
   {
@@ -516,7 +516,7 @@ export const products = [
     category: "unisex",
     stock: false,
     price: 1999,
-    image: "/products/assaf/risk-comete.jpeg",
+    image: "/products/assaf/risk-comete.jpg",
   },
 
   {
@@ -526,7 +526,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/tobacco-black-40.jpeg",
+    image: "/products/assaf/tobacco-black-40.jpg",
   },
 
   {
@@ -536,7 +536,7 @@ export const products = [
     category: "Men",
     stock: true,
     price: 1850,
-    image: "/products/assaf/tobacco-jam-50.jpeg",
+    image: "/products/assaf/tobacco-jam-50.jpg",
   },
 
   {
@@ -546,7 +546,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/tobacco-rage-32.jpeg",
+    image: "/products/assaf/tobacco-rage-32.jpg",
   },
 
   {
@@ -556,7 +556,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1499,
-    image: "/products/assaf/Troy_Enable.jpeg",
+    image: "/products/assaf/Troy_Enable.jpg",
   },
 
   {
@@ -566,7 +566,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/Wild_Colt.jpeg",
+    image: "/products/assaf/Wild_Colt.jpg",
   },
 
   {
@@ -576,7 +576,7 @@ export const products = [
     category: "Men",
     stock: true,
     price: 1850,
-    image: "/products/assaf/Wild_Colt_Tobacco.jpeg",
+    image: "/products/assaf/Wild_Colt_Tobacco.jpg",
   },
 
   {
@@ -586,7 +586,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1750,
-    image: "/products/assaf/Wild_Pegasus.jpeg",
+    image: "/products/assaf/Wild_Pegasus.jpg",
   },
 
   {
@@ -596,7 +596,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 1850,
-    image: "/products/assaf/wild-colt-bakhur.jpeg",
+    image: "/products/assaf/wild-colt-bakhur.jpg",
   },
 
   {
