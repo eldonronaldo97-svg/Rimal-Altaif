@@ -43,56 +43,51 @@ export default function ProductPage() {
         }}
       >
         {/* IMAGE */}
-        <div
-          className="
-            bg-[#f7f7f7]
-            relative
-            rounded-[12px]
-            overflow-hidden
-            mx-4
-            mt-4
-            flex
-            items-center
-            justify-center
-          "
-        >
-          {!product.stock && (
-            <div
-              className="
-                absolute
-                top-3
-                left-3
-                z-10
-                bg-black
-                text-white
-                text-[10px]
-                tracking-[2px]
-                uppercase
-                px-3
-                py-2
-              "
-            >
-              Sold Out
-            </div>
-          )}
+<div
+  style={{
+    background: "#f7f7f7",
+    borderRadius: 12,
+    marginTop: 16,
+    width: "100%",
+    minHeight: 420,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    position: "relative",
+  }}
+>
+  {!product.stock && (
+    <div
+      style={{
+        position: "absolute",
+        top: 12,
+        left: 12,
+        zIndex: 10,
+        background: "#000",
+        color: "#fff",
+        fontSize: 10,
+        letterSpacing: 2,
+        padding: "8px 12px",
+      }}
+    >
+      Sold Out
+    </div>
+  )}
 
-          <img
-            src={product.image}
-            alt={product.name}
-            className="
-              w-full
-              h-[420px]
-              object-contain
-              
-              block
-            "
-            style={{
-  objectPosition: "center center",
-  margin: "0 auto",
-  display: "block",
-}}
-          />
-        </div>
+  <img
+    src={product.image}
+    alt={product.name}
+    style={{
+      width: "100%",
+      maxWidth: 420,
+      height: "auto",
+      objectFit: "contain",
+      display: "block",
+      margin: "0 auto",
+    }}
+  />
+</div>
 
         {/* INFO */}
         <div
