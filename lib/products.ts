@@ -3,6 +3,7 @@ export const products = [
   {
     id: "d1",
     name: "Black Carbon Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-9.jpg",
     category: "Unisex",
@@ -11,6 +12,7 @@ export const products = [
   {
     id: "d2",
     name: "White Regent Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-10.jpg",
     category: "Unisex",
@@ -19,6 +21,7 @@ export const products = [
   {
     id: "d3",
     name: "Sapphire Leather",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-1.jpg",
     category: "Men",
@@ -27,6 +30,7 @@ export const products = [
   {
     id: "d4",
     name: "Emerald Soul Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-2.jpg",
     category: "Unisex",
@@ -36,6 +40,7 @@ export const products = [
   {
     id: "d5",
     name: "Purple Heart Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-3.jpg",
     category: "Women",
@@ -45,6 +50,7 @@ export const products = [
   {
     id: "d6",
     name: "Grey Pearl Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-4.jpg",
     category: "Unisex",
@@ -53,6 +59,7 @@ export const products = [
   {
     id: "d7",
     name: "Black Diamond Incense",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-5.jpg",
     category: "Men",
@@ -61,6 +68,7 @@ export const products = [
   {
     id: "d8",
     name: "Pink Diamond Sakura",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-6.jpg",
     category: "Women",
@@ -69,6 +77,7 @@ export const products = [
   {
     id: "d9",
     name: "Blue Diamond Aqua",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/tobacco-7.jpg",
     category: "Unisex",
@@ -77,6 +86,7 @@ export const products = [
   {
     id: "d10",
     name: "Nude Coral Diamond",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-0.jpg",
     category: "Unisex",
@@ -88,6 +98,7 @@ export const products = [
   {
     id: "t1",
     name: "Greek Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-1.jpg",
     category: "Unisex",
@@ -96,6 +107,7 @@ export const products = [
   {
     id: "t2",
     name: "Jamaican Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-2.jpg",
     category: "Men",
@@ -104,6 +116,7 @@ export const products = [
   {
     id: "t3",
     name: "Mexican Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-3.jpg",
     category: "Men",
@@ -112,6 +125,7 @@ export const products = [
   {
     id: "t4",
     name: "Brazilian Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-4.jpg",
     category: "Men",
@@ -120,6 +134,7 @@ export const products = [
   {
     id: "t5",
     name: "Dominican Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-5.jpg",
     category: "Men",
@@ -128,6 +143,7 @@ export const products = [
   {
     id: "t6",
     name: "Spanish Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-6.jpg",
     category: "Men",
@@ -137,6 +153,7 @@ export const products = [
   {
     id: "t7",
     name: "French Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-8.jpg",
     category: "Unisex",
@@ -146,6 +163,7 @@ export const products = [
   {
     id: "t8",
     name: "Cuban Tobacco",
+    brand: "Ibraq",
     price: 1600,
     image: "/products/diamond-7.jpg",
     category: "Men",
