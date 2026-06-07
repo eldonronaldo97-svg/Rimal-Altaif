@@ -81,16 +81,15 @@ export default function ProductPage() {
             alt={product.name}
             className="
               w-full
-              h-[280px]
+              h-[420px]
               object-contain
-              p-8
+              
               block
             "
             style={{
   objectPosition: "center center",
   margin: "0 auto",
   display: "block",
-  transform: "translateX(-40px)",
 }}
           />
         </div>
