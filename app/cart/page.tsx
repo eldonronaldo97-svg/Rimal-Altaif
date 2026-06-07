@@ -1,78 +1,219 @@
 "use client";
 
-import { useCart } from "../../lib/store";
 import Link from "next/link";
+import { useCart } from "../../lib/store";
 
-export default function Cart() {
+export default function CartPage() {
   const cart = useCart((s) => s.cart);
   const remove = useCart((s) => s.remove);
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce(
+    (sum, item) => sum + item.price,
+    0
+  );
 
   if (cart.length === 0) {
     return (
-      <div style={{ padding: 40, textAlign: "center" }}>
-        <h2>السلة فارغة 🛒</h2>
+      <main
+        style={{
+          minHeight: "100vh",
+          background: "#fff",
+          padding: 20,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 500,
+            margin: "80px auto",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 28,
+              marginBottom: 12,
+            }}
+          >
+            Your Cart Is Empty
+          </h1>
 
-        <Link href="/">
-          <button style={{ marginTop: 20 }}>
-            رجوع للتسوق
-          </button>
-        </Link>
-      </div>
+          <p
+            style={{
+              color: "#666",
+              marginBottom: 30,
+            }}
+          >
+            Start exploring our fragrances.
+          </p>
+
+          <Link href="/">
+            <button
+              style={{
+                height: 52,
+                padding: "0 24px",
+                border: "none",
+                background: "#111",
+                color: "#fff",
+                borderRadius: 999,
+                fontWeight: 600,
+              }}
+            >
+              Continue Shopping
+            </button>
+          </Link>
+        </div>
+      </main>
     );
   }
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2 style={{ marginBottom: 20 }}>السلة</h2>
-
-      {cart.map((item, i) => (
-        <div
-          key={i}
+    <main
+      style={{
+        background: "#fff",
+        minHeight: "100vh",
+        padding: 20,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 800,
+          margin: "0 auto",
+        }}
+      >
+        <h1
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 20,
-            marginBottom: 15,
-            background: "#fff",
-            padding: 15,
-            borderRadius: 10,
+            fontSize: 32,
+            marginBottom: 25,
+            fontWeight: 700,
           }}
         >
-          <img
-            src={item.image || "https://picsum.photos/100"}
-            style={{ width: 80, borderRadius: 8 }}
-          />
+          Shopping Cart
+        </h1>
 
-          <div style={{ flex: 1 }}>
-            <h4>{item.name}</h4>
-            <p>{item.price} جنيه</p>
+        {cart.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              gap: 16,
+              alignItems: "center",
+              border: "1px solid #eee",
+              borderRadius: 16,
+              padding: 12,
+              marginBottom: 14,
+            }}
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              style={{
+                width: 90,
+                height: 90,
+                objectFit: "contain",
+                background: "#fafafa",
+                borderRadius: 12,
+              }}
+            />
+
+            <div
+              style={{
+                flex: 1,
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: 16,
+                  marginBottom: 8,
+                }}
+              >
+                {item.name}
+              </h3>
+
+              <p
+                style={{
+                  color: "#666",
+                  fontSize: 15,
+                }}
+              >
+                EGP {item.price}
+              </p>
+            </div>
+
+            <button
+              onClick={() =>
+                remove(item.id)
+              }
+              style={{
+                border: "none",
+                background: "#f5f5f5",
+                width: 40,
+                height: 40,
+                borderRadius: 999,
+                fontSize: 18,
+              }}
+            >
+              ×
+            </button>
+          </div>
+        ))}
+
+        <div
+          style={{
+            marginTop: 30,
+            border: "1px solid #eee",
+            borderRadius: 16,
+            padding: 20,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent:
+                "space-between",
+              marginBottom: 20,
+              fontSize: 20,
+              fontWeight: 700,
+            }}
+          >
+            <span>Total</span>
+            <span>EGP {total}</span>
           </div>
 
-          <button onClick={() => remove(item.id)}>❌</button>
+          <Link href="/checkout">
+            <button
+              style={{
+                width: "100%",
+                height: 56,
+                border: "none",
+                borderRadius: 999,
+                background: "#111",
+                color: "#fff",
+                fontSize: 15,
+                fontWeight: 700,
+              }}
+            >
+              Proceed To Checkout
+            </button>
+          </Link>
+
+          <Link href="/">
+            <button
+              style={{
+                width: "100%",
+                height: 56,
+                marginTop: 12,
+                borderRadius: 999,
+                background: "#fff",
+                border: "1px solid #ddd",
+                fontSize: 15,
+                fontWeight: 600,
+              }}
+            >
+              Continue Shopping
+            </button>
+          </Link>
         </div>
-      ))}
-
-      <h3 style={{ marginTop: 20 }}>
-        الإجمالي: {total} جنيه
-      </h3>
-
-      <Link href="/checkout">
-        <button
-          style={{
-            marginTop: 20,
-            padding: 15,
-            width: "100%",
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: 8,
-          }}
-        >
-          إتمام الطلب
-        </button>
-      </Link>
-    </div>
+      </div>
+    </main>
   );
 }
