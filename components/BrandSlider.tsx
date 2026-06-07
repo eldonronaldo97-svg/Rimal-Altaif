@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function BrandSlider() {
   const brands = [
     "Rimal Altaif",
@@ -17,8 +19,11 @@ export default function BrandSlider() {
 
         <div className="brand-slider">
           {brands.map((brand) => (
-            <div
+            <Link
               key={brand}
+              href={`/brand/${brand
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`}
               className="brand-card"
             >
               <div className="brand-circle">
@@ -31,7 +36,7 @@ export default function BrandSlider() {
               <div className="brand-name">
                 {brand}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
