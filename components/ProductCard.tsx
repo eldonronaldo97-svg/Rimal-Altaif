@@ -7,7 +7,13 @@ export default function ProductCard({ p }: any) {
   const add = useCart((s) => s.add);
 
   return (
-    <div className="product-card">
+    <div
+      className="product-card"
+      style={{
+        width: "100%",
+        minWidth: "unset",
+      }}
+    >
       <Link href={`/product/${p.id}`}>
         <div className="product-image">
           <img

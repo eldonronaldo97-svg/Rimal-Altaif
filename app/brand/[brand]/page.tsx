@@ -1,7 +1,7 @@
-import ProductCard from "../../../components/ProductCard";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import MobileBottomBar from "../../../components/MobileBottomBar";
+import ProductCard from "../../../components/ProductCard";
 
 import { products } from "../../../lib/products";
 
@@ -12,14 +12,10 @@ export default async function BrandPage({
 }) {
   const { brand } = await params;
 
-  const brandName = brand
-    .replace(/-/g, " ")
-    .toLowerCase();
-
   const filteredProducts = products.filter(
     (p: any) =>
       p.brand &&
-      p.brand.toLowerCase() === brandName
+      p.brand.toLowerCase().replace(/\s+/g, "-") === brand
   );
 
   return (
@@ -39,7 +35,7 @@ export default async function BrandPage({
               textTransform: "capitalize",
             }}
           >
-            {brandName}
+            {brand.replace(/-/g, " ")}
           </h1>
 
           <p
@@ -56,8 +52,8 @@ export default async function BrandPage({
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fill,minmax(220px,1fr))",
-            gap: 20,
+              "repeat(2, 1fr)",
+            gap: 12,
           }}
         >
           {filteredProducts.map((p: any) => (
