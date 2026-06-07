@@ -10,7 +10,10 @@ export default function ProductCard({ p }: any) {
     <div className="product-card">
       <Link href={`/product/${p.id}`}>
         <div className="product-image">
-          <img src={p.image} alt={p.name} />
+          <img
+            src={p.image}
+            alt={p.name}
+          />
         </div>
       </Link>
 
@@ -19,9 +22,9 @@ export default function ProductCard({ p }: any) {
           {p.brand || "Rimal Altaif"}
         </div>
 
-        <h3 className="product-name">
+        <div className="product-name">
           {p.name}
-        </h3>
+        </div>
 
         <div className="product-price">
           EGP {p.price}
@@ -29,7 +32,7 @@ export default function ProductCard({ p }: any) {
       </div>
 
       <button
-        className="product-button"
+        className="product-btn"
         onClick={() =>
           add({
             id: p.id,

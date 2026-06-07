@@ -7,7 +7,8 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Rimal Altaif",
-  description: "Luxury Perfumes",
+  description:
+    "Luxury Perfumes",
 };
 
 export default function RootLayout({
@@ -16,8 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr">
-      <body className={montserrat.className}>
+    <html
+      lang="en"
+      dir="ltr"
+    >
+      <body
+        className={
+          montserrat.className
+        }
+      >
         {children}
       </body>
     </html>

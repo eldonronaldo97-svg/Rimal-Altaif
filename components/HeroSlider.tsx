@@ -14,7 +14,9 @@ export default function HeroSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) =>
-        prev === banners.length - 1 ? 0 : prev + 1
+        prev === banners.length - 1
+          ? 0
+          : prev + 1
       );
     }, 5000);
 
@@ -23,48 +25,59 @@ export default function HeroSlider() {
 
   return (
     <section
+      className="container"
       style={{
-        position: "relative",
-        width: "100%",
-        overflow: "hidden",
+        marginTop: 15,
       }}
     >
-      <img
-        src={banners[active]}
-        alt=""
-        style={{
-          width: "100%",
-          display: "block",
-        }}
-      />
-
       <div
         style={{
-          position: "absolute",
-          bottom: 30,
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          gap: 10,
+          position: "relative",
         }}
       >
-        {banners.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActive(index)}
-            style={{
-              width: active === index ? 30 : 10,
-              height: 10,
-              borderRadius: 20,
-              border: "none",
-              background:
-                active === index
-                  ? "#fff"
-                  : "rgba(255,255,255,.5)",
-              transition: ".3s",
-            }}
-          />
-        ))}
+        <img
+          src={banners[active]}
+          alt=""
+          style={{
+            width: "100%",
+            borderRadius: 16,
+            display: "block",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 14,
+            left: "50%",
+            transform:
+              "translateX(-50%)",
+            display: "flex",
+            gap: 8,
+          }}
+        >
+          {banners.map((_, i) => (
+            <button
+              key={i}
+              onClick={() =>
+                setActive(i)
+              }
+              style={{
+                width:
+                  active === i
+                    ? 24
+                    : 8,
+                height: 8,
+                borderRadius: 999,
+                background:
+                  active === i
+                    ? "#fff"
+                    : "rgba(255,255,255,.5)",
+                transition: ".3s",
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
