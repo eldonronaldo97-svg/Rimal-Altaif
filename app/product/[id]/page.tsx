@@ -90,7 +90,7 @@ export default function ProductPage() {
   objectPosition: "center center",
   margin: "0 auto",
   display: "block",
-  transform: "translateX(-10px)",
+  transform: "translateX(-40px)",
 }}
           />
         </div>
