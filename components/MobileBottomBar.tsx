@@ -10,14 +10,9 @@ export default function MobileBottomBar() {
         <span>Home</span>
       </Link>
 
-      <Link href="/" className="mobile-item">
+      <Link href="/brands" className="mobile-item">
         <div className="mobile-icon">🛍️</div>
-        <span>Shop</span>
-      </Link>
-
-      <Link href="/" className="mobile-item">
-        <div className="mobile-icon">❤️</div>
-        <span>Wishlist</span>
+        <span>Brands</span>
       </Link>
 
       <Link href="/cart" className="mobile-item">
@@ -25,10 +20,22 @@ export default function MobileBottomBar() {
         <span>Cart</span>
       </Link>
 
-      <Link href="/" className="mobile-item">
+      <a
+        href="https://wa.me/201060230817"
+        target="_blank"
+        className="mobile-item"
+      >
+        <div className="mobile-icon">💬</div>
+        <span>WhatsApp</span>
+      </a>
+
+      <a
+        href="tel:01060230817"
+        className="mobile-item"
+      >
         <div className="mobile-icon">📞</div>
-        <span>Contact</span>
-      </Link>
+        <span>Call</span>
+      </a>
     </div>
   );
 }
