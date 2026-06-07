@@ -2,12 +2,38 @@ import Link from "next/link";
 
 export default function BrandSlider() {
   const brands = [
-    "Rimal Altaif",
-    "Assaf",
-    "Afnan",
-    "Lattafa",
-    "Dkhoon",
-    "Ibraq",
+    {
+      name: "Assaf",
+      image: "/brands/o.4860.jpg",
+    },
+    {
+      name: "Ibraq",
+      image: "/brands/unnamed.jpg",
+    },
+    {
+      name: "Dkhoon",
+      image: "/brands/1767285070033466556.webp",
+    },
+    {
+      name: "Lattafa",
+      image: "/brands/Lattafa-1728143584303.webp",
+    },
+    {
+      name: "Arabiyat prestige",
+      image: "/brands/9fd1c311-d6fe-4b83-b4c1-1b29fea6c111.jpg",
+    },
+    {
+      name: "Laverne",
+      image: "/brands/cmgj5zi3p1niv01hn5o0j7nl7_5.jpg",
+    },
+    {
+      name: "Afnan",
+      image: "/brands/afnan_logo.webp",
+    },
+    {
+      name: "rasasi",
+      image: "/brands/NTcxUrKbnUPbWDChASFFN8pYcqgnLS4XySm2BsRR.webp",
+    },  
   ];
 
   return (
@@ -20,21 +46,26 @@ export default function BrandSlider() {
         <div className="brand-slider">
           {brands.map((brand) => (
             <Link
-              key={brand}
-              href={`/brand/${brand
+              key={brand.name}
+              href={`/brand/${brand.name
                 .toLowerCase()
                 .replace(/\s+/g, "-")}`}
               className="brand-card"
             >
               <div className="brand-circle">
-                {brand
-                  .split(" ")
-                  .map((w) => w[0])
-                  .join("")}
+                <img
+                  src={brand.image}
+                  alt={brand.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
 
               <div className="brand-name">
-                {brand}
+                {brand.name}
               </div>
             </Link>
           ))}
