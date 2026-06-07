@@ -17,18 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      dir="ltr"
-    >
-      <body
-        className={
-          montserrat.className
-        }
-      >
+    <html lang="en" dir="ltr">
+      <body className={montserrat.className}>
         {children}
-
-        <MobileBottomBar />
       </body>
     </html>
   );
