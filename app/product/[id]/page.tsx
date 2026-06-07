@@ -87,10 +87,11 @@ export default function ProductPage() {
               block
             "
             style={{
-              objectPosition: "center center",
-              margin: "0 auto",
-              display: "block",
-            }}
+  objectPosition: "center center",
+  margin: "0 auto",
+  display: "block",
+  transform: "translateX(-10px)",
+}}
           />
         </div>
 
