@@ -2,6 +2,7 @@ import "./globals.css";
 import { Montserrat } from "next/font/google";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import FloatingCart from "@/components/FloatingCart";
+import LayoutContent from "@/components/LayoutContent";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
         {children}
         <FloatingCart />
 
-<MobileBottomBar />
+<LayoutContent />
       </body>
     </html>
   );
