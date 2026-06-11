@@ -13,8 +13,8 @@ export default function FloatingCart() {
       href="/cart"
       style={{
         position: "fixed",
-        right: 20,
-        bottom: 90,
+        left: 20,
+        top: 90,
         zIndex: 9999,
         background: "#000",
         color: "#fff",
