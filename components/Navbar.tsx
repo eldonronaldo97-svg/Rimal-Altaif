@@ -167,6 +167,14 @@ export default function Navbar() {
               }
             />
 
+            <MenuLink
+              href="/shop"
+              text="All Products"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+            />
+
             <a
               href="https://wa.me/201060230817"
               style={{
