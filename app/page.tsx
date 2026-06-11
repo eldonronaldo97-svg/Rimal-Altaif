@@ -40,6 +40,27 @@ export default function Home() {
       />
 
       <ProductSlider
+  title="Men Perfumes"
+  products={products.filter(
+    (p) => p.category === "Men"
+  )}
+/>
+
+<ProductSlider
+  title="Women Perfumes"
+  products={products.filter(
+    (p) => p.category === "Women"
+  )}
+/>
+
+<ProductSlider
+  title="Unisex Perfumes"
+  products={products.filter(
+    (p) => p.category === "Unisex"
+  )}
+/>
+
+      <ProductSlider
         title="All Products"
         products={featuredProducts}
       />
