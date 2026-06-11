@@ -26,29 +26,70 @@ export default function Checkout() {
   };
 
   const handleOrder = () => {
-    if (!name || !phone1 || !address) {
-      alert("من فضلك املى البيانات الأساسية");
-      return;
-    }
+  if (!name || !phone1 || !address) {
+    alert("من فضلك املى البيانات الأساسية");
+    return;
+  }
 
-    if (!image) {
-      alert("لازم ترفع صورة التحويل لتأكيد الطلب");
-      return;
-    }
+  if (!image) {
+    alert("لازم ترفع صورة التحويل لتأكيد الطلب");
+    return;
+  }
 
-    const order = {
-      customer: {
-        name,
-        phone1,
-        phone2,
-        address,
-      },
-      items: cart,
-      total,
-      status: "pending",
-      image: URL.createObjectURL(image),
-      date: new Date().toLocaleString(),
-    };
+  const order = {
+    customer: {
+      name,
+      phone1,
+      phone2,
+      address,
+    },
+    items: cart,
+    total,
+    status: "pending",
+    date: new Date().toLocaleString(),
+  };
+
+  saveOrder(order);
+
+  const itemsText = cart
+    .map(
+      (item) =>
+        `• ${item.name} - ${item.price} جنيه`
+    )
+    .join("\n");
+
+  const message = `
+طلب جديد 🔥
+
+الاسم: ${name}
+
+الموبايل: ${phone1}
+
+رقم إضافي: ${phone2 || "لا يوجد"}
+
+العنوان:
+${address}
+
+المنتجات:
+${itemsText}
+
+الإجمالي:
+${total} جنيه
+
+⚠️ العميل سيقوم بإرسال صورة التحويل في الواتساب.
+`;
+
+  window.open(
+    `https://wa.me/201060230817?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+
+  localStorage.removeItem("cart");
+
+  setTimeout(() => {
+    window.location.href = "/";
+  }, 1000);
+};
 
     saveOrder(order);
 
