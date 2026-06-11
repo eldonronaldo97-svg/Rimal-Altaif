@@ -13,6 +13,15 @@ export default function ProductSlider({
       case "Latest Release":
         return "/latest-release";
 
+        case "Men Perfumes":
+      return "/men";
+
+    case "Women Perfumes":
+      return "/women";
+
+    case "Unisex Perfumes":
+      return "/unisex";
+
       case "All Products":
         return "/shop";
 
