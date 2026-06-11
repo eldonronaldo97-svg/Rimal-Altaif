@@ -90,10 +90,14 @@ export default function Navbar() {
               padding: "0 20px",
             }}
           >
-            <span style={{ fontSize: 20 }}>Menu</span>
+            <span style={{ fontSize: 20 }}>
+              Menu
+            </span>
 
             <button
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
               style={{
                 background: "none",
                 border: "none",
@@ -110,43 +114,57 @@ export default function Navbar() {
             <MenuLink
               href="/"
               text="Home"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
               href="/brands"
               text="Brands"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
-              href="/"
+              href="/best-sellers"
               text="Best Selling"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
-              href="/"
+              href="/latest-release"
               text="Latest Release"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
-              href="/"
+              href="/men"
               text="Men Perfumes"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
-              href="/"
+              href="/women"
               text="Women Perfumes"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <MenuLink
-              href="/"
+              href="/unisex"
               text="Unisex Perfumes"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             />
 
             <a
@@ -157,7 +175,8 @@ export default function Navbar() {
                 textDecoration: "none",
                 color: "#000",
                 fontSize: 18,
-                borderBottom: "1px solid #eee",
+                borderBottom:
+                  "1px solid #eee",
               }}
             >
               WhatsApp
@@ -180,7 +199,8 @@ export default function Navbar() {
           <div
             style={{
               padding: 20,
-              borderBottom: "1px solid #eee",
+              borderBottom:
+                "1px solid #eee",
               display: "flex",
               gap: 10,
             }}
@@ -190,12 +210,15 @@ export default function Navbar() {
               placeholder="Search perfumes..."
               value={query}
               onChange={(e) =>
-                setQuery(e.target.value)
+                setQuery(
+                  e.target.value
+                )
               }
               style={{
                 flex: 1,
                 padding: 12,
-                border: "1px solid #ddd",
+                border:
+                  "1px solid #ddd",
                 borderRadius: 8,
               }}
             />
@@ -212,47 +235,68 @@ export default function Navbar() {
 
           <div style={{ padding: 20 }}>
             {query &&
-              results.slice(0, 20).map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/product/${product.id}`}
-                  onClick={() => {
-                    setSearchOpen(false);
-                    setQuery("");
-                  }}
-                  style={{
-                    display: "flex",
-                    gap: 12,
-                    alignItems: "center",
-                    textDecoration: "none",
-                    color: "#000",
-                    padding: "12px 0",
-                    borderBottom: "1px solid #eee",
-                  }}
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{
-                      width: 60,
-                      height: 60,
-                      objectFit: "contain",
+              results
+                .slice(0, 20)
+                .map((product) => (
+                  <Link
+                    key={product.id}
+                    href={`/product/${product.id}`}
+                    onClick={() => {
+                      setSearchOpen(
+                        false
+                      );
+                      setQuery("");
                     }}
-                  />
-
-                  <div>
-                    <div>{product.name}</div>
-                    <div
+                    style={{
+                      display: "flex",
+                      gap: 12,
+                      alignItems:
+                        "center",
+                      textDecoration:
+                        "none",
+                      color: "#000",
+                      padding:
+                        "12px 0",
+                      borderBottom:
+                        "1px solid #eee",
+                    }}
+                  >
+                    <img
+                      src={
+                        product.image
+                      }
+                      alt={
+                        product.name
+                      }
                       style={{
-                        fontSize: 12,
-                        color: "#777",
+                        width: 60,
+                        height: 60,
+                        objectFit:
+                          "contain",
                       }}
-                    >
-                      {product.brand}
+                    />
+
+                    <div>
+                      <div>
+                        {
+                          product.name
+                        }
+                      </div>
+
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color:
+                            "#777",
+                        }}
+                      >
+                        {
+                          product.brand
+                        }
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
           </div>
         </div>
       )}
