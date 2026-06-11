@@ -698,13 +698,22 @@ export const products = [
     "stock": false
   },
   {
-    "id": "dk10",
-    "name": "Signature white",
+    "id": "dk40",
+    "name": "Signature White",
     "brand": "Dkhoon",
     "price": 1600,
     "image": "/products/dkhoon/Signature_white.jpg",
     "category": "Men",
-    "stock": false
+    "stock": true
+  },
+  {
+    "id": "dk41",
+    "name": "Signature Silver",
+    "brand": "Dkhoon",
+    "price": 1600,
+    "image": "/products/dkhoon/Signature_Silver.jpg",
+    "category": "Men",
+    "stock": true
   },
   {
     "id": "dk11",
