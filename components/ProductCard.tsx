@@ -9,10 +9,37 @@ export default function ProductCard({ p }: any) {
   return (
     <div className="product-card">
       <Link href={`/product/${p.id}`}>
-        <div className="product-image">
+        <div
+          className="product-image"
+          style={{
+            position: "relative",
+          }}
+        >
+          {!p.stock && (
+            <div
+              style={{
+                position: "absolute",
+                top: 10,
+                left: 10,
+                zIndex: 10,
+                background: "#000",
+                color: "#fff",
+                padding: "6px 10px",
+                fontSize: 10,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+              }}
+            >
+              SOLD OUT
+            </div>
+          )}
+
           <img
             src={p.image}
             alt={p.name}
+            style={{
+              opacity: p.stock ? 1 : 0.5,
+            }}
           />
         </div>
       </Link>
@@ -33,7 +60,9 @@ export default function ProductCard({ p }: any) {
 
       <button
         className="product-btn"
+        disabled={!p.stock}
         onClick={() =>
+          p.stock &&
           add({
             id: p.id,
             name: p.name,
@@ -41,8 +70,16 @@ export default function ProductCard({ p }: any) {
             price: p.price,
           })
         }
+        style={{
+          opacity: p.stock ? 1 : 0.5,
+          cursor: p.stock
+            ? "pointer"
+            : "not-allowed",
+        }}
       >
-        Add To Cart
+        {p.stock
+          ? "Add To Cart"
+          : "Sold Out"}
       </button>
     </div>
   );
