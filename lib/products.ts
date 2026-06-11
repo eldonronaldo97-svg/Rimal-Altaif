@@ -518,16 +518,6 @@ export const products = [
   },
 
   {
-    id: "a35",
-    name: "Rebel Enable",
-    brand: "Assaf",
-    category: "unisex",
-    stock: false,
-    price: 1600,
-    image: "/products/assaf/Rebel_Enable.jpg",
-  },
-
-  {
     id: "a36",
     name: "Risk Comete",
     brand: "Assaf",
@@ -924,15 +914,6 @@ export const products = [
     image: "/products/ramz-lattafa.jpg",
   },
   {
-    id: "A2",
-    name: "9PM nightout",
-    brand: "Afnan",
-    category: "Men",
-    stock: false,
-    price: 1750,
-    image: "/products/9pm-nightout-afnan.jpg",
-  },
-  {
     id: "L10",
     name: "Asad Elixir",
     brand: "Lattafa",
@@ -1005,15 +986,6 @@ export const products = [
     image: "/products/turathi-electric-afnan.jpg",
   },
   {
-    id: "A8",
-    name: "9PM Rebel",
-    brand: "Afnan",
-    category: "Men",
-    stock: false,
-    price: 1650,
-    image: "/products/9pm-rebel-afnan.jpg",
-  },
-  {
     id: "A9",
     name: "9AM Pour Femme",
     brand: "Afnan",
@@ -1048,6 +1020,33 @@ export const products = [
     stock: false,
     price: 1600,
     image: "/products/9pm-afnan-classic.jpg",
+  },
+  {
+    id: "A2",
+    name: "9PM nightout",
+    brand: "Afnan",
+    category: "Men",
+    stock: false,
+    price: 1750,
+    image: "/products/9pm-nightout-afnan.jpg",
+  },
+  {
+    id: "A8",
+    name: "9PM Rebel",
+    brand: "Afnan",
+    category: "Men",
+    stock: false,
+    price: 1650,
+    image: "/products/9pm-rebel-afnan.jpg",
+  },
+  {
+    id: "a35",
+    name: "Rebel Enable",
+    brand: "Assaf",
+    category: "unisex",
+    stock: false,
+    price: 1700,
+    image: "/products/assaf/Rebel_Enable.jpg",
   },
   ];
 
