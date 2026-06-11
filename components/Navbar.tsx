@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { products } from "@/lib/products";
+import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,16 +33,17 @@ export default function Navbar() {
         }}
       >
         <button
-          onClick={() => setMenuOpen(true)}
-          style={{
-            background: "none",
-            border: "none",
-            fontSize: 24,
-            cursor: "pointer",
-          }}
-        >
-          ☰
-        </button>
+  onClick={() => setMenuOpen(true)}
+  style={{
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  <FiMenu size={24} />
+</button>
 
         <Link
   href="/"
@@ -64,16 +66,17 @@ export default function Navbar() {
 </Link>
 
         <button
-          onClick={() => setSearchOpen(true)}
-          style={{
-            background: "none",
-            border: "none",
-            fontSize: 22,
-            cursor: "pointer",
-          }}
-        >
-          🔍
-        </button>
+  onClick={() => setSearchOpen(true)}
+  style={{
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  <FiSearch size={22} />
+</button>
       </header>
 
       {/* MENU */}
@@ -113,7 +116,7 @@ export default function Navbar() {
                 cursor: "pointer",
               }}
             >
-              ×
+              <FiX size={28} />
             </button>
           </div>
 
