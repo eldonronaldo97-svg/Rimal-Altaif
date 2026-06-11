@@ -10,12 +10,10 @@ export default function MobileBottomBar() {
     <div className="mobile-bar">
       <Link href="/" className="mobile-item">
         <div className="mobile-icon">🏠</div>
-        <span>Home</span>
       </Link>
 
       <Link href="/brands" className="mobile-item">
         <div className="mobile-icon">🛍️</div>
-        <span>Brands</span>
       </Link>
 
       <Link
@@ -46,7 +44,6 @@ export default function MobileBottomBar() {
         )}
 
         <div className="mobile-icon">🛒</div>
-        <span>Cart</span>
       </Link>
 
       <a
@@ -56,7 +53,6 @@ export default function MobileBottomBar() {
         className="mobile-item"
       >
         <div className="mobile-icon">💬</div>
-        <span>WhatsApp</span>
       </a>
 
       <a
@@ -64,7 +60,6 @@ export default function MobileBottomBar() {
         className="mobile-item"
       >
         <div className="mobile-icon">📞</div>
-        <span>Call</span>
       </a>
     </div>
   );
