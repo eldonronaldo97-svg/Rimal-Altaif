@@ -56,7 +56,7 @@ export default function Navbar() {
     src="/logo.png"
     alt="Rimal Altaif"
     style={{
-      height: 250,
+      height: 220,
       width: "auto",
       display: "block",
     }}
