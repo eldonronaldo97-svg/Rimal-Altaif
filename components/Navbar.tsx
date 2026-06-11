@@ -44,17 +44,24 @@ export default function Navbar() {
         </button>
 
         <Link
-          href="/"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: 1,
-          }}
-        >
-          Rimal Altaif
-        </Link>
+  href="/"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+  }}
+>
+  <img
+    src="/logo.png"
+    alt="Rimal Altaif"
+    style={{
+      height: 48,
+      width: "auto",
+      display: "block",
+    }}
+  />
+</Link>
 
         <button
           onClick={() => setSearchOpen(true)}
