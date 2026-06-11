@@ -42,7 +42,7 @@ export default function Navbar() {
     alignItems: "center",
   }}
 >
-  <FiMenu size={24} />
+  <FiMenu size={24} color="#000" />
 </button>
 
         <Link
@@ -75,7 +75,7 @@ export default function Navbar() {
     alignItems: "center",
   }}
 >
-  <FiSearch size={22} />
+  <FiSearch size={22} color="#000" />
 </button>
       </header>
 
