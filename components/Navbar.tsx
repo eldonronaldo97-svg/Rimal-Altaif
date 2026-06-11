@@ -1,57 +1,288 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { products } from "@/lib/products";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const results = products.filter(
+    (p) =>
+      p.name.toLowerCase().includes(query.toLowerCase()) ||
+      p.brand.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
-    <header
+    <>
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 999,
+          height: 70,
+          background: "#fff",
+          borderBottom: "1px solid #eee",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 20px",
+        }}
+      >
+        <button
+          onClick={() => setMenuOpen(true)}
+          style={{
+            background: "none",
+            border: "none",
+            fontSize: 24,
+            cursor: "pointer",
+          }}
+        >
+          ☰
+        </button>
+
+        <Link
+          href="/"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontSize: 22,
+            fontWeight: 600,
+            letterSpacing: 1,
+          }}
+        >
+          Rimal Altaif
+        </Link>
+
+        <button
+          onClick={() => setSearchOpen(true)}
+          style={{
+            background: "none",
+            border: "none",
+            fontSize: 22,
+            cursor: "pointer",
+          }}
+        >
+          🔍
+        </button>
+      </header>
+
+      {/* MENU */}
+      {menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "#fff",
+            zIndex: 99999,
+          }}
+        >
+          <div
+            style={{
+              height: 70,
+              background: "#000",
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0 20px",
+            }}
+          >
+            <span style={{ fontSize: 20 }}>Menu</span>
+
+            <button
+              onClick={() => setMenuOpen(false)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                fontSize: 30,
+                cursor: "pointer",
+              }}
+            >
+              ×
+            </button>
+          </div>
+
+          <div style={{ padding: 20 }}>
+            <MenuLink
+              href="/"
+              text="Home"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/brands"
+              text="Brands"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/"
+              text="Best Selling"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/"
+              text="Latest Release"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/"
+              text="Men Perfumes"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/"
+              text="Women Perfumes"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <MenuLink
+              href="/"
+              text="Unisex Perfumes"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <a
+              href="https://wa.me/201060230817"
+              style={{
+                display: "block",
+                padding: "18px 0",
+                textDecoration: "none",
+                color: "#000",
+                fontSize: 18,
+                borderBottom: "1px solid #eee",
+              }}
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* SEARCH */}
+      {searchOpen && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "#fff",
+            zIndex: 99999,
+            overflowY: "auto",
+          }}
+        >
+          <div
+            style={{
+              padding: 20,
+              borderBottom: "1px solid #eee",
+              display: "flex",
+              gap: 10,
+            }}
+          >
+            <input
+              autoFocus
+              placeholder="Search perfumes..."
+              value={query}
+              onChange={(e) =>
+                setQuery(e.target.value)
+              }
+              style={{
+                flex: 1,
+                padding: 12,
+                border: "1px solid #ddd",
+                borderRadius: 8,
+              }}
+            />
+
+            <button
+              onClick={() => {
+                setSearchOpen(false);
+                setQuery("");
+              }}
+            >
+              ✕
+            </button>
+          </div>
+
+          <div style={{ padding: 20 }}>
+            {query &&
+              results.slice(0, 20).map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/product/${product.id}`}
+                  onClick={() => {
+                    setSearchOpen(false);
+                    setQuery("");
+                  }}
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    alignItems: "center",
+                    textDecoration: "none",
+                    color: "#000",
+                    padding: "12px 0",
+                    borderBottom: "1px solid #eee",
+                  }}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{
+                      width: 60,
+                      height: 60,
+                      objectFit: "contain",
+                    }}
+                  />
+
+                  <div>
+                    <div>{product.name}</div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: "#777",
+                      }}
+                    >
+                      {product.brand}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function MenuLink({
+  href,
+  text,
+  onClick,
+}: {
+  href: string;
+  text: string;
+  onClick: () => void;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
       style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 999,
-        height: 70,
-        background: "#fff",
+        display: "block",
+        padding: "18px 0",
+        textDecoration: "none",
+        color: "#000",
+        fontSize: 18,
         borderBottom: "1px solid #eee",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 20px",
       }}
     >
-      <button
-        style={{
-          background: "none",
-          border: "none",
-          fontSize: 24,
-          cursor: "pointer",
-        }}
-      >
-        ☰
-      </button>
-
-      <Link
-        href="/"
-        style={{
-          textDecoration: "none",
-          color: "#000",
-          fontSize: 22,
-          fontWeight: 600,
-          letterSpacing: 1,
-        }}
-      >
-        Rimal Altaif
-      </Link>
-
-      <button
-        style={{
-          background: "none",
-          border: "none",
-          fontSize: 22,
-          cursor: "pointer",
-        }}
-      >
-        🔍
-      </button>
-    </header>
+      {text}
+    </Link>
   );
 }
