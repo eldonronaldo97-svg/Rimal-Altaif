@@ -2,11 +2,19 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/store";
+import { usePathname } from "next/navigation";
 
 export default function FloatingCart() {
   const cart = useCart((s) => s.cart);
+  const pathname = usePathname();
 
-  if (cart.length === 0) return null;
+  if (
+  cart.length === 0 ||
+  pathname === "/cart" ||
+  pathname === "/checkout"
+) {
+  return null;
+}
 
   return (
     <Link
