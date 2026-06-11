@@ -11,7 +11,7 @@ export default function Checkout() {
   const [phone1, setPhone1] = useState("");
   const [phone2, setPhone2] = useState("");
   const [address, setAddress] = useState("");
-  const [image, setImage] = useState<any>(null);
+  
 
   const [copied, setCopied] = useState(false);
 
@@ -28,11 +28,6 @@ export default function Checkout() {
   const handleOrder = () => {
   if (!name || !phone1 || !address) {
     alert("من فضلك املى البيانات الأساسية");
-    return;
-  }
-
-  if (!image) {
-    alert("لازم ترفع صورة التحويل لتأكيد الطلب");
     return;
   }
 
@@ -137,8 +132,8 @@ ${total} جنيه
         }}
       >
         ⚠️ لتأكيد الطلب:<br />
-        برجاء تحويل ديبوزت 100 جنيه<br />
-        ثم رفع صورة التحويل بالأسفل
+        برجاء تحويل سعر الطلب كامل <br />
+        ثم اضغط تأكيد الطلب وسيتم فتح واتساب لإرسال بيانات الطلب وصورة التحويل.
       </div>
 
       {/* رقم التحويل + نسخ */}
@@ -177,24 +172,7 @@ ${total} جنيه
         </button>
       </div>
 
-      {/* رفع الصورة */}
-      <input
-        type="file"
-        onChange={(e) => setImage(e.target.files?.[0])}
-        style={{ marginTop: 15 }}
-      />
 
-      {/* معاينة الصورة */}
-      {image && (
-        <img
-          src={URL.createObjectURL(image)}
-          style={{
-            width: "100%",
-            marginTop: 10,
-            borderRadius: 10,
-          }}
-        />
-      )}
 
       <h3 style={{ marginTop: 20 }}>الإجمالي: {total} جنيه</h3>
 
