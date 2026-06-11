@@ -3,17 +3,25 @@
 import Link from "next/link";
 import { useCart } from "../lib/store";
 
+import {
+  FiHome,
+  FiGrid,
+  FiShoppingCart,
+  FiMessageCircle,
+  FiPhone,
+} from "react-icons/fi";
+
 export default function MobileBottomBar() {
   const cart = useCart((s) => s.cart);
 
   return (
     <div className="mobile-bar">
       <Link href="/" className="mobile-item">
-        <div className="mobile-icon">🏠</div>
+        <FiHome size={22} color="#000" />
       </Link>
 
       <Link href="/brands" className="mobile-item">
-        <div className="mobile-icon">🛍️</div>
+        <FiGrid size={22} color="#000" />
       </Link>
 
       <Link
@@ -43,7 +51,7 @@ export default function MobileBottomBar() {
           </div>
         )}
 
-        <div className="mobile-icon">🛒</div>
+        <FiShoppingCart size={22} color="#000" />
       </Link>
 
       <a
@@ -52,14 +60,14 @@ export default function MobileBottomBar() {
         rel="noopener noreferrer"
         className="mobile-item"
       >
-        <div className="mobile-icon">💬</div>
+        <FiMessageCircle size={22} color="#000" />
       </a>
 
       <a
         href="tel:01060230817"
         className="mobile-item"
       >
-        <div className="mobile-icon">📞</div>
+        <FiPhone size={22} color="#000" />
       </a>
     </div>
   );
