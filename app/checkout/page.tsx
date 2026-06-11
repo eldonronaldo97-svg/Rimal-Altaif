@@ -80,7 +80,9 @@ ${total} جنيه
 `;
 
   window.open(
-    `https://wa.me/201060230817?text=${encodeURIComponent(message)}`,
+    `https://wa.me/201060230817?text=${encodeURIComponent(
+      message
+    )}`,
     "_blank"
   );
 
@@ -90,14 +92,6 @@ ${total} جنيه
     window.location.href = "/";
   }, 1000);
 };
-
-    saveOrder(order);
-
-    alert("تم إرسال طلبك ✅ سيتم مراجعته بعد التأكد من التحويل");
-
-    localStorage.removeItem("cart");
-    window.location.href = "/";
-  };
 
   return (
     <div style={{ padding: 40, maxWidth: 500, margin: "auto" }}>
