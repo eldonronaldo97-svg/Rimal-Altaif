@@ -25,7 +25,7 @@ export const products = [
     price: 1600,
     image: "/products/tobacco-1.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
   {
     id: "d4",
@@ -54,7 +54,7 @@ export const products = [
     price: 1600,
     image: "/products/tobacco-4.jpg",
     category: "Unisex",
-    stock: true,
+    stock: false,
   },
   {
     id: "d7",
@@ -102,7 +102,7 @@ export const products = [
     price: 1600,
     image: "/products/diamond-1.jpg",
     category: "Unisex",
-    stock: true,
+    stock: false,
   },
   {
     id: "t2",
@@ -111,7 +111,7 @@ export const products = [
     price: 1600,
     image: "/products/diamond-2.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
   {
     id: "t3",
@@ -120,7 +120,7 @@ export const products = [
     price: 1600,
     image: "/products/diamond-3.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
   {
     id: "t4",
@@ -129,7 +129,7 @@ export const products = [
     price: 1600,
     image: "/products/diamond-4.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
   {
     id: "t5",
@@ -167,7 +167,7 @@ export const products = [
     price: 1600,
     image: "/products/diamond-7.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
    // Assaf Main Collection
 
@@ -196,7 +196,7 @@ export const products = [
     name: "Arrogate Comete",
     brand: "Assaf",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
     price: 1850,
     image: "/products/assaf/Arrogate_Comete.jpg",
@@ -237,7 +237,7 @@ export const products = [
     name: "Arrogate Pink",
     brand: "Assaf",
     category: "Women",
-    stock: true,
+    stock: false,
     bestSeller: true,
     price: 2100,
     image: "/products/assaf/arrogate-pink.jpg",
@@ -248,7 +248,7 @@ export const products = [
     name: "Arrogate Pink Rose",
     brand: "Assaf",
     category: "Women",
-    stock: true,
+    stock: false,
     bestSeller: true,
     price: 2000,
     image: "/products/assaf/arrogate-pink-rose.jpg",
@@ -259,7 +259,7 @@ export const products = [
     name: "Attacks",
     brand: "Assaf",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
     price: 2000,
     image: "/products/assaf/attacks.jpg",
@@ -432,7 +432,7 @@ export const products = [
     name: "Miss Flora",
     brand: "Assaf",
     category: "Women",
-    stock: true,
+    stock: false,
     price: 1250,
     image: "/products/assaf/miss-flora.jpg",
   },
@@ -542,7 +542,7 @@ export const products = [
     name: "Tobacco Jam 50",
     brand: "Assaf",
     category: "Men",
-    stock: true,
+    stock: false,
     price: 1850,
     image: "/products/assaf/tobacco-jam-50.jpg",
   },
@@ -623,7 +623,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Sapphire.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk3",
@@ -632,7 +632,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Oud.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk4",
@@ -686,7 +686,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Signature_Gold.jpg",
     "category": "Unisex",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk10",
@@ -694,6 +694,15 @@ export const products = [
     "brand": "Dkhoon",
     "price": 1600,
     "image": "/products/dkhoon/Signature_Black.jpg",
+    "category": "Men",
+    "stock": false
+  },
+  {
+    "id": "dk10",
+    "name": "Signature white",
+    "brand": "Dkhoon",
+    "price": 1600,
+    "image": "/products/dkhoon/Signature_white.jpg",
     "category": "Men",
     "stock": false
   },
@@ -713,7 +722,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Desert.jpg",
     "category": "Unisex",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk13",
@@ -722,7 +731,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Couture.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk14",
@@ -740,7 +749,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Dkhoon_Rose.jpg",
     "category": "Men",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk16",
@@ -776,7 +785,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Haneet.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk20",
@@ -803,7 +812,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Crown_Black.jpg",
     "category": "Men",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk33",
@@ -830,7 +839,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/So_Sweety.jpg",
     "category": "Women",
-    "stock": false
+    "stock": true
   },
   {
     id: "L1",
