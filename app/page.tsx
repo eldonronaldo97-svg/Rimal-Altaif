@@ -7,12 +7,17 @@ import ProductSlider from "../components/ProductSlider";
 import Footer from "../components/Footer";
 import MobileBottomBar from "../components/MobileBottomBar";
 
-import { products } from "../lib/products";
+import {
+  products,
+  homeBestSellers,
+} from "../lib/products";
 
 export default function Home() {
-  const bestSellers = products.filter(
-    (p) => p.bestSeller
-  );
+  const bestSellers = homeBestSellers
+  .map((id) =>
+    products.find((p) => p.id === id)
+  )
+  .filter(Boolean);
 
   const latestProducts = [...products]
     .reverse()

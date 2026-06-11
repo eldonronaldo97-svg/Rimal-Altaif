@@ -1049,4 +1049,15 @@ export const products = [
     price: 1600,
     image: "/products/9pm-afnan-classic.jpg",
   },
+  ];
+
+export const homeBestSellers = [
+  "d4", // Gris Erik
+  "dk33",  // Khamrah
+  "A2",  // Turathi Blue
+  "A8",  // Emerald Soul Diamond
+  "t6",  // Arrogate Comete
+  "a17",  // Spanish Tobacco
+  "d8",  // Arrogate Pink
+  "dk4", // Nude Coral Diamond
 ];
