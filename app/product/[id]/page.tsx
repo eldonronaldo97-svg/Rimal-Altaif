@@ -138,9 +138,9 @@ export default function ProductPage() {
               fontSize: 14,
             }}
           >
-            Premium luxury fragrance with elegant
-            performance, long-lasting scent and a
-            sophisticated signature experience.
+            عطر فاخر بتركيبة مميزة وثبات ممتاز
+            وفوحان جذاب يمنحك تجربة عطرية
+            استثنائية تناسب مختلف المناسبات.
           </p>
 
           <div
