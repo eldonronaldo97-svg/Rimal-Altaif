@@ -28,7 +28,7 @@ export default function WomenPage() {
               fontWeight: 700,
             }}
           >
-            Women Perfumes
+            عطور نسائي
           </h1>
         </div>
 

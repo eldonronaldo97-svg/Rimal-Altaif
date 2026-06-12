@@ -28,7 +28,7 @@ export default function MenPage() {
               fontWeight: 700,
             }}
           >
-            Men Perfumes
+            عطور رجالى
           </h1>
         </div>
 

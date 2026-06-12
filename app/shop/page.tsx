@@ -25,7 +25,7 @@ export default function ShopPage() {
               fontWeight: 700,
             }}
           >
-            All Products
+            جميع المنتجات
           </h1>
         </div>
 

@@ -28,7 +28,7 @@ export default function UnisexPage() {
               fontWeight: 700,
             }}
           >
-            Unisex Perfumes
+            عطور للجنسين
           </h1>
         </div>
 

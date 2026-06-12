@@ -26,7 +26,7 @@ export default function LatestReleasePage() {
               fontWeight: 700,
             }}
           >
-            Latest Release
+            أحدث الأصدارات
           </h1>
         </div>
 
