@@ -34,7 +34,7 @@ export default function CartPage() {
               marginBottom: 12,
             }}
           >
-            Your Cart Is Empty
+            السلة فارغة
           </h1>
 
           <p
@@ -43,7 +43,7 @@ export default function CartPage() {
               marginBottom: 30,
             }}
           >
-            Start exploring our fragrances.
+            ابدأ تصفح مجموعتنا من العطور.
           </p>
 
           <Link href="/">
@@ -58,7 +58,7 @@ export default function CartPage() {
                 fontWeight: 600,
               }}
             >
-              Continue Shopping
+              متابعة التسوق
             </button>
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function CartPage() {
             fontWeight: 700,
           }}
         >
-          Shopping Cart
+          سلة التسوق
         </h1>
 
         {cart.map((item, index) => (
@@ -175,7 +175,7 @@ export default function CartPage() {
               fontWeight: 700,
             }}
           >
-            <span>Total</span>
+            <span>الاجمالي</span>
             <span>EGP {total}</span>
           </div>
 
@@ -192,7 +192,7 @@ export default function CartPage() {
                 fontWeight: 700,
               }}
             >
-              Proceed To Checkout
+              إتمام الطلب
             </button>
           </Link>
 
@@ -209,7 +209,7 @@ export default function CartPage() {
                 fontWeight: 600,
               }}
             >
-              Continue Shopping
+              متابعة التسوق
             </button>
           </Link>
         </div>
