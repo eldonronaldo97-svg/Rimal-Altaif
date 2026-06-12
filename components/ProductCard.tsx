@@ -78,8 +78,8 @@ export default function ProductCard({ p }: any) {
         }}
       >
         {p.stock
-          ? "Add To Cart"
-          : "Sold Out"}
+          ? "اضف للسلة"
+          : "نفذت الكمية"}
       </button>
     </div>
   );
