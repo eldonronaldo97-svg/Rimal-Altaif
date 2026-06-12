@@ -101,7 +101,7 @@ export default function Navbar() {
             }}
           >
             <span style={{ fontSize: 20 }}>
-              Menu
+              القائمة
             </span>
 
             <button
@@ -123,7 +123,7 @@ export default function Navbar() {
           <div style={{ padding: 20 }}>
             <MenuLink
               href="/"
-              text="Home"
+              text="الرئيسية"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -131,7 +131,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/brands"
-              text="Brands"
+              text="البرندات"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -139,7 +139,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/best-sellers"
-              text="Best Selling"
+              text="الأكثر مبيعاً"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -147,7 +147,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/latest-release"
-              text="Latest Release"
+              text="أحدث الإصدارات"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -155,7 +155,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/men"
-              text="Men Perfumes"
+              text="عطور رجالي"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -163,7 +163,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/women"
-              text="Women Perfumes"
+              text="عطور نسائي"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -171,7 +171,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/unisex"
-              text="Unisex Perfumes"
+              text="عطور للجنسين"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -179,7 +179,7 @@ export default function Navbar() {
 
             <MenuLink
               href="/shop"
-              text="All Products"
+              text="جميع المنتجات"
               onClick={() =>
                 setMenuOpen(false)
               }
@@ -225,7 +225,7 @@ export default function Navbar() {
           >
             <input
               autoFocus
-              placeholder="Search perfumes..."
+              placeholder="ابحث عن عطر أو براند..."
               value={query}
               onChange={(e) =>
                 setQuery(
