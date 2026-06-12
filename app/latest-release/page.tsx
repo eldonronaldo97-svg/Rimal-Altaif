@@ -8,7 +8,11 @@ import { products } from "../../lib/products";
 export default function LatestReleasePage() {
   const latestProducts = [...products]
     .reverse()
-    .slice(0, 50);
+    .slice(0, 50)
+    .sort((a: any, b: any) => {
+      if (a.stock === b.stock) return 0;
+      return a.stock ? -1 : 1;
+    });
 
   return (
     <>

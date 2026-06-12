@@ -6,6 +6,13 @@ import ProductCard from "../../components/ProductCard";
 import { products } from "../../lib/products";
 
 export default function ShopPage() {
+  const sortedProducts = [...products].sort(
+    (a: any, b: any) => {
+      if (a.stock === b.stock) return 0;
+      return a.stock ? -1 : 1;
+    }
+  );
+
   return (
     <>
       <Navbar />
@@ -30,7 +37,7 @@ export default function ShopPage() {
             gap: 12,
           }}
         >
-          {products.map((p: any) => (
+          {sortedProducts.map((p: any) => (
             <ProductCard
               key={p.id}
               p={p}

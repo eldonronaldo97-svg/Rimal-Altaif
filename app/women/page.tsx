@@ -6,10 +6,15 @@ import ProductCard from "../../components/ProductCard";
 import { products } from "../../lib/products";
 
 export default function WomenPage() {
-  const womenProducts = products.filter(
-    (p: any) =>
-      p.category?.toLowerCase() === "women"
-  );
+  const womenProducts = products
+    .filter(
+      (p: any) =>
+        p.category?.toLowerCase() === "women"
+    )
+    .sort((a: any, b: any) => {
+      if (a.stock === b.stock) return 0;
+      return a.stock ? -1 : 1;
+    });
 
   return (
     <>

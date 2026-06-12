@@ -6,9 +6,12 @@ import ProductCard from "../../components/ProductCard";
 import { products } from "../../lib/products";
 
 export default function BestSellersPage() {
-  const bestSellers = products.filter(
-    (p: any) => p.bestSeller
-  );
+  const bestSellers = products
+    .filter((p: any) => p.bestSeller)
+    .sort((a: any, b: any) => {
+      if (a.stock === b.stock) return 0;
+      return a.stock ? -1 : 1;
+    });
 
   return (
     <>
