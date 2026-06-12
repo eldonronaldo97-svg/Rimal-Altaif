@@ -42,17 +42,17 @@ export default function Home() {
       <BrandSlider />
 
       <ProductSlider
-        title="Best Selling"
+        title="الأكثر مبيعًا"
         products={sortByStock(bestSellers)}
       />
 
       <ProductSlider
-        title="Latest Release"
+        title="أحدث الإصدارات"
         products={sortByStock(latestProducts)}
       />
 
       <ProductSlider
-        title="Men Perfumes"
+        title="عطور رجالي"
         products={sortByStock(
           products.filter(
             (p) => p.category === "Men"
@@ -61,7 +61,7 @@ export default function Home() {
       />
 
       <ProductSlider
-        title="Women Perfumes"
+        title="عطور حريمي"
         products={sortByStock(
           products.filter(
             (p) => p.category === "Women"
@@ -70,7 +70,7 @@ export default function Home() {
       />
 
       <ProductSlider
-        title="Unisex Perfumes"
+        title="عطور للجنسين"
         products={sortByStock(
           products.filter(
             (p) => p.category === "Unisex"
@@ -79,7 +79,7 @@ export default function Home() {
       />
 
       <ProductSlider
-        title="All Products"
+        title="جميع العطور"
         products={sortByStock(featuredProducts)}
       />
 
