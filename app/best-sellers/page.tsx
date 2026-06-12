@@ -25,7 +25,7 @@ export default function BestSellersPage() {
               fontWeight: 700,
             }}
           >
-            Best Sellers
+            الأكثر مبيعًا
           </h1>
         </div>
 
