@@ -8,21 +8,27 @@ export default function ProductSlider({
   const getLink = () => {
     switch (title) {
       case "Best Selling":
+      case "الأكثر مبيعًا":
         return "/best-sellers";
 
       case "Latest Release":
+      case "أحدث الإصدارات":
         return "/latest-release";
 
-        case "Men Perfumes":
-      return "/men";
+      case "Men Perfumes":
+      case "عطور رجالي":
+        return "/men";
 
-    case "Women Perfumes":
-      return "/women";
+      case "Women Perfumes":
+      case "عطور نسائي":
+        return "/women";
 
-    case "Unisex Perfumes":
-      return "/unisex";
+      case "Unisex Perfumes":
+      case "عطور للجنسين":
+        return "/unisex";
 
       case "All Products":
+      case "جميع المنتجات":
         return "/shop";
 
       default:
@@ -45,6 +51,7 @@ export default function ProductSlider({
             className="section-title"
             style={{
               marginBottom: 0,
+              textAlign: "right",
             }}
           >
             {title}
@@ -57,11 +64,16 @@ export default function ProductSlider({
               textDecoration: "underline",
             }}
           >
-            View All
+            عرض الكل
           </Link>
         </div>
 
-        <div className="products-slider">
+        <div
+          className="products-slider"
+          style={{
+            direction: "rtl",
+          }}
+        >
           {products.map((p: any) => (
             <ProductCard
               key={p.id}
