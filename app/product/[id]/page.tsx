@@ -24,7 +24,7 @@ export default function ProductPage() {
           fontSize: 18,
         }}
       >
-        Product not found
+        المنتج غير متاح
       </div>
     );
   }
@@ -73,7 +73,7 @@ export default function ProductPage() {
         padding: "8px 12px",
       }}
     >
-      Sold Out
+      نفذت الكمية
     </div>
   )}
 
@@ -155,7 +155,7 @@ export default function ProductPage() {
                 fontSize: 14,
               }}
             >
-              Category: {product.category}
+              الفئة: {product.category}
             </p>
 
             <p
@@ -163,10 +163,10 @@ export default function ProductPage() {
                 fontSize: 14,
               }}
             >
-              Availability:{" "}
+              التوفر:{" "}
               {product.stock
-                ? "In Stock"
-                : "Sold Out"}
+                ? "متوفر"
+                : "نفذت الكمية"}
             </p>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function ProductPage() {
               textAlign: "left",
             }}
           >
-            You May Also Like
+            قد يعجبك ايضًا
           </h2>
 
           <div
@@ -285,7 +285,7 @@ export default function ProductPage() {
     textTransform: "uppercase",
   }}
 >
-  Add To Cart
+  اضف للسلة
 </button>
 
         <a
@@ -305,7 +305,7 @@ export default function ProductPage() {
             background: "#fff",
           }}
         >
-          WhatsApp
+          واتساب
         </a>
       </div>
     </main>
