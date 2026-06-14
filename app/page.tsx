@@ -79,7 +79,7 @@ export default function Home() {
       />
 
       <ProductSlider
-        title="جميع العطور"
+        title="جميع المنتجات"
         products={sortByStock(featuredProducts)}
       />
 
