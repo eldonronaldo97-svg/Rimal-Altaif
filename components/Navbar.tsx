@@ -129,13 +129,6 @@ export default function Navbar() {
               }
             />
 
-            <MenuLink
-              href="/brands"
-              text="البرندات"
-              onClick={() =>
-                setMenuOpen(false)
-              }
-            />
 
             <MenuLink
               href="/best-sellers"
