@@ -59,7 +59,6 @@ export default function MenuDrawer() {
 
           <div style={{ padding: 20 }}>
             <MenuLink href="/" text="Home" />
-            <MenuLink href="/brands" text="Brands" />
             <MenuLink href="/latest-release" text="Latest Release" />
             <MenuLink href="/best-sellers" text="Best Sellers" />
             <MenuLink href="/shop" text="All Products" />
