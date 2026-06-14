@@ -12,11 +12,16 @@ export default async function BrandPage({
 }) {
   const { brand } = await params;
 
-  const filteredProducts = products.filter(
+  const filteredProducts = products
+  .filter(
     (p: any) =>
       p.brand &&
       p.brand.toLowerCase().replace(/\s+/g, "-") === brand
-  );
+  )
+  .sort((a: any, b: any) => {
+    if (a.stock === b.stock) return 0;
+    return a.stock ? -1 : 1;
+  });
 
   return (
     <>
