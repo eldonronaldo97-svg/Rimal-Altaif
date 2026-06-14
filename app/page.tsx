@@ -61,7 +61,7 @@ export default function Home() {
       />
 
       <ProductSlider
-        title="عطور حريمي"
+        title="عطور نسائي"
         products={sortByStock(
           products.filter(
             (p) => p.category === "Women"
