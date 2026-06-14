@@ -40,7 +40,7 @@ export default function BrandSlider() {
     <section className="section">
       <div className="container">
         <h2 className="section-title">
-          All Brands
+          البرندات
         </h2>
 
         <div className="brand-slider">
