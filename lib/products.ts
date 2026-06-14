@@ -606,7 +606,24 @@ export const products = [
     price: 1850,
     image: "/products/assaf/wild-colt-bakhur.jpg",
   },
-
+{
+    id: "a45",
+    name: "Frankel Elixer Intense",
+    brand: "Assaf",
+    category: "Men",
+    stock: true,
+    price: 1250,
+    image: "/products/assaf/Frankel Elixer.webp",
+  },
+  {
+    id: "a46",
+    name: "Frankel Afternoon",
+    brand: "Assaf",
+    category: "Men",
+    stock: true,
+    price: 1250,
+    image: "/products/assaf/FrankelAfterNoon.webp",
+  },
   {
     "id": "dk1",
     "name": "Balqees",
