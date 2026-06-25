@@ -50,13 +50,28 @@ export default function ProductCard({ p }: any) {
         </div>
 
         <div className="product-name">
-          {p.name}
-        </div>
+  {p.name}
+</div>
 
-        <div className="product-price">
-          EGP {p.price}
-        </div>
-      </div>
+<div
+  style={{
+    display: "inline-block",
+    marginTop: 8,
+    padding: "4px 10px",
+    border: "1px solid #ddd",
+    borderRadius: 999,
+    fontSize: 11,
+    color: "#666",
+    background: "#fafafa",
+    fontWeight: 600,
+  }}
+>
+  {p.size}
+</div>
+
+<div className="product-price">
+  {p.price} جنيه
+</div>
 
       <button
         className="product-btn"

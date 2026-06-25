@@ -110,26 +110,41 @@ export default function ProductPage() {
           </p>
 
           <h1
-            style={{
-              fontSize: 32,
-              fontWeight: 300,
-              lineHeight: 1.1,
-              marginBottom: 16,
-            }}
-          >
-            {product.name}
-          </h1>
+  style={{
+    fontSize: 32,
+    fontWeight: 300,
+    lineHeight: 1.1,
+    marginBottom: 12,
+  }}
+>
+  {product.name}
+</h1>
 
-          <p
-            style={{
-              fontSize: 22,
-              marginBottom: 22,
-              letterSpacing: "2px",
-            }}
-          >
-            EGP {product.price}
-          </p>
+<div
+  style={{
+    display: "inline-block",
+    padding: "5px 12px",
+    border: "1px solid #ddd",
+    borderRadius: 999,
+    background: "#fafafa",
+    color: "#666",
+    fontSize: 13,
+    fontWeight: 600,
+    marginBottom: 18,
+  }}
+>
+  {product.size}
+</div>
 
+<p
+  style={{
+    fontSize: 22,
+    marginBottom: 22,
+    letterSpacing: "2px",
+  }}
+>
+  {product.price} جنيه
+</p>
           <p
             style={{
               color: "#666",
