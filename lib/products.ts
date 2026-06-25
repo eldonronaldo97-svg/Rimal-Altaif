@@ -1191,7 +1191,7 @@ export const products = [
     id: "a35",
     name: "Rebel Enable",
     brand: "Assaf",
-    size: "200ml",
+    size: "150ml",
     category: "unisex",
     stock: true,
     price: 1700,
