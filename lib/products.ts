@@ -640,7 +640,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Sapphire.jpg",
     "category": "Men",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk3",
@@ -811,7 +811,7 @@ export const products = [
     "price": 1600,
     "image": "/products/dkhoon/Haneet.jpg",
     "category": "Women",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk20",
@@ -873,7 +873,7 @@ export const products = [
     brand: "Lattafa",
     category: "Men",
     stock: true,
-    price: 999,
+    price: 1100,
     image: "/products/fakhar-black-lattafa.jpg",
   },
   {
@@ -882,7 +882,7 @@ export const products = [
     brand: "Lattafa",
     category: "Unisex",
     stock: true,
-    price: 1250,
+    price: 1350,
     image: "/products/khamrah-lattafa.jpg",
   },
   {
@@ -891,7 +891,7 @@ export const products = [
     brand: "Lattafa",
     category: "Women",
     stock: true,
-    price: 1100,
+    price: 1150,
     image: "/products/fakhar-gold-lattafa.jpg",
   },
   {
@@ -909,7 +909,7 @@ export const products = [
     brand: "Lattafa",
     category: "Women",
     stock: true,
-    price: 999,
+    price: 1100,
     image: "/products/yara-lattafa.jpg",
   },
   {
@@ -918,7 +918,7 @@ export const products = [
     brand: "Lattafa",
     category: "Unisex",
     stock: true,
-    price: 1250,
+    price: 1350,
     image: "/products/khamrah-qahwa-lattafa.jpg",
   },
   {
@@ -971,17 +971,17 @@ export const products = [
     name: "Rare Reef",
     brand: "Afnan",
     category: "Men",
-    stock: false,
+    stock: true,
     price: 1599,
     image: "/products/rare-reef-afnan.jpg",
   },
   {
     id: "L12",
-    name: "Yara Moi",
+    name: "Yara Elixer",
     brand: "Lattafa",
     category: "Women",
     stock: false,
-    price: 999,
+    price: 1150,
     image: "/products/yara-moi-lattafa.jpg",
   },
   {
@@ -990,7 +990,7 @@ export const products = [
     brand: "Afnan",
     category: "Men",
     stock: false,
-    price: 1900,
+    price: 2999,
     image: "/products/supremacy-collectors-edition-afnan.jpg",
   },
   {
@@ -1052,7 +1052,7 @@ export const products = [
     name: "9PM Classic",
     brand: "Afnan",
     category: "Men",
-    stock: false,
+    stock: true,
     price: 1600,
     image: "/products/9pm-afnan-classic.jpg",
   },
@@ -1062,7 +1062,7 @@ export const products = [
     brand: "Afnan",
     category: "Men",
     stock: true,
-    price: 1750,
+    price: 1850,
     image: "/products/9pm-nightout-afnan.jpg",
   },
   {
@@ -1071,7 +1071,7 @@ export const products = [
     brand: "Afnan",
     category: "Men",
     stock: true,
-    price: 1650,
+    price: 1750,
     image: "/products/9pm-rebel-afnan.jpg",
   },
   {
