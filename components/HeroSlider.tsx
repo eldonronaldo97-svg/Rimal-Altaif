@@ -14,9 +14,7 @@ export default function HeroSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) =>
-        prev === banners.length - 1
-          ? 0
-          : prev + 1
+        prev === banners.length - 1 ? 0 : prev + 1
       );
     }, 5000);
 
@@ -25,14 +23,16 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="container"
       style={{
-        marginTop: 15,
+        width: "100%",
+        marginTop: 0,
       }}
     >
       <div
         style={{
           position: "relative",
+          width: "100%",
+          overflow: "hidden",
         }}
       >
         <img
@@ -40,18 +40,17 @@ export default function HeroSlider() {
           alt=""
           style={{
             width: "100%",
-            borderRadius: 16,
             display: "block",
+            objectFit: "cover",
           }}
         />
 
         <div
           style={{
             position: "absolute",
-            bottom: 14,
+            bottom: 16,
             left: "50%",
-            transform:
-              "translateX(-50%)",
+            transform: "translateX(-50%)",
             display: "flex",
             gap: 8,
           }}
@@ -59,14 +58,9 @@ export default function HeroSlider() {
           {banners.map((_, i) => (
             <button
               key={i}
-              onClick={() =>
-                setActive(i)
-              }
+              onClick={() => setActive(i)}
               style={{
-                width:
-                  active === i
-                    ? 24
-                    : 8,
+                width: active === i ? 24 : 8,
                 height: 8,
                 borderRadius: 999,
                 background:
