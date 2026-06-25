@@ -1,6 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function HeroSlider() {
   const banners = [
@@ -9,70 +13,33 @@ export default function HeroSlider() {
     "/banner3.jpg",
   ];
 
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) =>
-        prev === banners.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      pagination={{ clickable: true }}
+      loop
+      dir="rtl"
       style={{
         width: "100%",
-        marginTop: 0,
       }}
     >
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          overflow: "hidden",
-        }}
-      >
-        <img
-          src={banners[active]}
-          alt=""
-          style={{
-            width: "100%",
-            display: "block",
-            objectFit: "cover",
-          }}
-        />
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: 16,
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            gap: 8,
-          }}
-        >
-          {banners.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              style={{
-                width: active === i ? 24 : 8,
-                height: 8,
-                borderRadius: 999,
-                background:
-                  active === i
-                    ? "#fff"
-                    : "rgba(255,255,255,.5)",
-                transition: ".3s",
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      {banners.map((banner, index) => (
+        <SwiperSlide key={index}>
+          <img
+            src={banner}
+            alt=""
+            style={{
+              width: "100%",
+              display: "block",
+              objectFit: "cover",
+            }}
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
