@@ -73,6 +73,8 @@ export default function ProductCard({ p }: any) {
   {p.price} جنيه
 </div>
 
+</div>
+
       <button
         className="product-btn"
         disabled={!p.stock}
