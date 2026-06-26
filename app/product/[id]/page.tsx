@@ -300,6 +300,14 @@ export default function ProductPage() {
           zIndex: 100,
         }}
       >
+        <div>✔️ منتجات أصلية 100%</div>
+
+  <div>🚚 شحن لجميع محافظات مصر</div>
+
+  <div>🎁 تغليف فاخر وآمن</div>
+
+  <div>💬 خدمة عملاء عبر واتساب</div>
+</div>
         <button
   onClick={() =>
     add({
@@ -319,6 +327,7 @@ export default function ProductPage() {
     textTransform: "uppercase",
   }}
 >
+  
   اضف للسلة
 </button>
 
