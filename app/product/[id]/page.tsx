@@ -6,6 +6,12 @@ import { products } from "@/lib/products";
 import { useCart } from "@/lib/store";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import {
+  ShieldCheck,
+  Truck,
+  Gift,
+  MessageCircle,
+} from "lucide-react";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -196,6 +202,61 @@ export default function ProductPage() {
           </div>
         </div>
 
+        <div
+  style={{
+    marginTop: 40,
+    borderTop: "1px solid #eee",
+    paddingTop: 24,
+    display: "grid",
+    gap: 18,
+    paddingBottom: 20,
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+    }}
+  >
+    <ShieldCheck size={20} />
+    <span>منتجات أصلية 100%</span>
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+    }}
+  >
+    <Truck size={20} />
+    <span>شحن لجميع محافظات مصر</span>
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+    }}
+  >
+    <Gift size={20} />
+    <span>تغليف فاخر وآمن</span>
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+    }}
+  >
+    <MessageCircle size={20} />
+    <span>خدمة عملاء عبر واتساب</span>
+  </div>
+</div>
+
         {/* RELATED */}
         <div
           style={{
@@ -284,24 +345,6 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <div
-  style={{
-    marginTop: 40,
-    borderTop: "1px solid #eee",
-    paddingTop: 24,
-    display: "grid",
-    gap: 14,
-    paddingBottom: 20,
-  }}
->
-  <div>✔️ منتجات أصلية 100%</div>
-
-  <div>🚚 شحن لجميع محافظات مصر</div>
-
-  <div>🎁 تغليف فاخر وآمن</div>
-
-  <div>💬 خدمة عملاء عبر واتساب</div>
-</div>
 
 {/* FIXED BUTTONS */}
 
