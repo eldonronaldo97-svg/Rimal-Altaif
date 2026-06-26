@@ -217,7 +217,6 @@ export default function Navbar() {
             }}
           >
             <input
-              autoFocus
               placeholder="ابحث عن عطر أو براند..."
               value={query}
               onChange={(e) =>
@@ -231,6 +230,7 @@ export default function Navbar() {
                 border:
                   "1px solid #ddd",
                 borderRadius: 8,
+                fontSize: 16,
               }}
             />
 
