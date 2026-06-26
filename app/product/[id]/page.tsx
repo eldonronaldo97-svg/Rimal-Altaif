@@ -212,8 +212,17 @@ export default function ProductPage() {
             }}
           >
             {products
-              .slice(0, 4)
-              .map((p) => (
+  .filter(
+    (p) =>
+      p.brand === product.brand &&
+      p.id !== product.id
+  )
+  .sort((a, b) => {
+    if (a.stock === b.stock) return 0;
+    return a.stock ? -1 : 1;
+  })
+  .slice(0, 4)
+  .map((p) => (
                 <Link
                   key={p.id}
                   href={`/product/${p.id}`}
