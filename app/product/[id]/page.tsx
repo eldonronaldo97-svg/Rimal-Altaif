@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/store";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -77,18 +79,26 @@ export default function ProductPage() {
     </div>
   )}
 
-  <img
-    src={product.image}
-    alt={product.name}
-    style={{
-      width: "100%",
-      maxWidth: 420,
-      height: "auto",
-      objectFit: "contain",
-      display: "block",
-      margin: "0 auto",
-    }}
-  />
+  <PhotoProvider
+  maskOpacity={0.95}
+  bannerVisible={false}
+>
+  <PhotoView src={product.image}>
+    <img
+      src={product.image}
+      alt={product.name}
+      style={{
+        width: "100%",
+        maxWidth: 420,
+        height: "auto",
+        objectFit: "contain",
+        display: "block",
+        margin: "0 auto",
+        cursor: "zoom-in",
+      }}
+    />
+  </PhotoView>
+</PhotoProvider>
 </div>
 
         {/* INFO */}
