@@ -284,6 +284,27 @@ export default function ProductPage() {
         </div>
       </div>
 
+      <div
+  style={{
+    marginTop: 40,
+    borderTop: "1px solid #eee",
+    paddingTop: 24,
+    display: "grid",
+    gap: 14,
+    paddingBottom: 20,
+  }}
+>
+  <div>✔️ منتجات أصلية 100%</div>
+
+  <div>🚚 شحن لجميع محافظات مصر</div>
+
+  <div>🎁 تغليف فاخر وآمن</div>
+
+  <div>💬 خدمة عملاء عبر واتساب</div>
+</div>
+
+{/* FIXED BUTTONS */}
+
       {/* FIXED BUTTONS */}
       <div
         style={{
@@ -300,14 +321,6 @@ export default function ProductPage() {
           zIndex: 100,
         }}
       >
-        <div>✔️ منتجات أصلية 100%</div>
-
-  <div>🚚 شحن لجميع محافظات مصر</div>
-
-  <div>🎁 تغليف فاخر وآمن</div>
-
-  <div>💬 خدمة عملاء عبر واتساب</div>
-</div>
         <button
   onClick={() =>
     add({
