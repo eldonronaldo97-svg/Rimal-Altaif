@@ -1,204 +1,216 @@
 "use client";
 
-import { useState } from "react";
-import { useCart } from "../../lib/store";
-import { saveOrder } from "../../lib/orders";
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function Checkout() {
-  const cart = useCart((s) => s.cart);
+import CustomerForm from "@/components/checkout/CustomerForm";
+import PaymentMethods from "@/components/checkout/PaymentMethods";
+import TransferUpload from "@/components/checkout/TransferUpload";
+import CouponCard from "@/components/checkout/CouponCard";
+import OrderSummary from "@/components/checkout/OrderSummary";
+import CheckoutButton from "@/components/checkout/CheckoutButton";
 
-  const [name, setName] = useState("");
-  const [phone1, setPhone1] = useState("");
-  const [phone2, setPhone2] = useState("");
-  const [address, setAddress] = useState("");
-  
+import {
+  checkoutSchema,
+  CheckoutForm,
+} from "@/lib/checkout/validation";
 
-  const [copied, setCopied] = useState(false);
+import {
+  calculateDiscount,
+} from "@/lib/checkout/discount";
 
-  const vodafoneNumber = "01060230817"; // 👈 غير الرقم هنا
+import {
+  calculateShipping,
+} from "@/lib/checkout/shipping";
 
-  const total = cart.reduce((s, i) => s + i.price, 0);
+import {
+  PaymentMethod,
+} from "@/lib/checkout/types";
 
-  const copyNumber = () => {
-    navigator.clipboard.writeText(vodafoneNumber);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+import {
+  useCart,
+} from "@/lib/store";
 
-  const handleOrder = () => {
-  if (!name || !phone1 || !address) {
-    alert("من فضلك املى البيانات الأساسية");
-    return;
+import {
+  saveOrder,
+} from "@/lib/orders";
+
+export default function CheckoutPage() {
+  const router = useRouter();
+
+  const { cart, clear } = useCart();
+
+  const [paymentMethod, setPaymentMethod] =
+    useState<PaymentMethod>("cod");
+
+  const [receipt, setReceipt] =
+    useState<File | null>(null);
+
+  const [coupon, setCoupon] =
+    useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const [couponApplied, setCouponApplied] =
+    useState(false);
+
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<CheckoutForm>({
+    resolver: zodResolver(checkoutSchema),
+  });
+
+  const subtotal = useMemo(() => {
+    return cart.reduce(
+      (sum, item) =>
+        sum + item.price * item.qty,
+      0
+    );
+  }, [cart]);
+
+  const shipping = useMemo(() => {
+    return calculateShipping();
+  }, []);
+
+  const discount = useMemo(() => {
+    if (!couponApplied) return 0;
+
+    return calculateDiscount(
+      subtotal,
+      coupon
+    );
+  }, [
+    subtotal,
+    coupon,
+    couponApplied,
+  ]);
+
+  const total =
+    subtotal +
+    shipping -
+    discount;
+
+  function applyCoupon() {
+    setCouponApplied(true);
   }
 
-  const order = {
-    customer: {
-      name,
-      phone1,
-      phone2,
-      address,
-    },
-    items: cart,
-    total,
-    status: "pending",
-    date: new Date().toLocaleString(),
-  };
+  async function onSubmit(
+    data: CheckoutForm
+  ) {
+    try {
+      setLoading(true);
 
-  saveOrder(order);
+      if (
+        paymentMethod !== "cod" &&
+        !receipt
+      ) {
+        alert(
+          "Please upload payment receipt."
+        );
 
-  const itemsText = cart
-    .map(
-      (item) =>
-        `• ${item.name} - ${item.price} جنيه`
-    )
-    .join("\n");
+        return;
+      }
 
-  const message = `
-طلب جديد 🔥
+      const order = saveOrder({
+        customer: data,
 
-الاسم: ${name}
+        products: cart,
 
-الموبايل: ${phone1}
+        paymentMethod,
 
-رقم إضافي: ${phone2 || "لا يوجد"}
+        receipt: receipt
+          ? receipt.name
+          : null,
 
-العنوان:
-${address}
+        coupon,
 
-المنتجات:
-${itemsText}
+        subtotal,
 
-الإجمالي:
-${total} جنيه
+        shipping,
 
-⚠️ لتأكيد الطلب برجاء ارسال صورة التحويل هنا فى واتس اب .
-`;
+        discount,
 
-  window.open(
-    `https://wa.me/201060230817?text=${encodeURIComponent(
-      message
-    )}`,
-    "_blank"
-  );
+        total,
+      });
 
-  localStorage.removeItem("cart");
+      clear();
 
-  setTimeout(() => {
-    window.location.href = "/";
-  }, 1000);
-};
+      reset();
 
-  return (
-    <div style={{ padding: 40, maxWidth: 500, margin: "auto" }}>
-      <h2 style={{ marginBottom: 20 }}>إتمام الطلب</h2>
+      router.push(
+        `/checkout/success?id=${order.id}`
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+    return (
+    <main className="mx-auto max-w-7xl px-4 py-10">
 
-      {/* بيانات العميل */}
-      <input
-        placeholder="الاسم"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        style={inputStyle}
-      />
-
-      <input
-        placeholder="رقم الموبايل الأساسي"
-        value={phone1}
-        onChange={(e) => setPhone1(e.target.value)}
-        style={inputStyle}
-      />
-
-      <input
-        placeholder="رقم تاني (اختياري)"
-        value={phone2}
-        onChange={(e) => setPhone2(e.target.value)}
-        style={inputStyle}
-      />
-
-      <textarea
-        placeholder="العنوان"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-        style={{ ...inputStyle, height: 100 }}
-      />
-
-      {/* رسالة الديبوزيت */}
-      <div
-        style={{
-          background: "#fff3cd",
-          padding: 15,
-          borderRadius: 8,
-          marginTop: 15,
-          fontSize: 14,
-        }}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid gap-8 lg:grid-cols-3"
       >
-        ⚠️ لتأكيد الطلب:<br />
-        برجاء تحويل سعر الطلب كامل <br />
-        ثم اضغط تأكيد الطلب وسيتم فتح واتساب لإرسال بيانات الطلب وصورة التحويل.
-      </div>
 
-      {/* رقم التحويل + نسخ */}
-      <div
-        style={{
-          marginTop: 15,
-          background: "#fff",
-          padding: 15,
-          borderRadius: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          border: "1px solid #eee",
-        }}
-      >
-        <div>
-          <p style={{ margin: 0, fontSize: 12, color: "#888" }}>
-            رقم التحويل (فودافون كاش)
-          </p>
-          <strong style={{ fontSize: 18 }}>{vodafoneNumber}</strong>
+        {/* Left Side */}
+
+        <div className="space-y-6 lg:col-span-2">
+
+          <CustomerForm
+            register={register}
+            watch={watch}
+            errors={errors}
+          />
+
+          <PaymentMethods
+            value={paymentMethod}
+            onChange={setPaymentMethod}
+          />
+
+          <TransferUpload
+            paymentMethod={paymentMethod}
+            receipt={receipt}
+            onReceiptChange={setReceipt}
+          />
+
+          <CouponCard
+            coupon={coupon}
+            onCouponChange={setCoupon}
+            onApply={applyCoupon}
+            applied={couponApplied}
+            discount={discount}
+          />
+
+          <CheckoutButton
+            loading={loading}
+            disabled={cart.length === 0}
+          />
+
         </div>
 
-        <button
-          onClick={copyNumber}
-          style={{
-            padding: "8px 15px",
-            background: copied ? "green" : "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: 6,
-            fontSize: 12,
-            cursor: "pointer",
-          }}
-        >
-          {copied ? "تم النسخ ✓" : "نسخ"}
-        </button>
-      </div>
+        {/* Right Side */}
 
+        <div>
 
+          <OrderSummary
+            products={cart}
+            subtotal={subtotal}
+            shipping={shipping}
+            discount={discount}
+            total={total}
+          />
 
-      <h3 style={{ marginTop: 20 }}>الإجمالي: {total} جنيه</h3>
+        </div>
 
-      <button
-        onClick={handleOrder}
-        style={{
-          marginTop: 20,
-          width: "100%",
-          padding: 15,
-          background: "#000",
-          color: "#fff",
-          border: "none",
-          borderRadius: 8,
-          fontWeight: "bold",
-        }}
-      >
-        تأكيد الطلب
-      </button>
-    </div>
+      </form>
+
+    </main>
   );
 }
-
-const inputStyle = {
-  width: "100%",
-  padding: 12,
-  marginBottom: 10,
-  border: "1px solid #ddd",
-  borderRadius: 8,
-};
