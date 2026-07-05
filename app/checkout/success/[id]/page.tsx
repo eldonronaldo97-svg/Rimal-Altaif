@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import {
   CheckCircle2,
   Home,
@@ -12,18 +15,14 @@ import {
 
 import { getOrderById } from "@/lib/orders";
 
-interface Props {
-  params: Promise<{
-    id: string;
-  }>;
-}
+export default function SuccessPage() {
+  const params = useParams();
 
-export default async function SuccessPage({
-  params,
-}: Props) {
-  const { id } = await params;
+const id = Array.isArray(params.id)
+  ? params.id[0]
+  : params.id;
 
-  const order = getOrderById(id);
+const order = id ? getOrderById(id) : undefined;
 
   if (!order) {
     return (
