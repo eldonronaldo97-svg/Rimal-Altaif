@@ -144,9 +144,7 @@ export default function CheckoutPage() {
 
       reset();
 
-      router.push(
-        `/checkout/success?id=${order.id}`
-      );
+      router.push(`/checkout/success/${order.id}`);
     } finally {
       setLoading(false);
     }
