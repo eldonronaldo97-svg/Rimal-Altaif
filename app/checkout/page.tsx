@@ -4,9 +4,9 @@ import { ChevronDown, ShoppingBag } from "lucide-react";
 
 export default function CheckoutPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main dir="rtl" className="min-h-screen bg-white">
 
-      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[1fr_460px]">
+      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[460px_1fr]">
 
         {/* LEFT */}
 
@@ -25,7 +25,7 @@ export default function CheckoutPage() {
           <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
             <h2 className="mb-5 text-2xl font-semibold">
-              Contact
+              بيانات العميل
             </h2>
 
             <div className="h-14 rounded-xl bg-neutral-100" />
@@ -37,7 +37,7 @@ export default function CheckoutPage() {
           <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
             <h2 className="mb-5 text-2xl font-semibold">
-              Delivery
+              عنوان الشحن
             </h2>
 
             <div className="space-y-4">
@@ -57,7 +57,7 @@ export default function CheckoutPage() {
           <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
             <h2 className="mb-5 text-2xl font-semibold">
-              Shipping Method
+              طريقة الشحن
             </h2>
 
             <div className="h-16 rounded-xl border border-black" />
@@ -69,7 +69,7 @@ export default function CheckoutPage() {
           <div className="rounded-2xl border border-neutral-200 p-6">
 
             <h2 className="mb-5 text-2xl font-semibold">
-              Payment
+              طريقة الدفع
             </h2>
 
             <div className="space-y-4">
@@ -83,7 +83,7 @@ export default function CheckoutPage() {
           </div>
 
           <button className="mt-8 h-14 w-full rounded-xl bg-black text-lg font-semibold text-white">
-            Complete Order
+            تأكيد الطلب
           </button>
 
         </section>
@@ -100,7 +100,7 @@ export default function CheckoutPage() {
 
               <ShoppingBag size={20} />
 
-              Order Summary
+              ملخص الطلب
 
               <ChevronDown size={18} />
 
