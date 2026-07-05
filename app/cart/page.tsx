@@ -1,11 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "../../lib/store";
 
 export default function CartPage() {
   const cart = useCart((s) => s.cart);
   const remove = useCart((s) => s.remove);
+  const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
+if (!mounted) {
+  return null;
+}
 
   const total = cart.reduce(
     (sum, item) => sum + item.price,

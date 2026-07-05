@@ -24,6 +24,10 @@ const id = Array.isArray(params.id)
 
 const order = id ? getOrderById(id) : undefined;
 
+console.log("Route ID:", id);
+console.log("Loaded Order:", order);
+console.log("All Orders:", JSON.parse(localStorage.getItem("orders") || "[]"));
+
   if (!order) {
     return (
       <main className="mx-auto flex min-h-[70vh] max-w-3xl items-center justify-center px-4">

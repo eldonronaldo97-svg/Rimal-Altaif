@@ -1,213 +1,158 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import CustomerForm from "@/components/checkout/CustomerForm";
-import PaymentMethods from "@/components/checkout/PaymentMethods";
-import TransferUpload from "@/components/checkout/TransferUpload";
-import CouponCard from "@/components/checkout/CouponCard";
-import OrderSummary from "@/components/checkout/OrderSummary";
-import CheckoutButton from "@/components/checkout/CheckoutButton";
-
-import {
-  checkoutSchema,
-  CheckoutForm,
-} from "@/lib/checkout/validation";
-
-import {
-  calculateDiscount,
-} from "@/lib/checkout/discount";
-
-import {
-  calculateShipping,
-} from "@/lib/checkout/shipping";
-
-import {
-  PaymentMethod,
-} from "@/lib/checkout/types";
-
-import {
-  useCart,
-} from "@/lib/store";
-
-import {
-  saveOrder,
-} from "@/lib/orders";
+import { ChevronDown, ShoppingBag } from "lucide-react";
 
 export default function CheckoutPage() {
-  const router = useRouter();
+  return (
+    <main className="min-h-screen bg-white">
 
-  const { cart, clear } = useCart();
+      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[1fr_460px]">
 
-  const [paymentMethod, setPaymentMethod] =
-    useState<PaymentMethod>("cod");
+        {/* LEFT */}
 
-  const [receipt, setReceipt] =
-    useState<File | null>(null);
+        <section className="order-2 px-6 py-8 lg:order-1 lg:px-12 lg:py-12">
 
-  const [coupon, setCoupon] =
-    useState("");
+          {/* Logo */}
 
-  const [loading, setLoading] =
-    useState(false);
+          <div className="mb-10">
+            <h1 className="text-3xl font-bold tracking-wider">
+              RIMAL ALTAIF
+            </h1>
+          </div>
 
-  const [couponApplied, setCouponApplied] =
-    useState(false);
+          {/* Contact */}
 
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<CheckoutForm>({
-    resolver: zodResolver(checkoutSchema),
-  });
+          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
-  const subtotal = useMemo(() => {
-    return cart.reduce(
-      (sum, item) =>
-        sum + item.price * item.qty,
-      0
-    );
-  }, [cart]);
+            <h2 className="mb-5 text-2xl font-semibold">
+              Contact
+            </h2>
 
-  const shipping = useMemo(() => {
-    return calculateShipping();
-  }, []);
+            <div className="h-14 rounded-xl bg-neutral-100" />
 
-  const discount = useMemo(() => {
-    if (!couponApplied) return 0;
+          </div>
 
-    return calculateDiscount(
-      subtotal,
-      coupon
-    );
-  }, [
-    subtotal,
-    coupon,
-    couponApplied,
-  ]);
+          {/* Delivery */}
 
-  const total =
-    subtotal +
-    shipping -
-    discount;
+          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
-  function applyCoupon() {
-    setCouponApplied(true);
-  }
+            <h2 className="mb-5 text-2xl font-semibold">
+              Delivery
+            </h2>
 
-  async function onSubmit(
-    data: CheckoutForm
-  ) {
-    try {
-      setLoading(true);
+            <div className="space-y-4">
 
-      if (
-        paymentMethod !== "cod" &&
-        !receipt
-      ) {
-        alert(
-          "Please upload payment receipt."
-        );
+              <div className="h-14 rounded-xl bg-neutral-100" />
+              <div className="h-14 rounded-xl bg-neutral-100" />
+              <div className="h-14 rounded-xl bg-neutral-100" />
+              <div className="h-14 rounded-xl bg-neutral-100" />
+              <div className="h-14 rounded-xl bg-neutral-100" />
 
-        return;
-      }
+            </div>
 
-      const order = saveOrder({
-        customer: data,
+          </div>
 
-        products: cart,
+          {/* Shipping */}
 
-        paymentMethod,
+          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
 
-        receipt: receipt
-          ? receipt.name
-          : null,
+            <h2 className="mb-5 text-2xl font-semibold">
+              Shipping Method
+            </h2>
 
-        coupon,
+            <div className="h-16 rounded-xl border border-black" />
 
-        subtotal,
+          </div>
 
-        shipping,
+          {/* Payment */}
 
-        discount,
+          <div className="rounded-2xl border border-neutral-200 p-6">
 
-        total,
-      });
+            <h2 className="mb-5 text-2xl font-semibold">
+              Payment
+            </h2>
 
-      clear();
+            <div className="space-y-4">
 
-      reset();
+              <div className="h-16 rounded-xl bg-neutral-100" />
+              <div className="h-16 rounded-xl bg-neutral-100" />
+              <div className="h-16 rounded-xl bg-neutral-100" />
 
-      router.push(`/checkout/success/${order.id}`);
-    } finally {
-      setLoading(false);
-    }
-  }
-    return (
-    <main className="mx-auto max-w-7xl px-4 py-10">
+            </div>
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="grid gap-8 lg:grid-cols-3"
-      >
+          </div>
 
-        {/* Left Side */}
+          <button className="mt-8 h-14 w-full rounded-xl bg-black text-lg font-semibold text-white">
+            Complete Order
+          </button>
 
-        <div className="space-y-6 lg:col-span-2">
+        </section>
 
-          <CustomerForm
-            register={register}
-            watch={watch}
-            errors={errors}
-          />
+        {/* RIGHT */}
 
-          <PaymentMethods
-            value={paymentMethod}
-            onChange={setPaymentMethod}
-          />
+        <aside className="order-1 border-b bg-neutral-50 lg:order-2 lg:min-h-screen lg:border-b-0 lg:border-l">
 
-          <TransferUpload
-            paymentMethod={paymentMethod}
-            receipt={receipt}
-            onReceiptChange={setReceipt}
-          />
+          {/* Mobile Summary */}
 
-          <CouponCard
-            coupon={coupon}
-            onCouponChange={setCoupon}
-            onApply={applyCoupon}
-            applied={couponApplied}
-            discount={discount}
-          />
+          <div className="flex h-16 items-center justify-between border-b px-6 lg:hidden">
 
-          <CheckoutButton
-            loading={loading}
-            disabled={cart.length === 0}
-          />
+            <button className="flex items-center gap-2 font-medium">
 
-        </div>
+              <ShoppingBag size={20} />
 
-        {/* Right Side */}
+              Order Summary
 
-        <div>
+              <ChevronDown size={18} />
 
-          <OrderSummary
-            products={cart}
-            subtotal={subtotal}
-            shipping={shipping}
-            discount={discount}
-            total={total}
-          />
+            </button>
 
-        </div>
+            <span className="text-lg font-bold">
+              EGP 0
+            </span>
 
-      </form>
+          </div>
+
+          {/* Desktop Summary */}
+
+          <div className="hidden p-10 lg:block">
+
+            <h2 className="mb-8 text-2xl font-semibold">
+              Order Summary
+            </h2>
+
+            <div className="space-y-5">
+
+              <div className="h-24 rounded-2xl bg-white" />
+              <div className="h-24 rounded-2xl bg-white" />
+
+            </div>
+
+            <div className="my-8 border-t" />
+
+            <div className="space-y-4">
+
+              <div className="flex justify-between">
+                <span>Subtotal</span>
+                <span>EGP 0</span>
+              </div>
+
+              <div className="flex justify-between">
+                <span>Shipping</span>
+                <span>EGP 0</span>
+              </div>
+
+              <div className="flex justify-between font-bold text-xl">
+                <span>Total</span>
+                <span>EGP 0</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
 
     </main>
   );
