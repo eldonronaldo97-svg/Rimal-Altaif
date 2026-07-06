@@ -4,101 +4,142 @@ import { ChevronDown, ShoppingBag } from "lucide-react";
 
 export default function CheckoutPage() {
   return (
-    <main dir="rtl" className="min-h-screen bg-white">
+    <main dir="rtl" className="min-h-screen bg-[#f7f7f7]">
 
-      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[460px_1fr]">
+      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[420px_1fr]">
 
-        {/* LEFT */}
+        {/* ================= RIGHT ================= */}
 
-        <section className="order-2 px-6 py-8 lg:order-1 lg:px-12 lg:py-12">
+        <section className="bg-white px-5 py-8 lg:px-14">
 
-          {/* Logo */}
+          <h1 className="mb-10 text-center text-4xl font-bold">
+            رمال الطائف
+          </h1>
 
-          <div className="mb-10">
-            <h1 className="text-3xl font-bold tracking-wider">
-              RIMAL ALTAIF
-            </h1>
-          </div>
+          {/* العميل */}
 
-          {/* Contact */}
-
-          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
-
-            <h2 className="mb-5 text-2xl font-semibold">
+          <div className="mb-8">
+            <h2 className="mb-4 text-2xl font-bold">
               بيانات العميل
             </h2>
 
-            <div className="h-14 rounded-xl bg-neutral-100" />
+            <div className="space-y-4">
+
+              <input
+                placeholder="الاسم بالكامل"
+                className="h-14 w-full rounded-xl border px-4"
+              />
+
+              <input
+                placeholder="رقم الهاتف"
+                className="h-14 w-full rounded-xl border px-4"
+              />
+
+              <input
+                placeholder="رقم هاتف إضافي (اختياري)"
+                className="h-14 w-full rounded-xl border px-4"
+              />
+
+            </div>
 
           </div>
 
-          {/* Delivery */}
+          {/* العنوان */}
 
-          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
+          <div className="mb-8">
 
-            <h2 className="mb-5 text-2xl font-semibold">
+            <h2 className="mb-4 text-2xl font-bold">
               عنوان الشحن
             </h2>
 
             <div className="space-y-4">
 
-              <div className="h-14 rounded-xl bg-neutral-100" />
-              <div className="h-14 rounded-xl bg-neutral-100" />
-              <div className="h-14 rounded-xl bg-neutral-100" />
-              <div className="h-14 rounded-xl bg-neutral-100" />
-              <div className="h-14 rounded-xl bg-neutral-100" />
+              <select className="h-14 w-full rounded-xl border px-4">
+                <option>المحافظة</option>
+              </select>
+
+              <select className="h-14 w-full rounded-xl border px-4">
+                <option>المدينة</option>
+              </select>
+
+              <textarea
+                rows={4}
+                placeholder="العنوان بالكامل"
+                className="w-full rounded-xl border p-4"
+              />
 
             </div>
 
           </div>
 
-          {/* Shipping */}
+          {/* الشحن */}
 
-          <div className="mb-8 rounded-2xl border border-neutral-200 p-6">
+          <div className="mb-8">
 
-            <h2 className="mb-5 text-2xl font-semibold">
+            <h2 className="mb-4 text-2xl font-bold">
               طريقة الشحن
             </h2>
 
-            <div className="h-16 rounded-xl border border-black" />
+            <div className="rounded-xl border p-5">
 
-          </div>
+              <div className="flex items-center justify-between">
 
-          {/* Payment */}
+                <span>شحن لجميع المحافظات</span>
 
-          <div className="rounded-2xl border border-neutral-200 p-6">
+                <span className="font-bold">
+                  70 ج
+                </span>
 
-            <h2 className="mb-5 text-2xl font-semibold">
-              طريقة الدفع
-            </h2>
-
-            <div className="space-y-4">
-
-              <div className="h-16 rounded-xl bg-neutral-100" />
-              <div className="h-16 rounded-xl bg-neutral-100" />
-              <div className="h-16 rounded-xl bg-neutral-100" />
+              </div>
 
             </div>
 
           </div>
 
-          <button className="mt-8 h-14 w-full rounded-xl bg-black text-lg font-semibold text-white">
+          {/* الدفع */}
+
+          <div>
+
+            <h2 className="mb-4 text-2xl font-bold">
+              طريقة الدفع
+            </h2>
+
+            <div className="space-y-3">
+
+              <button className="flex h-16 w-full items-center justify-between rounded-xl border px-5">
+                <span>الدفع عند الاستلام</span>
+                <input type="radio" checked readOnly />
+              </button>
+
+              <button className="flex h-16 w-full items-center justify-between rounded-xl border px-5">
+                <span>Instapay</span>
+                <input type="radio" readOnly />
+              </button>
+
+              <button className="flex h-16 w-full items-center justify-between rounded-xl border px-5">
+                <span>Vodafone Cash</span>
+                <input type="radio" readOnly />
+              </button>
+
+            </div>
+
+          </div>
+
+          <button className="mt-8 h-14 w-full rounded-xl bg-black text-lg font-bold text-white">
             تأكيد الطلب
           </button>
 
         </section>
 
-        {/* RIGHT */}
+        {/* ================= LEFT ================= */}
 
-        <aside className="order-1 border-b bg-neutral-50 lg:order-2 lg:min-h-screen lg:border-b-0 lg:border-l">
+        <aside className="border-b bg-[#fafafa] lg:min-h-screen lg:border-b-0 lg:border-r">
 
-          {/* Mobile Summary */}
+          <div className="flex h-16 items-center justify-between border-b px-5 lg:hidden">
 
-          <div className="flex h-16 items-center justify-between border-b px-6 lg:hidden">
+            <button className="flex items-center gap-2">
 
-            <button className="flex items-center gap-2 font-medium">
-
-              <ShoppingBag size={20} />
+              <ShoppingBag size={18} />
 
               ملخص الطلب
 
@@ -106,44 +147,57 @@ export default function CheckoutPage() {
 
             </button>
 
-            <span className="text-lg font-bold">
-              EGP 0
+            <span className="font-bold">
+              1670 ج
             </span>
 
           </div>
 
-          {/* Desktop Summary */}
+          <div className="hidden p-8 lg:block">
 
-          <div className="hidden p-10 lg:block">
-
-            <h2 className="mb-8 text-2xl font-semibold">
-              Order Summary
+            <h2 className="mb-6 text-2xl font-bold">
+              ملخص الطلب
             </h2>
 
-            <div className="space-y-5">
+            <div className="rounded-2xl bg-white p-5 shadow-sm">
 
-              <div className="h-24 rounded-2xl bg-white" />
-              <div className="h-24 rounded-2xl bg-white" />
+              <div className="flex gap-4">
 
-            </div>
+                <div className="h-20 w-20 rounded-xl bg-neutral-200" />
 
-            <div className="my-8 border-t" />
+                <div>
 
-            <div className="space-y-4">
+                  <h3 className="font-semibold">
+                    Emerald Soul Diamond
+                  </h3>
 
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>EGP 0</span>
+                  <p className="mt-2 text-neutral-500">
+                    الكمية: 1
+                  </p>
+
+                </div>
+
               </div>
 
-              <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>EGP 0</span>
-              </div>
+              <div className="my-5 border-t" />
 
-              <div className="flex justify-between font-bold text-xl">
-                <span>Total</span>
-                <span>EGP 0</span>
+              <div className="space-y-3">
+
+                <div className="flex justify-between">
+                  <span>الإجمالي الفرعي</span>
+                  <span>1600 ج</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>الشحن</span>
+                  <span>70 ج</span>
+                </div>
+
+                <div className="flex justify-between text-xl font-bold">
+                  <span>الإجمالي</span>
+                  <span>1670 ج</span>
+                </div>
+
               </div>
 
             </div>
