@@ -3,166 +3,143 @@
 import { useState } from "react";
 
 export default function CheckoutPage() {
-  const [payment, setPayment] = useState("cod");
   const [shipping, setShipping] = useState("standard");
+  const [payment, setPayment] = useState("cod");
+  const [coupon, setCoupon] = useState("");
 
   const subtotal = 1450;
   const shippingCost = shipping === "express" ? 80 : 40;
-  const total = subtotal + shippingCost;
+  const discount = coupon.toLowerCase() === "sale10" ? 145 : 0;
+
+  const total = subtotal + shippingCost - discount;
 
   return (
-    <div className="min-h-screen bg-[#f6f6f6] text-right font-[Cairo]">
+    <div className="min-h-screen bg-white text-right font-[Cairo]">
 
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_380px]">
+      <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
 
-        {/* LEFT */}
-        <div className="bg-white px-5 md:px-10 py-10 space-y-6">
+        {/* TITLE */}
+        <div>
+          <h1 className="text-2xl font-bold">إتمام الطلب</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            من فضلك املأ البيانات لإكمال الطلب
+          </p>
+        </div>
 
-          {/* HEADER */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-bold">إتمام الطلب</h1>
-            <p className="text-sm text-gray-500 mt-1">
-              من فضلك املأ البيانات لإتمام الطلب
-            </p>
+        {/* CONTACT */}
+        <Section title="بيانات التواصل">
+          <Input placeholder="الاسم الكامل" />
+          <Input placeholder="رقم الهاتف" />
+          <Input placeholder="رقم إضافي (اختياري)" />
+        </Section>
+
+        {/* ADDRESS */}
+        <Section title="عنوان التوصيل">
+          <Input placeholder="المحافظة" />
+          <Input placeholder="المدينة" />
+          <Input placeholder="العنوان بالتفصيل" />
+
+          <div className="grid grid-cols-3 gap-2">
+            <Input placeholder="المبنى" />
+            <Input placeholder="الدور" />
+            <Input placeholder="الشقة" />
           </div>
+        </Section>
 
-          {/* CONTACT */}
-          <Section title="بيانات التواصل">
-            <Input placeholder="الاسم الكامل" />
-            <Input placeholder="رقم الهاتف" />
-            <Input placeholder="رقم إضافي (اختياري)" />
-          </Section>
+        {/* SHIPPING */}
+        <Section title="طريقة الشحن">
+          <Radio
+            active={shipping === "standard"}
+            onClick={() => setShipping("standard")}
+            title="شحن عادي"
+            desc="2 - 4 أيام"
+          />
 
-          {/* ADDRESS */}
-          <Section title="عنوان التوصيل">
-            <Input placeholder="المحافظة" />
-            <Input placeholder="المدينة" />
-            <Input placeholder="العنوان بالكامل" />
+          <Radio
+            active={shipping === "express"}
+            onClick={() => setShipping("express")}
+            title="شحن سريع"
+            desc="1 - 2 يوم"
+          />
+        </Section>
 
-            <div className="grid grid-cols-3 gap-2">
-              <Input placeholder="المبنى" />
-              <Input placeholder="الدور" />
-              <Input placeholder="الشقة" />
-            </div>
-          </Section>
+        {/* PAYMENT */}
+        <Section title="طريقة الدفع">
+          <Radio
+            active={payment === "cod"}
+            onClick={() => setPayment("cod")}
+            title="الدفع عند الاستلام"
+            desc="ادفع عند الاستلام"
+          />
 
-          {/* SHIPPING */}
-          <Section title="طريقة الشحن">
-            <Radio
-              active={shipping === "standard"}
-              onClick={() => setShipping("standard")}
-              title="شحن عادي"
-              desc="من 2 إلى 4 أيام"
-            />
+          <Radio
+            active={payment === "instapay"}
+            onClick={() => setPayment("instapay")}
+            title="إنستاباي"
+            desc="تحويل فوري"
+          />
 
-            <Radio
-              active={shipping === "express"}
-              onClick={() => setShipping("express")}
-              title="شحن سريع"
-              desc="من 1 إلى 2 يوم"
-            />
-          </Section>
+          <Radio
+            active={payment === "vodafone"}
+            onClick={() => setPayment("vodafone")}
+            title="فودافون كاش"
+            desc="محفظة إلكترونية"
+          />
 
-          {/* PAYMENT */}
-          <Section title="طريقة الدفع">
-            <Radio
-              active={payment === "cod"}
-              onClick={() => setPayment("cod")}
-              title="الدفع عند الاستلام"
-              desc="ادفع عند استلام الطلب"
-            />
+          {payment !== "cod" && (
+            <div className="mt-3 p-3 border rounded-xl bg-gray-50 text-sm">
+              <p className="text-xs text-gray-500">رقم التحويل</p>
+              <p className="font-bold">01234567890</p>
 
-            <Radio
-              active={payment === "instapay"}
-              onClick={() => setPayment("instapay")}
-              title="إنستاباي"
-              desc="تحويل فوري"
-            />
-
-            <Radio
-              active={payment === "vodafone"}
-              onClick={() => setPayment("vodafone")}
-              title="فودافون كاش"
-              desc="محفظة إلكترونية"
-            />
-
-            {payment !== "cod" && (
-              <div className="mt-3 p-3 rounded-xl bg-gray-50 border text-sm">
-                <p className="text-xs text-gray-500">رقم التحويل</p>
-                <p className="font-bold text-lg">01234567890</p>
-
-                <button className="mt-2 w-full h-10 bg-black text-white rounded-lg">
-                  نسخ الرقم
-                </button>
-              </div>
-            )}
-          </Section>
-
-          {/* COUPON */}
-          <Section title="كود الخصم">
-            <div className="flex gap-2">
-              <input
-                className="flex-1 h-12 border rounded-xl px-3"
-                placeholder="أدخل الكود"
-              />
-              <button className="px-5 bg-black text-white rounded-xl">
-                تطبيق
+              <button className="w-full mt-2 h-10 bg-black text-white rounded-lg">
+                نسخ الرقم
               </button>
             </div>
-          </Section>
+          )}
+        </Section>
 
-          {/* BUTTON */}
-          <button className="w-full h-12 bg-black text-white rounded-xl text-lg active:scale-[0.98] transition">
-            تأكيد الطلب
-          </button>
+        {/* COUPON */}
+        <Section title="كود الخصم">
+          <div className="flex gap-2">
+            <input
+              value={coupon}
+              onChange={(e) => setCoupon(e.target.value)}
+              className="flex-1 h-12 border rounded-xl px-3 text-sm"
+              placeholder="أدخل الكود"
+            />
+            <button className="px-4 bg-black text-white rounded-xl">
+              تطبيق
+            </button>
+          </div>
+        </Section>
 
-        </div>
+        {/* ORDER SUMMARY (SIMPLE LIKE VIDEO) */}
+        <Section title="ملخص الطلب">
+          <Row label="الإجمالي الفرعي" value={`${subtotal} ج.م`} />
+          <Row label="الشحن" value={`${shippingCost} ج.م`} />
+          <Row label="الخصم" value={`-${discount} ج.م`} />
 
-        {/* RIGHT */}
-        <div className="hidden lg:block border-l bg-[#fafafa] p-6 space-y-5">
-
-          <div className="flex justify-between text-sm">
+          <div className="border-t pt-3 flex justify-between font-bold">
             <span>الإجمالي</span>
-            <span>{subtotal}</span>
+            <span>{total} ج.م</span>
           </div>
+        </Section>
 
-          <div className="flex justify-between text-sm">
-            <span>الشحن</span>
-            <span>{shippingCost}</span>
-          </div>
-
-          <div className="flex justify-between text-sm text-red-500">
-            <span>خصم</span>
-            <span>0</span>
-          </div>
-
-          <div className="border-t pt-3 flex justify-between font-bold text-lg">
-            <span>الإجمالي الكلي</span>
-            <span>{total}</span>
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* MOBILE */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t p-4 flex justify-between items-center">
-        <span className="font-bold">{total} ج.م</span>
-
-        <button className="bg-black text-white px-6 py-3 rounded-xl">
-          إتمام
+        {/* BUTTON */}
+        <button className="w-full h-12 bg-black text-white rounded-xl text-lg active:scale-[0.98] transition">
+          تأكيد الطلب
         </button>
-      </div>
 
+      </div>
     </div>
   );
 }
 
-/* ================= UI COMPONENTS ================= */
+/* ---------------- UI COMPONENTS ---------------- */
 
 function Section({ title, children }: any) {
   return (
-    <div className="border rounded-2xl p-4 bg-white space-y-3">
+    <div className="border rounded-2xl p-4 space-y-3">
       <h2 className="font-bold text-sm">{title}</h2>
       <div className="space-y-2">{children}</div>
     </div>
@@ -196,6 +173,15 @@ function Radio({ active, title, desc, onClick }: any) {
       }`}>
         {active && <div className="w-2 h-2 bg-black rounded-full" />}
       </div>
+    </div>
+  );
+}
+
+function Row({ label, value }: any) {
+  return (
+    <div className="flex justify-between text-sm py-1">
+      <span>{label}</span>
+      <span>{value}</span>
     </div>
   );
 }
