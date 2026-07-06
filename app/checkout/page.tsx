@@ -8,37 +8,53 @@ import PageTitle from "./components/PageTitle";
 
 export default function CheckoutPage() {
   return (
-    <main dir="rtl" className="min-h-screen bg-[#f8f8f8]">
-      <div className="mx-auto grid min-h-screen max-w-[1440px] lg:grid-cols-[58%_42%]">
+    <main dir="rtl" className="min-h-screen bg-[#F5F5F5]">
 
-        {/* ملخص الطلب */}
-        <OrderSummary />
+      <div className="mx-auto max-w-[1440px]">
 
-        {/* بيانات العميل */}
-        <section className="order-2 bg-white px-5 py-8 lg:order-1 lg:px-16 lg:py-12">
+        <div className="grid lg:grid-cols-[1fr_420px]">
 
-          <div className="mx-auto max-w-[700px]">
+          {/* الفورم */}
 
-            <PageTitle
-              title="رمال الطائف"
-              subtitle="إتمام الطلب"
-            />
+          <section className="order-2 bg-white lg:order-1">
 
-            <CustomerForm />
+            <div className="mx-auto max-w-[760px] px-6 py-10 lg:px-12">
 
-            <AddressForm />
+              <PageTitle
+                title="رمال الطائف"
+                subtitle="إتمام الطلب"
+              />
 
-            <ShippingMethod />
+              <CustomerForm />
 
-            <PaymentMethods />
+              <AddressForm />
 
-            <CheckoutButton />
+              <ShippingMethod />
 
-          </div>
+              <PaymentMethods />
 
-        </section>
+              <CheckoutButton />
+
+            </div>
+
+          </section>
+
+          {/* ملخص الطلب */}
+
+          <aside className="order-1 border-b bg-[#FAFAFA] lg:order-2 lg:min-h-screen lg:border-b-0 lg:border-r">
+
+            <div className="sticky top-0">
+
+              <OrderSummary />
+
+            </div>
+
+          </aside>
+
+        </div>
 
       </div>
+
     </main>
   );
 }

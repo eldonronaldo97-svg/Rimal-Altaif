@@ -29,24 +29,19 @@ export default function OrderSummary() {
     0
   );
 
-  const total = subtotal + shipping;
-
-  // منع Hydration Error
   if (!mounted) {
-    return (
-      <aside className="order-1 border-b bg-[#fafafa] lg:order-2 lg:min-h-screen lg:border-b-0 lg:border-r" />
-    );
+    return <div className="h-full p-10" />;
   }
 
   return (
-    <aside className="order-1 border-b bg-[#fafafa] lg:order-2 lg:min-h-screen lg:border-b-0 lg:border-r">
-
+    <>
       {/* Mobile */}
+
       <div className="lg:hidden">
 
         <button
           onClick={() => setOpen(!open)}
-          className="flex h-16 w-full items-center justify-between border-b px-5"
+          className="flex h-16 w-full items-center justify-between border-b bg-white px-5"
         >
           <div className="flex items-center gap-2">
 
@@ -65,17 +60,19 @@ export default function OrderSummary() {
           </div>
 
           <span className="font-bold">
-            {total} ج
+            {subtotal + shipping} ج
           </span>
 
         </button>
 
         {open && (
-          <SummaryBody
-            cart={cart}
-            subtotal={subtotal}
-            shipping={shipping}
-          />
+          <div className="p-6">
+            <SummaryBody
+              cart={cart}
+              subtotal={subtotal}
+              shipping={shipping}
+            />
+          </div>
         )}
 
       </div>
@@ -95,8 +92,7 @@ export default function OrderSummary() {
         </div>
 
       </div>
-
-    </aside>
+    </>
   );
 }
 
@@ -122,7 +118,7 @@ function SummaryBody({
       <div className="py-20 text-center">
 
         <ShoppingBag
-          size={42}
+          size={46}
           className="mx-auto mb-4 text-neutral-400"
         />
 
@@ -141,7 +137,7 @@ function SummaryBody({
   return (
     <div className="space-y-8">
 
-      <div className="space-y-5">
+      <div className="space-y-6">
 
         {cart.map((item) => (
           <ProductCard
