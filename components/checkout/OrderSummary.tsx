@@ -25,63 +25,63 @@ export default function OrderSummary({
 }: Props) {
   return (
     <aside
-      className="
-        h-fit
-        rounded-2xl
-        border
-        border-neutral-200
-        bg-white
-        p-8
-        lg:sticky
-        lg:top-6
-      "
-    >
-      <h2 className="mb-6 text-2xl font-bold">
-        ملخص الطلب
-      </h2>
+  className="
+    sticky
+    top-6
+    h-fit
+    rounded-2xl
+    border
+    border-[#e5e5e5]
+    bg-white
+    p-7
+    shadow-sm
+  "
+>
+      <h2 className="mb-8 text-3xl font-bold">
+  ملخص الطلب
+</h2>
 
       <div className="space-y-5">
 
         {products.map((product) => (
           <div
             key={product.id}
-            className="flex items-center gap-4"
+            className="flex items-start gap-4 pb-5 border-b border-neutral-200"
           >
             <div
-  className="overflow-hidden rounded-2xl border"
-  style={{
-    width: 80,
-    height: 80,
-    minWidth: 80,
-    position: "relative",
-  }}
+  className="
+    relative
+    h-20
+    w-20
+    overflow-hidden
+    rounded-xl
+    border
+    bg-[#fafafa]
+    flex-shrink-0
+  "
 >
   <Image
     src={product.image}
     alt={product.name}
     width={80}
     height={80}
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "contain",
-    }}
+    className="h-full w-full object-contain p-2"
   />
 </div>
 
             <div className="flex-1">
 
-              <h3 className="font-semibold leading-5">
+              <h3 className="text-[15px] font-semibold leading-6">
                 {product.name}
               </h3>
 
               <p className="mt-2 text-sm text-neutral-500">
-                Qty : {product.qty}
+                الكمية × {product.qty}
               </p>
 
             </div>
 
-            <div className="font-bold">
+            <div className="text-lg font-bold">
               {(product.price * product.qty).toLocaleString()}
               {" "}
               EGP
@@ -94,7 +94,7 @@ export default function OrderSummary({
 
       <div className="my-6 border-t" />
 
-      <div className="space-y-4">
+      <div className="space-y-5 text-[15px]">
 
                 <div className="flex items-center justify-between">
           <span className="text-neutral-500">
@@ -138,7 +138,7 @@ export default function OrderSummary({
           الإجمالي
         </span>
 
-        <span className="text-2xl font-bold">
+        <span className="text-3xl font-bold">
           {total.toLocaleString()} EGP
         </span>
 
