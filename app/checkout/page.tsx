@@ -141,12 +141,12 @@ export default function CheckoutPage() {
 
 </div>
 
-<div className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+<div className="mx-auto w-full max-w-7xl px-4 py-8 lg:px-10">
 
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] items-start">
 
-          <div className="w-full max-w-3xl space-y-8">
+          <div className="w-full space-y-8">
 
             <ShippingInfo
               shipping={shipping}
