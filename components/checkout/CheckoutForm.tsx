@@ -11,9 +11,7 @@ import CouponBox from "./CouponBox";
 
 interface Props {
   customer: CustomerInfo;
-  setCustomer: Dispatch<
-    SetStateAction<CustomerInfo>
-  >;
+  setCustomer: Dispatch<SetStateAction<CustomerInfo>>;
 
   paymentMethod:
     | "cod"
@@ -61,18 +59,20 @@ export default function CheckoutForm({
   submit,
 }: Props) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
 
-      <div className="bg-transparent">
+      {/* CONTACT */}
 
-        <div className="mb-6">
+      <section>
 
-          <h1 className="text-3xl font-bold">
-            تأكيد الطلب
-          </h1>
+        <div className="mb-8">
+
+          <h2 className="text-[34px] font-bold tracking-tight">
+            معلومات التواصل
+          </h2>
 
           <p className="mt-2 text-neutral-500">
-            اكمل الطلب
+            أدخل بياناتك لإتمام الطلب.
           </p>
 
         </div>
@@ -83,71 +83,112 @@ export default function CheckoutForm({
           errors={{}}
         />
 
-      </div>
+      </section>
 
-      <div className="mt-10">
+      <hr className="border-neutral-200" />
 
-        <h2 className="mb-5 text-[34px] font-bold tracking-tight">
-          طرق الدفع
-        </h2>
+      {/* PAYMENT */}
+            <section>
+
+        <div className="mb-8">
+
+          <h2 className="text-[34px] font-bold tracking-tight">
+            طريقة الدفع
+          </h2>
+
+          <p className="mt-2 text-neutral-500">
+            اختر وسيلة الدفع المناسبة لك.
+          </p>
+
+        </div>
 
         <PaymentMethods
           value={paymentMethod}
           onChange={setPaymentMethod}
         />
 
-      </div>
-            {(paymentMethod === "instapay" ||
-        paymentMethod === "vodafone") && (
-        <div className="mt-8">
+        {(paymentMethod === "instapay" ||
+          paymentMethod === "vodafone") && (
 
-          <h2 className="mb-5 text-[34px] font-bold tracking-tight">
-            Upload Receipt
+          <div className="mt-8">
+
+            <h3 className="mb-5 text-xl font-semibold">
+              رفع إيصال التحويل
+            </h3>
+
+            <UploadReceipt
+              value={receipt}
+              onChange={setReceipt}
+            />
+
+          </div>
+
+        )}
+
+      </section>
+
+      <hr className="border-neutral-200" />
+
+      {/* COUPON */}
+
+      <section>
+
+        <div className="mb-8">
+
+          <h2 className="text-[34px] font-bold tracking-tight">
+            كود الخصم
           </h2>
 
-          <UploadReceipt
-            value={receipt}
-            onChange={setReceipt}
-          />
+          <p className="mt-2 text-neutral-500">
+            إذا كان لديك كوبون خصم أدخله هنا.
+          </p>
 
         </div>
-      )}
-
-      <div className="mt-8">
-
-        <h2 className="mb-5 text-[34px] font-bold tracking-tight">
-          كود الخصم
-        </h2>
 
         <CouponBox
           value={coupon}
           onChange={setCoupon}
         />
 
-      </div>
+      </section>
 
-            <button
-        type="button"
-        onClick={submit}
-        disabled={loading}
-        className="
-          h-14
-          w-full
-          rounded-2xl
-          bg-black
-          text-lg
-          font-semibold
-          text-white
-          transition
-          hover:bg-neutral-800
-          disabled:cursor-not-allowed
-          disabled:opacity-50
-        "
-      >
-        {loading
-          ? "Processing..."
-          : "Complete Order"}
-      </button>
+      <hr className="border-neutral-200" />
+
+      {/* COMPLETE ORDER */}
+            <section>
+
+        <button
+          type="button"
+          onClick={submit}
+          disabled={loading}
+          className="
+            flex
+            h-16
+            w-full
+            items-center
+            justify-center
+            rounded-2xl
+            bg-black
+            text-lg
+            font-semibold
+            text-white
+            transition-all
+            hover:bg-neutral-800
+            disabled:cursor-not-allowed
+            disabled:opacity-50
+          "
+        >
+          {loading
+            ? "جارٍ تأكيد الطلب..."
+            : "إتمام الطلب"}
+        </button>
+
+        <p className="mt-4 text-center text-sm text-neutral-500">
+          بالضغط على زر إتمام الطلب فإنك توافق على تنفيذ الطلب
+          وفقًا لبيانات الشحن التي أدخلتها.
+        </p>
+
+      </section>
 
     </div>
   );
