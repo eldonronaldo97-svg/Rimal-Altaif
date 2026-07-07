@@ -35,28 +35,29 @@ const Select = forwardRef<
       <div className="space-y-1">
 
         <select
-          ref={ref}
-          {...props}
-          dir="rtl"
-          className={`
-            h-[58px]
-            w-full
-            rounded-[14px]
-            border
-            border-[#d9d9d9]
-            bg-white
-            px-5
-            text-[15px]
-            text-right
-            outline-none
-            transition-all
-            focus:border-black
-            focus:ring-2
-            focus:ring-black/10
-            ${error ? "border-red-500" : ""}
-            ${className}
-          `}
-        >
+  ref={ref}
+  {...props}
+  dir="rtl"
+  className={`
+    block
+    w-full
+    h-[56px]
+    px-4
+    rounded-xl
+    border
+    border-[#d9d9d9]
+    bg-white
+    text-[15px]
+    text-right
+    outline-none
+    transition-all
+    focus:border-black
+    focus:ring-1
+    focus:ring-black
+    ${error ? "border-red-500" : ""}
+    ${className}
+  `}
+>
           {options.map((option) => (
             <option
               key={option.value}
