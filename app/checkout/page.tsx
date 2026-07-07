@@ -95,9 +95,12 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f8f8]">
+    <main
+  dir="rtl"
+  className="min-h-screen bg-[#f8f8f8] text-right"
+>
 
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
 

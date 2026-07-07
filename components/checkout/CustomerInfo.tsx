@@ -62,36 +62,38 @@ export default function CustomerInfoForm({
       <div className="grid gap-5 md:grid-cols-2">
 
         <Input
-          label="Full Name"
+          label="الاسم بالكامل"
           value={customer.name}
           error={errors.name}
-          placeholder="Full Name"
+          placeholder="الاسم بالكامل"
           onChange={(e) =>
             update("name", e.target.value)
           }
         />
 
         <Input
-          label="Phone"
-          value={customer.phone}
-          error={errors.phone}
-          placeholder="01xxxxxxxxx"
-          onChange={(e) =>
-            update("phone", e.target.value)
-          }
-        />
+  type="tel"
+  label="رقم الهاتف"
+  value={customer.phone}
+  error={errors.phone}
+  placeholder="الرقم الاساسي"
+  onChange={(e) =>
+    update("phone", e.target.value)
+  }
+/>
 
         <Input
-          label="Second Phone"
-          value={customer.phone2 || ""}
-          placeholder="Optional"
-          onChange={(e) =>
-            update("phone2", e.target.value)
-          }
-        />
+  type="tel"
+  label="رقم هاتف احتياطي"
+  value={customer.phone2 || ""}
+  placeholder="اختياري"
+  onChange={(e) =>
+    update("phone2", e.target.value)
+  }
+/>
 
         <Select
-          label="Governorate"
+          label="المحافظة"
           value={customer.governorate}
           error={errors.governorate}
           options={governorates}
@@ -101,20 +103,20 @@ export default function CustomerInfoForm({
         />
 
         <Input
-          label="City"
+          label="المدينة"
           value={customer.city}
           error={errors.city}
-          placeholder="City"
+          placeholder="المدينة"
           onChange={(e) =>
             update("city", e.target.value)
           }
         />
 
         <Input
-          label="Address"
+          label="العنوان"
           value={customer.address}
           error={errors.address}
-          placeholder="Street Address"
+          placeholder="اكتب عنوانك بالكامل"
           className="md:col-span-2"
           onChange={(e) =>
             update("address", e.target.value)
@@ -125,27 +127,27 @@ export default function CustomerInfoForm({
       <div className="grid gap-5 md:grid-cols-3">
 
                 <Input
-          label="Building"
+          label="رقم المبنى"
           value={customer.building || ""}
-          placeholder="Building"
+          placeholder="رقم المبنى"
           onChange={(e) =>
             update("building", e.target.value)
           }
         />
 
         <Input
-          label="Floor"
+          label="الدور"
           value={customer.floor || ""}
-          placeholder="Floor"
+          placeholder="الدور"
           onChange={(e) =>
             update("floor", e.target.value)
           }
         />
 
         <Input
-          label="Apartment"
+          label="الشقة"
           value={customer.apartment || ""}
-          placeholder="Apartment"
+          placeholder="الشقة"
           onChange={(e) =>
             update("apartment", e.target.value)
           }
@@ -156,7 +158,7 @@ export default function CustomerInfoForm({
       <div>
 
         <label className="mb-2 block text-sm font-medium text-neutral-700">
-          Order Notes
+          ملاحظات الطلب
         </label>
 
         <textarea

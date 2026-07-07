@@ -18,30 +18,39 @@ const Input = forwardRef<
   return (
     <div className="space-y-2">
 
-      <label className="text-sm font-medium text-neutral-700">
+      <label className="block pr-1 text-sm font-medium text-neutral-700">
         {label}
       </label>
 
       <input
-        ref={ref}
-        {...props}
-        className={`
-          h-12
-          w-full
-          rounded-xl
-          border
-          border-neutral-300
-          bg-white
-          px-4
-          outline-none
-          transition
-          focus:border-black
-          focus:ring-2
-          focus:ring-black/10
-          ${error ? "border-red-500" : ""}
-          ${className}
-        `}
-      />
+  ref={ref}
+  {...props}
+  dir={
+    props.type === "tel" ||
+    props.type === "email" ||
+    props.type === "number"
+      ? "ltr"
+      : "rtl"
+  }
+  className={`
+    h-16
+    w-full
+    rounded-xl
+    border
+    border-[#d9d9d9]
+    border-neutral-300
+    bg-white
+    px-4
+    text-right
+    outline-none
+    transition
+    focus:border-[#111]
+focus:ring-4
+focus:ring-neutral-200
+    ${error ? "border-red-500" : ""}
+    ${className}
+  `}
+/>
 
       {error && (
         <p className="text-xs text-red-500">

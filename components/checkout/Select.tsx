@@ -36,6 +36,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
           ref={ref}
           {...props}
           className={`
+            text-right
             h-12
             w-full
             rounded-xl

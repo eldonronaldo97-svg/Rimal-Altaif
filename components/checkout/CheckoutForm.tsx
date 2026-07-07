@@ -61,9 +61,9 @@ export default function CheckoutForm({
   submit,
 }: Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
 
-      <div className="rounded-3xl border bg-white p-6">
+      <div className="rounded-2xl border bg-white p-8">
 
         <div className="mb-6">
 
@@ -85,7 +85,7 @@ export default function CheckoutForm({
 
       </div>
 
-      <div className="rounded-3xl border bg-white p-6">
+      <div className="rounded-2xl border bg-white p-8">
 
         <h2 className="mb-6 text-2xl font-semibold">
           Payment Method
@@ -99,7 +99,7 @@ export default function CheckoutForm({
       </div>
             {(paymentMethod === "instapay" ||
         paymentMethod === "vodafone") && (
-        <div className="rounded-3xl border bg-white p-6">
+        <div className="rounded-2xl border bg-white p-8">
 
           <h2 className="mb-6 text-2xl font-semibold">
             Upload Receipt
@@ -113,7 +113,7 @@ export default function CheckoutForm({
         </div>
       )}
 
-      <div className="rounded-3xl border bg-white p-6">
+      <div className="rounded-2xl border bg-white p-8">
 
         <h2 className="mb-6 text-2xl font-semibold">
           Discount

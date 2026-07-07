@@ -27,17 +27,17 @@ export default function OrderSummary({
     <aside
       className="
         h-fit
-        rounded-3xl
+        rounded-2xl
         border
         border-neutral-200
         bg-white
-        p-6
+        p-8
         lg:sticky
         lg:top-6
       "
     >
       <h2 className="mb-6 text-2xl font-bold">
-        Order Summary
+        ملخص الطلب
       </h2>
 
       <div className="space-y-5">
@@ -98,7 +98,7 @@ export default function OrderSummary({
 
                 <div className="flex items-center justify-between">
           <span className="text-neutral-500">
-            Subtotal
+            إجمالي المنتجات
           </span>
 
           <span className="font-medium">
@@ -108,7 +108,7 @@ export default function OrderSummary({
 
         <div className="flex items-center justify-between">
           <span className="text-neutral-500">
-            Shipping
+            الشحن
           </span>
 
           <span className="font-medium">
@@ -120,7 +120,7 @@ export default function OrderSummary({
 
         <div className="flex items-center justify-between">
           <span className="text-neutral-500">
-            Discount
+            الخصم
           </span>
 
           <span className="font-medium text-green-600">
@@ -135,7 +135,7 @@ export default function OrderSummary({
       <div className="flex items-center justify-between">
 
         <span className="text-xl font-bold">
-          Total
+          الإجمالي
         </span>
 
         <span className="text-2xl font-bold">
