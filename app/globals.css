@@ -334,3 +334,6 @@ button {
   transform: scale(1.45);
 }
 }
+.font-brand {
+  font-family: var(--font-arabic);
+}

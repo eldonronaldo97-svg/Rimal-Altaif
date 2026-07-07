@@ -3,6 +3,13 @@ import { Montserrat } from "next/font/google";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import FloatingCart from "@/components/FloatingCart";
 import LayoutContent from "@/components/LayoutContent";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
+
+const ibmArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-arabic",
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={montserrat.className}>
+      <body className={`${montserrat.className} ${ibmArabic.variable}`}>
         {children}
         <FloatingCart />
 

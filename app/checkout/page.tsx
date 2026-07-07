@@ -102,13 +102,20 @@ export default function CheckoutPage() {
 
       <div className="bg-white border-b">
 
-  <div className="mx-auto flex h-16 max-w-7xl items-center justify-center px-6 lg:px-10">
+  <div className="mx-auto flex h-16 max-w-7xl items-center justify-center">
 
-    <img
-      src="/logo.png"
-      alt="Rimal Altaif"
-      className="h-9 w-auto"
-    />
+    <h1
+      className="
+        font-brand
+        text-[28px]
+        font-light
+        tracking-[0.15em]
+        text-neutral-900
+        select-none
+      "
+    >
+      رمال الطائف
+    </h1>
 
   </div>
 
