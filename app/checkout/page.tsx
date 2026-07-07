@@ -456,12 +456,7 @@ export default function CheckoutPage() {
 
           <div className="relative h-20 w-20 overflow-hidden rounded-xl border bg-white">
 
-            <Image
-              src={item.image}
-              alt={item.name}
-              fill
-              className="object-contain p-2"
-            />
+            
 
           </div>
 
