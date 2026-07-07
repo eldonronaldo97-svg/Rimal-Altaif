@@ -4,8 +4,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/store";
-import "react-photo-view/dist/react-photo-view.css";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+// import "react-photo-view/dist/react-photo-view.css";
+// import { PhotoProvider, PhotoView } from "react-photo-view";
 import {
   ShieldCheck,
   Truck,
@@ -85,26 +85,18 @@ export default function ProductPage() {
     </div>
   )}
 
-  <PhotoProvider
-  maskOpacity={0.95}
-  bannerVisible={false}
->
-  <PhotoView src={product.image}>
-    <img
-      src={product.image}
-      alt={product.name}
-      style={{
-        width: "100%",
-        maxWidth: 420,
-        height: "auto",
-        objectFit: "contain",
-        display: "block",
-        margin: "0 auto",
-        cursor: "zoom-in",
-      }}
-    />
-  </PhotoView>
-</PhotoProvider>
+  <img
+  src={product.image}
+  alt={product.name}
+  style={{
+    width: "100%",
+    maxWidth: 420,
+    height: "auto",
+    objectFit: "contain",
+    display: "block",
+    margin: "0 auto",
+  }}
+/>
 </div>
 
         {/* INFO */}
