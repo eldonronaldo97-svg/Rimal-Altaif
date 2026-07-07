@@ -1,6 +1,9 @@
 "use client";
 
-import { SelectHTMLAttributes, forwardRef } from "react";
+import {
+  SelectHTMLAttributes,
+  forwardRef,
+} from "react";
 
 interface Option {
   label: string;
@@ -9,12 +12,15 @@ interface Option {
 
 interface Props
   extends SelectHTMLAttributes<HTMLSelectElement> {
-  label: string;
+  label?: string;
   options: Option[];
   error?: string;
 }
 
-const Select = forwardRef<HTMLSelectElement, Props>(
+const Select = forwardRef<
+  HTMLSelectElement,
+  Props
+>(
   (
     {
       label,
@@ -26,26 +32,24 @@ const Select = forwardRef<HTMLSelectElement, Props>(
     ref
   ) => {
     return (
-      <div className="space-y-2">
-
-        <label className="text-sm font-medium text-neutral-700">
-          {label}
-        </label>
+      <div className="space-y-1">
 
         <select
           ref={ref}
           {...props}
+          dir="rtl"
           className={`
-            text-right
-            h-12
+            h-[58px]
             w-full
-            rounded-xl
+            rounded-[14px]
             border
-            border-neutral-300
+            border-[#d9d9d9]
             bg-white
-            px-4
+            px-5
+            text-[15px]
+            text-right
             outline-none
-            transition
+            transition-all
             focus:border-black
             focus:ring-2
             focus:ring-black/10
@@ -64,7 +68,7 @@ const Select = forwardRef<HTMLSelectElement, Props>(
         </select>
 
         {error && (
-          <p className="text-xs text-red-500">
+          <p className="pr-1 text-xs text-red-500">
             {error}
           </p>
         )}

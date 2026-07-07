@@ -12,7 +12,7 @@ interface Props {
 }
 
 const governorates = [
-  { label: "Choose Governorate", value: "" },
+  { label: "اختر المحافظة", value: "" },
   { label: "القاهرة", value: "القاهرة" },
   { label: "الجيزة", value: "الجيزة" },
   { label: "الإسكندرية", value: "الإسكندرية" },
@@ -58,133 +58,110 @@ export default function CustomerInfoForm({
   };
 
   return (
-    <div className="space-y-6">
-      <div className="grid gap-5 md:grid-cols-2">
+    <div className="space-y-4">
 
-        <Input
-          label="الاسم بالكامل"
-          value={customer.name}
-          error={errors.name}
-          placeholder="الاسم بالكامل"
-          onChange={(e) =>
-            update("name", e.target.value)
-          }
-        />
+      <Input
+        label="الاسم بالكامل"
+        value={customer.name}
+        error={errors.name}
+        onChange={(e) =>
+          update("name", e.target.value)
+        }
+      />
 
-        <Input
-  type="tel"
-  label="رقم الهاتف"
-  value={customer.phone}
-  error={errors.phone}
-  placeholder="الرقم الاساسي"
-  onChange={(e) =>
-    update("phone", e.target.value)
-  }
-/>
+      <Input
+        type="tel"
+        label="رقم الهاتف"
+        value={customer.phone}
+        error={errors.phone}
+        onChange={(e) =>
+          update("phone", e.target.value)
+        }
+      />
 
-        <Input
-  type="tel"
-  label="رقم هاتف احتياطي"
-  value={customer.phone2 || ""}
-  placeholder="اختياري"
-  onChange={(e) =>
-    update("phone2", e.target.value)
-  }
-/>
+      <Input
+        type="tel"
+        label="رقم هاتف احتياطي (اختياري)"
+        value={customer.phone2 || ""}
+        onChange={(e) =>
+          update("phone2", e.target.value)
+        }
+      />
 
-        <Select
-          label="المحافظة"
-          value={customer.governorate}
-          error={errors.governorate}
-          options={governorates}
-          onChange={(e) =>
-            update("governorate", e.target.value)
-          }
-        />
+      <Select
+        label="المحافظة"
+        value={customer.governorate}
+        error={errors.governorate}
+        options={governorates}
+        onChange={(e) =>
+          update("governorate", e.target.value)
+        }
+      />
 
-        <Input
-          label="المدينة"
-          value={customer.city}
-          error={errors.city}
-          placeholder="المدينة"
-          onChange={(e) =>
-            update("city", e.target.value)
-          }
-        />
+      <Input
+        label="المدينة"
+        value={customer.city}
+        error={errors.city}
+        onChange={(e) =>
+          update("city", e.target.value)
+        }
+      />
 
-        <Input
-          label="العنوان"
-          value={customer.address}
-          error={errors.address}
-          placeholder="اكتب عنوانك بالكامل"
-          className="md:col-span-2"
-          onChange={(e) =>
-            update("address", e.target.value)
-          }
-        />
-      </div>
+      <Input
+        label="العنوان بالكامل"
+        value={customer.address}
+        error={errors.address}
+        onChange={(e) =>
+          update("address", e.target.value)
+        }
+      />
+            <Input
+        label="رقم المبنى"
+        value={customer.building || ""}
+        onChange={(e) =>
+          update("building", e.target.value)
+        }
+      />
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <Input
+        label="الدور"
+        value={customer.floor || ""}
+        onChange={(e) =>
+          update("floor", e.target.value)
+        }
+      />
 
-                <Input
-          label="رقم المبنى"
-          value={customer.building || ""}
-          placeholder="رقم المبنى"
-          onChange={(e) =>
-            update("building", e.target.value)
-          }
-        />
+      <Input
+        label="رقم الشقة"
+        value={customer.apartment || ""}
+        onChange={(e) =>
+          update("apartment", e.target.value)
+        }
+      />
 
-        <Input
-          label="الدور"
-          value={customer.floor || ""}
-          placeholder="الدور"
-          onChange={(e) =>
-            update("floor", e.target.value)
-          }
-        />
-
-        <Input
-          label="الشقة"
-          value={customer.apartment || ""}
-          placeholder="الشقة"
-          onChange={(e) =>
-            update("apartment", e.target.value)
-          }
-        />
-
-      </div>
-
-      <div>
-
-        <label className="mb-2 block text-sm font-medium text-neutral-700">
-          ملاحظات الطلب
-        </label>
-
-        <textarea
-          rows={4}
-          value={customer.notes || ""}
-          placeholder="Write any notes..."
-          onChange={(e) =>
-            update("notes", e.target.value)
-          }
-          className="
-w-full
-rounded-[14px]
-border
-border-[#d9d9d9]
-bg-white
-p-5
-text-[15px]
-outline-none
-transition
-focus:border-black
-focus:ring-4
-focus:ring-neutral-200
-"
-        />
-
-      </div>
+      <textarea
+        rows={4}
+        value={customer.notes || ""}
+        placeholder="ملاحظات الطلب (اختياري)"
+        onChange={(e) =>
+          update("notes", e.target.value)
+        }
+        className="
+          w-full
+          rounded-[14px]
+          border
+          border-[#d9d9d9]
+          bg-white
+          p-5
+          text-[15px]
+          placeholder:text-[#8a8a8a]
+          outline-none
+          transition-all
+          focus:border-black
+          focus:ring-2
+          focus:ring-black/10
+        "
+      />
 
     </div>
   );

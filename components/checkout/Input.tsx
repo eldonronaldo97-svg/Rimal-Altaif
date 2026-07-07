@@ -7,7 +7,7 @@ import {
 
 interface Props
   extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   error?: string;
 }
 
@@ -16,44 +16,43 @@ const Input = forwardRef<
   Props
 >(({ label, error, className = "", ...props }, ref) => {
   return (
-    <div className="space-y-2">
-
-      <label className="block pr-1 text-sm font-medium text-neutral-700">
-        {label}
-      </label>
+    <div className="space-y-1">
 
       <input
-  ref={ref}
-  {...props}
-  dir={
-    props.type === "tel" ||
-    props.type === "email" ||
-    props.type === "number"
-      ? "ltr"
-      : "rtl"
-  }
-  className={`
-    h-[58px]
-    w-full
-    rounded-[14px]
-    border
-    border-[#d9d9d9]
-    border-neutral-300
-    bg-white
-    px-5
-    text-[15px]
-    outline-none
-    transition
-    focus:border-[#111]
-focus:ring-4
-focus:ring-neutral-200
-    ${error ? "border-red-500" : ""}
-    ${className}
-  `}
-/>
+        ref={ref}
+        {...props}
+        placeholder={label || props.placeholder}
+        dir={
+          props.type === "tel" ||
+          props.type === "email" ||
+          props.type === "number"
+            ? "ltr"
+            : "rtl"
+        }
+        className={`
+          h-[58px]
+          w-full
+          rounded-[14px]
+          border
+          border-[#d9d9d9]
+          bg-white
+          px-5
+          text-[15px]
+          text-right
+          outline-none
+          transition-all
+          placeholder:text-[#8a8a8a]
+          placeholder:text-[15px]
+          focus:border-black
+          focus:ring-2
+          focus:ring-black/10
+          ${error ? "border-red-500" : ""}
+          ${className}
+        `}
+      />
 
       {error && (
-        <p className="text-xs text-red-500">
+        <p className="pr-1 text-xs text-red-500">
           {error}
         </p>
       )}
