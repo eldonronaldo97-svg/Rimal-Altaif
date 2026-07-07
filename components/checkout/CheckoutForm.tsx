@@ -63,16 +63,16 @@ export default function CheckoutForm({
   return (
     <div className="space-y-8">
 
-      <div className="rounded-2xl border bg-white p-8">
+      <div className="bg-transparent">
 
         <div className="mb-6">
 
           <h1 className="text-3xl font-bold">
-            Checkout
+            تأكيد الطلب
           </h1>
 
           <p className="mt-2 text-neutral-500">
-            Complete your order
+            اكمل الطلب
           </p>
 
         </div>
@@ -85,10 +85,10 @@ export default function CheckoutForm({
 
       </div>
 
-      <div className="rounded-2xl border bg-white p-8">
+      <div className="mt-10">
 
-        <h2 className="mb-6 text-2xl font-semibold">
-          Payment Method
+        <h2 className="mb-5 text-[34px] font-bold tracking-tight">
+          طرق الدفع
         </h2>
 
         <PaymentMethods
@@ -99,9 +99,9 @@ export default function CheckoutForm({
       </div>
             {(paymentMethod === "instapay" ||
         paymentMethod === "vodafone") && (
-        <div className="rounded-2xl border bg-white p-8">
+        <div className="mt-8">
 
-          <h2 className="mb-6 text-2xl font-semibold">
+          <h2 className="mb-5 text-[34px] font-bold tracking-tight">
             Upload Receipt
           </h2>
 
@@ -113,10 +113,10 @@ export default function CheckoutForm({
         </div>
       )}
 
-      <div className="rounded-2xl border bg-white p-8">
+      <div className="mt-8">
 
-        <h2 className="mb-6 text-2xl font-semibold">
-          Discount
+        <h2 className="mb-5 text-[34px] font-bold tracking-tight">
+          كود الخصم
         </h2>
 
         <CouponBox

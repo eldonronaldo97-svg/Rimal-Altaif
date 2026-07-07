@@ -33,15 +33,15 @@ const Input = forwardRef<
       : "rtl"
   }
   className={`
-    h-16
+    h-[58px]
     w-full
-    rounded-xl
+    rounded-[14px]
     border
     border-[#d9d9d9]
     border-neutral-300
     bg-white
-    px-4
-    text-right
+    px-5
+    text-[15px]
     outline-none
     transition
     focus:border-[#111]

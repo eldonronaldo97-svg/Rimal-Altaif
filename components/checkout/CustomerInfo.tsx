@@ -162,25 +162,26 @@ export default function CustomerInfoForm({
         </label>
 
         <textarea
-          rows={5}
+          rows={4}
           value={customer.notes || ""}
           placeholder="Write any notes..."
           onChange={(e) =>
             update("notes", e.target.value)
           }
           className="
-            w-full
-            rounded-xl
-            border
-            border-neutral-300
-            bg-white
-            p-4
-            outline-none
-            transition
-            focus:border-black
-            focus:ring-2
-            focus:ring-black/10
-          "
+w-full
+rounded-[14px]
+border
+border-[#d9d9d9]
+bg-white
+p-5
+text-[15px]
+outline-none
+transition
+focus:border-black
+focus:ring-4
+focus:ring-neutral-200
+"
         />
 
       </div>
