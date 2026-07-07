@@ -47,16 +47,27 @@ export default function OrderSummary({
             key={product.id}
             className="flex items-center gap-4"
           >
-            <div className="relative h-20 w-20 overflow-hidden rounded-2xl border">
-
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-              />
-
-            </div>
+            <div
+  className="overflow-hidden rounded-2xl border"
+  style={{
+    width: 80,
+    height: 80,
+    minWidth: 80,
+    position: "relative",
+  }}
+>
+  <Image
+    src={product.image}
+    alt={product.name}
+    width={80}
+    height={80}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+    }}
+  />
+</div>
 
             <div className="flex-1">
 
