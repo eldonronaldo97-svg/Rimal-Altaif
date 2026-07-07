@@ -100,63 +100,42 @@ export default function CheckoutPage() {
   className="min-h-screen bg-[#f8f8f8] text-right"
 >
 
-      <div className="border-b bg-white -mx-6 -mt-8 mb-8 lg:-mx-10">
+      <div className="bg-white border-b">
 
-  <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
+  <div className="mx-auto flex h-16 max-w-7xl items-center justify-center px-6 lg:px-10">
 
-    <div className="flex items-center gap-4">
-
-      <img
-        src="/logo.png"
-        alt="Rimal Altaif"
-        className="h-12 w-auto"
-      />
-
-      <div>
-
-        <h1 className="text-xl font-semibold">
-          رمال الطائف
-        </h1>
-
-        <p className="text-sm text-neutral-500">
-          عطور أصلية 100%
-        </p>
-
-      </div>
-
-    </div>
-
-    <div className="text-left">
-
-      <p className="text-xs text-neutral-500">
-        إجمالي الطلب
-      </p>
-
-      <p className="text-3xl font-bold">
-        {total} ج.م
-      </p>
-
-    </div>
+    <img
+      src="/logo.png"
+      alt="Rimal Altaif"
+      className="h-9 w-auto"
+    />
 
   </div>
 
 </div>
 
-<div className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
-
-<div className="mb-6 rounded-xl border bg-white lg:hidden">
+<div className="border-b bg-[#f5f5f5] lg:hidden">
 
   <button
     type="button"
-    className="flex w-full items-center justify-between p-4 text-lg font-semibold"
+    className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-6 text-base font-semibold"
   >
-    <span>ملخص الطلب</span>
 
-    <span>{total} ج.م</span>
+    <span className="flex items-center gap-2">
+      📦
+      ملخص الطلب
+    </span>
+
+    <span className="text-lg font-bold">
+      {total} ج.م
+    </span>
 
   </button>
 
 </div>
+
+<div className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] items-start">
 
