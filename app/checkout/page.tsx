@@ -95,6 +95,9 @@ export default function CheckoutPage() {
   >({});
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState<"vodafone" | "instapay">(
+    "vodafone"
+  );
   const [couponMessage, setCouponMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -204,7 +207,9 @@ export default function CheckoutPage() {
     message += `الشحن: ${money(SHIPPING_COST)} ج.م\n`;
     if (discount > 0) message += `الخصم: -${money(discount)} ج.م\n`;
     message += `*الإجمالي النهائي: ${money(total)} ج.م*\n`;
-    message += "طريقة الدفع: الدفع عند الاستلام";
+    message += `طريقة الدفع: ${
+      paymentMethod === "vodafone" ? "Vodafone Cash" : "InstaPay"
+    }`;
 
     return message;
   }
@@ -389,16 +394,48 @@ export default function CheckoutPage() {
               <div className="section">
                 <SectionTitle number="03" title="طريقة الدفع" text="اختر الطريقة المناسبة لك" />
 
-                <div className="payment">
-                  <div className="payment-radio">
-                    <span />
-                  </div>
-                  <div className="payment-icon">ج</div>
-                  <div className="payment-copy">
-                    <strong>الدفع عند الاستلام</strong>
-                    <span>ادفع قيمة طلبك عند استلام الشحنة</span>
-                  </div>
-                  <b>مُختارة</b>
+                <div className="payment-options">
+                  <button
+                    type="button"
+                    className={`payment-option ${
+                      paymentMethod === "vodafone" ? "active" : ""
+                    }`}
+                    onClick={() => setPaymentMethod("vodafone")}
+                    aria-pressed={paymentMethod === "vodafone"}
+                  >
+                    <span className="payment-radio">
+                      {paymentMethod === "vodafone" ? <span /> : null}
+                    </span>
+                    <span className="payment-logo vodafone-logo">V</span>
+                    <span className="payment-copy">
+                      <strong>Vodafone Cash</strong>
+                      <span>الدفع عن طريق محفظة فودافون كاش</span>
+                    </span>
+                    {paymentMethod === "vodafone" ? (
+                      <b>مُختارة</b>
+                    ) : null}
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`payment-option ${
+                      paymentMethod === "instapay" ? "active" : ""
+                    }`}
+                    onClick={() => setPaymentMethod("instapay")}
+                    aria-pressed={paymentMethod === "instapay"}
+                  >
+                    <span className="payment-radio">
+                      {paymentMethod === "instapay" ? <span /> : null}
+                    </span>
+                    <span className="payment-logo instapay-logo">IP</span>
+                    <span className="payment-copy">
+                      <strong>InstaPay</strong>
+                      <span>الدفع عن طريق إنستا باي</span>
+                    </span>
+                    {paymentMethod === "instapay" ? (
+                      <b>مُختارة</b>
+                    ) : null}
+                  </button>
                 </div>
               </div>
             </section>
@@ -806,44 +843,83 @@ export default function CheckoutPage() {
           background: #e6f0f5;
         }
 
-        .payment {
-          min-height: 72px;
+        .payment-options {
+          display: flex;
+          flex-direction: column;
+          gap: 11px;
           width: 100%;
+        }
+
+        .payment-option {
+          width: 100%;
+          min-height: 78px;
           display: flex;
           align-items: center;
           gap: 12px;
           padding: 13px 15px;
-          border: 1px solid #9ed2ee;
+          border: 1px solid #cfe0ea;
           border-radius: 12px;
-          background: #f5fbff;
+          background: #fff;
+          color: #234052;
+          text-align: right;
+          cursor: pointer;
+          transition: 0.2s ease;
+        }
+
+        .payment-option:hover {
+          border-color: #8fc9e6;
+          background: #f8fcff;
+        }
+
+        .payment-option.active {
+          border-color: #68b7df;
+          background: #f2faff;
+          box-shadow: 0 0 0 2px rgba(75, 169, 215, 0.08);
         }
 
         .payment-radio {
           width: 20px;
           height: 20px;
-          border: 2px solid #4ba7d4;
+          border: 2px solid #a9c5d5;
           border-radius: 50%;
           display: grid;
           place-items: center;
-          flex-shrink: 0;
+          flex: 0 0 20px;
         }
 
-        .payment-radio span {
+        .payment-option.active .payment-radio {
+          border-color: #3698c8;
+        }
+
+        .payment-radio > span {
           width: 9px;
           height: 9px;
           border-radius: 50%;
-          background: #3193c5;
+          background: #3698c8;
         }
 
-        .payment-icon {
-          width: 42px;
-          height: 42px;
+        .payment-logo {
+          width: 44px;
+          height: 44px;
           border-radius: 10px;
-          background: #e7f5fc;
-          color: #2484b7;
           display: grid;
           place-items: center;
-          font-weight: 700;
+          flex: 0 0 44px;
+          font-weight: 800;
+          letter-spacing: -0.5px;
+        }
+
+        .vodafone-logo {
+          background: #fff1f2;
+          color: #d92f43;
+          font-size: 19px;
+        }
+
+        .instapay-logo {
+          background: #eaf6fd;
+          color: #2688bb;
+          font-size: 11px;
+          direction: ltr;
         }
 
         .payment-copy {
@@ -861,17 +937,18 @@ export default function CheckoutPage() {
         }
 
         .payment-copy span {
-          margin-top: 3px;
+          margin-top: 4px;
           color: #8097a6;
           font-size: 10px;
         }
 
-        .payment > b {
+        .payment-option > b {
           color: #2588bb;
           background: #e4f5fd;
           border-radius: 20px;
           padding: 6px 9px;
           font-size: 9px;
+          white-space: nowrap;
         }
 
         .summary {
