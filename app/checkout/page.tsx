@@ -1338,8 +1338,11 @@ export default function CheckoutPage() {
         }
 
         .details-card {
-          width: 100%;
-          min-width: 0;
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
           padding: 31px;
         }
 
@@ -1353,8 +1356,25 @@ export default function CheckoutPage() {
            SECTIONS
         ========================= */
 
+        .details-card > .form-section {
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          margin-right: 0 !important;
+          margin-left: 0 !important;
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+          box-sizing: border-box !important;
+          margin-bottom: 30px;
+        }
+
         .form-section {
-          width: 100%;
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
           margin-bottom: 30px;
         }
 
@@ -1397,22 +1417,28 @@ export default function CheckoutPage() {
 
         .form-grid,
         .shipping-grid {
-          display: grid !important;
-          grid-template-columns: minmax(0, 1fr) !important;
-          grid-auto-flow: row !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+          justify-content: flex-start !important;
           width: 100% !important;
-          max-width: none !important;
+          max-width: 100% !important;
           min-width: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
           gap: 15px;
+          box-sizing: border-box !important;
         }
 
         .form-grid > .field,
         .shipping-grid > .field {
-          grid-column: 1 / -1 !important;
           display: block !important;
+          flex: 0 0 100% !important;
           width: 100% !important;
-          max-width: none !important;
+          max-width: 100% !important;
           min-width: 0 !important;
+          align-self: stretch !important;
+          box-sizing: border-box !important;
         }
 
         .field {
@@ -2211,10 +2237,11 @@ export default function CheckoutPage() {
 
           .form-grid > .field,
           .shipping-grid > .field {
-            grid-column: 1 / -1 !important;
+            flex: 0 0 100% !important;
             width: 100% !important;
-            max-width: none !important;
+            max-width: 100% !important;
             min-width: 0 !important;
+            align-self: stretch !important;
           }
 
           .field {
