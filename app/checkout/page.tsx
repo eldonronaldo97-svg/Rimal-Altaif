@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 type CartItem = {
   id?: string | number;
@@ -92,13 +92,16 @@ function money(value: number) {
 export default function CheckoutPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [form, setForm] = useState<CustomerForm>(emptyForm);
+
   const [errors, setErrors] = useState<
     Partial<Record<keyof CustomerForm, string>>
   >({});
+
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponMessage, setCouponMessage] = useState("");
   const [couponSuccess, setCouponSuccess] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
@@ -127,7 +130,7 @@ export default function CheckoutPage() {
             break;
           }
         } catch {
-          // Ignore malformed localStorage values.
+          // تجاهل البيانات غير الصالحة
         }
       }
 
@@ -201,6 +204,7 @@ export default function CheckoutPage() {
     if (!code) {
       setDiscount(0);
       setCouponMessage("");
+      setCouponSuccess(false);
       return;
     }
 
@@ -220,6 +224,7 @@ export default function CheckoutPage() {
 
   function buildWhatsAppMessage() {
     let message = `*طلب جديد من رمال الطائف*`;
+
     message += "\n━━━━━━━━━━━━━━━━";
     message += "\n\n";
 
@@ -238,10 +243,13 @@ export default function CheckoutPage() {
     message += "\n";
     message += `*عنوان الشحن*`;
     message += "\n";
+
     message += `المحافظة: ${form.governorate}`;
     message += "\n";
-    message += `المدينة: ${form.city}`;
+
+    message += `المدينة / المنطقة: ${form.city}`;
     message += "\n";
+
     message += `العنوان: ${form.address}`;
     message += "\n";
 
@@ -288,8 +296,10 @@ export default function CheckoutPage() {
     message += "\n";
     message += "━━━━━━━━━━━━━━━━";
     message += "\n";
+
     message += `الإجمالي الفرعي: ${money(subtotal)} ج.م`;
     message += "\n";
+
     message += `الشحن: ${money(SHIPPING_COST)} ج.م`;
 
     if (discount > 0) {
@@ -300,7 +310,9 @@ export default function CheckoutPage() {
     message += "\n";
     message += `*الإجمالي النهائي: ${money(total)} ج.م*`;
     message += "\n";
+
     message += "طريقة الدفع: الدفع عند الاستلام";
+
     message += "\n\n";
     message += "شكرًا لاختياركم رمال الطائف";
 
@@ -315,9 +327,8 @@ export default function CheckoutPage() {
 
     if (!validate()) {
       window.setTimeout(() => {
-        const firstError = document.querySelector(
-          ".field-error"
-        );
+        const firstError =
+          document.querySelector(".field-error");
 
         firstError?.scrollIntoView({
           behavior: "smooth",
@@ -341,17 +352,28 @@ export default function CheckoutPage() {
   function continueToWhatsapp() {
     if (!whatsappUrl) return;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
     setShowSuccess(false);
   }
 
   return (
     <>
       <main className="checkout-page">
+
+        {/* HEADER */}
+
         <header className="checkout-header">
           <div className="header-inner">
+
             <a className="brand" href="/">
-              <div className="brand-symbol">ر</div>
+              <div className="brand-symbol">
+                ر
+              </div>
 
               <div className="brand-copy">
                 <strong>رمال الطائف</strong>
@@ -372,6 +394,7 @@ export default function CheckoutPage() {
                     strokeWidth="1.7"
                     strokeLinecap="round"
                   />
+
                   <rect
                     x="5"
                     y="10"
@@ -385,338 +408,450 @@ export default function CheckoutPage() {
                 </svg>
               </span>
 
-              <span>تجربة شراء آمنة</span>
+              <span>
+                تجربة شراء آمنة
+              </span>
             </div>
+
           </div>
         </header>
 
+
+        {/* CONTENT */}
+
         <div className="container">
+
           <section className="intro">
             <span className="eyebrow">
               RIMAL ALTAIF
             </span>
 
-            <h1>إتمام الطلب</h1>
+            <h1>
+              إتمام الطلب
+            </h1>
 
             <p>
               أكمل بياناتك وسنجهز طلبك بعناية حتى باب منزلك
             </p>
           </section>
 
+
           <div className="checkout-grid">
+
+            {/* LEFT */}
+
             <section className="details-card">
+
+              {/* CUSTOMER */}
+
               <div className="form-section">
+
                 <div className="section-title">
-                  <div className="section-number">01</div>
+                  <div className="section-number">
+                    01
+                  </div>
 
                   <div>
-                    <h2>بيانات العميل</h2>
-                    <p>أدخل بيانات التواصل الخاصة بك</p>
+                    <h2>
+                      بيانات العميل
+                    </h2>
+
+                    <p>
+                      أدخل بيانات التواصل الخاصة بك
+                    </p>
                   </div>
                 </div>
 
+
                 <div className="form-grid">
+
                   <Field
-                    label="الاسم بالكامل"
-                    required
                     error={errors.name}
                     full
                   >
-                    <input
-                      value={form.name}
-                      onChange={(event) =>
-                        updateField(
-                          "name",
-                          event.target.value
-                        )
-                      }
-                      placeholder="اكتب اسمك بالكامل"
-                      autoComplete="name"
-                    />
+                    <div className="input-wrap">
+                      <UserIcon />
+
+                      <input
+                        value={form.name}
+                        onChange={(event) =>
+                          updateField(
+                            "name",
+                            event.target.value
+                          )
+                        }
+                        placeholder="الاسم بالكامل *"
+                        autoComplete="name"
+                      />
+                    </div>
                   </Field>
 
-                  <Field
-                    label="رقم الموبايل"
-                    required
-                    error={errors.phone}
-                  >
-                    <input
-                      value={form.phone}
-                      onChange={(event) =>
-                        updateField(
-                          "phone",
-                          event.target.value.replace(
-                            /\D/g,
-                            ""
+
+                  <Field error={errors.phone}>
+                    <div className="input-wrap">
+                      <PhoneIcon />
+
+                      <input
+                        value={form.phone}
+                        onChange={(event) =>
+                          updateField(
+                            "phone",
+                            event.target.value.replace(
+                              /\D/g,
+                              ""
+                            )
                           )
-                        )
-                      }
-                      placeholder="01xxxxxxxxx"
-                      maxLength={11}
-                      inputMode="numeric"
-                      autoComplete="tel"
-                    />
+                        }
+                        placeholder="رقم الموبايل *"
+                        maxLength={11}
+                        inputMode="numeric"
+                        autoComplete="tel"
+                      />
+                    </div>
                   </Field>
 
-                  <Field label="رقم إضافي">
-                    <input
-                      value={form.phone2}
-                      onChange={(event) =>
-                        updateField(
-                          "phone2",
-                          event.target.value.replace(
-                            /\D/g,
-                            ""
+
+                  <Field>
+                    <div className="input-wrap">
+                      <PhoneIcon />
+
+                      <input
+                        value={form.phone2}
+                        onChange={(event) =>
+                          updateField(
+                            "phone2",
+                            event.target.value.replace(
+                              /\D/g,
+                              ""
+                            )
                           )
-                        )
-                      }
-                      placeholder="اختياري"
-                      maxLength={11}
-                      inputMode="numeric"
-                    />
+                        }
+                        placeholder="رقم إضافي (اختياري)"
+                        maxLength={11}
+                        inputMode="numeric"
+                      />
+                    </div>
                   </Field>
+
                 </div>
+
               </div>
+
 
               <div className="divider" />
 
+
+              {/* SHIPPING */}
+
               <div className="form-section">
+
                 <div className="section-title">
-                  <div className="section-number">02</div>
+                  <div className="section-number">
+                    02
+                  </div>
 
                   <div>
-                    <h2>عنوان الشحن</h2>
-                    <p>سنقوم بالتوصيل حتى باب منزلك</p>
+                    <h2>
+                      عنوان الشحن
+                    </h2>
+
+                    <p>
+                      سنقوم بالتوصيل حتى باب منزلك
+                    </p>
                   </div>
                 </div>
 
-                <div className="form-grid">
-                  <Field
-                    label="المحافظة"
-                    required
-                    error={errors.governorate}
-                  >
-                    <select
-                      value={form.governorate}
-                      onChange={(event) =>
-                        updateField(
-                          "governorate",
-                          event.target.value
-                        )
-                      }
-                    >
-                      <option value="">
-                        اختر المحافظة
-                      </option>
 
-                      {GOVERNORATES.map((governorate) => (
-                        <option
-                          key={governorate}
-                          value={governorate}
-                        >
-                          {governorate}
+                <div className="form-grid shipping-grid">
+
+                  <Field error={errors.governorate}>
+                    <div className="input-wrap">
+                      <LocationIcon />
+
+                      <select
+                        value={form.governorate}
+                        onChange={(event) =>
+                          updateField(
+                            "governorate",
+                            event.target.value
+                          )
+                        }
+                      >
+                        <option value="">
+                          المحافظة *
                         </option>
-                      ))}
-                    </select>
+
+                        {GOVERNORATES.map(
+                          (governorate) => (
+                            <option
+                              key={governorate}
+                              value={governorate}
+                            >
+                              {governorate}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </div>
                   </Field>
 
-                  <Field
-                    label="المدينة / المنطقة"
-                    required
-                    error={errors.city}
-                  >
-                    <input
-                      value={form.city}
-                      onChange={(event) =>
-                        updateField(
-                          "city",
-                          event.target.value
-                        )
-                      }
-                      placeholder="مثال: مدينة نصر"
-                    />
+
+                  <Field error={errors.city}>
+                    <div className="input-wrap">
+                      <CityIcon />
+
+                      <input
+                        value={form.city}
+                        onChange={(event) =>
+                          updateField(
+                            "city",
+                            event.target.value
+                          )
+                        }
+                        placeholder="المدينة / المنطقة *"
+                      />
+                    </div>
                   </Field>
 
-                  <Field
-                    label="العنوان بالتفصيل"
-                    required
-                    error={errors.address}
-                    full
-                  >
-                    <textarea
-                      value={form.address}
-                      onChange={(event) =>
-                        updateField(
-                          "address",
-                          event.target.value
-                        )
-                      }
-                      placeholder="اسم الشارع، رقم العقار، علامة مميزة..."
-                      rows={3}
-                    />
+
+                  <Field error={errors.address}>
+                    <div className="input-wrap textarea-wrap">
+                      <HomeIcon />
+
+                      <textarea
+                        value={form.address}
+                        onChange={(event) =>
+                          updateField(
+                            "address",
+                            event.target.value
+                          )
+                        }
+                        placeholder="العنوان بالتفصيل *"
+                        rows={3}
+                      />
+                    </div>
                   </Field>
 
-                  <Field label="رقم العقار">
-                    <input
-                      value={form.building}
-                      onChange={(event) =>
-                        updateField(
-                          "building",
-                          event.target.value
-                        )
-                      }
-                      placeholder="اختياري"
-                    />
+
+                  <Field>
+                    <div className="input-wrap">
+                      <HashIcon />
+
+                      <input
+                        value={form.building}
+                        onChange={(event) =>
+                          updateField(
+                            "building",
+                            event.target.value
+                          )
+                        }
+                        placeholder="رقم العقار (اختياري)"
+                      />
+                    </div>
                   </Field>
 
-                  <Field label="الدور">
-                    <input
-                      value={form.floor}
-                      onChange={(event) =>
-                        updateField(
-                          "floor",
-                          event.target.value
-                        )
-                      }
-                      placeholder="مثال: الثالث"
-                    />
+
+                  <Field>
+                    <div className="input-wrap">
+                      <FloorIcon />
+
+                      <input
+                        value={form.floor}
+                        onChange={(event) =>
+                          updateField(
+                            "floor",
+                            event.target.value
+                          )
+                        }
+                        placeholder="الدور (اختياري)"
+                      />
+                    </div>
                   </Field>
 
-                  <Field label="الشقة">
-                    <input
-                      value={form.apartment}
-                      onChange={(event) =>
-                        updateField(
-                          "apartment",
-                          event.target.value
-                        )
-                      }
-                      placeholder="مثال: 12"
-                    />
+
+                  <Field>
+                    <div className="input-wrap">
+                      <ApartmentIcon />
+
+                      <input
+                        value={form.apartment}
+                        onChange={(event) =>
+                          updateField(
+                            "apartment",
+                            event.target.value
+                          )
+                        }
+                        placeholder="الشقة (اختياري)"
+                      />
+                    </div>
                   </Field>
 
-                  <Field label="ملاحظات الطلب" full>
-                    <textarea
-                      value={form.notes}
-                      onChange={(event) =>
-                        updateField(
-                          "notes",
-                          event.target.value
-                        )
-                      }
-                      placeholder="أي ملاحظات خاصة بالتوصيل..."
-                      rows={3}
-                    />
+
+                  <Field>
+                    <div className="input-wrap textarea-wrap">
+                      <NoteIcon />
+
+                      <textarea
+                        value={form.notes}
+                        onChange={(event) =>
+                          updateField(
+                            "notes",
+                            event.target.value
+                          )
+                        }
+                        placeholder="ملاحظات الطلب (اختياري)"
+                        rows={3}
+                      />
+                    </div>
                   </Field>
+
                 </div>
+
               </div>
+
 
               <div className="divider" />
 
+
+              {/* PAYMENT */}
+
               <div className="form-section">
+
                 <div className="section-title">
-                  <div className="section-number">03</div>
+                  <div className="section-number">
+                    03
+                  </div>
 
                   <div>
-                    <h2>طريقة الدفع</h2>
-                    <p>اختر الطريقة المناسبة لك</p>
+                    <h2>
+                      طريقة الدفع
+                    </h2>
+
+                    <p>
+                      اختر الطريقة المناسبة لك
+                    </p>
                   </div>
                 </div>
+
 
                 <div className="payment-option active">
+
                   <div className="radio checked">
                     <span />
                   </div>
 
+
                   <div className="payment-icon">
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <rect
-                        x="3"
-                        y="6"
-                        width="18"
-                        height="12"
-                        rx="2"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                      />
-
-                      <path
-                        d="M3 10h18"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                      />
-
-                      <path
-                        d="M7 14h4"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+                    <CashIcon />
                   </div>
 
+
                   <div className="payment-content">
-                    <strong>الدفع عند الاستلام</strong>
+                    <strong>
+                      الدفع عند الاستلام
+                    </strong>
 
                     <span>
                       ادفع قيمة طلبك عند استلام الشحنة
                     </span>
                   </div>
 
+
                   <div className="payment-selected">
                     مختارة
                   </div>
+
                 </div>
+
               </div>
+
+
+              {/* TRUST */}
+
+              <div className="trust-bottom">
+
+                <div>
+                  <span>✓</span>
+                  <strong>
+                    منتجات أصلية
+                  </strong>
+                  <small>
+                    أصلية 100%
+                  </small>
+                </div>
+
+                <div>
+                  <span>◆</span>
+                  <strong>
+                    شحن سريع
+                  </strong>
+                  <small>
+                    لجميع المحافظات
+                  </small>
+                </div>
+
+                <div>
+                  <span>◈</span>
+                  <strong>
+                    دفع آمن
+                  </strong>
+                  <small>
+                    بياناتك محمية
+                  </small>
+                </div>
+
+              </div>
+
             </section>
 
+
+            {/* RIGHT */}
+
             <aside className="summary-card">
+
               <div className="summary-heading">
+
                 <div>
-                  <span>YOUR ORDER</span>
-                  <h2>ملخص الطلب</h2>
+                  <span>
+                    YOUR ORDER
+                  </span>
+
+                  <h2>
+                    ملخص الطلب
+                  </h2>
                 </div>
 
                 <div className="bag-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6 8h12l1 12H5L6 8Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-
-                    <path
-                      d="M9 9V6a3 3 0 0 1 6 0v3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                  <BagIcon />
                 </div>
+
               </div>
 
+
               {isLoading ? (
+
                 <div className="loading-box">
                   <div className="spinner" />
-                  <span>جاري تحميل الطلب...</span>
+                  <span>
+                    جاري تحميل الطلب...
+                  </span>
                 </div>
+
               ) : cart.length ? (
+
                 <>
+
+                  {/* PRODUCTS */}
+
                   <div className="products-list">
+
                     {cart.map((item, index) => {
-                      const price = getPrice(item);
-                      const quantity = getQuantity(item);
+
+                      const price =
+                        getPrice(item);
+
+                      const quantity =
+                        getQuantity(item);
 
                       return (
                         <div
@@ -726,7 +861,9 @@ export default function CheckoutPage() {
                             `${getName(item)}-${index}`
                           }
                         >
+
                           <div className="product-image">
+
                             {item.image ? (
                               <img
                                 src={item.image}
@@ -741,9 +878,12 @@ export default function CheckoutPage() {
                             <span className="quantity">
                               {quantity}
                             </span>
+
                           </div>
 
+
                           <div className="product-details">
+
                             <strong>
                               {getName(item)}
                             </strong>
@@ -751,24 +891,36 @@ export default function CheckoutPage() {
                             <span>
                               الكمية: {quantity}
                             </span>
+
                           </div>
+
 
                           <strong className="product-price">
                             {money(
                               price * quantity
                             )}{" "}
-                            <small>ج.م</small>
+                            <small>
+                              ج.م
+                            </small>
                           </strong>
+
                         </div>
                       );
                     })}
+
                   </div>
 
+
+                  {/* COUPON */}
+
                   <div className="coupon-box">
+
                     <input
                       value={coupon}
                       onChange={(event) =>
-                        setCoupon(event.target.value)
+                        setCoupon(
+                          event.target.value
+                        )
                       }
                       placeholder="هل لديك كود خصم؟"
                     />
@@ -779,7 +931,9 @@ export default function CheckoutPage() {
                     >
                       تطبيق
                     </button>
+
                   </div>
+
 
                   {couponMessage && (
                     <div
@@ -793,138 +947,159 @@ export default function CheckoutPage() {
                     </div>
                   )}
 
+
+                  {/* TOTALS */}
+
                   <div className="totals">
+
                     <div className="total-line">
-                      <span>الإجمالي الفرعي</span>
+                      <span>
+                        الإجمالي الفرعي
+                      </span>
 
                       <strong>
                         {money(subtotal)}{" "}
-                        <small>ج.م</small>
+                        <small>
+                          ج.م
+                        </small>
                       </strong>
                     </div>
 
+
                     <div className="total-line">
-                      <span>الشحن</span>
+                      <span>
+                        الشحن
+                      </span>
 
                       <strong>
                         {money(SHIPPING_COST)}{" "}
-                        <small>ج.م</small>
+                        <small>
+                          ج.م
+                        </small>
                       </strong>
                     </div>
 
+
                     {discount > 0 && (
                       <div className="total-line discount-line">
-                        <span>الخصم</span>
+                        <span>
+                          الخصم
+                        </span>
 
                         <strong>
                           -{money(discount)}{" "}
-                          <small>ج.م</small>
+                          <small>
+                            ج.م
+                          </small>
                         </strong>
                       </div>
                     )}
+
                   </div>
+
+
+                  {/* GRAND TOTAL */}
 
                   <div className="grand-total">
-                    <span>الإجمالي النهائي</span>
+
+                    <span>
+                      الإجمالي النهائي
+                    </span>
 
                     <div>
-                      <strong>{money(total)}</strong>
-                      <small>ج.م</small>
+                      <strong>
+                        {money(total)}
+                      </strong>
+
+                      <small>
+                        ج.م
+                      </small>
                     </div>
+
                   </div>
+
+
+                  {/* BUTTON */}
 
                   <button
                     type="button"
                     className="submit-button"
                     onClick={submitOrder}
                   >
-                    <span>تأكيد الطلب عبر واتساب</span>
+                    <span>
+                      تأكيد الطلب عبر واتساب
+                    </span>
 
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M20 4.5A9.5 9.5 0 0 0 4.8 16.2L4 20l3.9-1a9.5 9.5 0 0 0 12.1-14.5Z"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-
-                      <path
-                        d="M8.5 8.5c.3-.7.5-.7 1-.7h.4c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c.7 1.2 1.6 2.1 2.8 2.7l.7-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.6v.4c0 .5-.1.7-.7 1-1 .4-2.2.1-3.6-.6-1.4-.7-3-2.2-3.8-3.5-.9-1.4-1.1-2.6-.7-3.4Z"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                      />
-                    </svg>
+                    <WhatsAppIcon />
                   </button>
 
-                  <div className="trust-row">
-                    <div>
-                      <span className="trust-icon">✓</span>
-                      <span>منتجات أصلية</span>
-                    </div>
 
-                    <div>
-                      <span className="trust-icon">◆</span>
-                      <span>شحن سريع</span>
-                    </div>
+                  <div className="privacy-note">
+                    <LockIcon />
 
-                    <div>
-                      <span className="trust-icon">◈</span>
-                      <span>طلب آمن</span>
-                    </div>
+                    <span>
+                      لن يتم مشاركة بياناتك مع أي جهة أخرى
+                    </span>
                   </div>
+
+
+                  {/* PREMIUM BANNER */}
+
+                  <div className="premium-banner">
+
+                    <div>
+                      <span>
+                        لمسة فخامة لحياتك
+                      </span>
+
+                      <strong>
+                        اخترنا لك الأفضل من أجود العطور
+                      </strong>
+                    </div>
+
+                    <div className="diamond">
+                      ◇
+                    </div>
+
+                  </div>
+
                 </>
-              ) : (
-                <div className="empty-cart">
-                  <div className="empty-bag">
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M6 8h12l1 12H5L6 8Z"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                      />
 
-                      <path
-                        d="M9 9V6a3 3 0 0 1 6 0v3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                      />
-                    </svg>
+              ) : (
+
+                <div className="empty-cart">
+
+                  <div className="empty-bag">
+                    <BagIcon />
                   </div>
 
-                  <h3>السلة فارغة</h3>
+                  <h3>
+                    السلة فارغة
+                  </h3>
 
                   <p>
                     أضف المنتجات إلى السلة أولًا
                     لإتمام طلبك.
                   </p>
 
-                  <a href="/" className="back-store">
+                  <a
+                    href="/"
+                    className="back-store"
+                  >
                     العودة للمتجر
                   </a>
+
                 </div>
+
               )}
 
-              <div className="summary-note">
-                <span>♡</span>
-
-                <p>
-                  يتم تجهيز كل طلب بعناية لضمان وصول
-                  تجربتك بأفضل صورة.
-                </p>
-              </div>
             </aside>
+
           </div>
 
+
           <footer className="checkout-footer">
+
             <div className="footer-brand">
               رمال الطائف
             </div>
@@ -932,46 +1107,47 @@ export default function CheckoutPage() {
             <span>
               تجربة عطور فاخرة تبدأ من هنا
             </span>
+
           </footer>
+
         </div>
+
       </main>
 
+
+      {/* SUCCESS MODAL */}
+
       {showSuccess && (
+
         <div
           className="modal-backdrop"
-          onClick={() => setShowSuccess(false)}
+          onClick={() =>
+            setShowSuccess(false)
+          }
         >
+
           <div
             className="success-modal"
             onClick={(event) =>
               event.stopPropagation()
             }
           >
+
             <div className="success-mark">
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="m6 12 4 4 8-8"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <CheckIcon />
             </div>
 
             <span className="modal-eyebrow">
               ORDER READY
             </span>
 
-            <h2>طلبك جاهز للتأكيد</h2>
+            <h2>
+              طلبك جاهز للتأكيد
+            </h2>
 
             <p>
-              اضغط على الزر التالي للانتقال إلى واتساب
-              وإرسال تفاصيل طلبك.
+              اضغط على الزر التالي للانتقال إلى
+              واتساب وإرسال تفاصيل طلبك.
             </p>
 
             <button
@@ -985,15 +1161,22 @@ export default function CheckoutPage() {
             <button
               type="button"
               className="modal-cancel"
-              onClick={() => setShowSuccess(false)}
+              onClick={() =>
+                setShowSuccess(false)
+              }
             >
               إلغاء
             </button>
+
           </div>
+
         </div>
+
       )}
 
+
       <style jsx>{`
+
         :global(*) {
           box-sizing: border-box;
         }
@@ -1004,7 +1187,7 @@ export default function CheckoutPage() {
 
         :global(body) {
           margin: 0;
-          background: #f6f4f0;
+          background: #f8f8f8;
           color: #171717;
           font-family:
             Arial,
@@ -1023,22 +1206,19 @@ export default function CheckoutPage() {
         .checkout-page {
           min-height: 100vh;
           direction: rtl;
-          background:
-            radial-gradient(
-              circle at 85% 5%,
-              rgba(190, 156, 99, 0.08),
-              transparent 28%
-            ),
-            #f6f4f0;
+          background: #f8f8f8;
         }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         .checkout-header {
           height: 82px;
-          background: rgba(255, 255, 255, 0.94);
-          border-bottom: 1px solid #e9e4dc;
+          background: #ffffff;
+          border-bottom: 1px solid #e8e8e8;
           display: flex;
           align-items: center;
-          backdrop-filter: blur(12px);
         }
 
         .header-inner {
@@ -1094,7 +1274,7 @@ export default function CheckoutPage() {
           display: flex;
           align-items: center;
           gap: 9px;
-          color: #78736b;
+          color: #777;
           font-size: 12px;
         }
 
@@ -1102,7 +1282,7 @@ export default function CheckoutPage() {
           width: 31px;
           height: 31px;
           border-radius: 50%;
-          background: #f5f0e8;
+          background: #f5f5f5;
           color: #9b763e;
           display: flex;
           align-items: center;
@@ -1113,6 +1293,10 @@ export default function CheckoutPage() {
           width: 16px;
           height: 16px;
         }
+
+        /* =========================
+           CONTAINER
+        ========================= */
 
         .container {
           width: min(1180px, calc(100% - 40px));
@@ -1139,14 +1323,17 @@ export default function CheckoutPage() {
           font-family: Georgia, "Times New Roman", serif;
           font-size: 39px;
           font-weight: 500;
-          letter-spacing: -0.5px;
         }
 
         .intro p {
           margin: 9px 0 0;
-          color: #817c73;
+          color: #818181;
           font-size: 13px;
         }
+
+        /* =========================
+           GRID
+        ========================= */
 
         .checkout-grid {
           display: grid;
@@ -1159,11 +1346,11 @@ export default function CheckoutPage() {
 
         .details-card,
         .summary-card {
-          background: #fff;
-          border: 1px solid #e7e1d8;
+          background: #ffffff;
+          border: 1px solid #e6e6e6;
           border-radius: 20px;
           box-shadow:
-            0 16px 50px rgba(33, 28, 20, 0.045);
+            0 16px 50px rgba(0, 0, 0, 0.045);
         }
 
         .details-card {
@@ -1175,6 +1362,10 @@ export default function CheckoutPage() {
           position: sticky;
           top: 20px;
         }
+
+        /* =========================
+           FORM
+        ========================= */
 
         .form-section {
           margin-bottom: 30px;
@@ -1191,14 +1382,13 @@ export default function CheckoutPage() {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background: #f5efe5;
-          color: #9b743b;
+          background: #f2f2f2;
+          color: #8f6b37;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 10px;
           font-weight: 700;
-          letter-spacing: 0.5px;
           flex-shrink: 0;
         }
 
@@ -1210,14 +1400,23 @@ export default function CheckoutPage() {
 
         .section-title p {
           margin: 3px 0 0;
-          color: #9a958c;
+          color: #999;
           font-size: 10px;
         }
 
         .form-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
           gap: 15px;
+        }
+
+        /*
+          عنوان الشحن كله سطر كامل
+        */
+
+        .shipping-grid {
+          grid-template-columns: 1fr;
         }
 
         .field {
@@ -1228,83 +1427,107 @@ export default function CheckoutPage() {
           grid-column: 1 / -1;
         }
 
-        .field label {
-          display: block;
-          margin-bottom: 7px;
-          color: #3d3a35;
-          font-size: 11px;
-          font-weight: 700;
-        }
-
-        .required {
-          color: #ad8144;
-        }
-
-        .field input,
-        .field select,
-        .field textarea {
+        .input-wrap {
+          position: relative;
           width: 100%;
-          border: 1px solid #e2ddd5;
+        }
+
+        .input-wrap svg {
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 18px;
+          height: 18px;
+          color: #8f8f8f;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        .input-wrap input,
+        .input-wrap select,
+        .input-wrap textarea {
+          width: 100%;
+          border: 1px solid #dddddd;
           border-radius: 11px;
           outline: none;
-          background: #fff;
+          background: #ffffff;
           color: #222;
-          padding: 13px 14px;
+          padding: 13px 46px 13px 14px;
           font-size: 12px;
           transition:
             border-color 0.2s ease,
             box-shadow 0.2s ease;
         }
 
-        .field input,
-        .field select {
-          height: 46px;
+        .input-wrap input,
+        .input-wrap select {
+          height: 50px;
         }
 
-        .field textarea {
+        .input-wrap textarea {
           min-height: 88px;
           resize: vertical;
-          line-height: 1.7;
+          line-height: 1.8;
         }
 
-        .field input::placeholder,
-        .field textarea::placeholder {
-          color: #b0aba3;
+        .input-wrap input::placeholder,
+        .input-wrap textarea::placeholder {
+          color: #999;
         }
 
-        .field input:focus,
-        .field select:focus,
-        .field textarea:focus {
-          border-color: #b28b50;
+        .input-wrap select {
+          appearance: none;
+          cursor: pointer;
+          color: #777;
+        }
+
+        .input-wrap select:valid {
+          color: #222;
+        }
+
+        .input-wrap input:focus,
+        .input-wrap select:focus,
+        .input-wrap textarea:focus {
+          border-color: #b18a50;
           box-shadow:
-            0 0 0 3px rgba(178, 139, 80, 0.08);
+            0 0 0 3px rgba(177, 138, 80, 0.08);
+        }
+
+        .textarea-wrap svg {
+          top: 22px;
+          transform: none;
         }
 
         .field-error {
           margin-top: 5px;
           color: #b14a43;
           font-size: 9px;
+          padding-right: 5px;
         }
 
         .divider {
           height: 1px;
-          background: #eeeae4;
+          background: #eeeeee;
           margin: 30px 0;
         }
 
+        /* =========================
+           PAYMENT
+        ========================= */
+
         .payment-option {
-          border: 1px solid #e4dfd7;
+          border: 1px solid #dedede;
           border-radius: 14px;
           padding: 15px;
           display: flex;
           align-items: center;
           gap: 12px;
-          transition: 0.2s ease;
         }
 
         .payment-option.active {
-          border-color: #c5a16d;
-          background: #fcfaf6;
+          border-color: #c4a16c;
+          background: #fffdfa;
         }
 
         .radio {
@@ -1333,7 +1556,7 @@ export default function CheckoutPage() {
           width: 39px;
           height: 39px;
           border-radius: 10px;
-          background: #f4eee5;
+          background: #f5f5f5;
           color: #9d7844;
           display: flex;
           align-items: center;
@@ -1369,15 +1592,54 @@ export default function CheckoutPage() {
           border-radius: 20px;
         }
 
+        /* =========================
+           TRUST
+        ========================= */
+
+        .trust-bottom {
+          border-top: 1px solid #eeeeee;
+          padding-top: 22px;
+          display: grid;
+          grid-template-columns:
+            repeat(3, 1fr);
+          gap: 10px;
+        }
+
+        .trust-bottom > div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 3px;
+        }
+
+        .trust-bottom span {
+          color: #a98045;
+          font-size: 16px;
+        }
+
+        .trust-bottom strong {
+          font-size: 9px;
+        }
+
+        .trust-bottom small {
+          color: #999;
+          font-size: 8px;
+        }
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
         .summary-heading {
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding-bottom: 21px;
-          border-bottom: 1px solid #ece7df;
+          border-bottom: 1px solid #ececec;
         }
 
-        .summary-heading span {
+        .summary-heading > div:first-child span {
           color: #b08b52;
           font-size: 7px;
           letter-spacing: 3px;
@@ -1394,7 +1656,7 @@ export default function CheckoutPage() {
         .bag-icon {
           width: 39px;
           height: 39px;
-          border: 1px solid #e8e0d5;
+          border: 1px solid #e5e5e5;
           border-radius: 50%;
           color: #9d7844;
           display: flex;
@@ -1412,7 +1674,7 @@ export default function CheckoutPage() {
           display: flex;
           flex-direction: column;
           gap: 16px;
-          border-bottom: 1px solid #ece7df;
+          border-bottom: 1px solid #ececec;
         }
 
         .product-row {
@@ -1429,8 +1691,8 @@ export default function CheckoutPage() {
           position: relative;
           border-radius: 10px;
           overflow: visible;
-          background: #f5f2ed;
-          border: 1px solid #e8e2d9;
+          background: #f5f5f5;
+          border: 1px solid #e6e6e6;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1444,7 +1706,7 @@ export default function CheckoutPage() {
         }
 
         .image-placeholder {
-          color: #ad9b82;
+          color: #999;
           font-size: 9px;
         }
 
@@ -1494,10 +1756,14 @@ export default function CheckoutPage() {
         .product-price small,
         .total-line small,
         .grand-total small {
-          color: #888178;
+          color: #888;
           font-size: 8px;
           font-weight: 500;
         }
+
+        /* =========================
+           COUPON
+        ========================= */
 
         .coupon-box {
           display: flex;
@@ -1509,7 +1775,7 @@ export default function CheckoutPage() {
           flex: 1;
           height: 43px;
           min-width: 0;
-          border: 1px solid #e3ddd4;
+          border: 1px solid #dedede;
           border-radius: 10px;
           outline: none;
           padding: 0 12px;
@@ -1522,7 +1788,7 @@ export default function CheckoutPage() {
 
         .coupon-box button {
           border: 0;
-          background: #1a1a1a;
+          background: #171717;
           color: #fff;
           border-radius: 10px;
           padding: 0 17px;
@@ -1543,9 +1809,13 @@ export default function CheckoutPage() {
           color: #b24c45;
         }
 
+        /* =========================
+           TOTALS
+        ========================= */
+
         .totals {
           padding: 15px 0;
-          border-bottom: 1px solid #ece7df;
+          border-bottom: 1px solid #ececec;
           display: flex;
           flex-direction: column;
           gap: 11px;
@@ -1592,6 +1862,10 @@ export default function CheckoutPage() {
           font-weight: 700;
         }
 
+        /* =========================
+           BUTTON
+        ========================= */
+
         .submit-button {
           width: 100%;
           min-height: 54px;
@@ -1621,65 +1895,76 @@ export default function CheckoutPage() {
           height: 20px;
         }
 
-        .trust-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
+        .privacy-note {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           gap: 6px;
-          margin-top: 15px;
+          color: #999;
+          font-size: 8px;
+          padding: 12px 0 17px;
         }
 
-        .trust-row > div {
-          min-width: 0;
-          padding: 10px 3px;
-          background: #faf8f4;
-          border-radius: 8px;
+        .privacy-note svg {
+          width: 12px;
+          height: 12px;
+        }
+
+        /* =========================
+           PREMIUM BANNER
+        ========================= */
+
+        .premium-banner {
+          min-height: 88px;
+          border-radius: 12px;
+          background: #181818;
+          color: #fff;
+          padding: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+        }
+
+        .premium-banner div:first-child {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 4px;
-          color: #8c867d;
-          font-size: 7px;
-          text-align: center;
+          gap: 5px;
         }
 
-        .trust-icon {
-          color: #ad8346;
-          font-size: 11px;
+        .premium-banner span {
+          color: #c39a59;
+          font-size: 9px;
+          font-weight: 700;
         }
 
-        .summary-note {
-          margin-top: 18px;
-          padding: 12px;
-          background: #faf8f4;
-          border-radius: 10px;
-          display: flex;
-          align-items: flex-start;
-          gap: 9px;
-        }
-
-        .summary-note > span {
-          color: #ad8346;
-          font-size: 15px;
-        }
-
-        .summary-note p {
-          margin: 0;
-          color: #8d877e;
+        .premium-banner strong {
+          color: #ddd;
           font-size: 8px;
-          line-height: 1.8;
+          font-weight: 400;
         }
+
+        .diamond {
+          color: #c49a56;
+          font-size: 35px;
+          line-height: 1;
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
 
         .loading-box,
         .empty-cart {
           padding: 55px 10px;
           text-align: center;
-          color: #918b82;
+          color: #919191;
         }
 
         .spinner {
           width: 25px;
           height: 25px;
-          border: 2px solid #e6dfd5;
+          border: 2px solid #e4e4e4;
           border-top-color: #a77f45;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;
@@ -1697,7 +1982,7 @@ export default function CheckoutPage() {
           height: 55px;
           margin: 0 auto 14px;
           border-radius: 50%;
-          background: #f5efe6;
+          background: #f5f5f5;
           color: #a37c43;
           display: flex;
           align-items: center;
@@ -1732,10 +2017,14 @@ export default function CheckoutPage() {
           font-size: 10px;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         .checkout-footer {
           padding-top: 35px;
           text-align: center;
-          color: #99938a;
+          color: #999;
           font-size: 9px;
         }
 
@@ -1745,6 +2034,10 @@ export default function CheckoutPage() {
           font-family: Georgia, serif;
           font-size: 16px;
         }
+
+        /* =========================
+           MODAL
+        ========================= */
 
         .modal-backdrop {
           position: fixed;
@@ -1841,7 +2134,12 @@ export default function CheckoutPage() {
           cursor: pointer;
         }
 
+        /* =========================
+           TABLET
+        ========================= */
+
         @media (max-width: 900px) {
+
           .checkout-grid {
             grid-template-columns: 1fr;
           }
@@ -1854,9 +2152,15 @@ export default function CheckoutPage() {
           .details-card {
             grid-row: 2;
           }
+
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 600px) {
+
           .checkout-header {
             height: 68px;
           }
@@ -1888,10 +2192,6 @@ export default function CheckoutPage() {
           .secure-icon {
             width: 27px;
             height: 27px;
-          }
-
-          .secure-icon svg {
-            width: 14px;
           }
 
           .container {
@@ -1930,6 +2230,10 @@ export default function CheckoutPage() {
           .form-grid {
             grid-template-columns: 1fr;
             gap: 13px;
+          }
+
+          .shipping-grid {
+            grid-template-columns: 1fr;
           }
 
           .field.full {
@@ -1982,39 +2286,337 @@ export default function CheckoutPage() {
           .submit-button {
             min-height: 52px;
           }
+
+          .trust-bottom {
+            gap: 5px;
+          }
+
         }
+
       `}</style>
     </>
   );
 }
 
+
+/* =========================================================
+   FIELD
+========================================================= */
+
 function Field({
-  label,
-  required,
   error,
   full,
   children,
 }: {
-  label: string;
-  required?: boolean;
   error?: string;
   full?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className={full ? "field full" : "field"}>
-      <label>
-        {label}{" "}
-        {required && (
-          <span className="required">*</span>
-        )}
-      </label>
-
       {children}
 
       {error && (
-        <div className="field-error">{error}</div>
+        <div className="field-error">
+          {error}
+        </div>
       )}
     </div>
+  );
+}
+
+
+/* =========================================================
+   ICONS
+========================================================= */
+
+function UserIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle
+        cx="12"
+        cy="8"
+        r="3.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M5.5 20c.6-3.2 2.8-5 6.5-5s5.9 1.8 6.5 5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M7.2 4.5 5.7 5.7c-.8.7-.9 1.8-.5 2.8 1.9 4.8 5.6 8.5 10.4 10.4 1 .4 2.1.2 2.8-.5l1.2-1.5c.4-.5.3-1.2-.2-1.6l-2.5-1.9c-.4-.3-1-.3-1.4 0l-1.1.9c-1.7-.8-3.1-2.2-3.9-3.9l.9-1.1c.3-.4.3-1 0-1.4L9.5 4.7c-.4-.5-1.1-.6-1.6-.2Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+
+function LocationIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <circle
+        cx="12"
+        cy="10"
+        r="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+
+function CityIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M4 20V8l8-4v16M12 20h8V10l-8-2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+
+      <path
+        d="M7 11h2M7 14h2M7 17h2M15 13h2M15 16h2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function HomeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="m4 11 8-7 8 7"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      <path
+        d="M6 10v10h12V10"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M10 20v-5h4v5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+
+function HashIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M9 3 7 21M17 3l-2 18M4 9h17M3 15h17"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function FloorIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M5 19h5v-5h5V9h4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+
+function ApartmentIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect
+        x="5"
+        y="3"
+        width="14"
+        height="18"
+        rx="1.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 21v-3h2v3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+
+function NoteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M6 3h9l3 3v15H6V3Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+
+      <path
+        d="M14 3v4h4M9 11h6M9 15h6M9 19h3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function CashIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect
+        x="3"
+        y="6"
+        width="18"
+        height="12"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M3 10h18"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M7 14h4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function BagIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M6 8h12l1 12H5L6 8Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M9 9V6a3 3 0 0 1 6 0v3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M20 4.5A9.5 9.5 0 0 0 4.8 16.2L4 20l3.9-1a9.5 9.5 0 0 0 12.1-14.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+
+      <path
+        d="M8.5 8.5c.3-.7.5-.7 1-.7h.4c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c.7 1.2 1.6 2.1 2.8 2.7l.7-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.6v.4c0 .5-.1.7-.7 1-1 .4-2.2.1-3.6-.6-1.4-.7-3-2.2-3.8-3.5-.9-1.4-1.1-2.6-.7-3.4Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+    </svg>
+  );
+}
+
+
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M7 10V7a5 5 0 0 1 10 0v3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      <rect
+        x="5"
+        y="10"
+        width="14"
+        height="10"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="m6 12 4 4 8-8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
