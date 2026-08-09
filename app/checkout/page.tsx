@@ -1311,12 +1311,19 @@ export default function CheckoutPage() {
             padding: 19px 15px;
           }
 
-          .field input,
-          .field select {
+          .checkout .field input,
+          .checkout .field select,
+          .checkout .field textarea,
+          .checkout .coupon input {
+            font-size: 16px !important;
+          }
+
+          .checkout .field input,
+          .checkout .field select {
             height: 50px;
           }
 
-          .field textarea {
+          .checkout .field textarea {
             min-height: 88px;
           }
 
