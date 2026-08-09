@@ -444,9 +444,13 @@ export default function CheckoutPage() {
                 </div>
 
 
+                {/* كل الخانات هنا بعرض السطر بالكامل */}
+
                 <div className="form-grid">
 
-                  <Field error={errors.name} full>
+                  <Field
+                    error={errors.name}
+                  >
                     <input
                       value={form.name}
                       onChange={(event) =>
@@ -461,7 +465,9 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field error={errors.phone}>
+                  <Field
+                    error={errors.phone}
+                  >
                     <input
                       value={form.phone}
                       onChange={(event) =>
@@ -530,9 +536,13 @@ export default function CheckoutPage() {
                 </div>
 
 
+                {/* كل خانات الشحن بعرض السطر بالكامل */}
+
                 <div className="shipping-grid">
 
-                  <Field error={errors.governorate}>
+                  <Field
+                    error={errors.governorate}
+                  >
 
                     <select
                       value={form.governorate}
@@ -564,7 +574,9 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field error={errors.city}>
+                  <Field
+                    error={errors.city}
+                  >
 
                     <input
                       value={form.city}
@@ -580,7 +592,9 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field error={errors.address}>
+                  <Field
+                    error={errors.address}
+                  >
 
                     <textarea
                       value={form.address}
@@ -1200,7 +1214,9 @@ export default function CheckoutPage() {
           background: #f8f8f8;
         }
 
-        /* HEADER */
+        /* =========================
+           HEADER
+        ========================= */
 
         .checkout-header {
           height: 82px;
@@ -1278,7 +1294,9 @@ export default function CheckoutPage() {
           font-size: 13px;
         }
 
-        /* MAIN */
+        /* =========================
+           MAIN
+        ========================= */
 
         .container {
           width: min(1180px, calc(100% - 40px));
@@ -1302,7 +1320,10 @@ export default function CheckoutPage() {
 
         .intro h1 {
           margin: 0;
-          font-family: Georgia, "Times New Roman", serif;
+          font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
           font-size: 39px;
           font-weight: 500;
         }
@@ -1313,7 +1334,9 @@ export default function CheckoutPage() {
           font-size: 13px;
         }
 
-        /* GRID */
+        /* =========================
+           GRID
+        ========================= */
 
         .checkout-grid {
           display: grid;
@@ -1343,7 +1366,9 @@ export default function CheckoutPage() {
           top: 20px;
         }
 
-        /* SECTIONS */
+        /* =========================
+           SECTIONS
+        ========================= */
 
         .form-section {
           margin-bottom: 30px;
@@ -1382,13 +1407,21 @@ export default function CheckoutPage() {
           font-size: 10px;
         }
 
-        /* INPUTS */
+        /* =========================
+           INPUTS
+           
+           كل خانات بيانات العميل
+           بعرض السطر بالكامل
+        ========================= */
 
         .form-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        /* كل خانات عنوان الشحن
+           بعرض السطر بالكامل */
 
         .shipping-grid {
           display: grid;
@@ -1398,16 +1431,14 @@ export default function CheckoutPage() {
 
         .field {
           min-width: 0;
-        }
-
-        .field.full {
-          grid-column: 1 / -1;
+          width: 100%;
         }
 
         .field input,
         .field select,
         .field textarea {
           width: 100%;
+          display: block;
           border: 1px solid #dddddd;
           border-radius: 11px;
           outline: none;
@@ -1434,6 +1465,7 @@ export default function CheckoutPage() {
         .field input::placeholder,
         .field textarea::placeholder {
           color: #999;
+          opacity: 1;
         }
 
         .field select {
@@ -1463,7 +1495,9 @@ export default function CheckoutPage() {
           margin: 30px 0;
         }
 
-        /* PAYMENT */
+        /* =========================
+           PAYMENT
+        ========================= */
 
         .payment-option {
           border: 1px solid #dedede;
@@ -1537,7 +1571,9 @@ export default function CheckoutPage() {
           border-radius: 20px;
         }
 
-        /* TRUST */
+        /* =========================
+           TRUST
+        ========================= */
 
         .trust-bottom {
           border-top: 1px solid #eeeeee;
@@ -1570,7 +1606,9 @@ export default function CheckoutPage() {
           font-size: 8px;
         }
 
-        /* SUMMARY */
+        /* =========================
+           SUMMARY
+        ========================= */
 
         .summary-heading {
           display: flex;
@@ -1697,7 +1735,9 @@ export default function CheckoutPage() {
           font-weight: 500;
         }
 
-        /* COUPON */
+        /* =========================
+           COUPON
+        ========================= */
 
         .coupon-box {
           display: flex;
@@ -1743,7 +1783,9 @@ export default function CheckoutPage() {
           color: #b24c45;
         }
 
-        /* TOTALS */
+        /* =========================
+           TOTALS
+        ========================= */
 
         .totals {
           padding: 15px 0;
@@ -1794,7 +1836,9 @@ export default function CheckoutPage() {
           font-weight: 700;
         }
 
-        /* BUTTON */
+        /* =========================
+           BUTTON
+        ========================= */
 
         .submit-button {
           width: 100%;
@@ -1837,6 +1881,10 @@ export default function CheckoutPage() {
           padding: 12px 0 17px;
         }
 
+        /* =========================
+           PREMIUM BANNER
+        ========================= */
+
         .premium-banner {
           min-height: 88px;
           border-radius: 12px;
@@ -1873,7 +1921,9 @@ export default function CheckoutPage() {
           line-height: 1;
         }
 
-        /* EMPTY */
+        /* =========================
+           EMPTY
+        ========================= */
 
         .loading-box,
         .empty-cart {
@@ -1934,7 +1984,9 @@ export default function CheckoutPage() {
           font-size: 10px;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         .checkout-footer {
           padding-top: 35px;
@@ -1950,7 +2002,9 @@ export default function CheckoutPage() {
           font-size: 16px;
         }
 
-        /* MODAL */
+        /* =========================
+           MODAL
+        ========================= */
 
         .modal-backdrop {
           position: fixed;
@@ -2043,7 +2097,9 @@ export default function CheckoutPage() {
           cursor: pointer;
         }
 
-        /* TABLET */
+        /* =========================
+           TABLET
+        ========================= */
 
         @media (max-width: 900px) {
 
@@ -2062,7 +2118,9 @@ export default function CheckoutPage() {
 
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
 
@@ -2132,6 +2190,10 @@ export default function CheckoutPage() {
             padding: 19px 15px;
           }
 
+          /* مهم:
+             حتى على الموبايل كل الخانات
+             تفضل سطر كامل */
+
           .form-grid {
             grid-template-columns: 1fr;
             gap: 13px;
@@ -2140,10 +2202,6 @@ export default function CheckoutPage() {
           .shipping-grid {
             grid-template-columns: 1fr;
             gap: 13px;
-          }
-
-          .field.full {
-            grid-column: auto;
           }
 
           .section-title {
@@ -2205,17 +2263,19 @@ export default function CheckoutPage() {
 }
 
 
+/* =========================================================
+   FIELD
+========================================================= */
+
 function Field({
   error,
-  full,
   children,
 }: {
   error?: string;
-  full?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div className={full ? "field full" : "field"}>
+    <div className="field">
       {children}
 
       {error && (
