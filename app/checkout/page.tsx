@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
 
 type CartItem = {
   id?: string | number;
@@ -129,7 +130,7 @@ export default function CheckoutPage() {
             break;
           }
         } catch {
-          // تجاهل أي بيانات غير صالحة
+          // تجاهل البيانات غير الصالحة
         }
       }
 
@@ -417,7 +418,7 @@ export default function CheckoutPage() {
 
           <div className="checkout-grid">
 
-            {/* CUSTOMER / SHIPPING */}
+            {/* DETAILS */}
 
             <section className="details-card">
 
@@ -444,13 +445,11 @@ export default function CheckoutPage() {
                 </div>
 
 
-                {/* كل الخانات هنا بعرض السطر بالكامل */}
+                {/* كل خانة بعرض الكارت بالكامل */}
 
                 <div className="form-grid">
 
-                  <Field
-                    error={errors.name}
-                  >
+                  <Field error={errors.name}>
                     <input
                       value={form.name}
                       onChange={(event) =>
@@ -465,9 +464,7 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field
-                    error={errors.phone}
-                  >
+                  <Field error={errors.phone}>
                     <input
                       value={form.phone}
                       onChange={(event) =>
@@ -536,13 +533,9 @@ export default function CheckoutPage() {
                 </div>
 
 
-                {/* كل خانات الشحن بعرض السطر بالكامل */}
-
                 <div className="shipping-grid">
 
-                  <Field
-                    error={errors.governorate}
-                  >
+                  <Field error={errors.governorate}>
 
                     <select
                       value={form.governorate}
@@ -574,9 +567,7 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field
-                    error={errors.city}
-                  >
+                  <Field error={errors.city}>
 
                     <input
                       value={form.city}
@@ -592,9 +583,7 @@ export default function CheckoutPage() {
                   </Field>
 
 
-                  <Field
-                    error={errors.address}
-                  >
+                  <Field error={errors.address}>
 
                     <textarea
                       value={form.address}
@@ -784,7 +773,7 @@ export default function CheckoutPage() {
             </section>
 
 
-            {/* ORDER SUMMARY */}
+            {/* SUMMARY */}
 
             <aside className="summary-card">
 
@@ -824,8 +813,6 @@ export default function CheckoutPage() {
               ) : cart.length ? (
 
                 <>
-
-                  {/* PRODUCTS */}
 
                   <div className="products-list">
 
@@ -991,8 +978,6 @@ export default function CheckoutPage() {
                   </div>
 
 
-                  {/* TOTAL */}
-
                   <div className="grand-total">
 
                     <span>
@@ -1013,8 +998,6 @@ export default function CheckoutPage() {
 
                   </div>
 
-
-                  {/* WHATSAPP */}
 
                   <button
                     type="button"
@@ -1045,8 +1028,6 @@ export default function CheckoutPage() {
 
                   </div>
 
-
-                  {/* PREMIUM BANNER */}
 
                   <div className="premium-banner">
 
@@ -1335,7 +1316,7 @@ export default function CheckoutPage() {
         }
 
         /* =========================
-           GRID
+           LAYOUT
         ========================= */
 
         .checkout-grid {
@@ -1357,6 +1338,8 @@ export default function CheckoutPage() {
         }
 
         .details-card {
+          width: 100%;
+          min-width: 0;
           padding: 31px;
         }
 
@@ -1371,6 +1354,7 @@ export default function CheckoutPage() {
         ========================= */
 
         .form-section {
+          width: 100%;
           margin-bottom: 30px;
         }
 
@@ -1408,56 +1392,71 @@ export default function CheckoutPage() {
         }
 
         /* =========================
-           INPUTS
-           
-           كل خانات بيانات العميل
-           بعرض السطر بالكامل
+           FULL WIDTH INPUTS
         ========================= */
 
         .form-grid {
-          display: grid;
-          grid-template-columns: 1fr;
+          display: grid !important;
+          grid-template-columns:
+            minmax(0, 1fr) !important;
+          width: 100% !important;
+          max-width: none !important;
           gap: 15px;
         }
 
-        /* كل خانات عنوان الشحن
-           بعرض السطر بالكامل */
-
         .shipping-grid {
-          display: grid;
-          grid-template-columns: 1fr;
+          display: grid !important;
+          grid-template-columns:
+            minmax(0, 1fr) !important;
+          width: 100% !important;
+          max-width: none !important;
           gap: 15px;
         }
 
         .field {
-          min-width: 0;
-          width: 100%;
+          display: block !important;
+          width: 100% !important;
+          max-width: none !important;
+          min-width: 0 !important;
         }
 
         .field input,
         .field select,
         .field textarea {
-          width: 100%;
-          display: block;
+          display: block !important;
+          width: 100% !important;
+          max-width: none !important;
+          min-width: 0 !important;
+          box-sizing: border-box !important;
+
           border: 1px solid #dddddd;
           border-radius: 11px;
+
           outline: none;
           background: #ffffff;
           color: #222;
+
           padding: 13px 15px;
           font-size: 12px;
+
           transition:
             border-color 0.2s ease,
             box-shadow 0.2s ease;
         }
 
+        /* الارتفاع الصغير المطلوب */
+
         .field input,
         .field select {
-          height: 50px;
+          height: 50px !important;
+          min-height: 50px !important;
         }
 
+        /* فقط Textarea أكبر لأنها متعددة الأسطر */
+
         .field textarea {
-          min-height: 88px;
+          height: 88px;
+          min-height: 88px !important;
           resize: vertical;
           line-height: 1.8;
         }
@@ -1882,7 +1881,7 @@ export default function CheckoutPage() {
         }
 
         /* =========================
-           PREMIUM BANNER
+           PREMIUM
         ========================= */
 
         .premium-banner {
@@ -2183,6 +2182,7 @@ export default function CheckoutPage() {
           }
 
           .details-card {
+            width: 100%;
             padding: 20px 15px;
           }
 
@@ -2190,18 +2190,42 @@ export default function CheckoutPage() {
             padding: 19px 15px;
           }
 
-          /* مهم:
-             حتى على الموبايل كل الخانات
-             تفضل سطر كامل */
+          /*
+             مهم جدًا:
+             الخانات تفضل صغيرة في الارتفاع
+             لكن بعرض الكارت كله
+          */
 
-          .form-grid {
-            grid-template-columns: 1fr;
+          .form-grid,
+          .shipping-grid {
+            width: 100% !important;
+            max-width: none !important;
+            grid-template-columns:
+              minmax(0, 1fr) !important;
             gap: 13px;
           }
 
-          .shipping-grid {
-            grid-template-columns: 1fr;
-            gap: 13px;
+          .field {
+            width: 100% !important;
+            max-width: none !important;
+          }
+
+          .field input,
+          .field select,
+          .field textarea {
+            width: 100% !important;
+            max-width: none !important;
+          }
+
+          .field input,
+          .field select {
+            height: 50px !important;
+            min-height: 50px !important;
+          }
+
+          .field textarea {
+            height: 88px;
+            min-height: 88px !important;
           }
 
           .section-title {
@@ -2263,16 +2287,16 @@ export default function CheckoutPage() {
 }
 
 
-/* =========================================================
-   FIELD
-========================================================= */
+/* =========================
+   FIELD COMPONENT
+========================= */
 
 function Field({
   error,
   children,
 }: {
   error?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className="field">
