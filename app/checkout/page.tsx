@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type CartItem = {
   id?: string | number;
@@ -73,8 +73,7 @@ const emptyForm: CustomerForm = {
 };
 
 function getPrice(item: CartItem) {
-  const value = item.salePrice ?? item.price ?? 0;
-  return Number(value) || 0;
+  return Number(item.salePrice ?? item.price ?? 0) || 0;
 }
 
 function getQuantity(item: CartItem) {
@@ -130,7 +129,7 @@ export default function CheckoutPage() {
             break;
           }
         } catch {
-          // تجاهل البيانات غير الصالحة
+          // تجاهل أي بيانات غير صالحة
         }
       }
 
@@ -223,12 +222,12 @@ export default function CheckoutPage() {
   }
 
   function buildWhatsAppMessage() {
-    let message = `*طلب جديد من رمال الطائف*`;
+    let message = "*طلب جديد من رمال الطائف*";
 
     message += "\n━━━━━━━━━━━━━━━━";
     message += "\n\n";
 
-    message += `*بيانات العميل*`;
+    message += "*بيانات العميل*";
     message += "\n";
     message += `الاسم: ${form.name}`;
     message += "\n";
@@ -241,7 +240,7 @@ export default function CheckoutPage() {
     }
 
     message += "\n";
-    message += `*عنوان الشحن*`;
+    message += "*عنوان الشحن*";
     message += "\n";
 
     message += `المحافظة: ${form.governorate}`;
@@ -274,7 +273,7 @@ export default function CheckoutPage() {
     }
 
     message += "\n";
-    message += `*المنتجات*`;
+    message += "*المنتجات*";
     message += "\n";
     message += "━━━━━━━━━━━━━━━━";
     message += "\n";
@@ -292,7 +291,7 @@ export default function CheckoutPage() {
       message += "\n\n";
     });
 
-    message += `*ملخص الحساب*`;
+    message += "*ملخص الحساب*";
     message += "\n";
     message += "━━━━━━━━━━━━━━━━";
     message += "\n";
@@ -312,8 +311,8 @@ export default function CheckoutPage() {
     message += "\n";
 
     message += "طريقة الدفع: الدفع عند الاستلام";
-
     message += "\n\n";
+
     message += "شكرًا لاختياركم رمال الطائف";
 
     return message;
@@ -382,30 +381,8 @@ export default function CheckoutPage() {
             </a>
 
             <div className="secure-badge">
-              <span className="secure-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M7 10V7a5 5 0 0 1 10 0v3"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                  />
-
-                  <rect
-                    x="5"
-                    y="10"
-                    width="14"
-                    height="10"
-                    rx="2"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                  />
-                </svg>
+              <span className="secure-dot">
+                🔒
               </span>
 
               <span>
@@ -417,11 +394,12 @@ export default function CheckoutPage() {
         </header>
 
 
-        {/* CONTENT */}
+        {/* MAIN */}
 
         <div className="container">
 
           <section className="intro">
+
             <span className="eyebrow">
               RIMAL ALTAIF
             </span>
@@ -433,12 +411,13 @@ export default function CheckoutPage() {
             <p>
               أكمل بياناتك وسنجهز طلبك بعناية حتى باب منزلك
             </p>
+
           </section>
 
 
           <div className="checkout-grid">
 
-            {/* LEFT */}
+            {/* CUSTOMER / SHIPPING */}
 
             <section className="details-card">
 
@@ -447,6 +426,7 @@ export default function CheckoutPage() {
               <div className="form-section">
 
                 <div className="section-title">
+
                   <div className="section-number">
                     01
                   </div>
@@ -460,77 +440,63 @@ export default function CheckoutPage() {
                       أدخل بيانات التواصل الخاصة بك
                     </p>
                   </div>
+
                 </div>
 
 
                 <div className="form-grid">
 
-                  <Field
-                    error={errors.name}
-                    full
-                  >
-                    <div className="input-wrap">
-                      <UserIcon />
-
-                      <input
-                        value={form.name}
-                        onChange={(event) =>
-                          updateField(
-                            "name",
-                            event.target.value
-                          )
-                        }
-                        placeholder="الاسم بالكامل *"
-                        autoComplete="name"
-                      />
-                    </div>
+                  <Field error={errors.name} full>
+                    <input
+                      value={form.name}
+                      onChange={(event) =>
+                        updateField(
+                          "name",
+                          event.target.value
+                        )
+                      }
+                      placeholder="الاسم بالكامل *"
+                      autoComplete="name"
+                    />
                   </Field>
 
 
                   <Field error={errors.phone}>
-                    <div className="input-wrap">
-                      <PhoneIcon />
-
-                      <input
-                        value={form.phone}
-                        onChange={(event) =>
-                          updateField(
-                            "phone",
-                            event.target.value.replace(
-                              /\D/g,
-                              ""
-                            )
+                    <input
+                      value={form.phone}
+                      onChange={(event) =>
+                        updateField(
+                          "phone",
+                          event.target.value.replace(
+                            /\D/g,
+                            ""
                           )
-                        }
-                        placeholder="رقم الموبايل *"
-                        maxLength={11}
-                        inputMode="numeric"
-                        autoComplete="tel"
-                      />
-                    </div>
+                        )
+                      }
+                      placeholder="رقم الموبايل *"
+                      maxLength={11}
+                      inputMode="numeric"
+                      autoComplete="tel"
+                    />
                   </Field>
 
 
                   <Field>
-                    <div className="input-wrap">
-                      <PhoneIcon />
-
-                      <input
-                        value={form.phone2}
-                        onChange={(event) =>
-                          updateField(
-                            "phone2",
-                            event.target.value.replace(
-                              /\D/g,
-                              ""
-                            )
+                    <input
+                      value={form.phone2}
+                      onChange={(event) =>
+                        updateField(
+                          "phone2",
+                          event.target.value.replace(
+                            /\D/g,
+                            ""
                           )
-                        }
-                        placeholder="رقم إضافي (اختياري)"
-                        maxLength={11}
-                        inputMode="numeric"
-                      />
-                    </div>
+                        )
+                      }
+                      placeholder="رقم إضافي (اختياري)"
+                      maxLength={11}
+                      inputMode="numeric"
+                    />
                   </Field>
 
                 </div>
@@ -546,6 +512,7 @@ export default function CheckoutPage() {
               <div className="form-section">
 
                 <div className="section-title">
+
                   <div className="section-number">
                     02
                   </div>
@@ -559,150 +526,139 @@ export default function CheckoutPage() {
                       سنقوم بالتوصيل حتى باب منزلك
                     </p>
                   </div>
+
                 </div>
 
 
-                <div className="form-grid shipping-grid">
+                <div className="shipping-grid">
 
                   <Field error={errors.governorate}>
-                    <div className="input-wrap">
-                      <LocationIcon />
 
-                      <select
-                        value={form.governorate}
-                        onChange={(event) =>
-                          updateField(
-                            "governorate",
-                            event.target.value
-                          )
-                        }
-                      >
-                        <option value="">
-                          المحافظة *
-                        </option>
+                    <select
+                      value={form.governorate}
+                      onChange={(event) =>
+                        updateField(
+                          "governorate",
+                          event.target.value
+                        )
+                      }
+                    >
 
-                        {GOVERNORATES.map(
-                          (governorate) => (
-                            <option
-                              key={governorate}
-                              value={governorate}
-                            >
-                              {governorate}
-                            </option>
-                          )
-                        )}
-                      </select>
-                    </div>
+                      <option value="">
+                        المحافظة *
+                      </option>
+
+                      {GOVERNORATES.map(
+                        (governorate) => (
+                          <option
+                            key={governorate}
+                            value={governorate}
+                          >
+                            {governorate}
+                          </option>
+                        )
+                      )}
+
+                    </select>
+
                   </Field>
 
 
                   <Field error={errors.city}>
-                    <div className="input-wrap">
-                      <CityIcon />
 
-                      <input
-                        value={form.city}
-                        onChange={(event) =>
-                          updateField(
-                            "city",
-                            event.target.value
-                          )
-                        }
-                        placeholder="المدينة / المنطقة *"
-                      />
-                    </div>
+                    <input
+                      value={form.city}
+                      onChange={(event) =>
+                        updateField(
+                          "city",
+                          event.target.value
+                        )
+                      }
+                      placeholder="المدينة / المنطقة *"
+                    />
+
                   </Field>
 
 
                   <Field error={errors.address}>
-                    <div className="input-wrap textarea-wrap">
-                      <HomeIcon />
 
-                      <textarea
-                        value={form.address}
-                        onChange={(event) =>
-                          updateField(
-                            "address",
-                            event.target.value
-                          )
-                        }
-                        placeholder="العنوان بالتفصيل *"
-                        rows={3}
-                      />
-                    </div>
+                    <textarea
+                      value={form.address}
+                      onChange={(event) =>
+                        updateField(
+                          "address",
+                          event.target.value
+                        )
+                      }
+                      placeholder="العنوان بالتفصيل *"
+                      rows={3}
+                    />
+
                   </Field>
 
 
                   <Field>
-                    <div className="input-wrap">
-                      <HashIcon />
 
-                      <input
-                        value={form.building}
-                        onChange={(event) =>
-                          updateField(
-                            "building",
-                            event.target.value
-                          )
-                        }
-                        placeholder="رقم العقار (اختياري)"
-                      />
-                    </div>
+                    <input
+                      value={form.building}
+                      onChange={(event) =>
+                        updateField(
+                          "building",
+                          event.target.value
+                        )
+                      }
+                      placeholder="رقم العقار (اختياري)"
+                    />
+
                   </Field>
 
 
                   <Field>
-                    <div className="input-wrap">
-                      <FloorIcon />
 
-                      <input
-                        value={form.floor}
-                        onChange={(event) =>
-                          updateField(
-                            "floor",
-                            event.target.value
-                          )
-                        }
-                        placeholder="الدور (اختياري)"
-                      />
-                    </div>
+                    <input
+                      value={form.floor}
+                      onChange={(event) =>
+                        updateField(
+                          "floor",
+                          event.target.value
+                        )
+                      }
+                      placeholder="الدور (اختياري)"
+                    />
+
                   </Field>
 
 
                   <Field>
-                    <div className="input-wrap">
-                      <ApartmentIcon />
 
-                      <input
-                        value={form.apartment}
-                        onChange={(event) =>
-                          updateField(
-                            "apartment",
-                            event.target.value
-                          )
-                        }
-                        placeholder="الشقة (اختياري)"
-                      />
-                    </div>
+                    <input
+                      value={form.apartment}
+                      onChange={(event) =>
+                        updateField(
+                          "apartment",
+                          event.target.value
+                        )
+                      }
+                      placeholder="الشقة (اختياري)"
+                    />
+
                   </Field>
 
 
                   <Field>
-                    <div className="input-wrap textarea-wrap">
-                      <NoteIcon />
 
-                      <textarea
-                        value={form.notes}
-                        onChange={(event) =>
-                          updateField(
-                            "notes",
-                            event.target.value
-                          )
-                        }
-                        placeholder="ملاحظات الطلب (اختياري)"
-                        rows={3}
-                      />
-                    </div>
+                    <textarea
+                      value={form.notes}
+                      onChange={(event) =>
+                        updateField(
+                          "notes",
+                          event.target.value
+                        )
+                      }
+                      placeholder="ملاحظات الطلب (اختياري)"
+                      rows={3}
+                    />
+
                   </Field>
 
                 </div>
@@ -718,6 +674,7 @@ export default function CheckoutPage() {
               <div className="form-section">
 
                 <div className="section-title">
+
                   <div className="section-number">
                     03
                   </div>
@@ -731,6 +688,7 @@ export default function CheckoutPage() {
                       اختر الطريقة المناسبة لك
                     </p>
                   </div>
+
                 </div>
 
 
@@ -740,13 +698,12 @@ export default function CheckoutPage() {
                     <span />
                   </div>
 
-
-                  <div className="payment-icon">
-                    <CashIcon />
+                  <div className="payment-symbol">
+                    $
                   </div>
 
-
                   <div className="payment-content">
+
                     <strong>
                       الدفع عند الاستلام
                     </strong>
@@ -754,8 +711,8 @@ export default function CheckoutPage() {
                     <span>
                       ادفع قيمة طلبك عند استلام الشحنة
                     </span>
-                  </div>
 
+                  </div>
 
                   <div className="payment-selected">
                     مختارة
@@ -772,29 +729,37 @@ export default function CheckoutPage() {
 
                 <div>
                   <span>✓</span>
+
                   <strong>
                     منتجات أصلية
                   </strong>
+
                   <small>
                     أصلية 100%
                   </small>
                 </div>
 
+
                 <div>
                   <span>◆</span>
+
                   <strong>
                     شحن سريع
                   </strong>
+
                   <small>
                     لجميع المحافظات
                   </small>
                 </div>
 
+
                 <div>
                   <span>◈</span>
+
                   <strong>
                     دفع آمن
                   </strong>
+
                   <small>
                     بياناتك محمية
                   </small>
@@ -805,13 +770,14 @@ export default function CheckoutPage() {
             </section>
 
 
-            {/* RIGHT */}
+            {/* ORDER SUMMARY */}
 
             <aside className="summary-card">
 
               <div className="summary-heading">
 
                 <div>
+
                   <span>
                     YOUR ORDER
                   </span>
@@ -819,10 +785,11 @@ export default function CheckoutPage() {
                   <h2>
                     ملخص الطلب
                   </h2>
+
                 </div>
 
                 <div className="bag-icon">
-                  <BagIcon />
+                  🛍
                 </div>
 
               </div>
@@ -831,10 +798,13 @@ export default function CheckoutPage() {
               {isLoading ? (
 
                 <div className="loading-box">
+
                   <div className="spinner" />
+
                   <span>
                     جاري تحميل الطلب...
                   </span>
+
                 </div>
 
               ) : cart.length ? (
@@ -896,12 +866,15 @@ export default function CheckoutPage() {
 
 
                           <strong className="product-price">
+
                             {money(
                               price * quantity
                             )}{" "}
+
                             <small>
                               ج.م
                             </small>
+
                           </strong>
 
                         </div>
@@ -953,6 +926,7 @@ export default function CheckoutPage() {
                   <div className="totals">
 
                     <div className="total-line">
+
                       <span>
                         الإجمالي الفرعي
                       </span>
@@ -963,10 +937,12 @@ export default function CheckoutPage() {
                           ج.م
                         </small>
                       </strong>
+
                     </div>
 
 
                     <div className="total-line">
+
                       <span>
                         الشحن
                       </span>
@@ -977,11 +953,13 @@ export default function CheckoutPage() {
                           ج.م
                         </small>
                       </strong>
+
                     </div>
 
 
                     {discount > 0 && (
                       <div className="total-line discount-line">
+
                         <span>
                           الخصم
                         </span>
@@ -992,13 +970,14 @@ export default function CheckoutPage() {
                             ج.م
                           </small>
                         </strong>
+
                       </div>
                     )}
 
                   </div>
 
 
-                  {/* GRAND TOTAL */}
+                  {/* TOTAL */}
 
                   <div className="grand-total">
 
@@ -1007,6 +986,7 @@ export default function CheckoutPage() {
                     </span>
 
                     <div>
+
                       <strong>
                         {money(total)}
                       </strong>
@@ -1014,32 +994,41 @@ export default function CheckoutPage() {
                       <small>
                         ج.م
                       </small>
+
                     </div>
 
                   </div>
 
 
-                  {/* BUTTON */}
+                  {/* WHATSAPP */}
 
                   <button
                     type="button"
                     className="submit-button"
                     onClick={submitOrder}
                   >
+
                     <span>
                       تأكيد الطلب عبر واتساب
                     </span>
 
-                    <WhatsAppIcon />
+                    <span className="whatsapp-text">
+                      WhatsApp
+                    </span>
+
                   </button>
 
 
                   <div className="privacy-note">
-                    <LockIcon />
+
+                    <span>
+                      🔒
+                    </span>
 
                     <span>
                       لن يتم مشاركة بياناتك مع أي جهة أخرى
                     </span>
+
                   </div>
 
 
@@ -1048,6 +1037,7 @@ export default function CheckoutPage() {
                   <div className="premium-banner">
 
                     <div>
+
                       <span>
                         لمسة فخامة لحياتك
                       </span>
@@ -1055,6 +1045,7 @@ export default function CheckoutPage() {
                       <strong>
                         اخترنا لك الأفضل من أجود العطور
                       </strong>
+
                     </div>
 
                     <div className="diamond">
@@ -1070,7 +1061,7 @@ export default function CheckoutPage() {
                 <div className="empty-cart">
 
                   <div className="empty-bag">
-                    <BagIcon />
+                    🛍
                   </div>
 
                   <h3>
@@ -1134,7 +1125,7 @@ export default function CheckoutPage() {
           >
 
             <div className="success-mark">
-              <CheckIcon />
+              ✓
             </div>
 
             <span className="modal-eyebrow">
@@ -1209,9 +1200,7 @@ export default function CheckoutPage() {
           background: #f8f8f8;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* HEADER */
 
         .checkout-header {
           height: 82px;
@@ -1273,30 +1262,23 @@ export default function CheckoutPage() {
         .secure-badge {
           display: flex;
           align-items: center;
-          gap: 9px;
+          gap: 8px;
           color: #777;
           font-size: 12px;
         }
 
-        .secure-icon {
-          width: 31px;
-          height: 31px;
+        .secure-dot {
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
-          background: #f5f5f5;
-          color: #9b763e;
+          background: #f3f3f3;
           display: flex;
           align-items: center;
           justify-content: center;
+          font-size: 13px;
         }
 
-        .secure-icon svg {
-          width: 16px;
-          height: 16px;
-        }
-
-        /* =========================
-           CONTAINER
-        ========================= */
+        /* MAIN */
 
         .container {
           width: min(1180px, calc(100% - 40px));
@@ -1331,9 +1313,7 @@ export default function CheckoutPage() {
           font-size: 13px;
         }
 
-        /* =========================
-           GRID
-        ========================= */
+        /* GRID */
 
         .checkout-grid {
           display: grid;
@@ -1363,9 +1343,7 @@ export default function CheckoutPage() {
           top: 20px;
         }
 
-        /* =========================
-           FORM
-        ========================= */
+        /* SECTIONS */
 
         .form-section {
           margin-bottom: 30px;
@@ -1404,6 +1382,8 @@ export default function CheckoutPage() {
           font-size: 10px;
         }
 
+        /* INPUTS */
+
         .form-grid {
           display: grid;
           grid-template-columns:
@@ -1411,12 +1391,10 @@ export default function CheckoutPage() {
           gap: 15px;
         }
 
-        /*
-          عنوان الشحن كله سطر كامل
-        */
-
         .shipping-grid {
+          display: grid;
           grid-template-columns: 1fr;
+          gap: 15px;
         }
 
         .field {
@@ -1427,76 +1405,50 @@ export default function CheckoutPage() {
           grid-column: 1 / -1;
         }
 
-        .input-wrap {
-          position: relative;
-          width: 100%;
-        }
-
-        .input-wrap svg {
-          position: absolute;
-          right: 15px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 18px;
-          height: 18px;
-          color: #8f8f8f;
-          pointer-events: none;
-          z-index: 2;
-        }
-
-        .input-wrap input,
-        .input-wrap select,
-        .input-wrap textarea {
+        .field input,
+        .field select,
+        .field textarea {
           width: 100%;
           border: 1px solid #dddddd;
           border-radius: 11px;
           outline: none;
           background: #ffffff;
           color: #222;
-          padding: 13px 46px 13px 14px;
+          padding: 13px 15px;
           font-size: 12px;
           transition:
             border-color 0.2s ease,
             box-shadow 0.2s ease;
         }
 
-        .input-wrap input,
-        .input-wrap select {
+        .field input,
+        .field select {
           height: 50px;
         }
 
-        .input-wrap textarea {
+        .field textarea {
           min-height: 88px;
           resize: vertical;
           line-height: 1.8;
         }
 
-        .input-wrap input::placeholder,
-        .input-wrap textarea::placeholder {
+        .field input::placeholder,
+        .field textarea::placeholder {
           color: #999;
         }
 
-        .input-wrap select {
-          appearance: none;
-          cursor: pointer;
+        .field select {
           color: #777;
+          cursor: pointer;
+          appearance: auto;
         }
 
-        .input-wrap select:valid {
-          color: #222;
-        }
-
-        .input-wrap input:focus,
-        .input-wrap select:focus,
-        .input-wrap textarea:focus {
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
           border-color: #b18a50;
           box-shadow:
             0 0 0 3px rgba(177, 138, 80, 0.08);
-        }
-
-        .textarea-wrap svg {
-          top: 22px;
-          transform: none;
         }
 
         .field-error {
@@ -1512,9 +1464,7 @@ export default function CheckoutPage() {
           margin: 30px 0;
         }
 
-        /* =========================
-           PAYMENT
-        ========================= */
+        /* PAYMENT */
 
         .payment-option {
           border: 1px solid #dedede;
@@ -1552,7 +1502,7 @@ export default function CheckoutPage() {
           background: #a98148;
         }
 
-        .payment-icon {
+        .payment-symbol {
           width: 39px;
           height: 39px;
           border-radius: 10px;
@@ -1561,11 +1511,7 @@ export default function CheckoutPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        .payment-icon svg {
-          width: 20px;
-          height: 20px;
+          font-weight: 700;
         }
 
         .payment-content {
@@ -1592,9 +1538,7 @@ export default function CheckoutPage() {
           border-radius: 20px;
         }
 
-        /* =========================
-           TRUST
-        ========================= */
+        /* TRUST */
 
         .trust-bottom {
           border-top: 1px solid #eeeeee;
@@ -1627,9 +1571,7 @@ export default function CheckoutPage() {
           font-size: 8px;
         }
 
-        /* =========================
-           SUMMARY
-        ========================= */
+        /* SUMMARY */
 
         .summary-heading {
           display: flex;
@@ -1658,15 +1600,10 @@ export default function CheckoutPage() {
           height: 39px;
           border: 1px solid #e5e5e5;
           border-radius: 50%;
-          color: #9d7844;
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        .bag-icon svg {
-          width: 19px;
-          height: 19px;
+          font-size: 17px;
         }
 
         .products-list {
@@ -1761,9 +1698,7 @@ export default function CheckoutPage() {
           font-weight: 500;
         }
 
-        /* =========================
-           COUPON
-        ========================= */
+        /* COUPON */
 
         .coupon-box {
           display: flex;
@@ -1809,9 +1744,7 @@ export default function CheckoutPage() {
           color: #b24c45;
         }
 
-        /* =========================
-           TOTALS
-        ========================= */
+        /* TOTALS */
 
         .totals {
           padding: 15px 0;
@@ -1862,9 +1795,7 @@ export default function CheckoutPage() {
           font-weight: 700;
         }
 
-        /* =========================
-           BUTTON
-        ========================= */
+        /* BUTTON */
 
         .submit-button {
           width: 100%;
@@ -1876,7 +1807,7 @@ export default function CheckoutPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 11px;
+          gap: 12px;
           font-size: 12px;
           font-weight: 700;
           cursor: pointer;
@@ -1890,9 +1821,11 @@ export default function CheckoutPage() {
           transform: translateY(-1px);
         }
 
-        .submit-button svg {
-          width: 20px;
-          height: 20px;
+        .whatsapp-text {
+          color: #d5d5d5;
+          font-size: 9px;
+          font-weight: 400;
+          direction: ltr;
         }
 
         .privacy-note {
@@ -1904,15 +1837,6 @@ export default function CheckoutPage() {
           font-size: 8px;
           padding: 12px 0 17px;
         }
-
-        .privacy-note svg {
-          width: 12px;
-          height: 12px;
-        }
-
-        /* =========================
-           PREMIUM BANNER
-        ========================= */
 
         .premium-banner {
           min-height: 88px;
@@ -1950,9 +1874,7 @@ export default function CheckoutPage() {
           line-height: 1;
         }
 
-        /* =========================
-           EMPTY
-        ========================= */
+        /* EMPTY */
 
         .loading-box,
         .empty-cart {
@@ -1983,14 +1905,10 @@ export default function CheckoutPage() {
           margin: 0 auto 14px;
           border-radius: 50%;
           background: #f5f5f5;
-          color: #a37c43;
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        .empty-bag svg {
-          width: 25px;
+          font-size: 22px;
         }
 
         .empty-cart h3 {
@@ -2017,9 +1935,7 @@ export default function CheckoutPage() {
           font-size: 10px;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         .checkout-footer {
           padding-top: 35px;
@@ -2035,9 +1951,7 @@ export default function CheckoutPage() {
           font-size: 16px;
         }
 
-        /* =========================
-           MODAL
-        ========================= */
+        /* MODAL */
 
         .modal-backdrop {
           position: fixed;
@@ -2084,11 +1998,7 @@ export default function CheckoutPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-
-        .success-mark svg {
-          width: 29px;
-          height: 29px;
+          font-size: 28px;
         }
 
         .modal-eyebrow {
@@ -2134,9 +2044,7 @@ export default function CheckoutPage() {
           cursor: pointer;
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* TABLET */
 
         @media (max-width: 900px) {
 
@@ -2155,9 +2063,7 @@ export default function CheckoutPage() {
 
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 600px) {
 
@@ -2189,7 +2095,7 @@ export default function CheckoutPage() {
             font-size: 9px;
           }
 
-          .secure-icon {
+          .secure-dot {
             width: 27px;
             height: 27px;
           }
@@ -2234,6 +2140,7 @@ export default function CheckoutPage() {
 
           .shipping-grid {
             grid-template-columns: 1fr;
+            gap: 13px;
           }
 
           .field.full {
@@ -2299,10 +2206,6 @@ export default function CheckoutPage() {
 }
 
 
-/* =========================================================
-   FIELD
-========================================================= */
-
 function Field({
   error,
   full,
@@ -2310,7 +2213,7 @@ function Field({
 }: {
   error?: string;
   full?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <div className={full ? "field full" : "field"}>
@@ -2322,301 +2225,5 @@ function Field({
         </div>
       )}
     </div>
-  );
-}
-
-
-/* =========================================================
-   ICONS
-========================================================= */
-
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <circle
-        cx="12"
-        cy="8"
-        r="3.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M5.5 20c.6-3.2 2.8-5 6.5-5s5.9 1.8 6.5 5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7.2 4.5 5.7 5.7c-.8.7-.9 1.8-.5 2.8 1.9 4.8 5.6 8.5 10.4 10.4 1 .4 2.1.2 2.8-.5l1.2-1.5c.4-.5.3-1.2-.2-1.6l-2.5-1.9c-.4-.3-1-.3-1.4 0l-1.1.9c-1.7-.8-3.1-2.2-3.9-3.9l.9-1.1c.3-.4.3-1 0-1.4L9.5 4.7c-.4-.5-1.1-.6-1.6-.2Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-
-function LocationIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <circle
-        cx="12"
-        cy="10"
-        r="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-
-function CityIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M4 20V8l8-4v16M12 20h8V10l-8-2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M7 11h2M7 14h2M7 17h2M15 13h2M15 16h2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function HomeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="m4 11 8-7 8 7"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M6 10v10h12V10"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M10 20v-5h4v5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-
-function HashIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M9 3 7 21M17 3l-2 18M4 9h17M3 15h17"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function FloorIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M5 19h5v-5h5V9h4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-
-function ApartmentIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <rect
-        x="5"
-        y="3"
-        width="14"
-        height="18"
-        rx="1.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M11 21v-3h2v3"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-
-function NoteIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M6 3h9l3 3v15H6V3Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M14 3v4h4M9 11h6M9 15h6M9 19h3"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function CashIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <rect
-        x="3"
-        y="6"
-        width="18"
-        height="12"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M3 10h18"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M7 14h4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function BagIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M6 8h12l1 12H5L6 8Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M9 9V6a3 3 0 0 1 6 0v3"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function WhatsAppIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M20 4.5A9.5 9.5 0 0 0 4.8 16.2L4 20l3.9-1a9.5 9.5 0 0 0 12.1-14.5Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-
-      <path
-        d="M8.5 8.5c.3-.7.5-.7 1-.7h.4c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c.7 1.2 1.6 2.1 2.8 2.7l.7-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.6v.4c0 .5-.1.7-.7 1-1 .4-2.2.1-3.6-.6-1.4-.7-3-2.2-3.8-3.5-.9-1.4-1.1-2.6-.7-3.4Z"
-        stroke="currentColor"
-        strokeWidth="1.4"
-      />
-    </svg>
-  );
-}
-
-
-function LockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7 10V7a5 5 0 0 1 10 0v3"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-
-      <rect
-        x="5"
-        y="10"
-        width="14"
-        height="10"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="m6 12 4 4 8-8"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
