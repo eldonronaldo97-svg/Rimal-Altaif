@@ -1385,11 +1385,10 @@ export default function CheckoutPage() {
         /* INPUTS */
 
         .form-grid {
-          display: grid;
-          grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-          gap: 15px;
-        }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
 
         .shipping-grid {
           display: grid;
