@@ -1395,22 +1395,24 @@ export default function CheckoutPage() {
            FULL WIDTH INPUTS
         ========================= */
 
-        .form-grid {
+        .form-grid,
+        .shipping-grid {
           display: grid !important;
-          grid-template-columns:
-            minmax(0, 1fr) !important;
+          grid-template-columns: minmax(0, 1fr) !important;
+          grid-auto-flow: row !important;
           width: 100% !important;
           max-width: none !important;
+          min-width: 0 !important;
           gap: 15px;
         }
 
-        .shipping-grid {
-          display: grid !important;
-          grid-template-columns:
-            minmax(0, 1fr) !important;
+        .form-grid > .field,
+        .shipping-grid > .field {
+          grid-column: 1 / -1 !important;
+          display: block !important;
           width: 100% !important;
           max-width: none !important;
-          gap: 15px;
+          min-width: 0 !important;
         }
 
         .field {
@@ -2198,23 +2200,36 @@ export default function CheckoutPage() {
 
           .form-grid,
           .shipping-grid {
+            display: grid !important;
             width: 100% !important;
             max-width: none !important;
-            grid-template-columns:
-              minmax(0, 1fr) !important;
+            min-width: 0 !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            grid-auto-flow: row !important;
             gap: 13px;
+          }
+
+          .form-grid > .field,
+          .shipping-grid > .field {
+            grid-column: 1 / -1 !important;
+            width: 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
           }
 
           .field {
             width: 100% !important;
             max-width: none !important;
+            min-width: 0 !important;
           }
 
           .field input,
           .field select,
           .field textarea {
+            display: block !important;
             width: 100% !important;
             max-width: none !important;
+            min-width: 0 !important;
           }
 
           .field input,
