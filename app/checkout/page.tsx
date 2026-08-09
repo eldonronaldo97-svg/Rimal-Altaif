@@ -1,3 +1,4 @@
+/* app/checkout/page.tsx */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -31,33 +32,12 @@ const WHATSAPP_NUMBER = "201000000000";
 const SHIPPING_COST = 60;
 
 const GOVERNORATES = [
-  "القاهرة",
-  "الجيزة",
-  "القليوبية",
-  "الإسكندرية",
-  "البحيرة",
-  "مطروح",
-  "الدقهلية",
-  "الغربية",
-  "المنوفية",
-  "كفر الشيخ",
-  "دمياط",
-  "بورسعيد",
-  "الإسماعيلية",
-  "السويس",
-  "الشرقية",
-  "بني سويف",
-  "الفيوم",
-  "المنيا",
-  "أسيوط",
-  "سوهاج",
-  "قنا",
-  "الأقصر",
-  "أسوان",
-  "البحر الأحمر",
-  "الوادي الجديد",
-  "شمال سيناء",
-  "جنوب سيناء",
+  "القاهرة", "الجيزة", "القليوبية", "الإسكندرية", "البحيرة",
+  "مطروح", "الدقهلية", "الغربية", "المنوفية", "كفر الشيخ",
+  "دمياط", "بورسعيد", "الإسماعيلية", "السويس", "الشرقية",
+  "بني سويف", "الفيوم", "المنيا", "أسيوط", "سوهاج",
+  "قنا", "الأقصر", "أسوان", "البحر الأحمر", "الوادي الجديد",
+  "شمال سيناء", "جنوب سيناء",
 ];
 
 const emptyForm: CustomerForm = {
@@ -89,232 +69,142 @@ function money(value: number) {
   return new Intl.NumberFormat("ar-EG").format(value);
 }
 
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label?: string;
+  error?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="field">
+      {label ? <label>{label}</label> : null}
+      {children}
+      {error ? <small className="error">{error}</small> : null}
+    </div>
+  );
+}
+
 export default function CheckoutPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [form, setForm] = useState<CustomerForm>(emptyForm);
-
   const [errors, setErrors] = useState<
     Partial<Record<keyof CustomerForm, string>>
   >({});
-
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponMessage, setCouponMessage] = useState("");
-  const [couponSuccess, setCouponSuccess] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
 
   useEffect(() => {
     try {
-      const keys = [
-        "cart",
-        "cartItems",
-        "shoppingCart",
-        "rimalCart",
-      ];
-
-      let found: CartItem[] = [];
-
+      const keys = ["cart", "cartItems", "shoppingCart", "rimalCart"];
       for (const key of keys) {
         const saved = localStorage.getItem(key);
-
         if (!saved) continue;
 
-        try {
-          const parsed = JSON.parse(saved);
-
-          if (Array.isArray(parsed)) {
-            found = parsed;
-            break;
-          }
-        } catch {
-          // تجاهل البيانات غير الصالحة
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setCart(parsed);
+          break;
         }
       }
-
-      setCart(found);
+    } catch {
+      setCart([]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }, []);
 
-  const subtotal = useMemo(() => {
-    return cart.reduce((total, item) => {
-      return total + getPrice(item) * getQuantity(item);
-    }, 0);
-  }, [cart]);
+  const subtotal = useMemo(
+    () =>
+      cart.reduce(
+        (sum, item) => sum + getPrice(item) * getQuantity(item),
+        0
+      ),
+    [cart]
+  );
 
   const total = Math.max(
     0,
     subtotal + (cart.length ? SHIPPING_COST : 0) - discount
   );
 
-  function updateField(
-    field: keyof CustomerForm,
-    value: string
-  ) {
-    setForm((previous) => ({
-      ...previous,
-      [field]: value,
-    }));
+  function updateField(field: keyof CustomerForm, value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }));
 
     if (errors[field]) {
-      setErrors((previous) => ({
-        ...previous,
-        [field]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   }
 
   function validate() {
-    const nextErrors: Partial<
-      Record<keyof CustomerForm, string>
-    > = {};
+    const next: Partial<Record<keyof CustomerForm, string>> = {};
 
-    if (form.name.trim().length < 3) {
-      nextErrors.name = "اكتب الاسم بالكامل";
-    }
+    if (form.name.trim().length < 3) next.name = "اكتب الاسم بالكامل";
+    if (!/^01\d{9}$/.test(form.phone.trim()))
+      next.phone = "اكتب رقم موبايل مصري صحيح";
+    if (!form.governorate) next.governorate = "اختر المحافظة";
+    if (form.city.trim().length < 2) next.city = "اكتب المدينة أو المنطقة";
+    if (form.address.trim().length < 5)
+      next.address = "اكتب العنوان بالتفصيل";
 
-    if (!/^01\d{9}$/.test(form.phone.trim())) {
-      nextErrors.phone = "اكتب رقم موبايل مصري صحيح";
-    }
-
-    if (!form.governorate) {
-      nextErrors.governorate = "اختر المحافظة";
-    }
-
-    if (form.city.trim().length < 2) {
-      nextErrors.city = "اكتب المدينة أو المنطقة";
-    }
-
-    if (form.address.trim().length < 5) {
-      nextErrors.address = "اكتب العنوان بالتفصيل";
-    }
-
-    setErrors(nextErrors);
-
-    return Object.keys(nextErrors).length === 0;
+    setErrors(next);
+    return Object.keys(next).length === 0;
   }
 
   function applyCoupon() {
     const code = coupon.trim().toUpperCase();
 
-    if (!code) {
-      setDiscount(0);
-      setCouponMessage("");
-      setCouponSuccess(false);
-      return;
-    }
-
     if (code === "RIMAL10") {
       const value = Math.round(subtotal * 0.1);
-
       setDiscount(value);
-      setCouponSuccess(true);
       setCouponMessage("تم تطبيق خصم 10% بنجاح");
       return;
     }
 
     setDiscount(0);
-    setCouponSuccess(false);
-    setCouponMessage("كود الخصم غير صحيح");
+    setCouponMessage(code ? "كود الخصم غير صحيح" : "");
   }
 
   function buildWhatsAppMessage() {
-    let message = "*طلب جديد من رمال الطائف*";
+    let message = "*طلب جديد من رمال الطائف*\n\n";
 
-    message += "\n━━━━━━━━━━━━━━━━";
-    message += "\n\n";
+    message += "*بيانات العميل*\n";
+    message += `الاسم: ${form.name}\n`;
+    message += `الموبايل: ${form.phone}\n`;
 
-    message += "*بيانات العميل*";
-    message += "\n";
-    message += `الاسم: ${form.name}`;
-    message += "\n";
-    message += `الموبايل: ${form.phone}`;
-    message += "\n";
+    if (form.phone2.trim()) message += `رقم إضافي: ${form.phone2}\n`;
 
-    if (form.phone2.trim()) {
-      message += `رقم إضافي: ${form.phone2}`;
-      message += "\n";
-    }
+    message += "\n*عنوان الشحن*\n";
+    message += `المحافظة: ${form.governorate}\n`;
+    message += `المدينة / المنطقة: ${form.city}\n`;
+    message += `العنوان: ${form.address}\n`;
 
-    message += "\n";
-    message += "*عنوان الشحن*";
-    message += "\n";
+    if (form.building.trim()) message += `رقم العقار: ${form.building}\n`;
+    if (form.floor.trim()) message += `الدور: ${form.floor}\n`;
+    if (form.apartment.trim()) message += `الشقة: ${form.apartment}\n`;
+    if (form.notes.trim()) message += `ملاحظات: ${form.notes}\n`;
 
-    message += `المحافظة: ${form.governorate}`;
-    message += "\n";
-
-    message += `المدينة / المنطقة: ${form.city}`;
-    message += "\n";
-
-    message += `العنوان: ${form.address}`;
-    message += "\n";
-
-    if (form.building.trim()) {
-      message += `رقم العقار: ${form.building}`;
-      message += "\n";
-    }
-
-    if (form.floor.trim()) {
-      message += `الدور: ${form.floor}`;
-      message += "\n";
-    }
-
-    if (form.apartment.trim()) {
-      message += `الشقة: ${form.apartment}`;
-      message += "\n";
-    }
-
-    if (form.notes.trim()) {
-      message += `ملاحظات: ${form.notes}`;
-      message += "\n";
-    }
-
-    message += "\n";
-    message += "*المنتجات*";
-    message += "\n";
-    message += "━━━━━━━━━━━━━━━━";
-    message += "\n";
-
+    message += "\n*المنتجات*\n";
     cart.forEach((item, index) => {
-      const name = getName(item);
-      const quantity = getQuantity(item);
-      const price = getPrice(item);
-
-      message += `${index + 1}. ${name}`;
-      message += "\n";
-      message += `الكمية: ${quantity}`;
-      message += "\n";
-      message += `السعر: ${money(price * quantity)} ج.م`;
-      message += "\n\n";
+      message += `${index + 1}. ${getName(item)}\n`;
+      message += `الكمية: ${getQuantity(item)}\n`;
+      message += `السعر: ${money(
+        getPrice(item) * getQuantity(item)
+      )} ج.م\n\n`;
     });
 
-    message += "*ملخص الحساب*";
-    message += "\n";
-    message += "━━━━━━━━━━━━━━━━";
-    message += "\n";
-
-    message += `الإجمالي الفرعي: ${money(subtotal)} ج.م`;
-    message += "\n";
-
-    message += `الشحن: ${money(SHIPPING_COST)} ج.م`;
-
-    if (discount > 0) {
-      message += "\n";
-      message += `الخصم: -${money(discount)} ج.م`;
-    }
-
-    message += "\n";
-    message += `*الإجمالي النهائي: ${money(total)} ج.م*`;
-    message += "\n";
-
+    message += "*ملخص الحساب*\n";
+    message += `الإجمالي الفرعي: ${money(subtotal)} ج.م\n`;
+    message += `الشحن: ${money(SHIPPING_COST)} ج.م\n`;
+    if (discount > 0) message += `الخصم: -${money(discount)} ج.م\n`;
+    message += `*الإجمالي النهائي: ${money(total)} ج.م*\n`;
     message += "طريقة الدفع: الدفع عند الاستلام";
-    message += "\n\n";
-
-    message += "شكرًا لاختياركم رمال الطائف";
 
     return message;
   }
@@ -327,153 +217,71 @@ export default function CheckoutPage() {
 
     if (!validate()) {
       window.setTimeout(() => {
-        const firstError =
-          document.querySelector(".field-error");
-
-        firstError?.scrollIntoView({
+        document.querySelector(".error")?.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
       }, 50);
-
       return;
     }
 
-    const message = buildWhatsAppMessage();
-
     const url =
       `https://wa.me/${WHATSAPP_NUMBER}?text=` +
-      encodeURIComponent(message);
+      encodeURIComponent(buildWhatsAppMessage());
 
     setWhatsappUrl(url);
     setShowSuccess(true);
   }
 
-  function continueToWhatsapp() {
-    if (!whatsappUrl) return;
-
-    window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-    setShowSuccess(false);
-  }
-
   return (
     <>
-      <main className="checkout-page">
-
-        {/* HEADER */}
-
-        <header className="checkout-header">
-          <div className="header-inner">
-
-            <a className="brand" href="/">
-              <div className="brand-symbol">
-                ر
-              </div>
-
-              <div className="brand-copy">
+      <main className="checkout">
+        <header className="topbar">
+          <div className="topbar-inner">
+            <a href="/" className="logo">
+              <span className="logo-mark">R</span>
+              <span>
                 <strong>رمال الطائف</strong>
-                <span>RIMAL ALTAIF</span>
-              </div>
+                <small>RIMAL ALTAIF</small>
+              </span>
             </a>
 
-            <div className="secure-badge">
-              <span className="secure-dot">
-                🔒
-              </span>
-
-              <span>
-                تجربة شراء آمنة
-              </span>
+            <div className="safe">
+              <span className="safe-dot">✓</span>
+              تجربة شراء آمنة
             </div>
-
           </div>
         </header>
 
+        <div className="page">
+          <div className="heading">
+            <span>RIMAL ALTAIF</span>
+            <h1>إتمام الطلب</h1>
+            <p>أكمل بياناتك وسنجهز طلبك بعناية حتى باب منزلك</p>
+          </div>
 
-        {/* MAIN */}
+          <div className="layout">
+            <section className="main-card">
+              <div className="section">
+                <SectionTitle number="01" title="بيانات العميل" text="أدخل بيانات التواصل الخاصة بك" />
 
-        <div className="container">
-
-          <section className="intro">
-
-            <span className="eyebrow">
-              RIMAL ALTAIF
-            </span>
-
-            <h1>
-              إتمام الطلب
-            </h1>
-
-            <p>
-              أكمل بياناتك وسنجهز طلبك بعناية حتى باب منزلك
-            </p>
-
-          </section>
-
-
-          <div className="checkout-grid">
-
-            {/* DETAILS */}
-
-            <section className="details-card">
-
-              {/* CUSTOMER */}
-
-              <div className="form-section">
-
-                <div className="section-title">
-
-                  <div className="section-number">
-                    01
-                  </div>
-
-                  <div>
-                    <h2>
-                      بيانات العميل
-                    </h2>
-
-                    <p>
-                      أدخل بيانات التواصل الخاصة بك
-                    </p>
-                  </div>
-
-                </div>
-
-
-                {/* كل خانة بعرض الكارت بالكامل */}
-
-                <div className="form-grid">
-
+                <div className="fields">
                   <Field error={errors.name}>
                     <input
                       value={form.name}
-                      onChange={(event) =>
-                        updateField(
-                          "name",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("name", e.target.value)}
                       placeholder="الاسم بالكامل *"
                       autoComplete="name"
                     />
                   </Field>
 
-
                   <Field error={errors.phone}>
                     <input
                       value={form.phone}
-                      onChange={(event) =>
+                      onChange={(e) =>
                         updateField(
                           "phone",
-                          event.target.value.replace(
-                            /\D/g,
-                            ""
-                          )
+                          e.target.value.replace(/\D/g, "")
                         )
                       }
                       placeholder="رقم الموبايل *"
@@ -483,17 +291,13 @@ export default function CheckoutPage() {
                     />
                   </Field>
 
-
                   <Field>
                     <input
                       value={form.phone2}
-                      onChange={(event) =>
+                      onChange={(e) =>
                         updateField(
                           "phone2",
-                          event.target.value.replace(
-                            /\D/g,
-                            ""
-                          )
+                          e.target.value.replace(/\D/g, "")
                         )
                       }
                       placeholder="رقم إضافي (اختياري)"
@@ -501,668 +305,243 @@ export default function CheckoutPage() {
                       inputMode="numeric"
                     />
                   </Field>
-
                 </div>
-
               </div>
 
+              <div className="separator" />
 
-              <div className="divider" />
+              <div className="section">
+                <SectionTitle number="02" title="عنوان الشحن" text="سنقوم بالتوصيل حتى باب منزلك" />
 
-
-              {/* SHIPPING */}
-
-              <div className="form-section">
-
-                <div className="section-title">
-
-                  <div className="section-number">
-                    02
-                  </div>
-
-                  <div>
-                    <h2>
-                      عنوان الشحن
-                    </h2>
-
-                    <p>
-                      سنقوم بالتوصيل حتى باب منزلك
-                    </p>
-                  </div>
-
-                </div>
-
-
-                <div className="shipping-grid">
-
+                <div className="fields">
                   <Field error={errors.governorate}>
-
                     <select
                       value={form.governorate}
-                      onChange={(event) =>
-                        updateField(
-                          "governorate",
-                          event.target.value
-                        )
+                      onChange={(e) =>
+                        updateField("governorate", e.target.value)
                       }
                     >
-
-                      <option value="">
-                        المحافظة *
-                      </option>
-
-                      {GOVERNORATES.map(
-                        (governorate) => (
-                          <option
-                            key={governorate}
-                            value={governorate}
-                          >
-                            {governorate}
-                          </option>
-                        )
-                      )}
-
+                      <option value="">المحافظة *</option>
+                      {GOVERNORATES.map((gov) => (
+                        <option key={gov} value={gov}>
+                          {gov}
+                        </option>
+                      ))}
                     </select>
-
                   </Field>
-
 
                   <Field error={errors.city}>
-
                     <input
                       value={form.city}
-                      onChange={(event) =>
-                        updateField(
-                          "city",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("city", e.target.value)}
                       placeholder="المدينة / المنطقة *"
                     />
-
                   </Field>
 
-
                   <Field error={errors.address}>
-
                     <textarea
                       value={form.address}
-                      onChange={(event) =>
-                        updateField(
-                          "address",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("address", e.target.value)}
                       placeholder="العنوان بالتفصيل *"
                       rows={3}
                     />
-
                   </Field>
 
-
                   <Field>
-
                     <input
                       value={form.building}
-                      onChange={(event) =>
-                        updateField(
-                          "building",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("building", e.target.value)}
                       placeholder="رقم العقار (اختياري)"
                     />
-
                   </Field>
 
-
                   <Field>
-
                     <input
                       value={form.floor}
-                      onChange={(event) =>
-                        updateField(
-                          "floor",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("floor", e.target.value)}
                       placeholder="الدور (اختياري)"
                     />
-
                   </Field>
 
-
                   <Field>
-
                     <input
                       value={form.apartment}
-                      onChange={(event) =>
-                        updateField(
-                          "apartment",
-                          event.target.value
-                        )
+                      onChange={(e) =>
+                        updateField("apartment", e.target.value)
                       }
                       placeholder="الشقة (اختياري)"
                     />
-
                   </Field>
 
-
                   <Field>
-
                     <textarea
                       value={form.notes}
-                      onChange={(event) =>
-                        updateField(
-                          "notes",
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => updateField("notes", e.target.value)}
                       placeholder="ملاحظات الطلب (اختياري)"
                       rows={3}
                     />
-
                   </Field>
-
                 </div>
-
               </div>
 
+              <div className="separator" />
 
-              <div className="divider" />
+              <div className="section">
+                <SectionTitle number="03" title="طريقة الدفع" text="اختر الطريقة المناسبة لك" />
 
-
-              {/* PAYMENT */}
-
-              <div className="form-section">
-
-                <div className="section-title">
-
-                  <div className="section-number">
-                    03
-                  </div>
-
-                  <div>
-                    <h2>
-                      طريقة الدفع
-                    </h2>
-
-                    <p>
-                      اختر الطريقة المناسبة لك
-                    </p>
-                  </div>
-
-                </div>
-
-
-                <div className="payment-option active">
-
-                  <div className="radio checked">
+                <div className="payment">
+                  <div className="payment-radio">
                     <span />
                   </div>
-
-                  <div className="payment-symbol">
-                    $
+                  <div className="payment-icon">ج</div>
+                  <div className="payment-copy">
+                    <strong>الدفع عند الاستلام</strong>
+                    <span>ادفع قيمة طلبك عند استلام الشحنة</span>
                   </div>
-
-                  <div className="payment-content">
-
-                    <strong>
-                      الدفع عند الاستلام
-                    </strong>
-
-                    <span>
-                      ادفع قيمة طلبك عند استلام الشحنة
-                    </span>
-
-                  </div>
-
-                  <div className="payment-selected">
-                    مختارة
-                  </div>
-
+                  <b>مُختارة</b>
                 </div>
-
               </div>
-
-
-              {/* TRUST */}
-
-              <div className="trust-bottom">
-
-                <div>
-                  <span>✓</span>
-
-                  <strong>
-                    منتجات أصلية
-                  </strong>
-
-                  <small>
-                    أصلية 100%
-                  </small>
-                </div>
-
-
-                <div>
-                  <span>◆</span>
-
-                  <strong>
-                    شحن سريع
-                  </strong>
-
-                  <small>
-                    لجميع المحافظات
-                  </small>
-                </div>
-
-
-                <div>
-                  <span>◈</span>
-
-                  <strong>
-                    دفع آمن
-                  </strong>
-
-                  <small>
-                    بياناتك محمية
-                  </small>
-                </div>
-
-              </div>
-
             </section>
 
-
-            {/* SUMMARY */}
-
-            <aside className="summary-card">
-
-              <div className="summary-heading">
-
+            <aside className="summary">
+              <div className="summary-head">
                 <div>
-
-                  <span>
-                    YOUR ORDER
-                  </span>
-
-                  <h2>
-                    ملخص الطلب
-                  </h2>
-
+                  <span>YOUR ORDER</span>
+                  <h2>ملخص الطلب</h2>
                 </div>
-
-                <div className="bag-icon">
-                  🛍
+                <div className="summary-count">
+                  {cart.reduce((n, item) => n + getQuantity(item), 0)}
                 </div>
-
               </div>
 
-
-              {isLoading ? (
-
-                <div className="loading-box">
-
-                  <div className="spinner" />
-
-                  <span>
-                    جاري تحميل الطلب...
-                  </span>
-
-                </div>
-
+              {loading ? (
+                <div className="loading">جاري تحميل الطلب...</div>
               ) : cart.length ? (
-
                 <>
-
-                  <div className="products-list">
-
-                    {cart.map((item, index) => {
-
-                      const price =
-                        getPrice(item);
-
-                      const quantity =
-                        getQuantity(item);
-
-                      return (
-                        <div
-                          className="product-row"
-                          key={
-                            item.id ??
-                            `${getName(item)}-${index}`
-                          }
-                        >
-
-                          <div className="product-image">
-
-                            {item.image ? (
-                              <img
-                                src={item.image}
-                                alt={getName(item)}
-                              />
-                            ) : (
-                              <div className="image-placeholder">
-                                عطر
-                              </div>
-                            )}
-
-                            <span className="quantity">
-                              {quantity}
-                            </span>
-
-                          </div>
-
-
-                          <div className="product-details">
-
-                            <strong>
-                              {getName(item)}
-                            </strong>
-
-                            <span>
-                              الكمية: {quantity}
-                            </span>
-
-                          </div>
-
-
-                          <strong className="product-price">
-
-                            {money(
-                              price * quantity
-                            )}{" "}
-
-                            <small>
-                              ج.م
-                            </small>
-
-                          </strong>
-
+                  <div className="products">
+                    {cart.map((item, index) => (
+                      <div
+                        className="product"
+                        key={item.id ?? `${getName(item)}-${index}`}
+                      >
+                        <div className="product-img">
+                          {item.image ? (
+                            <img src={item.image} alt={getName(item)} />
+                          ) : (
+                            <span>عطر</span>
+                          )}
                         </div>
-                      );
-                    })}
 
+                        <div className="product-info">
+                          <strong>{getName(item)}</strong>
+                          <span>الكمية: {getQuantity(item)}</span>
+                        </div>
+
+                        <b>{money(getPrice(item) * getQuantity(item))} ج.م</b>
+                      </div>
+                    ))}
                   </div>
 
-
-                  {/* COUPON */}
-
-                  <div className="coupon-box">
-
+                  <div className="coupon">
                     <input
                       value={coupon}
-                      onChange={(event) =>
-                        setCoupon(
-                          event.target.value
-                        )
-                      }
+                      onChange={(e) => setCoupon(e.target.value)}
                       placeholder="هل لديك كود خصم؟"
                     />
-
-                    <button
-                      type="button"
-                      onClick={applyCoupon}
-                    >
+                    <button type="button" onClick={applyCoupon}>
                       تطبيق
                     </button>
-
                   </div>
 
-
-                  {couponMessage && (
-                    <div
-                      className={
-                        couponSuccess
-                          ? "coupon-message success"
-                          : "coupon-message error"
-                      }
-                    >
-                      {couponMessage}
-                    </div>
-                  )}
-
-
-                  {/* TOTALS */}
+                  {couponMessage ? (
+                    <div className="coupon-message">{couponMessage}</div>
+                  ) : null}
 
                   <div className="totals">
-
-                    <div className="total-line">
-
-                      <span>
-                        الإجمالي الفرعي
-                      </span>
-
-                      <strong>
-                        {money(subtotal)}{" "}
-                        <small>
-                          ج.م
-                        </small>
-                      </strong>
-
-                    </div>
-
-
-                    <div className="total-line">
-
-                      <span>
-                        الشحن
-                      </span>
-
-                      <strong>
-                        {money(SHIPPING_COST)}{" "}
-                        <small>
-                          ج.م
-                        </small>
-                      </strong>
-
-                    </div>
-
-
-                    {discount > 0 && (
-                      <div className="total-line discount-line">
-
-                        <span>
-                          الخصم
-                        </span>
-
-                        <strong>
-                          -{money(discount)}{" "}
-                          <small>
-                            ج.م
-                          </small>
-                        </strong>
-
-                      </div>
-                    )}
-
-                  </div>
-
-
-                  <div className="grand-total">
-
-                    <span>
-                      الإجمالي النهائي
-                    </span>
-
                     <div>
-
-                      <strong>
-                        {money(total)}
-                      </strong>
-
-                      <small>
-                        ج.م
-                      </small>
-
+                      <span>الإجمالي الفرعي</span>
+                      <b>{money(subtotal)} ج.م</b>
                     </div>
-
+                    <div>
+                      <span>الشحن</span>
+                      <b>{money(SHIPPING_COST)} ج.م</b>
+                    </div>
+                    {discount > 0 ? (
+                      <div className="discount">
+                        <span>الخصم</span>
+                        <b>-{money(discount)} ج.م</b>
+                      </div>
+                    ) : null}
                   </div>
 
+                  <div className="final-total">
+                    <span>الإجمالي النهائي</span>
+                    <strong>
+                      {money(total)} <small>ج.م</small>
+                    </strong>
+                  </div>
 
                   <button
                     type="button"
-                    className="submit-button"
+                    className="confirm"
                     onClick={submitOrder}
                   >
-
-                    <span>
-                      تأكيد الطلب عبر واتساب
-                    </span>
-
-                    <span className="whatsapp-text">
-                      WhatsApp
-                    </span>
-
+                    تأكيد الطلب عبر واتساب
                   </button>
 
-
-                  <div className="privacy-note">
-
-                    <span>
-                      🔒
-                    </span>
-
-                    <span>
-                      لن يتم مشاركة بياناتك مع أي جهة أخرى
-                    </span>
-
+                  <div className="summary-security">
+                    <span className="security-lock">🔒</span>
+                    <span>لن يتم مشاركة بياناتك مع أي جهة أخرى</span>
                   </div>
 
-
-                  <div className="premium-banner">
-
+                  <div className="service-box">
+                    <div className="service-mark">◇</div>
                     <div>
-
-                      <span>
-                        لمسة فخامة لحياتك
-                      </span>
-
-                      <strong>
-                        اخترنا لك الأفضل من أجود العطور
-                      </strong>
-
+                      <strong>لمسة فخامة لحياتك</strong>
+                      <span>اخترنا لك الأفضل من أجود العطور</span>
                     </div>
-
-                    <div className="diamond">
-                      ◇
-                    </div>
-
                   </div>
-
                 </>
-
               ) : (
-
-                <div className="empty-cart">
-
-                  <div className="empty-bag">
-                    🛍
-                  </div>
-
-                  <h3>
-                    السلة فارغة
-                  </h3>
-
-                  <p>
-                    أضف المنتجات إلى السلة أولًا
-                    لإتمام طلبك.
-                  </p>
-
-                  <a
-                    href="/"
-                    className="back-store"
-                  >
-                    العودة للمتجر
-                  </a>
-
+                <div className="empty">
+                  <strong>السلة فارغة</strong>
+                  <span>أضف المنتجات إلى السلة أولًا</span>
+                  <a href="/">العودة للمتجر</a>
                 </div>
-
               )}
-
             </aside>
-
           </div>
-
-
-          <footer className="checkout-footer">
-
-            <div className="footer-brand">
-              رمال الطائف
-            </div>
-
-            <span>
-              تجربة عطور فاخرة تبدأ من هنا
-            </span>
-
-          </footer>
-
         </div>
-
       </main>
 
-
-      {/* SUCCESS MODAL */}
-
-      {showSuccess && (
-
-        <div
-          className="modal-backdrop"
-          onClick={() =>
-            setShowSuccess(false)
-          }
-        >
-
-          <div
-            className="success-modal"
-            onClick={(event) =>
-              event.stopPropagation()
-            }
-          >
-
-            <div className="success-mark">
-              ✓
-            </div>
-
-            <span className="modal-eyebrow">
-              ORDER READY
-            </span>
-
-            <h2>
-              طلبك جاهز للتأكيد
-            </h2>
-
-            <p>
-              اضغط على الزر التالي للانتقال إلى
-              واتساب وإرسال تفاصيل طلبك.
-            </p>
-
+      {showSuccess ? (
+        <div className="modal" onClick={() => setShowSuccess(false)}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="success">✓</div>
+            <h2>طلبك جاهز للتأكيد</h2>
+            <p>اضغط على الزر التالي لإرسال تفاصيل طلبك عبر واتساب.</p>
             <button
               type="button"
-              className="modal-button"
-              onClick={continueToWhatsapp}
+              className="confirm"
+              onClick={() => {
+                window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+                setShowSuccess(false);
+              }}
             >
               الانتقال إلى واتساب
             </button>
-
             <button
               type="button"
-              className="modal-cancel"
-              onClick={() =>
-                setShowSuccess(false)
-              }
+              className="cancel"
+              onClick={() => setShowSuccess(false)}
             >
               إلغاء
             </button>
-
           </div>
-
         </div>
+      ) : null}
 
-      )}
-
-
-      <style jsx>{`
-
+      <style jsx global>{`
         :global(*) {
           box-sizing: border-box;
         }
@@ -1173,13 +552,9 @@ export default function CheckoutPage() {
 
         :global(body) {
           margin: 0;
-          background: #f8f8f8;
-          color: #171717;
-          font-family:
-            Arial,
-            "Segoe UI",
-            Tahoma,
-            sans-serif;
+          background: #f3f9fd;
+          color: #183247;
+          font-family: Arial, "Segoe UI", Tahoma, sans-serif;
         }
 
         :global(button),
@@ -1189,1089 +564,760 @@ export default function CheckoutPage() {
           font: inherit;
         }
 
-        .checkout-page {
+        .checkout {
           min-height: 100vh;
           direction: rtl;
-          background: #f8f8f8;
+          background:
+            radial-gradient(circle at 15% 5%, #e8f6ff 0, transparent 28%),
+            #f5faff;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
-        .checkout-header {
+        .topbar {
           height: 82px;
-          background: #ffffff;
-          border-bottom: 1px solid #e8e8e8;
-          display: flex;
-          align-items: center;
+          background: #fff;
+          border-bottom: 1px solid #dcecf7;
         }
 
-        .header-inner {
+        .topbar-inner {
           width: min(1180px, calc(100% - 40px));
+          height: 100%;
           margin: auto;
           display: flex;
           align-items: center;
           justify-content: space-between;
         }
 
-        .brand {
-          color: #181818;
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+          color: #17354a;
           text-decoration: none;
-          display: flex;
-          align-items: center;
-          gap: 12px;
         }
 
-        .brand-symbol {
-          width: 43px;
-          height: 43px;
-          border: 1px solid #ad8950;
+        .logo-mark {
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #a47d40;
-          font-family: Georgia, serif;
-          font-size: 21px;
+          border: 1px solid #76bce4;
+          color: #2685bb;
+          display: grid;
+          place-items: center;
+          font: 22px Georgia, serif;
         }
 
-        .brand-copy {
-          display: flex;
-          flex-direction: column;
-          line-height: 1;
+        .logo strong,
+        .logo small {
+          display: block;
         }
 
-        .brand-copy strong {
-          font-family: Georgia, serif;
-          font-size: 21px;
-          font-weight: 500;
+        .logo strong {
+          font: 22px Georgia, serif;
         }
 
-        .brand-copy span {
-          margin-top: 6px;
-          color: #a58d69;
+        .logo small {
+          margin-top: 5px;
+          color: #6faed0;
           font-size: 8px;
           letter-spacing: 3px;
           direction: ltr;
         }
 
-        .secure-badge {
+        .safe {
           display: flex;
           align-items: center;
           gap: 8px;
-          color: #777;
+          color: #6e899b;
           font-size: 12px;
         }
 
-        .secure-dot {
+        .safe-dot {
           width: 30px;
           height: 30px;
           border-radius: 50%;
-          background: #f3f3f3;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 13px;
+          background: #eaf6fd;
+          color: #2b8bc2;
+          display: grid;
+          place-items: center;
+          font-weight: 700;
         }
 
-        /* =========================
-           MAIN
-        ========================= */
-
-        .container {
+        .page {
           width: min(1180px, calc(100% - 40px));
           margin: auto;
-          padding: 48px 0 70px;
+          padding: 42px 0 65px;
         }
 
-        .intro {
+        .heading {
           text-align: center;
-          margin-bottom: 38px;
+          margin-bottom: 32px;
         }
 
-        .eyebrow {
-          color: #a17c44;
+        .heading > span {
+          color: #318fc4;
           font-size: 9px;
           letter-spacing: 4px;
           direction: ltr;
-          display: block;
-          margin-bottom: 8px;
         }
 
-        .intro h1 {
-          margin: 0;
-          font-family:
-            Georgia,
-            "Times New Roman",
-            serif;
-          font-size: 39px;
-          font-weight: 500;
+        .heading h1 {
+          margin: 7px 0 0;
+          color: #17364b;
+          font: 38px Georgia, serif;
         }
 
-        .intro p {
-          margin: 9px 0 0;
-          color: #818181;
+        .heading p {
+          margin: 8px 0 0;
+          color: #7991a1;
           font-size: 13px;
         }
 
-        /* =========================
-           LAYOUT
-        ========================= */
-
-        .checkout-grid {
+        .layout {
           display: grid;
-          grid-template-columns:
-            minmax(0, 1.38fr)
-            minmax(340px, 0.72fr);
-          gap: 25px;
+          grid-template-columns: minmax(0, 1.38fr) minmax(340px, 0.72fr);
+          gap: 24px;
           align-items: start;
         }
 
-        .details-card,
-        .summary-card {
-          background: #ffffff;
-          border: 1px solid #e6e6e6;
+        .main-card,
+        .summary {
+          background: #fff;
+          border: 1px solid #dbeaf4;
           border-radius: 20px;
-          box-shadow:
-            0 16px 50px rgba(0, 0, 0, 0.045);
+          box-shadow: 0 14px 45px rgba(43, 113, 151, 0.07);
         }
 
-        .details-card {
-          display: block !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          box-sizing: border-box !important;
+        .main-card {
           padding: 31px;
-        }
-
-        .summary-card {
-          padding: 27px;
-          position: sticky;
-          top: 20px;
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        .details-card > .form-section {
-          display: block !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          margin-right: 0 !important;
-          margin-left: 0 !important;
-          padding-right: 0 !important;
-          padding-left: 0 !important;
-          box-sizing: border-box !important;
-          margin-bottom: 30px;
-        }
-
-        .form-section {
-          display: block !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          box-sizing: border-box !important;
-          margin-bottom: 30px;
         }
 
         .section-title {
           display: flex;
           align-items: center;
-          gap: 13px;
+          gap: 12px;
           margin-bottom: 21px;
         }
 
-        .section-number {
-          width: 38px;
-          height: 38px;
+        .number {
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
-          background: #f2f2f2;
-          color: #8f6b37;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 10px;
+          flex: 0 0 40px;
+          background: #e9f6fd;
+          color: #2585b8;
+          display: grid;
+          place-items: center;
+          font-size: 11px;
           font-weight: 700;
-          flex-shrink: 0;
         }
 
-        .section-title h2 {
+        .checkout .section-title h2 {
           margin: 0;
-          font-size: 16px;
+          font-size: 22px !important;
+          line-height: 1.25 !important;
           font-weight: 700;
+          color: #17364b;
         }
 
         .section-title p {
           margin: 3px 0 0;
-          color: #999;
+          color: #8ba0ae;
           font-size: 10px;
         }
 
-        /* =========================
-           FULL WIDTH INPUTS
-        ========================= */
-
-        .form-grid,
-        .shipping-grid {
+        .checkout .fields {
           display: flex !important;
           flex-direction: column !important;
           align-items: stretch !important;
-          justify-content: flex-start !important;
+          gap: 14px !important;
           width: 100% !important;
           max-width: 100% !important;
           min-width: 0 !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          gap: 15px;
-          box-sizing: border-box !important;
         }
 
-        .form-grid > .field,
-        .shipping-grid > .field {
+        .checkout .field {
           display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
           flex: 0 0 100% !important;
+        }
+
+        .field label {
+          display: block;
+          margin-bottom: 7px;
+          color: #587184;
+          font-size: 11px;
+        }
+
+        .checkout .field input,
+        .checkout .field select,
+        .checkout .field textarea {
+          display: block !important;
           width: 100% !important;
           max-width: 100% !important;
           min-width: 0 !important;
-          align-self: stretch !important;
+          height: 52px;
+          border: 1px solid #cfe0ea !important;
+          border-radius: 10px !important;
+          background: #fff !important;
+          color: #234052 !important;
+          outline: none !important;
+          padding: 0 15px !important;
+          font-size: 13px !important;
+          line-height: 1.5 !important;
+          direction: rtl !important;
           box-sizing: border-box !important;
+          appearance: none;
+          transition: 0.2s ease;
         }
 
-        .field {
-          display: block !important;
-          width: 100% !important;
-          max-width: none !important;
-          min-width: 0 !important;
-        }
-
-        .field input,
-        .field select,
-        .field textarea {
-          display: block !important;
-          width: 100% !important;
-          max-width: none !important;
-          min-width: 0 !important;
-          box-sizing: border-box !important;
-
-          border: 1px solid #dddddd;
-          border-radius: 11px;
-
-          outline: none;
-          background: #ffffff;
-          color: #222;
-
-          padding: 13px 15px;
-          font-size: 12px;
-
-          transition:
-            border-color 0.2s ease,
-            box-shadow 0.2s ease;
-        }
-
-        /* الارتفاع الصغير المطلوب */
-
-        .field input,
-        .field select {
-          height: 50px !important;
-          min-height: 50px !important;
-        }
-
-        /* فقط Textarea أكبر لأنها متعددة الأسطر */
-
-        .field textarea {
-          height: 88px;
-          min-height: 88px !important;
+        .checkout .field textarea {
+          height: 94px !important;
+          min-height: 94px !important;
+          padding-top: 14px !important;
           resize: vertical;
-          line-height: 1.8;
+          line-height: 1.8 !important;
         }
 
         .field input::placeholder,
         .field textarea::placeholder {
-          color: #999;
+          color: #9aabb7;
           opacity: 1;
-        }
-
-        .field select {
-          color: #777;
-          cursor: pointer;
-          appearance: auto;
         }
 
         .field input:focus,
         .field select:focus,
         .field textarea:focus {
-          border-color: #b18a50;
-          box-shadow:
-            0 0 0 3px rgba(177, 138, 80, 0.08);
+          border-color: #65b5e2;
+          box-shadow: 0 0 0 3px rgba(80, 174, 224, 0.12);
         }
 
-        .field-error {
+        .error {
+          display: block;
           margin-top: 5px;
-          color: #b14a43;
+          color: #d15c62;
           font-size: 9px;
-          padding-right: 5px;
         }
 
-        .divider {
+        .separator {
           height: 1px;
-          background: #eeeeee;
           margin: 30px 0;
+          background: #e6f0f5;
         }
 
-        /* =========================
-           PAYMENT
-        ========================= */
-
-        .payment-option {
-          border: 1px solid #dedede;
-          border-radius: 14px;
-          padding: 15px;
+        .payment {
+          min-height: 72px;
+          width: 100%;
           display: flex;
           align-items: center;
           gap: 12px;
+          padding: 13px 15px;
+          border: 1px solid #9ed2ee;
+          border-radius: 12px;
+          background: #f5fbff;
         }
 
-        .payment-option.active {
-          border-color: #c4a16c;
-          background: #fffdfa;
-        }
-
-        .radio {
-          width: 19px;
-          height: 19px;
-          border: 1px solid #b9b2a8;
+        .payment-radio {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #4ba7d4;
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: grid;
+          place-items: center;
           flex-shrink: 0;
         }
 
-        .radio.checked {
-          border-color: #a98148;
-        }
-
-        .radio.checked span {
+        .payment-radio span {
           width: 9px;
           height: 9px;
           border-radius: 50%;
-          background: #a98148;
+          background: #3193c5;
         }
 
-        .payment-symbol {
-          width: 39px;
-          height: 39px;
+        .payment-icon {
+          width: 42px;
+          height: 42px;
           border-radius: 10px;
-          background: #f5f5f5;
-          color: #9d7844;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          background: #e7f5fc;
+          color: #2484b7;
+          display: grid;
+          place-items: center;
           font-weight: 700;
         }
 
-        .payment-content {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
+        .payment-copy {
           flex: 1;
+          min-width: 0;
         }
 
-        .payment-content strong {
-          font-size: 12px;
+        .payment-copy strong,
+        .payment-copy span {
+          display: block;
         }
 
-        .payment-content span {
-          color: #8e8981;
+        .payment-copy strong {
+          font-size: 13px;
+        }
+
+        .payment-copy span {
+          margin-top: 3px;
+          color: #8097a6;
           font-size: 10px;
         }
 
-        .payment-selected {
-          color: #9c753e;
-          font-size: 9px;
-          background: #f5eee4;
-          padding: 5px 8px;
+        .payment > b {
+          color: #2588bb;
+          background: #e4f5fd;
           border-radius: 20px;
-        }
-
-        /* =========================
-           TRUST
-        ========================= */
-
-        .trust-bottom {
-          border-top: 1px solid #eeeeee;
-          padding-top: 22px;
-          display: grid;
-          grid-template-columns:
-            repeat(3, 1fr);
-          gap: 10px;
-        }
-
-        .trust-bottom > div {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 3px;
-        }
-
-        .trust-bottom span {
-          color: #a98045;
-          font-size: 16px;
-        }
-
-        .trust-bottom strong {
+          padding: 6px 9px;
           font-size: 9px;
         }
 
-        .trust-bottom small {
-          color: #999;
-          font-size: 8px;
+        .summary {
+          padding: 26px;
+          position: sticky;
+          top: 18px;
+          border-color: #cfe6f3;
+          background: #ffffff;
         }
 
-        /* =========================
-           SUMMARY
-        ========================= */
-
-        .summary-heading {
+        .summary-head {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-bottom: 21px;
-          border-bottom: 1px solid #ececec;
+          padding-bottom: 19px;
+          border-bottom: 1px solid #e3eef4;
         }
 
-        .summary-heading > div:first-child span {
-          color: #b08b52;
+        .summary-head > div:first-child > span {
+          color: #4b9bc6;
           font-size: 7px;
           letter-spacing: 3px;
           direction: ltr;
         }
 
-        .summary-heading h2 {
-          margin: 3px 0 0;
-          font-family: Georgia, serif;
-          font-size: 23px;
-          font-weight: 500;
+        .summary-head h2 {
+          margin: 4px 0 0;
+          font: 23px Georgia, serif;
         }
 
-        .bag-icon {
-          width: 39px;
-          height: 39px;
-          border: 1px solid #e5e5e5;
+        .summary-count {
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 17px;
+          background: #eaf6fd;
+          color: #2485b8;
+          display: grid;
+          place-items: center;
+          font-weight: 700;
+          font-size: 11px;
         }
 
-        .products-list {
-          padding: 20px 0;
+        .products {
+          padding: 18px 0;
           display: flex;
           flex-direction: column;
-          gap: 16px;
-          border-bottom: 1px solid #ececec;
+          gap: 14px;
+          border-bottom: 1px solid #e3eef4;
         }
 
-        .product-row {
+        .product {
           display: flex;
           align-items: center;
-          gap: 11px;
+          gap: 10px;
           min-width: 0;
         }
 
-        .product-image {
-          width: 63px;
-          height: 72px;
+        .product-img {
+          width: 58px;
+          height: 66px;
+          border-radius: 9px;
+          border: 1px solid #dbeaf3;
+          background: #f2f9fd;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
           flex-shrink: 0;
           position: relative;
-          border-radius: 10px;
-          overflow: visible;
-          background: #f5f5f5;
-          border: 1px solid #e6e6e6;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
-        .product-image img {
+        .product-img img {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          border-radius: 10px;
         }
 
-        .image-placeholder {
-          color: #999;
+        .product-img span {
+          color: #76a9c3;
           font-size: 9px;
         }
 
-        .quantity {
-          position: absolute;
-          top: -7px;
-          left: -7px;
-          min-width: 20px;
-          height: 20px;
-          padding: 0 5px;
-          border-radius: 20px;
-          background: #181818;
-          color: #fff;
-          border: 2px solid #fff;
-          font-size: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .product-details {
+        .product-info {
           flex: 1;
           min-width: 0;
         }
 
-        .product-details strong {
+        .product-info strong,
+        .product-info span {
           display: block;
+        }
+
+        .product-info strong {
           font-size: 11px;
-          line-height: 1.5;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
 
-        .product-details span {
-          display: block;
+        .product-info span {
           margin-top: 3px;
-          color: #969087;
+          color: #91a2ad;
           font-size: 9px;
         }
 
-        .product-price {
+        .product > b {
           white-space: nowrap;
           font-size: 10px;
         }
 
-        .product-price small,
-        .total-line small,
-        .grand-total small {
-          color: #888;
-          font-size: 8px;
-          font-weight: 500;
-        }
-
-        /* =========================
-           COUPON
-        ========================= */
-
-        .coupon-box {
+        .coupon {
           display: flex;
           gap: 7px;
-          padding: 18px 0 8px;
+          padding: 17px 0 7px;
         }
 
-        .coupon-box input {
+        .coupon input {
           flex: 1;
-          height: 43px;
           min-width: 0;
-          border: 1px solid #dedede;
-          border-radius: 10px;
+          height: 43px;
+          border: 1px solid #cfe0ea;
+          border-radius: 9px;
           outline: none;
           padding: 0 12px;
           font-size: 10px;
         }
 
-        .coupon-box input:focus {
-          border-color: #b18a50;
-        }
-
-        .coupon-box button {
+        .coupon button {
           border: 0;
-          background: #171717;
-          color: #fff;
-          border-radius: 10px;
-          padding: 0 17px;
+          border-radius: 9px;
+          padding: 0 15px;
+          background: #e4f4fc;
+          color: #237eaf;
           font-size: 10px;
           cursor: pointer;
         }
 
         .coupon-message {
+          color: #31855f;
           font-size: 9px;
-          padding: 3px 0 10px;
+          padding-bottom: 8px;
         }
-
-        .coupon-message.success {
-          color: #398054;
-        }
-
-        .coupon-message.error {
-          color: #b24c45;
-        }
-
-        /* =========================
-           TOTALS
-        ========================= */
 
         .totals {
-          padding: 15px 0;
-          border-bottom: 1px solid #ececec;
+          padding: 14px 0;
           display: flex;
           flex-direction: column;
-          gap: 11px;
+          gap: 10px;
+          border-bottom: 1px solid #e3eef4;
         }
 
-        .total-line {
+        .totals > div {
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          color: #858077;
+          align-items: center;
+          color: #7c929f;
           font-size: 10px;
         }
 
-        .total-line strong {
-          color: #333;
-          font-size: 10px;
+        .totals b {
+          color: #314a5a;
         }
 
-        .discount-line,
-        .discount-line strong {
-          color: #3c8054;
+        .totals .discount,
+        .totals .discount b {
+          color: #31855f;
         }
 
-        .grand-total {
-          padding: 20px 0;
+        .final-total {
           display: flex;
-          align-items: center;
           justify-content: space-between;
+          align-items: center;
+          padding: 18px 0;
         }
 
-        .grand-total > span {
+        .final-total > span {
           font-size: 12px;
           font-weight: 700;
         }
 
-        .grand-total > div {
-          display: flex;
-          align-items: baseline;
-          gap: 4px;
+        .final-total strong {
+          color: #1976a8;
+          font-size: 23px;
         }
 
-        .grand-total strong {
-          font-size: 24px;
-          font-weight: 700;
+        .final-total small {
+          color: #7893a2;
+          font-size: 8px;
         }
 
-        /* =========================
-           BUTTON
-        ========================= */
-
-        .submit-button {
+        .confirm {
           width: 100%;
-          min-height: 54px;
+          min-height: 53px;
           border: 0;
-          border-radius: 12px;
-          background: #171717;
+          border-radius: 11px;
+          background: #2d91c5;
           color: #fff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
           font-size: 12px;
           font-weight: 700;
           cursor: pointer;
-          transition:
-            transform 0.2s ease,
-            background 0.2s ease;
+          box-shadow: 0 8px 20px rgba(45, 145, 197, 0.18);
+          transition: 0.2s ease;
         }
 
-        .submit-button:hover {
-          background: #292929;
+        .confirm:hover {
+          background: #237fac;
           transform: translateY(-1px);
         }
 
-        .whatsapp-text {
-          color: #d5d5d5;
-          font-size: 9px;
-          font-weight: 400;
-          direction: ltr;
-        }
-
-        .privacy-note {
+        .summary-security {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 6px;
-          color: #999;
-          font-size: 8px;
-          padding: 12px 0 17px;
-        }
-
-        /* =========================
-           PREMIUM
-        ========================= */
-
-        .premium-banner {
-          min-height: 88px;
-          border-radius: 12px;
-          background: #181818;
-          color: #fff;
-          padding: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 10px;
-        }
-
-        .premium-banner div:first-child {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .premium-banner span {
-          color: #c39a59;
+          gap: 7px;
+          padding: 13px 0 8px;
+          color: #8aa0ae;
           font-size: 9px;
-          font-weight: 700;
-        }
-
-        .premium-banner strong {
-          color: #ddd;
-          font-size: 8px;
-          font-weight: 400;
-        }
-
-        .diamond {
-          color: #c49a56;
-          font-size: 35px;
-          line-height: 1;
-        }
-
-        /* =========================
-           EMPTY
-        ========================= */
-
-        .loading-box,
-        .empty-cart {
-          padding: 55px 10px;
           text-align: center;
-          color: #919191;
         }
 
-        .spinner {
-          width: 25px;
-          height: 25px;
-          border: 2px solid #e4e4e4;
-          border-top-color: #a77f45;
-          border-radius: 50%;
-          animation: spin 0.8s linear infinite;
-          margin: 0 auto 12px;
+        .security-lock {
+          font-size: 11px;
         }
 
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .empty-bag {
-          width: 55px;
-          height: 55px;
-          margin: 0 auto 14px;
-          border-radius: 50%;
-          background: #f5f5f5;
+        .service-box {
+          margin-top: 10px;
+          min-height: 82px;
+          padding: 15px 17px;
           display: flex;
           align-items: center;
-          justify-content: center;
-          font-size: 22px;
+          gap: 13px;
+          border: 1px solid #cfe9f6;
+          border-radius: 13px;
+          background: linear-gradient(135deg, #f3fbff, #e8f6fd);
         }
 
-        .empty-cart h3 {
-          margin: 0 0 5px;
-          color: #252525;
+        .service-mark {
+          width: 42px;
+          height: 42px;
+          flex: 0 0 42px;
+          display: grid;
+          place-items: center;
+          border: 1px solid #72b8dc;
+          border-radius: 10px;
+          color: #2788b9;
+          font: 27px Georgia, serif;
+        }
+
+        .service-box strong,
+        .service-box span {
+          display: block;
+        }
+
+        .service-box strong {
+          color: #1e6f99;
+          font-size: 11px;
+        }
+
+        .service-box span {
+          margin-top: 5px;
+          color: #7895a5;
+          font-size: 9px;
+        }
+
+        .loading,
+        .empty {
+          padding: 45px 10px;
+          text-align: center;
+          color: #8298a6;
+          font-size: 11px;
+        }
+
+        .empty strong,
+        .empty span {
+          display: block;
+        }
+
+        .empty strong {
+          color: #28495d;
           font-size: 14px;
         }
 
-        .empty-cart p {
-          margin: 0 0 16px;
-          font-size: 10px;
+        .empty span {
+          margin: 7px 0 15px;
         }
 
-        .back-store {
+        .empty a {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           height: 40px;
           padding: 0 18px;
           border-radius: 9px;
-          background: #181818;
-          color: #fff;
+          background: #e4f4fc;
+          color: #237eaf;
           text-decoration: none;
-          font-size: 10px;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .checkout-footer {
-          padding-top: 35px;
-          text-align: center;
-          color: #999;
-          font-size: 9px;
-        }
-
-        .footer-brand {
-          margin-bottom: 4px;
-          color: #393630;
-          font-family: Georgia, serif;
-          font-size: 16px;
-        }
-
-        /* =========================
-           MODAL
-        ========================= */
-
-        .modal-backdrop {
+        .modal {
           position: fixed;
           inset: 0;
           z-index: 100;
-          background: rgba(15, 14, 12, 0.58);
-          display: flex;
-          align-items: center;
-          justify-content: center;
           padding: 20px;
-          backdrop-filter: blur(6px);
+          display: grid;
+          place-items: center;
+          background: rgba(24, 58, 78, 0.38);
+          backdrop-filter: blur(5px);
         }
 
-        .success-modal {
+        .modal-card {
           width: min(420px, 100%);
+          padding: 32px 27px 26px;
+          border-radius: 20px;
           background: #fff;
-          border-radius: 22px;
-          padding: 35px 28px 28px;
           text-align: center;
-          box-shadow:
-            0 30px 100px rgba(0, 0, 0, 0.2);
-          animation: modalIn 0.22s ease;
+          box-shadow: 0 25px 80px rgba(26, 76, 105, 0.2);
         }
 
-        @keyframes modalIn {
-          from {
-            opacity: 0;
-            transform: translateY(12px) scale(0.98);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        .success-mark {
-          width: 65px;
-          height: 65px;
+        .success {
+          width: 62px;
+          height: 62px;
+          margin: 0 auto 15px;
           border-radius: 50%;
-          margin: 0 auto 17px;
-          background: #f2f7f2;
-          color: #48815b;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          background: #eaf7fd;
+          color: #278ac0;
+          display: grid;
+          place-items: center;
           font-size: 28px;
-        }
-
-        .modal-eyebrow {
-          color: #a47c43;
-          font-size: 8px;
-          letter-spacing: 3px;
-          direction: ltr;
-        }
-
-        .success-modal h2 {
-          margin: 7px 0;
-          font-family: Georgia, serif;
-          font-size: 25px;
-          font-weight: 500;
-        }
-
-        .success-modal p {
-          margin: 0 auto 23px;
-          max-width: 310px;
-          color: #858077;
-          font-size: 11px;
-          line-height: 1.9;
-        }
-
-        .modal-button {
-          width: 100%;
-          height: 50px;
-          border: 0;
-          border-radius: 10px;
-          background: #171717;
-          color: #fff;
-          font-size: 11px;
           font-weight: 700;
-          cursor: pointer;
         }
 
-        .modal-cancel {
-          margin-top: 12px;
+        .modal-card h2 {
+          margin: 0 0 8px;
+          font: 25px Georgia, serif;
+        }
+
+        .modal-card p {
+          margin: 0 0 22px;
+          color: #7d929f;
+          font-size: 11px;
+          line-height: 1.8;
+        }
+
+        .cancel {
+          margin-top: 10px;
           border: 0;
           background: transparent;
-          color: #8e887f;
+          color: #7c929f;
           font-size: 10px;
           cursor: pointer;
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* FINAL FORM WIDTH OVERRIDE */
+        .checkout .main-card .section,
+        .checkout .main-card .fields,
+        .checkout .main-card .field {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+        }
+
+        .checkout .main-card .field input,
+        .checkout .main-card .field select,
+        .checkout .main-card .field textarea {
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
 
         @media (max-width: 900px) {
-
-          .checkout-grid {
+          .layout {
             grid-template-columns: 1fr;
           }
 
-          .summary-card {
+          .summary {
             position: static;
             grid-row: 1;
           }
 
-          .details-card {
+          .main-card {
             grid-row: 2;
           }
-
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
-
         @media (max-width: 600px) {
-
-          .checkout-header {
+          .topbar {
             height: 68px;
           }
 
-          .header-inner,
-          .container {
+          .topbar-inner,
+          .page {
             width: calc(100% - 22px);
           }
 
-          .brand-symbol {
-            width: 37px;
-            height: 37px;
-            font-size: 18px;
-          }
-
-          .brand-copy strong {
+          .logo strong {
             font-size: 17px;
           }
 
-          .brand-copy span {
+          .logo small {
             font-size: 6px;
-            letter-spacing: 2px;
           }
 
-          .secure-badge {
+          .safe {
             font-size: 9px;
           }
 
-          .secure-dot {
+          .safe-dot {
             width: 27px;
             height: 27px;
           }
 
-          .container {
-            padding: 30px 0 45px;
+          .page {
+            padding: 28px 0 45px;
           }
 
-          .intro {
-            margin-bottom: 24px;
+          .heading {
+            margin-bottom: 22px;
           }
 
-          .intro h1 {
+          .heading h1 {
             font-size: 30px;
           }
 
-          .intro p {
+          .heading p {
             font-size: 10px;
           }
 
-          .checkout-grid {
-            gap: 14px;
-          }
-
-          .details-card,
-          .summary-card {
+          .main-card,
+          .summary {
             border-radius: 15px;
           }
 
-          .details-card {
-            width: 100%;
+          .main-card {
             padding: 20px 15px;
           }
 
-          .summary-card {
+          .summary {
             padding: 19px 15px;
-          }
-
-          /*
-             مهم جدًا:
-             الخانات تفضل صغيرة في الارتفاع
-             لكن بعرض الكارت كله
-          */
-
-          .form-grid,
-          .shipping-grid {
-            display: grid !important;
-            width: 100% !important;
-            max-width: none !important;
-            min-width: 0 !important;
-            grid-template-columns: minmax(0, 1fr) !important;
-            grid-auto-flow: row !important;
-            gap: 13px;
-          }
-
-          .form-grid > .field,
-          .shipping-grid > .field {
-            flex: 0 0 100% !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            min-width: 0 !important;
-            align-self: stretch !important;
-          }
-
-          .field {
-            width: 100% !important;
-            max-width: none !important;
-            min-width: 0 !important;
-          }
-
-          .field input,
-          .field select,
-          .field textarea {
-            display: block !important;
-            width: 100% !important;
-            max-width: none !important;
-            min-width: 0 !important;
           }
 
           .field input,
           .field select {
-            height: 50px !important;
-            min-height: 50px !important;
+            height: 50px;
           }
 
           .field textarea {
-            height: 88px;
-            min-height: 88px !important;
-          }
-
-          .section-title {
-            margin-bottom: 17px;
+            min-height: 88px;
           }
 
           .section-title h2 {
@@ -2282,73 +1328,33 @@ export default function CheckoutPage() {
             font-size: 9px;
           }
 
-          .section-number {
+          .number {
             width: 34px;
             height: 34px;
-            font-size: 9px;
+            flex-basis: 34px;
           }
-
-          .divider {
-            margin: 25px 0;
-          }
-
-          .summary-heading h2 {
-            font-size: 21px;
-          }
-
-          .product-image {
-            width: 59px;
-            height: 68px;
-          }
-
-          .product-details strong {
-            font-size: 10px;
-          }
-
-          .product-price {
-            font-size: 9px;
-          }
-
-          .grand-total strong {
-            font-size: 22px;
-          }
-
-          .submit-button {
-            min-height: 52px;
-          }
-
-          .trust-bottom {
-            gap: 5px;
-          }
-
         }
-
       `}</style>
     </>
   );
 }
 
-
-/* =========================
-   FIELD COMPONENT
-========================= */
-
-function Field({
-  error,
-  children,
+function SectionTitle({
+  number,
+  title,
+  text,
 }: {
-  error?: string;
-  children: ReactNode;
+  number: string;
+  title: string;
+  text: string;
 }) {
   return (
-    <div className="field">
-      {children}
-
-      {error && (
-        <div className="field-error">
-          {error}
-        </div>
-      )}
+    <div className="section-title">
+      <div className="number">{number}</div>
+      <div>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </div>
     </div>
   );
 }
