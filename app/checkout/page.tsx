@@ -406,7 +406,12 @@ export default function CheckoutPage() {
                     <span className="payment-radio">
                       {paymentMethod === "vodafone" ? <span /> : null}
                     </span>
-                    <span className="payment-logo vodafone-logo">V</span>
+                    <span className="payment-logo vodafone-logo">
+                      <img
+                        src="https://www.onmeeting.co/_next/image?q=75&url=%2Fimages%2FVCash.png&w=750"
+                        alt="Vodafone Cash"
+                      />
+                    </span>
                     <span className="payment-copy">
                       <strong>Vodafone Cash</strong>
                       <span>الدفع عن طريق محفظة فودافون كاش</span>
@@ -427,7 +432,12 @@ export default function CheckoutPage() {
                     <span className="payment-radio">
                       {paymentMethod === "instapay" ? <span /> : null}
                     </span>
-                    <span className="payment-logo instapay-logo">IP</span>
+                    <span className="payment-logo instapay-logo">
+                      <img
+                        src="https://www.thaqfny.com/wp-content/uploads/2022/03/InstaPay-1.jpg"
+                        alt="InstaPay"
+                      />
+                    </span>
                     <span className="payment-copy">
                       <strong>InstaPay</strong>
                       <span>الدفع عن طريق إنستا باي</span>
@@ -899,27 +909,30 @@ export default function CheckoutPage() {
         }
 
         .payment-logo {
-          width: 44px;
-          height: 44px;
-          border-radius: 10px;
+          width: 52px;
+          height: 52px;
+          border-radius: 11px;
           display: grid;
           place-items: center;
-          flex: 0 0 44px;
-          font-weight: 800;
-          letter-spacing: -0.5px;
+          flex: 0 0 52px;
+          overflow: hidden;
+          background: #fff;
+          border: 1px solid #e2edf3;
+        }
+
+        .payment-logo img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: contain;
         }
 
         .vodafone-logo {
-          background: #fff1f2;
-          color: #d92f43;
-          font-size: 19px;
+          background: #fff5f6;
         }
 
         .instapay-logo {
-          background: #eaf6fd;
-          color: #2688bb;
-          font-size: 11px;
-          direction: ltr;
+          background: #fff;
         }
 
         .payment-copy {
