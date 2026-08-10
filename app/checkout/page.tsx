@@ -434,7 +434,7 @@ export default function CheckoutPage() {
                     </span>
                     <span className="payment-logo instapay-logo">
                       <img
-                        src="https://www.thaqfny.com/wp-content/uploads/2022/03/InstaPay-1.jpg"
+                        src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/dd/c3/b9ddc3bb-2ac7-e6ea-757d-011f16583a3a/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-0-85-220.png/1024x1024bb.png?v=2"
                         alt="InstaPay"
                       />
                     </span>
@@ -933,6 +933,7 @@ export default function CheckoutPage() {
 
         .instapay-logo {
           background: #fff;
+          border-color: #e1e7ec;
         }
 
         .payment-copy {
