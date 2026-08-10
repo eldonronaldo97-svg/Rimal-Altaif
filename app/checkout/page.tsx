@@ -557,6 +557,8 @@ export default function CheckoutPage() {
                 </div>
               )}
             </aside>
+
+
           </div>
         </div>
       </main>
@@ -720,10 +722,10 @@ export default function CheckoutPage() {
         }
 
         .layout {
-          display: grid;
-          grid-template-columns: minmax(0, 1.38fr) minmax(340px, 0.72fr);
+          display: flex;
+          flex-direction: column;
           gap: 24px;
-          align-items: start;
+          width: 100%;
         }
 
         .main-card,
@@ -966,9 +968,10 @@ export default function CheckoutPage() {
         }
 
         .summary {
+          width: 100%;
           padding: 26px;
-          position: sticky;
-          top: 18px;
+          position: relative;
+          top: auto;
           border-color: #cfe6f3;
           background: #ffffff;
         }
@@ -1333,16 +1336,12 @@ export default function CheckoutPage() {
 
         @media (max-width: 900px) {
           .layout {
-            grid-template-columns: 1fr;
+            width: 100%;
           }
 
-          .summary {
-            position: static;
-            grid-row: 1;
-          }
-
+          .summary,
           .main-card {
-            grid-row: 2;
+            width: 100%;
           }
         }
 
