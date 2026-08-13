@@ -106,6 +106,7 @@ export default function CheckoutPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [proofFile, setProofFile] = useState<File | null>(null);
   const [proofPreview, setProofPreview] = useState("");
+  const [proofError, setProofError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const submitStartedRef = useRef(false);
 
@@ -195,19 +196,23 @@ export default function CheckoutPage() {
     if (!file) {
       setProofFile(null);
       setProofPreview("");
+      setProofError("");
       return;
     }
 
     if (!file.type.startsWith("image/")) {
+      setProofError("من فضلك ارفع صورة التحويل أولًا.");
       alert("من فضلك اختر صورة فقط.");
       return;
     }
 
     if (file.size > 8 * 1024 * 1024) {
+      setProofError("حجم الصورة كبير جدًا. الحد الأقصى 8 ميجابايت.");
       alert("حجم الصورة كبير جدًا. الحد الأقصى 8 ميجابايت.");
       return;
     }
 
+    setProofError("");
     setProofFile(file);
 
     const reader = new FileReader();
@@ -301,6 +306,18 @@ export default function CheckoutPage() {
     if (!validate()) {
       window.setTimeout(() => {
         document.querySelector(".error")?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 50);
+      return;
+    }
+
+    if (!proofFile) {
+      setProofError("لا يمكن تأكيد الطلب بدون رفع صورة التحويل.");
+      alert("من فضلك ارفع صورة التحويل لتأكيد الطلب.");
+      window.setTimeout(() => {
+        document.querySelector(".proof-box")?.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
@@ -563,6 +580,10 @@ export default function CheckoutPage() {
                     <small>JPG / PNG — حتى 8 ميجابايت</small>
                   </label>
 
+                  {proofError ? (
+                    <div className="proof-error">{proofError}</div>
+                  ) : null}
+
                   {proofPreview ? (
                     <div className="proof-preview">
                       <img src={proofPreview} alt="صورة التحويل" />
@@ -720,7 +741,12 @@ export default function CheckoutPage() {
                     type="button"
                     className="confirm"
                     onClick={submitOrder}
-                    disabled={submitting}
+                    disabled={submitting || !proofFile}
+                    title={
+                      !proofFile
+                        ? "ارفع صورة التحويل أولًا لتأكيد الطلب"
+                        : undefined
+                    }
                   >
                     {submitting ? "جاري إرسال الطلب..." : "تأكيد الطلب"}
                   </button>
@@ -1165,9 +1191,22 @@ export default function CheckoutPage() {
         }
 
         .confirm:disabled {
-          opacity: 0.65;
-          cursor: wait;
+          opacity: 0.55;
+          cursor: not-allowed;
           transform: none !important;
+        }
+
+        .proof-error {
+          width: 100%;
+          margin-top: 2px;
+          padding: 10px 12px;
+          border: 1px solid #f1c4c7;
+          border-radius: 9px;
+          background: #fff4f5;
+          color: #c2555d;
+          font-size: 11px;
+          line-height: 1.6;
+          text-align: center;
         }
 
         .payment-options {
