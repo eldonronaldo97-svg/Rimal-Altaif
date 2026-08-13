@@ -135,82 +135,312 @@ button {
 ========================= */
 
 .product-card {
-  min-width: 160px;
-  width: 160px;
-  flex-shrink: 0;
+  width: 180px;
+  min-width: 180px;
+  flex: 0 0 180px;
 
   background: #fff;
+  border: 1px solid #e6e6e6;
   border-radius: 14px;
-  border: 1px solid #eee;
+
   overflow: hidden;
 
-  transition: 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
+/* رابط الصورة */
+.product-image-link {
+  display: block;
+}
+
+/* منطقة الصورة */
 .product-image {
-  height: 190px;
+  position: relative;
+
+  width: 100%;
+  height: 205px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  padding: 12px;
+  background: #fff;
+
+  overflow: hidden;
 }
 
-.product-image img {
+/* الصورة */
+.product-image-img {
   width: 100%;
   height: 100%;
+
   object-fit: contain;
-  transform: scale(1.35);
+  object-position: center;
+
+  padding: 10px;
+
+  transform: scale(1.18);
+
+  transition: transform 0.35s ease;
 }
 
-.product-content {
-  padding: 12px;
+.product-card:hover .product-image-img {
+  transform: scale(1.24);
 }
 
-.product-brand {
-  font-size: 11px;
-  color: #777;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
+/* SOLD OUT */
+.sold-out-badge {
+  position: absolute;
 
-.product-name {
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.45;
-  min-height: 38px;
-}
+  top: 9px;
+  left: 9px;
 
-.product-price {
-  margin-top: 10px;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.product-btn {
-  width: calc(100% - 24px);
-  margin: 12px;
-  height: 38px;
+  z-index: 5;
 
   background: #111;
   color: #fff;
 
-  border-radius: 999px;
+  padding: 5px 8px;
 
-  font-size: 12px;
+  border-radius: 5px;
+
+  font-size: 8px;
   font-weight: 700;
 
-  transition: 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
-.product-btn:hover {
-  opacity: 0.9;
+/* محتوى الكارت */
+.product-content {
+  padding: 8px 10px 10px;
+
+  text-align: center;
+}
+
+/* البراند */
+.product-brand {
+  margin-bottom: 4px;
+
+  color: #111;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+/* اسم العطر */
+.product-name {
+  display: block;
+
+  color: #172b38;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  min-height: 38px;
+
+  text-decoration: none;
+
+  margin-bottom: 6px;
+}
+
+/* الأسعار */
+.product-prices {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  direction: ltr;
+
+  white-space: nowrap;
+
+  margin-bottom: 10px;
+}
+
+/* السعر الحالي */
+.product-price {
+  margin: 0;
+
+  color: #a5162b;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+/* السعر القديم */
+.product-old-price {
+  color: #999;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+/* زر السلة */
+.product-btn {
+  width: 100%;
+
+  height: 42px;
+
+  margin: 0;
+
+  border: 2px solid #172b38;
+
+  border-radius: 999px;
+
+  background: #fff;
+
+  color: #172b38;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.product-btn:hover:not(:disabled) {
+  background: #172b38;
+  color: #fff;
+
+  transform: translateY(-1px);
+}
+
+.product-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .product-card {
+    width: 170px;
+    min-width: 170px;
+    flex-basis: 170px;
+
+    border-radius: 13px;
+  }
+
+  .product-image {
+    height: 185px;
+  }
+
+  .product-image-img {
+    padding: 8px;
+    transform: scale(1.15);
+  }
+
+  .product-card:hover .product-image-img {
+    transform: scale(1.18);
+  }
+
+  .product-content {
+    padding: 7px 8px 9px;
+  }
+
+  .product-brand {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+
+  .product-name {
+    font-size: 13px;
+
+    min-height: 36px;
+
+    margin-bottom: 5px;
+  }
+
+  .product-prices {
+    gap: 6px;
+    margin-bottom: 9px;
+  }
+
+  .product-price {
+    font-size: 16px;
+  }
+
+  .product-old-price {
+    font-size: 11px;
+  }
+
+  .product-btn {
+    height: 40px;
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+  .product-card {
+    width: 240px;
+    min-width: 240px;
+    flex-basis: 240px;
+  }
+
+  .product-image {
+    height: 255px;
+  }
+
+  .product-image-img {
+    transform: scale(1.25);
+  }
+
+  .product-card:hover .product-image-img {
+    transform: scale(1.3);
+  }
+
+  .product-brand {
+    font-size: 12px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 19px;
+  }
+
+  .product-old-price {
+    font-size: 13px;
+  }
+
+  .product-btn {
+    height: 46px;
+    font-size: 14px;
+  }
 }
 /* =========================
    FOOTER

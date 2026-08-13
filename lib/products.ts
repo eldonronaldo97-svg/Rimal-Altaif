@@ -1174,7 +1174,8 @@ export const products = [
     size: "100ml",
     category: "Men",
     stock: true,
-    price: 1850,
+    price: 1750,
+    oldPrice: 2200,
     image: "/products/9pm-nightout-afnan.jpg",
   },
   {

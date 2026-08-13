@@ -6,98 +6,76 @@ import { useCart } from "../lib/store";
 export default function ProductCard({ p }: any) {
   const add = useCart((s) => s.add);
 
+  const handleAdd = () => {
+    if (!p.stock) return;
+
+    add({
+      id: p.id,
+      name: p.name,
+      image: p.image,
+      price: p.price,
+    });
+  };
+
   return (
-    <div className="product-card">
-      <Link href={`/product/${p.id}`}>
-        <div
-          className="product-image"
-          style={{
-            position: "relative",
-          }}
-        >
+    <article className="product-card">
+      {/* صورة المنتج */}
+      <Link
+        href={`/product/${p.id}`}
+        className="product-image-link"
+      >
+        <div className="product-image">
           {!p.stock && (
-            <div
-              style={{
-                position: "absolute",
-                top: 10,
-                left: 10,
-                zIndex: 10,
-                background: "#000",
-                color: "#fff",
-                padding: "6px 10px",
-                fontSize: 10,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-              }}
-            >
+            <span className="sold-out-badge">
               SOLD OUT
-            </div>
+            </span>
           )}
 
           <img
             src={p.image}
             alt={p.name}
-            style={{
-              opacity: p.stock ? 1 : 0.5,
-            }}
+            className="product-image-img"
           />
         </div>
       </Link>
 
+      {/* بيانات المنتج */}
       <div className="product-content">
         <div className="product-brand">
           {p.brand || "Rimal Altaif"}
         </div>
 
-        <div className="product-name">
-  {p.name}
-</div>
+        <Link
+          href={`/product/${p.id}`}
+          className="product-name"
+        >
+          {p.name}
+        </Link>
 
-<div
-  style={{
-    display: "inline-block",
-    marginTop: 8,
-    padding: "4px 10px",
-    border: "1px solid #ddd",
-    borderRadius: 999,
-    fontSize: 11,
-    color: "#666",
-    background: "#fafafa",
-    fontWeight: 600,
-  }}
->
-  {p.size}
-</div>
+        {/* الأسعار */}
+        <div className="product-prices">
+          <span className="product-price">
+            EGP {Number(p.price).toLocaleString("en-US")}
+          </span>
 
-<div className="product-price">
-  {p.price} جنيه
-</div>
+          {p.oldPrice &&
+            Number(p.oldPrice) > Number(p.price) && (
+              <span className="product-old-price">
+                EGP {Number(p.oldPrice).toLocaleString("en-US")}
+              </span>
+            )}
+        </div>
 
-</div>
-
-      <button
-        className="product-btn"
-        disabled={!p.stock}
-        onClick={() =>
-          p.stock &&
-          add({
-            id: p.id,
-            name: p.name,
-            image: p.image,
-            price: p.price,
-          })
-        }
-        style={{
-          opacity: p.stock ? 1 : 0.5,
-          cursor: p.stock
-            ? "pointer"
-            : "not-allowed",
-        }}
-      >
-        {p.stock
-          ? "اضف للسلة"
-          : "نفذت الكمية"}
-      </button>
-    </div>
+        {/* إضافة للسلة */}
+        <button
+          type="button"
+          className="product-btn"
+          disabled={!p.stock}
+          onClick={handleAdd}
+        >
+          {p.stock ? "أضف للسلة" : "نفذت الكمية"}
+        </button>
+      </div>
+    </article>
   );
 }
