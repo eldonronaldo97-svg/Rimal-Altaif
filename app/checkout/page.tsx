@@ -540,6 +540,13 @@ export default function CheckoutPage() {
                   text="ارفع صورة إيصال التحويل بعد إتمام الدفع"
                 />
 
+                <div className="deposit-notice">
+                  <strong>تنبيه مهم</strong>
+                  <span>
+                    يتم تأكيد الأوردر عند تحويل 300 ج.م عربون وإرسال صورة التحويل.
+                  </span>
+                </div>
+
                 <div className="proof-box">
                   <label className="proof-upload">
                     <input
@@ -1050,6 +1057,29 @@ export default function CheckoutPage() {
           height: 1px;
           margin: 30px 0;
           background: #e6f0f5;
+        }
+
+        .deposit-notice {
+          width: 100%;
+          margin: 0 0 14px;
+          padding: 13px 15px;
+          border: 1px solid #f0d9a6;
+          border-radius: 11px;
+          background: #fffaf0;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .deposit-notice strong {
+          color: #9a6a18;
+          font-size: 11px;
+        }
+
+        .deposit-notice span {
+          color: #765f35;
+          font-size: 10px;
+          line-height: 1.7;
         }
 
         .proof-box {
