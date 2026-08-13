@@ -32,7 +32,24 @@ type CustomerForm = {
 // مثال: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKMWW5j_gJlNc4zLXs6X5cUEzjNf0DvmZWqBne5QYVMxXSHZQm9Iot1zr0RPHiQNbK/exec";
 
-const SHIPPING_COST = 60;
+const SHIPPING_COST_DEFAULT = 75;
+const SHIPPING_COST_SPECIAL = 100;
+
+const SPECIAL_SHIPPING_GOVERNORATES = new Set([
+  "البحر الأحمر",
+  "شمال سيناء",
+  "جنوب سيناء",
+  "الأقصر",
+  "أسوان",
+  "الوادي الجديد",
+  "مطروح",
+]);
+
+function getShippingCost(governorate: string) {
+  return SPECIAL_SHIPPING_GOVERNORATES.has(governorate)
+    ? SHIPPING_COST_SPECIAL
+    : SHIPPING_COST_DEFAULT;
+}
 
 const GOVERNORATES = [
   "القاهرة", "الجيزة", "القليوبية", "الإسكندرية", "البحيرة",
@@ -139,9 +156,11 @@ export default function CheckoutPage() {
     [cart]
   );
 
+  const shippingCost = cart.length ? getShippingCost(form.governorate) : 0;
+
   const total = Math.max(
     0,
-    subtotal + (cart.length ? SHIPPING_COST : 0) - discount
+    subtotal + shippingCost - discount
   );
 
   function updateField(field: keyof CustomerForm, value: string) {
@@ -288,7 +307,7 @@ export default function CheckoutPage() {
         paymentMethod === "vodafone" ? "Vodafone Cash" : "InstaPay",
       items: buildItemsPayload(),
       subtotal,
-      shipping: SHIPPING_COST,
+      shipping: shippingCost,
       discount,
       coupon: coupon.trim(),
       total,
@@ -375,7 +394,7 @@ export default function CheckoutPage() {
       );
 
       addHiddenInput(formElement, "subtotal", String(subtotal));
-      addHiddenInput(formElement, "shipping", String(SHIPPING_COST));
+      addHiddenInput(formElement, "shipping", String(shippingCost));
       addHiddenInput(formElement, "discount", String(discount));
       addHiddenInput(formElement, "total", String(total));
       addHiddenInput(formElement, "coupon", coupon.trim());
@@ -720,7 +739,7 @@ export default function CheckoutPage() {
                     </div>
                     <div>
                       <span>الشحن</span>
-                      <b>{money(SHIPPING_COST)} ج.م</b>
+                      <b>{money(shippingCost)} ج.م</b>
                     </div>
                     {discount > 0 ? (
                       <div className="discount">
