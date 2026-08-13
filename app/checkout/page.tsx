@@ -30,7 +30,7 @@ type CustomerForm = {
 
 // ضع هنا رابط Web App الخاص بـ Google Apps Script بعد نشره.
 // مثال: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdBrtsoRHLe51mkQCSyxeiRfB9_7ukX9JAje5N5rK235dtlwij-kCNfZGnPQfRlC1FRA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKMWW5j_gJlNc4zLXs6X5cUEzjNf0DvmZWqBne5QYVMxXSHZQm9Iot1zr0RPHiQNbK/exec";
 
 const SHIPPING_COST = 60;
 
@@ -263,6 +263,35 @@ export default function CheckoutPage() {
     formElement.appendChild(input);
   }
 
+  function saveOrderForSuccess(orderId: string) {
+    const orderData = {
+      orderId,
+      createdAt: new Date().toISOString(),
+      customer: {
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        phone2: form.phone2.trim(),
+        governorate: form.governorate,
+        city: form.city.trim(),
+        address: form.address.trim(),
+        building: form.building.trim(),
+        floor: form.floor.trim(),
+        apartment: form.apartment.trim(),
+        notes: form.notes.trim(),
+      },
+      paymentMethod:
+        paymentMethod === "vodafone" ? "Vodafone Cash" : "InstaPay",
+      items: buildItemsPayload(),
+      subtotal,
+      shipping: SHIPPING_COST,
+      discount,
+      coupon: coupon.trim(),
+      total,
+    };
+
+    sessionStorage.setItem("rimal-last-order", JSON.stringify(orderData));
+  }
+
   async function submitOrder() {
     if (!cart.length) {
       alert("السلة فارغة، أضف منتجًا أولًا.");
@@ -304,7 +333,11 @@ export default function CheckoutPage() {
       formElement.style.display = "none";
       formElement.dataset.rimalOrderForm = "true";
 
-      addHiddenInput(formElement, "orderId", `RA-${Date.now()}`);
+      const orderId = `RA-${Date.now()}`;
+
+      saveOrderForSuccess(orderId);
+
+      addHiddenInput(formElement, "orderId", orderId);
       addHiddenInput(formElement, "createdAt", new Date().toISOString());
 
       addHiddenInput(formElement, "name", form.name.trim());
@@ -726,9 +759,7 @@ export default function CheckoutPage() {
               type="button"
               className="confirm"
               onClick={() => {
-                setShowSuccess(false);
-                setProofFile(null);
-                setProofPreview("");
+                window.location.href = "/order-success";
               }}
             >
               تمام
