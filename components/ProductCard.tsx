@@ -51,6 +51,10 @@ export default function ProductCard({ p }: any) {
         >
           {p.name}
         </Link>
+      
+        <div className="product-size">
+          {p.size}
+        </div>
 
         {/* الأسعار */}
         <div className="product-prices">

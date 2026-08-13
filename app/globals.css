@@ -256,6 +256,13 @@ button {
   margin-bottom: 6px;
 }
 
+.product-size {
+  color: #777;
+  font-size: 11px;
+  margin: 0 0 7px;
+  line-height: 1;
+}
+
 /* الأسعار */
 .product-prices {
   display: flex;
