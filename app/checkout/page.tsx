@@ -1073,12 +1073,12 @@ export default function CheckoutPage() {
 
         .deposit-notice strong {
           color: #9a6a18;
-          font-size: 11px;
+          font-size: 15px;
         }
 
         .deposit-notice span {
           color: #765f35;
-          font-size: 10px;
+          font-size: 14px;
           line-height: 1.7;
         }
 
