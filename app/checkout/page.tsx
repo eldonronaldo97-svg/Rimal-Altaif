@@ -1,7 +1,7 @@
 /* app/checkout/page.tsx */
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 type CartItem = {
@@ -28,7 +28,10 @@ type CustomerForm = {
   notes: string;
 };
 
-const WHATSAPP_NUMBER = "201000000000";
+// ضع هنا رابط Web App الخاص بـ Google Apps Script بعد نشره.
+// مثال: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdBrtsoRHLe51mkQCSyxeiRfB9_7ukX9JAje5N5rK235dtlwij-kCNfZGnPQfRlC1FRA/exec";
+
 const SHIPPING_COST = 60;
 
 const GOVERNORATES = [
@@ -101,7 +104,10 @@ export default function CheckoutPage() {
   const [couponMessage, setCouponMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [whatsappUrl, setWhatsappUrl] = useState("");
+  const [proofFile, setProofFile] = useState<File | null>(null);
+  const [proofPreview, setProofPreview] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const submitStartedRef = useRef(false);
 
   useEffect(() => {
     try {
@@ -174,47 +180,90 @@ export default function CheckoutPage() {
     setCouponMessage(code ? "كود الخصم غير صحيح" : "");
   }
 
-  function buildWhatsAppMessage() {
-    let message = "*طلب جديد من رمال الطائف*\n\n";
-
-    message += "*بيانات العميل*\n";
-    message += `الاسم: ${form.name}\n`;
-    message += `الموبايل: ${form.phone}\n`;
-
-    if (form.phone2.trim()) message += `رقم إضافي: ${form.phone2}\n`;
-
-    message += "\n*عنوان الشحن*\n";
-    message += `المحافظة: ${form.governorate}\n`;
-    message += `المدينة / المنطقة: ${form.city}\n`;
-    message += `العنوان: ${form.address}\n`;
-
-    if (form.building.trim()) message += `رقم العقار: ${form.building}\n`;
-    if (form.floor.trim()) message += `الدور: ${form.floor}\n`;
-    if (form.apartment.trim()) message += `الشقة: ${form.apartment}\n`;
-    if (form.notes.trim()) message += `ملاحظات: ${form.notes}\n`;
-
-    message += "\n*المنتجات*\n";
-    cart.forEach((item, index) => {
-      message += `${index + 1}. ${getName(item)}\n`;
-      message += `الكمية: ${getQuantity(item)}\n`;
-      message += `السعر: ${money(
-        getPrice(item) * getQuantity(item)
-      )} ج.م\n\n`;
-    });
-
-    message += "*ملخص الحساب*\n";
-    message += `الإجمالي الفرعي: ${money(subtotal)} ج.م\n`;
-    message += `الشحن: ${money(SHIPPING_COST)} ج.م\n`;
-    if (discount > 0) message += `الخصم: -${money(discount)} ج.م\n`;
-    message += `*الإجمالي النهائي: ${money(total)} ج.م*\n`;
-    message += `طريقة الدفع: ${
-      paymentMethod === "vodafone" ? "Vodafone Cash" : "InstaPay"
-    }`;
-
-    return message;
+  function buildItemsPayload() {
+    return cart.map((item) => ({
+      id: item.id ?? "",
+      name: getName(item),
+      quantity: getQuantity(item),
+      price: getPrice(item),
+      total: getPrice(item) * getQuantity(item),
+      image: item.image ?? "",
+    }));
   }
 
-  function submitOrder() {
+  function handleProofChange(file: File | null) {
+    if (!file) {
+      setProofFile(null);
+      setProofPreview("");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      alert("من فضلك اختر صورة فقط.");
+      return;
+    }
+
+    if (file.size > 8 * 1024 * 1024) {
+      alert("حجم الصورة كبير جدًا. الحد الأقصى 8 ميجابايت.");
+      return;
+    }
+
+    setProofFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        setProofPreview(reader.result);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function compressImage(file: File) {
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () =>
+        typeof reader.result === "string"
+          ? resolve(reader.result)
+          : reject(new Error("تعذر قراءة الصورة"));
+      reader.onerror = () => reject(new Error("تعذر قراءة الصورة"));
+      reader.readAsDataURL(file);
+    });
+
+    const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error("تعذر معالجة الصورة"));
+      img.src = dataUrl;
+    });
+
+    const maxSize = 1600;
+    const scale = Math.min(1, maxSize / Math.max(image.width, image.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(image.width * scale));
+    canvas.height = Math.max(1, Math.round(image.height * scale));
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("تعذر تجهيز الصورة");
+
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    return canvas.toDataURL("image/jpeg", 0.82);
+  }
+
+  function addHiddenInput(
+    formElement: HTMLFormElement,
+    name: string,
+    value: string
+  ) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    formElement.appendChild(input);
+  }
+
+  async function submitOrder() {
     if (!cart.length) {
       alert("السلة فارغة، أضف منتجًا أولًا.");
       return;
@@ -230,12 +279,72 @@ export default function CheckoutPage() {
       return;
     }
 
-    const url =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=` +
-      encodeURIComponent(buildWhatsAppMessage());
+    if (APPS_SCRIPT_URL.includes("PASTE_YOUR_APPS_SCRIPT")) {
+      alert("لم يتم ربط نموذج الطلب بعد. ضع رابط Google Apps Script داخل APPS_SCRIPT_URL.");
+      return;
+    }
 
-    setWhatsappUrl(url);
-    setShowSuccess(true);
+    if (submitting) return;
+
+    try {
+      setSubmitting(true);
+
+      let proofData = "";
+      let proofName = "";
+
+      if (proofFile) {
+        proofData = await compressImage(proofFile);
+        proofName = proofFile.name;
+      }
+
+      const formElement = document.createElement("form");
+      formElement.method = "POST";
+      formElement.action = APPS_SCRIPT_URL;
+      formElement.target = "rimal-order-submit-frame";
+      formElement.style.display = "none";
+      formElement.dataset.rimalOrderForm = "true";
+
+      addHiddenInput(formElement, "orderId", `RA-${Date.now()}`);
+      addHiddenInput(formElement, "createdAt", new Date().toISOString());
+
+      addHiddenInput(formElement, "name", form.name.trim());
+      addHiddenInput(formElement, "phone", form.phone.trim());
+      addHiddenInput(formElement, "phone2", form.phone2.trim());
+      addHiddenInput(formElement, "governorate", form.governorate);
+      addHiddenInput(formElement, "city", form.city.trim());
+      addHiddenInput(formElement, "address", form.address.trim());
+      addHiddenInput(formElement, "building", form.building.trim());
+      addHiddenInput(formElement, "floor", form.floor.trim());
+      addHiddenInput(formElement, "apartment", form.apartment.trim());
+      addHiddenInput(formElement, "notes", form.notes.trim());
+
+      addHiddenInput(
+        formElement,
+        "paymentMethod",
+        paymentMethod === "vodafone" ? "Vodafone Cash" : "InstaPay"
+      );
+
+      addHiddenInput(formElement, "subtotal", String(subtotal));
+      addHiddenInput(formElement, "shipping", String(SHIPPING_COST));
+      addHiddenInput(formElement, "discount", String(discount));
+      addHiddenInput(formElement, "total", String(total));
+      addHiddenInput(formElement, "coupon", coupon.trim());
+      addHiddenInput(formElement, "itemsJson", JSON.stringify(buildItemsPayload()));
+
+      addHiddenInput(formElement, "proofImageData", proofData);
+      addHiddenInput(formElement, "proofImageName", proofName);
+
+      submitStartedRef.current = true;
+      document.body.appendChild(formElement);
+      formElement.submit();
+
+      // ننتظر تحميل رد Google Apps Script داخل الـ iframe.
+      // عند اكتمال الـ POST سيتم تشغيل onLoad أسفل الصفحة.
+    } catch (error) {
+      console.error(error);
+      setSubmitting(false);
+      alert("حصل خطأ أثناء إرسال الطلب. حاول مرة أخرى.");
+    }
   }
 
   return (
@@ -392,7 +501,46 @@ export default function CheckoutPage() {
               <div className="separator" />
 
               <div className="section">
-                <SectionTitle number="03" title="طريقة الدفع" text="اختر الطريقة المناسبة لك" />
+                <SectionTitle
+                  number="03"
+                  title="صورة التحويل"
+                  text="ارفع صورة إيصال التحويل بعد إتمام الدفع"
+                />
+
+                <div className="proof-box">
+                  <label className="proof-upload">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        handleProofChange(e.target.files?.[0] ?? null)
+                      }
+                    />
+                    <span className="proof-icon">↑</span>
+                    <strong>
+                      {proofFile ? "تغيير صورة التحويل" : "ارفع صورة التحويل"}
+                    </strong>
+                    <small>JPG / PNG — حتى 8 ميجابايت</small>
+                  </label>
+
+                  {proofPreview ? (
+                    <div className="proof-preview">
+                      <img src={proofPreview} alt="صورة التحويل" />
+                      <button
+                        type="button"
+                        onClick={() => handleProofChange(null)}
+                      >
+                        حذف الصورة
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="separator" />
+
+              <div className="section">
+                <SectionTitle number="04" title="طريقة الدفع" text="اختر الطريقة المناسبة لك" />
 
                 <div className="payment-options">
                   <button
@@ -532,8 +680,9 @@ export default function CheckoutPage() {
                     type="button"
                     className="confirm"
                     onClick={submitOrder}
+                    disabled={submitting}
                   >
-                    تأكيد الطلب عبر واتساب
+                    {submitting ? "جاري إرسال الطلب..." : "تأكيد الطلب"}
                   </button>
 
                   <div className="summary-security">
@@ -567,28 +716,45 @@ export default function CheckoutPage() {
         <div className="modal" onClick={() => setShowSuccess(false)}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="success">✓</div>
-            <h2>طلبك جاهز للتأكيد</h2>
-            <p>اضغط على الزر التالي لإرسال تفاصيل طلبك عبر واتساب.</p>
+            <h2>تم استلام طلبك بنجاح</h2>
+            <p>
+              تم إرسال بيانات الطلب وصورة التحويل بنجاح.
+              <br />
+              شكرًا لثقتك في رمال الطائف.
+            </p>
             <button
               type="button"
               className="confirm"
               onClick={() => {
-                window.open(whatsappUrl, "_blank", "noopener,noreferrer");
                 setShowSuccess(false);
+                setProofFile(null);
+                setProofPreview("");
               }}
             >
-              الانتقال إلى واتساب
-            </button>
-            <button
-              type="button"
-              className="cancel"
-              onClick={() => setShowSuccess(false)}
-            >
-              إلغاء
+              تمام
             </button>
           </div>
         </div>
       ) : null}
+
+      <iframe
+        name="rimal-order-submit-frame"
+        title="order-submit"
+        style={{ display: "none" }}
+        onLoad={() => {
+          if (!submitStartedRef.current) return;
+
+          submitStartedRef.current = false;
+          setSubmitting(false);
+          setShowSuccess(true);
+
+          document
+            .querySelector<HTMLFormElement>(
+              'form[data-rimal-order-form="true"]'
+            )
+            ?.remove();
+        }}
+      />
 
       <style jsx global>{`
         :global(*) {
@@ -853,6 +1019,94 @@ export default function CheckoutPage() {
           height: 1px;
           margin: 30px 0;
           background: #e6f0f5;
+        }
+
+        .proof-box {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          width: 100%;
+        }
+
+        .proof-upload {
+          min-height: 145px;
+          border: 1.5px dashed #9ecde5;
+          border-radius: 14px;
+          background: #f8fcff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          cursor: pointer;
+          text-align: center;
+          transition: 0.2s ease;
+        }
+
+        .proof-upload:hover {
+          border-color: #4ca8d6;
+          background: #f2faff;
+        }
+
+        .proof-upload input {
+          display: none;
+        }
+
+        .proof-icon {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          background: #e6f5fc;
+          color: #2585b8;
+          font-size: 23px;
+          font-weight: 700;
+        }
+
+        .proof-upload strong {
+          color: #28546a;
+          font-size: 12px;
+        }
+
+        .proof-upload small {
+          color: #8ba0ae;
+          font-size: 9px;
+        }
+
+        .proof-preview {
+          position: relative;
+          border: 1px solid #dbeaf3;
+          border-radius: 12px;
+          padding: 8px;
+          background: #fff;
+        }
+
+        .proof-preview img {
+          display: block;
+          width: 100%;
+          max-height: 260px;
+          object-fit: contain;
+          border-radius: 8px;
+          background: #f5f9fb;
+        }
+
+        .proof-preview button {
+          width: 100%;
+          margin-top: 8px;
+          height: 38px;
+          border: 0;
+          border-radius: 8px;
+          background: #fff1f2;
+          color: #c2555d;
+          cursor: pointer;
+          font-size: 10px;
+        }
+
+        .confirm:disabled {
+          opacity: 0.65;
+          cursor: wait;
+          transform: none !important;
         }
 
         .payment-options {
