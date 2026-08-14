@@ -1436,6 +1436,6 @@ export const homeBestSellers = [
   "d4",  // Emerald Soul Diamond
   "t6",  // Spanish Tobacco
   "dk17",  // dkhoon rose
-  "d8",  // Pink sakura
-  "dk4", // dkhoon khayal
+  "H1",  // Hawas Ice
+  "d10", // Nude Coral Diamond
 ];
