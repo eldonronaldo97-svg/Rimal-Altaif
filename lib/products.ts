@@ -1387,9 +1387,9 @@ export const homeBestSellers = [
   "m1", // musk collection
   "t9", // Tobacco Collection
   "A2", // 9PM nightout
-  "A8",  // Emerald Soul Diamond
-  "t6",  // Arrogate Comete
-  "a17",  // Spanish Tobacco
-  "d8",  // Arrogate Pink
-  "dk4", // Nude Coral Diamond
+  "d4",  // Emerald Soul Diamond
+  "t6",  // Spanish Tobacco
+  "dk17",  // dkhoon rose
+  "d8",  // Pink sakura
+  "dk4", // dkhoon khayal
 ];
