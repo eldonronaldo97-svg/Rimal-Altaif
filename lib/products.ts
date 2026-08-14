@@ -20,7 +20,7 @@ export const products = [
     price: 1600,
     oldPrice: 2250,
     image: "/products/diamond-9.jpg",
-    category: "Unisex",
+    category: "Men",
     stock: true,
   },
   {
@@ -99,7 +99,7 @@ export const products = [
     price: 1600,
     oldPrice: 2250,
     image: "/products/tobacco-6.jpg",
-    category: "Women",
+    category: "Unisex",
     stock: true,
   },
   {
@@ -110,7 +110,7 @@ export const products = [
     price: 1600,
     oldPrice: 2250,
     image: "/products/tobacco-7.jpg",
-    category: "Unisex",
+    category: "Men",
     stock: true,
   },
   {
@@ -225,7 +225,7 @@ export const products = [
     price: 2800,
     oldPrice: 3200,
     image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
-    category: "Men",
+    category: "Unisex",
     stock: false,
     bestSeller: true,
   },
@@ -1106,7 +1106,7 @@ export const products = [
     "size": "100ml",
      "price": 1600,
     "oldPrice": 2000,
-    "image": "/products/dkhoon/5210b6bb-b5a7-4327-bd4c-98ec3f8ecda5.avif",
+    "image": "/products/dkhoon/3898eaee-23f1-4cfc-a4a7-028959b0c7cb.webp",
     "category": "Unisex",
     "stock": true
   },
