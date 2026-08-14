@@ -8,9 +8,10 @@ import "swiper/css/pagination";
 
 export default function HeroSlider() {
   const banners = [
-    "/banner1.jpg",
+    "/banner1.png",
     "/banner2.jpg",
     "/banner3.jpg",
+    "/banner4.jpg",
   ];
 
   return (

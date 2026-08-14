@@ -1,6 +1,18 @@
 export const products = [
   // 💎 DIAMOND COLLECTION
   {
+    id: "m1",
+    name: "musk collection",
+    brand: "Ibraq",
+    size: "20ml",
+    price: 4400,
+    oldPrice: 5000,
+    image: "/products/3e2d2c76-a107-4e33-8943-5d4b0f3cb2f1-1000x1000-12XwCUurtCS6OyiKmzyyXumP3PGJ4ZkOYIveZMxL.webp",
+    category: "Unisex",
+    stock: true,
+    bestSeller: true,
+  },
+  {
     id: "d1",
     name: "Black Carbon Diamond",
     brand: "Ibraq",
@@ -66,7 +78,7 @@ export const products = [
     oldPrice: 2250,
     image: "/products/tobacco-4.jpg",
     category: "Unisex",
-    stock: false,
+    stock: true,
   },
   {
     id: "d7",
@@ -124,7 +136,7 @@ export const products = [
     oldPrice: 2350,
     image: "/products/diamond-1.jpg",
     category: "Unisex",
-    stock: false,
+    stock: true,
   },
   {
     id: "t2",
@@ -146,7 +158,7 @@ export const products = [
     oldPrice: 2350,
     image: "/products/diamond-3.jpg",
     category: "Men",
-    stock: false,
+    stock: true,
   },
   {
     id: "t4",
@@ -168,7 +180,7 @@ export const products = [
     oldPrice: 2350,
     image: "/products/diamond-5.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
   },
   {
     id: "t6",
@@ -204,6 +216,18 @@ export const products = [
     image: "/products/diamond-7.jpg",
     category: "Men",
     stock: false,
+  },
+  {
+    id: "t9",
+    name: "Tobacco Collection",
+    brand: "Ibraq",
+    size: "20ml",
+    price: 2800,
+    oldPrice: 3200,
+    image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
+    category: "Men",
+    stock: false,
+    bestSeller: true,
   },
    // Assaf Main Collection
 
@@ -322,8 +346,7 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    stock: true,
-    bestSeller: true,
+    stock: false,
     price: 3900,
     oldPrice: 4400,
     image: "/products/assaf/Bakhur_Collection_Box.jpg",
@@ -357,8 +380,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "unisex",
-    stock: false,
-    price: 2100,
+    stock: true,
+    price: 2000,
     image: "/products/assaf/Dangerous_Arrogate.jpg",
   },
 
@@ -447,7 +470,7 @@ export const products = [
     category: "Men",
     stock: true,
     bestSeller: true,
-    price: 1750,
+    price: 1950,
     image: "/products/assaf/Gris_Erik.jpg",
   },
 
@@ -468,8 +491,8 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Women",
-    stock: false,
-    price: 1900,
+    stock: true,
+    price: 2000,
     image: "/products/assaf/Lip_Stick.jpg",
   },
 
@@ -479,8 +502,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Women",
-    stock: false,
-    price: 2100,
+    stock: true,
+    price: 2050,
     image: "/products/assaf/Miss_Arrogate.jpg",
   },
 
@@ -556,8 +579,8 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    stock: false,
-    price: 1850,
+    stock: true,
+    price: 2100,
     image: "/products/assaf/pegasus-aura.jpg",
   },
 
@@ -578,8 +601,8 @@ export const products = [
     brand: "Assaf",
     size: "100ml",
     category: "Women",
-    stock: false,
-    price: 1250,
+    stock: true,
+    price: 1350,
     image: "/products/assaf/Pink_Lady.jpg",
   },
 
@@ -592,6 +615,18 @@ export const products = [
     stock: false,
     price: 2200,
     image: "/products/assaf/Pink_Queen.jpg",
+  },
+
+  {
+    id: "a35",
+    name: "strike black",
+    brand: "Assaf",
+    size: "125ml",
+    category: "Men",
+    stock: true,
+    bestSeller: true,
+    price: 2200,
+    image: "/products/assaf/strike-black-assaf-arrogate-150ml.jpg",
   },
 
   {
@@ -721,7 +756,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Balqees.jpg",
     "category": "Women",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk2",
@@ -798,7 +833,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/AbuDhabi.jpg",
     "category": "Unisex",
-    "stock": false
+    "stock": true
   },
   {
     "id": "dk9",
@@ -823,7 +858,7 @@ export const products = [
     "stock": false
   },
   {
-    "id": "dk40",
+    "id": "dk11",
     "name": "Signature White",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -834,7 +869,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk41",
+    "id": "dk12",
     "name": "Signature Silver",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -845,7 +880,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk11",
+    "id": "dk13",
     "name": "Shiny",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -853,10 +888,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Shiny.jpg",
     "category": "Women",
-    "stock": false
+    "stock": true
   },
   {
-    "id": "dk12",
+    "id": "dk14",
     "name": "Dkhoon Desert",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -864,10 +899,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Dkhoon_Desert.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
-    "id": "dk13",
+    "id": "dk15",
     "name": "Couture",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -875,10 +910,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Couture.jpg",
     "category": "Unisex",
-    "stock": false
+    "stock": true
   },
   {
-    "id": "dk14",
+    "id": "dk16",
     "name": "No One",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -886,21 +921,21 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/No_One.jpg",
     "category": "Women",
-    "stock": false
+    "stock": true
   },
   {
-    "id": "dk15",
+    "id": "dk17",
     "name": "Dkhoon Rose",
     "brand": "Dkhoon",
     "size": "100ml",
-     "price": 1600,
+     "price": 1700,
     "oldPrice": 2000,
     "image": "/products/dkhoon/Dkhoon_Rose.jpg",
     "category": "Men",
     "stock": true
   },
   {
-    "id": "dk16",
+    "id": "dk18",
     "name": "Aura",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -908,10 +943,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Aura.jpg",
     "category": "Unisex",
-    "stock": false
+    "stock": true
   },
   {
-    "id": "dk17",
+    "id": "dk19",
     "name": "Tiamo",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -922,7 +957,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk18",
+    "id": "dk20",
     "name": "Dkhoon Amber",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -933,7 +968,7 @@ export const products = [
     "stock": false
   },
   {
-    "id": "dk19",
+    "id": "dk21",
     "name": "Haneet",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -944,7 +979,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk20",
+    "id": "dk22",
     "name": "Khaylan",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -955,7 +990,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk31",
+    "id": "dk23",
     "name": "Dkhoon Leather",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -963,10 +998,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Dkhoon_Leather.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
-    "id": "dk32",
+    "id": "dk24",
     "name": "Crown Black",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -977,7 +1012,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk33",
+    "id": "dk25",
     "name": "Khalifa",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -988,7 +1023,7 @@ export const products = [
     "stock": true
   },
   {
-    "id": "dk34",
+    "id": "dk26",
     "name": "Zayed",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -996,10 +1031,10 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Zayed.jpg",
     "category": "Men",
-    "stock": false
+    "stock": true
   },
   {
-    "id": "dk35",
+    "id": "dk27",
     "name": "So Sweety",
     "brand": "Dkhoon",
     "size": "100ml",
@@ -1007,6 +1042,83 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/So_Sweety.jpg",
     "category": "Women",
+    "stock": true
+  },
+  {
+    "id": "dk29",
+    "name": "Signature rose gold",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1700,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/4be38dc1-d258-4e45-af4e-64514d3e669d-thumbnail-770x770.webp",
+    "category": "Unisex",
+    "stock": true
+  },
+  {
+    "id": "dk30",
+    "name": "private 2 december",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1600,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/2894815c-8745-49d2-a1d4-c101bcbaff2a.webp",
+    "category": "Women",
+    "stock": true
+  },
+  {
+    "id": "dk31",
+    "name": "vanilla wood",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1700,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/d9a84d7d-64eb-48c6-b9a6-5c4574be1e0a.webp",
+    "category": "Unisex",
+    "stock": true
+  },
+  {
+    "id": "dk32",
+    "name": "Dkhoon queen",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1700,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/1000163849.webp",
+    "category": "Women",
+    "stock": true
+  },
+  {
+    "id": "dk33",
+    "name": "Dkhoon solo",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1600,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/5210b6bb-b5a7-4327-bd4c-98ec3f8ecda5.avif",
+    "category": "Women",
+    "stock": true
+  },
+  {
+    "id": "dk34",
+    "name": "Dkhoon blue",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1600,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/5210b6bb-b5a7-4327-bd4c-98ec3f8ecda5.avif",
+    "category": "Unisex",
+    "stock": true
+  },
+  {
+    "id": "dk35",
+    "name": "gold tears",
+    "brand": "Dkhoon",
+    "size": "100ml",
+     "price": 1600,
+    "oldPrice": 2000,
+    "image": "/products/dkhoon/fe487de0-8501-4262-9e82-0e557ad580d8.webp",
+    "category": "Unisex",
     "stock": true
   },
   {
