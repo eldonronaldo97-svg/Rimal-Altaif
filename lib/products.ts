@@ -1384,9 +1384,9 @@ export const products = [
   ];
 
 export const homeBestSellers = [
-  "d4", // Gris Erik
-  "dk33",  // Khamrah
-  "A2",  // Turathi Blue
+  "m1", // musk collection
+  "t9", // Tobacco Collection
+  "A2", // 9PM nightout
   "A8",  // Emerald Soul Diamond
   "t6",  // Arrogate Comete
   "a17",  // Spanish Tobacco
