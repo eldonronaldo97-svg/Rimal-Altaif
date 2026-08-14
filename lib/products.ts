@@ -1431,11 +1431,11 @@ export const products = [
 
 export const homeBestSellers = [
   "m1", // musk collection
-  "t9", // Tobacco Collection
   "A2", // 9PM nightout
-  "d4",  // Emerald Soul Diamond
-  "t6",  // Spanish Tobacco
-  "dk17",  // dkhoon rose
+  "a35",  // strike black
+  "a23", // lip stick
   "H1",  // Hawas Ice
   "d10", // Nude Coral Diamond
+  "t6",  // Spanish Tobacco
+  "dk17",  // dkhoon rose
 ];
