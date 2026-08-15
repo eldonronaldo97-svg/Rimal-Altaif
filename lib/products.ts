@@ -1426,7 +1426,7 @@ export const products = [
    // 💎 Offer COLLECTION
    {
     id: "o1",
-    name: "ghalia",
+    name: "Ghalia Offer",
     brand: "RIMAL ALTAIF",
     size: "200ml",
     price: 3000,
@@ -1440,8 +1440,8 @@ export const products = [
   ];
 
 export const homeBestSellers = [
-  "o1", // GHALIA OFFER
   "m1", // musk collection
+  "o1", // GHALIA OFFER
   "A2", // 9PM nightout
   "a35",  // strike black
   "a23", // lip stick
