@@ -115,9 +115,7 @@ export default function CheckoutPage() {
   >({});
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
-  const [paymentMethod, setPaymentMethod] = useState<"vodafone" | "instapay">(
-    "vodafone"
-  );
+  const [paymentMethod, setPaymentMethod] = useState<"vodafone" | "instapay" | "">("");
   const [couponMessage, setCouponMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -347,6 +345,11 @@ export default function CheckoutPage() {
           block: "center",
         });
       }, 50);
+      return;
+    }
+
+    if (!paymentMethod) {
+      alert("من فضلك اختر طريقة الدفع أولًا.");
       return;
     }
 
@@ -590,6 +593,74 @@ export default function CheckoutPage() {
               <div className="section">
                 <SectionTitle
                   number="03"
+                  title="طريقة الدفع"
+                  text="اختر الطريقة المناسبة لك"
+                />
+
+                <div className="payment-options">
+                  <button
+                    type="button"
+                    className={`payment-option ${
+                      paymentMethod === "vodafone" ? "active" : ""
+                    }`}
+                    onClick={() => setPaymentMethod("vodafone")}
+                    aria-pressed={paymentMethod === "vodafone"}
+                  >
+                    <span className="payment-radio">
+                      {paymentMethod === "vodafone" ? <span /> : null}
+                    </span>
+                    <span className="payment-logo vodafone-logo">
+                      <img
+                        src="https://www.onmeeting.co/_next/image?q=75&url=%2Fimages%2FVCash.png&w=750"
+                        alt="Vodafone Cash"
+                      />
+                    </span>
+                    <span className="payment-copy">
+                      <strong>Vodafone Cash</strong>
+                      <span>الدفع عن طريق محفظة فودافون كاش</span>
+                    </span>
+                    {paymentMethod === "vodafone" ? <b>مُختارة</b> : null}
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`payment-option ${
+                      paymentMethod === "instapay" ? "active" : ""
+                    }`}
+                    onClick={() => setPaymentMethod("instapay")}
+                    aria-pressed={paymentMethod === "instapay"}
+                  >
+                    <span className="payment-radio">
+                      {paymentMethod === "instapay" ? <span /> : null}
+                    </span>
+                    <span className="payment-logo instapay-logo">
+                      <img
+                        src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/dd/c3/b9ddc3bb-2ac7-e6ea-757d-011f16583a3a/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-0-85-220.png/1024x1024bb.png?v=2"
+                        alt="InstaPay"
+                      />
+                    </span>
+                    <span className="payment-copy">
+                      <strong>InstaPay</strong>
+                      <span>الدفع عن طريق إنستا باي</span>
+                    </span>
+                    {paymentMethod === "instapay" ? <b>مُختارة</b> : null}
+                  </button>
+                </div>
+
+                {paymentMethod ? (
+                  <div className="transfer-number">
+                    <span>رقم التحويل</span>
+                    <strong dir="ltr">01002283375</strong>
+                    <small>حوّل العربون ثم ارفع صورة التحويل بالأسفل</small>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="separator" />
+
+              <div className="section">
+                <SectionTitle
+                  number="04"
                   title="صورة التحويل"
                   text="ارفع صورة إيصال التحويل بعد إتمام الدفع"
                 />
@@ -635,65 +706,6 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="separator" />
-
-              <div className="section">
-                <SectionTitle number="04" title="طريقة الدفع" text="اختر الطريقة المناسبة لك" />
-
-                <div className="payment-options">
-                  <button
-                    type="button"
-                    className={`payment-option ${
-                      paymentMethod === "vodafone" ? "active" : ""
-                    }`}
-                    onClick={() => setPaymentMethod("vodafone")}
-                    aria-pressed={paymentMethod === "vodafone"}
-                  >
-                    <span className="payment-radio">
-                      {paymentMethod === "vodafone" ? <span /> : null}
-                    </span>
-                    <span className="payment-logo vodafone-logo">
-                      <img
-                        src="https://www.onmeeting.co/_next/image?q=75&url=%2Fimages%2FVCash.png&w=750"
-                        alt="Vodafone Cash"
-                      />
-                    </span>
-                    <span className="payment-copy">
-                      <strong>Vodafone Cash</strong>
-                      <span>الدفع عن طريق محفظة فودافون كاش</span>
-                    </span>
-                    {paymentMethod === "vodafone" ? (
-                      <b>مُختارة</b>
-                    ) : null}
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`payment-option ${
-                      paymentMethod === "instapay" ? "active" : ""
-                    }`}
-                    onClick={() => setPaymentMethod("instapay")}
-                    aria-pressed={paymentMethod === "instapay"}
-                  >
-                    <span className="payment-radio">
-                      {paymentMethod === "instapay" ? <span /> : null}
-                    </span>
-                    <span className="payment-logo instapay-logo">
-                      <img
-                        src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/dd/c3/b9ddc3bb-2ac7-e6ea-757d-011f16583a3a/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-0-85-220.png/1024x1024bb.png?v=2"
-                        alt="InstaPay"
-                      />
-                    </span>
-                    <span className="payment-copy">
-                      <strong>InstaPay</strong>
-                      <span>الدفع عن طريق إنستا باي</span>
-                    </span>
-                    {paymentMethod === "instapay" ? (
-                      <b>مُختارة</b>
-                    ) : null}
-                  </button>
-                </div>
-              </div>
             </section>
 
             <aside className="summary">
@@ -1251,6 +1263,40 @@ export default function CheckoutPage() {
           flex-direction: column;
           gap: 11px;
           width: 100%;
+        }
+
+        .transfer-number {
+          width: 100%;
+          margin-top: 12px;
+          padding: 14px 16px;
+          border: 1px solid #cfe6f3;
+          border-radius: 11px;
+          background: #f5fbff;
+          text-align: center;
+        }
+
+        .transfer-number span,
+        .transfer-number strong,
+        .transfer-number small {
+          display: block;
+        }
+
+        .transfer-number span {
+          color: #7895a5;
+          font-size: 10px;
+          margin-bottom: 6px;
+        }
+
+        .transfer-number strong {
+          color: #1976a8;
+          font-size: 20px;
+          letter-spacing: 1px;
+        }
+
+        .transfer-number small {
+          margin-top: 6px;
+          color: #8aa0ae;
+          font-size: 9px;
         }
 
         .payment-option {
