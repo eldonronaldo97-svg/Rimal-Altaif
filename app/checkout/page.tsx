@@ -187,18 +187,36 @@ export default function CheckoutPage() {
   }
 
   function applyCoupon() {
-    const code = coupon.trim().toUpperCase();
+  const code = coupon.trim().toUpperCase();
 
-    if (code === "RIMAL10") {
-      const value = Math.round(subtotal * 0.1);
-      setDiscount(value);
-      setCouponMessage("تم تطبيق خصم 10% بنجاح");
+  if (code === "RIMAL10") {
+    const eligibleSubtotal = cart.reduce((sum, item) => {
+      const id = String(item.id ?? "");
+
+      // استبعاد العروض من الخصم
+      if (id.startsWith("o")) {
+        return sum;
+      }
+
+      return sum + getPrice(item) * getQuantity(item);
+    }, 0);
+
+    if (eligibleSubtotal <= 0) {
+      setDiscount(0);
+      setCouponMessage("كود الخصم لا ينطبق على العروض");
       return;
     }
 
-    setDiscount(0);
-    setCouponMessage(code ? "كود الخصم غير صحيح" : "");
+    const value = Math.round(eligibleSubtotal * 0.1);
+
+    setDiscount(value);
+    setCouponMessage("تم تطبيق خصم 10% بنجاح");
+    return;
   }
+
+  setDiscount(0);
+  setCouponMessage(code ? "كود الخصم غير صحيح" : "");
+}
 
   function buildItemsPayload() {
     return cart.map((item) => ({
