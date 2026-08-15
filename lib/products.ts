@@ -1422,9 +1422,25 @@ export const products = [
     stock: true,
     bestSeller: true,
   },
+
+   // 💎 Offer COLLECTION
+   {
+    id: "o1",
+    name: "ghalia",
+    brand: "RIMAL ALTAIF",
+    size: "200ml",
+    price: 3000,
+    oldPrice: 3700,
+    image: "/products/ChatGPT Image 15 أغسطس 2026، 06_38_06 ص.png",
+    category: "Men",
+    stock: true,
+    bestSeller: true,
+  },
+
   ];
 
 export const homeBestSellers = [
+  "o1", // GHALIA OFFER
   "m1", // musk collection
   "A2", // 9PM nightout
   "a35",  // strike black
