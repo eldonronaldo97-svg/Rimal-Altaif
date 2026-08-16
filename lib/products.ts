@@ -1521,7 +1521,7 @@ export const products = [
     size: "100ml",
     price: 1900,
     oldPrice: 2300,
-    image: "/products/mira-amour-100ml-eau-de-parfum-le-bonheur.webp",
+    image: "/products/s-l1600 (4).webp",
     category: "Women",
     stock: true,
   },
