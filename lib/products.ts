@@ -1273,7 +1273,7 @@ export const products = [
     category: "Women",
     stock: true,
     price: 1400,
-    image: "/products/ragba_sheikh.jpg",
+    image: "/products/81RDRroz8gL.jpg",
   },
   {
     id: "A3",
