@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "../components/Navbar";
+import WelcomePopup from "@/components/WelcomePopup";
 import HeroSlider from "../components/HeroSlider";
 import BrandSlider from "../components/BrandSlider";
 import ProductSlider from "../components/ProductSlider";
@@ -35,6 +36,8 @@ export default function Home() {
 
   return (
     <>
+      <WelcomePopup />
+      
       <Navbar />
 
       <HeroSlider />
