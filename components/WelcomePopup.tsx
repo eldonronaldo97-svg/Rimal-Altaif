@@ -5,15 +5,23 @@ import { useEffect, useState } from "react";
 export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const closePopup = () => {
+    localStorage.setItem("rimal_welcome_popup_seen", "true");
+    setIsOpen(false);
+  };
+
   useEffect(() => {
-    // يظهر فور تحميل الصفحة
-    setIsOpen(true);
+    const popupSeen = localStorage.getItem("rimal_welcome_popup_seen");
+
+    if (!popupSeen) {
+      setIsOpen(true);
+    }
   }, []);
 
   if (!isOpen) return null;
 
   return (
-    <div className="welcome-overlay" onClick={() => setIsOpen(false)}>
+    <div className="welcome-overlay" onClick={closePopup}>
       <div
         className="welcome-popup"
         onClick={(e) => e.stopPropagation()}
@@ -21,7 +29,7 @@ export default function WelcomePopup() {
         {/* Close */}
         <button
           className="welcome-close"
-          onClick={() => setIsOpen(false)}
+          onClick={closePopup}
           aria-label="Close"
         >
           ×
@@ -61,7 +69,7 @@ export default function WelcomePopup() {
 
           <button
             className="welcome-button"
-            onClick={() => setIsOpen(false)}
+            onClick={closePopup}
           >
             تسوق الآن
             <span>←</span>
@@ -69,7 +77,7 @@ export default function WelcomePopup() {
 
           <button
             className="welcome-later"
-            onClick={() => setIsOpen(false)}
+            onClick={closePopup}
           >
             ربما لاحقًا
           </button>
