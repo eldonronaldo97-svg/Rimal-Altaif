@@ -47,7 +47,7 @@ export default function WelcomePopup() {
           </h2>
 
           <p className="welcome-main-text">
-            لأول <b>100 طلب</b> فقط
+            لفترة <b>محدودة</b> جدا
           </p>
 
           <p className="welcome-sub-text">
@@ -56,7 +56,7 @@ export default function WelcomePopup() {
 
           <div className="welcome-code">
             <span>كود الخصم</span>
-            <strong>FIRST10</strong>
+            <strong>RIMAL10</strong>
           </div>
 
           <button
