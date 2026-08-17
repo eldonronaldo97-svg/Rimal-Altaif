@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
-import MobileBottomBar from "@/components/MobileBottomBar";
 import FloatingCart from "@/components/FloatingCart";
 import LayoutContent from "@/components/LayoutContent";
 import { IBM_Plex_Sans_Arabic } from "next/font/google";
@@ -64,11 +63,33 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
     },
   },
+};
+
+/* =========================
+   SEO STRUCTURED DATA
+========================= */
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "رمال الطائف",
+  alternateName: "Rimal Altaif",
+  url: "https://rimalaltaif.com",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "رمال الطائف",
+  alternateName: "Rimal Altaif",
+  url: "https://rimalaltaif.com",
+  inLanguage: "ar-EG",
 };
 
 export default function RootLayout({
@@ -80,9 +101,31 @@ export default function RootLayout({
     <html lang="ar" dir="rtl">
       <body className={`${montserrat.className} ${ibmArabic.variable}`}>
         {children}
+
         <FloatingCart />
 
         <LayoutContent />
+
+        {/* Google Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(
+              /</g,
+              "\\u003c"
+            ),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema).replace(
+              /</g,
+              "\\u003c"
+            ),
+          }}
+        />
       </body>
     </html>
   );
