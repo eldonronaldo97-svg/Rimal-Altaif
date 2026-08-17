@@ -1609,7 +1609,7 @@ export const homeBestSellers = [
   "o2", // any diamound + 9pm nightout
   "o3", // Any Dkhoon + Hawas Ice
   "o4", // Any Tobacco + 9pm Rebel
-  "m1", // musk collection
+  "M1", // musk collection
   "A2", // 9PM nightout
   "a35",  // strike black
   "a23", // lip stick
