@@ -1,7 +1,7 @@
 export const products = [
   // 💎 DIAMOND COLLECTION
   {
-    id: "m1",
+    id: "M1",
     name: "Musk collection",
     brand: "Ibraq",
     size: "20ml",
