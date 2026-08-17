@@ -34,8 +34,23 @@ export default function Home() {
   const featuredProducts =
     products.slice(0, 15);
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "رمال الطائف",
+    alternateName: "Rimal Altaif",
+    url: "https://rimalaltaif.com",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+
       <WelcomePopup />
       
       <Navbar />
