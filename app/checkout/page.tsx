@@ -30,7 +30,7 @@ type CustomerForm = {
 
 // ضع هنا رابط Web App الخاص بـ Google Apps Script بعد نشره.
 // مثال: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKMWW5j_gJlNc4zLXs6X5cUEzjNf0DvmZWqBne5QYVMxXSHZQm9Iot1zr0RPHiQNbK/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHhrvzHZEvGfnhCwbH_e7IgF1ahwjm6VXfGKHjPsuC99PcU9dC5Hf59WK15CLIHCNO/exec";
 
 const SHIPPING_COST_DEFAULT = 75;
 const SHIPPING_COST_SPECIAL = 100;
@@ -124,6 +124,9 @@ export default function CheckoutPage() {
   const [proofError, setProofError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const submitStartedRef = useRef(false);
+  const pendingOrderIdRef = useRef("");
+  const submitTimeoutRef = useRef<number | null>(null);
+  const submitFrameRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     try {
@@ -144,6 +147,7 @@ export default function CheckoutPage() {
       setLoading(false);
     }
   }, []);
+
 
   const subtotal = useMemo(
     () =>
@@ -185,36 +189,42 @@ export default function CheckoutPage() {
   }
 
   function applyCoupon() {
-  const code = coupon.trim().toUpperCase();
+    const code = coupon
+      .normalize("NFKC")
+      .replace(/\\s+/g, "")
+      .toUpperCase();
 
-  if (code === "RIMAL10") {
-    const eligibleSubtotal = cart.reduce((sum, item) => {
-      const id = String(item.id ?? "");
+    // نحفظ القيمة بشكل موحد مهما كان المتصفح أو لوحة المفاتيح.
+    setCoupon(code);
 
-      // استبعاد العروض من الخصم
-      if (id.startsWith("o")) {
-        return sum;
+    if (code === "RIMAL10") {
+      const eligibleSubtotal = cart.reduce((sum, item) => {
+        const id = String(item.id ?? "").trim().toLowerCase();
+
+        // استبعاد جميع العروض من الخصم.
+        if (id.startsWith("o")) {
+          return sum;
+        }
+
+        return sum + getPrice(item) * getQuantity(item);
+      }, 0);
+
+      if (eligibleSubtotal <= 0) {
+        setDiscount(0);
+        setCouponMessage("كود الخصم لا ينطبق على العروض");
+        return;
       }
 
-      return sum + getPrice(item) * getQuantity(item);
-    }, 0);
+      const value = Math.round(eligibleSubtotal * 0.1);
 
-    if (eligibleSubtotal <= 0) {
-      setDiscount(0);
-      setCouponMessage("كود الخصم لا ينطبق على العروض");
+      setDiscount(value);
+      setCouponMessage("تم تطبيق خصم 10% بنجاح");
       return;
     }
 
-    const value = Math.round(eligibleSubtotal * 0.1);
-
-    setDiscount(value);
-    setCouponMessage("تم تطبيق خصم 10% بنجاح");
-    return;
+    setDiscount(0);
+    setCouponMessage(code ? "كود الخصم غير صحيح" : "");
   }
-
-  setDiscount(0);
-  setCouponMessage(code ? "كود الخصم غير صحيح" : "");
-}
 
   function buildItemsPayload() {
     return cart.map((item) => ({
@@ -366,7 +376,9 @@ export default function CheckoutPage() {
     }
 
     if (APPS_SCRIPT_URL.includes("PASTE_YOUR_APPS_SCRIPT")) {
-      alert("لم يتم ربط نموذج الطلب بعد. ضع رابط Google Apps Script داخل APPS_SCRIPT_URL.");
+      alert(
+        "لم يتم ربط نموذج الطلب بعد. ضع رابط Google Apps Script داخل APPS_SCRIPT_URL."
+      );
       return;
     }
 
@@ -392,7 +404,9 @@ export default function CheckoutPage() {
 
       const orderId = `RA-${Date.now()}`;
 
-      saveOrderForSuccess(orderId);
+      // مهم: لا نحفظ الطلب في sessionStorage قبل تأكيد Google Apps Script.
+      pendingOrderIdRef.current = orderId;
+      submitStartedRef.current = true;
 
       addHiddenInput(formElement, "orderId", orderId);
       addHiddenInput(formElement, "createdAt", new Date().toISOString());
@@ -418,24 +432,129 @@ export default function CheckoutPage() {
       addHiddenInput(formElement, "shipping", String(shippingCost));
       addHiddenInput(formElement, "discount", String(discount));
       addHiddenInput(formElement, "total", String(total));
-      addHiddenInput(formElement, "coupon", coupon.trim());
-      addHiddenInput(formElement, "itemsJson", JSON.stringify(buildItemsPayload()));
+      addHiddenInput(
+        formElement,
+        "coupon",
+        coupon
+          .normalize("NFKC")
+          .replace(/\\s+/g, "")
+          .toUpperCase()
+      );
+      addHiddenInput(
+        formElement,
+        "itemsJson",
+        JSON.stringify(buildItemsPayload())
+      );
 
       addHiddenInput(formElement, "proofImageData", proofData);
       addHiddenInput(formElement, "proofImageName", proofName);
 
-      submitStartedRef.current = true;
       document.body.appendChild(formElement);
       formElement.submit();
 
-      // ننتظر تحميل رد Google Apps Script داخل الـ iframe.
-      // عند اكتمال الـ POST سيتم تشغيل onLoad أسفل الصفحة.
+      // لا نعتبر onLoad نجاحًا. ننتظر رسالة RIMAL_ORDER_RESULT من Apps Script.
+      submitTimeoutRef.current = window.setTimeout(() => {
+        if (!submitStartedRef.current) return;
+
+        submitStartedRef.current = false;
+        pendingOrderIdRef.current = "";
+        setSubmitting(false);
+
+        document
+          .querySelector<HTMLFormElement>(
+            'form[data-rimal-order-form="true"]'
+          )
+          ?.remove();
+
+        alert(
+          "لم يصل تأكيد تسجيل الطلب. من فضلك حاول مرة أخرى، وإذا تم خصم المبلغ لا تعيد التحويل."
+        );
+      }, 45000);
     } catch (error) {
       console.error(error);
+
+      if (submitTimeoutRef.current !== null) {
+        window.clearTimeout(submitTimeoutRef.current);
+        submitTimeoutRef.current = null;
+      }
+
+      submitStartedRef.current = false;
+      pendingOrderIdRef.current = "";
       setSubmitting(false);
+
+      document
+        .querySelector<HTMLFormElement>(
+          'form[data-rimal-order-form="true"]'
+        )
+        ?.remove();
+
       alert("حصل خطأ أثناء إرسال الطلب. حاول مرة أخرى.");
     }
   }
+
+  // نستقبل نتيجة Google Apps Script نفسها، وليس مجرد onLoad للـiframe.
+  useEffect(() => {
+    function handleOrderResult(event: MessageEvent) {
+      const data = event.data;
+
+      if (!data || data.type !== "RIMAL_ORDER_RESULT") return;
+
+      const payload = data.payload;
+
+      if (!payload || typeof payload !== "object") return;
+
+      const pendingOrderId = pendingOrderIdRef.current;
+
+      // نتأكد أن الرد يخص نفس الطلب الذي أرسلناه.
+      if (
+        pendingOrderId &&
+        payload.orderId &&
+        String(payload.orderId) !== pendingOrderId
+      ) {
+        return;
+      }
+
+      if (submitTimeoutRef.current !== null) {
+        window.clearTimeout(submitTimeoutRef.current);
+        submitTimeoutRef.current = null;
+      }
+
+      submitStartedRef.current = false;
+      pendingOrderIdRef.current = "";
+      setSubmitting(false);
+
+      document
+        .querySelector<HTMLFormElement>(
+          'form[data-rimal-order-form="true"]'
+        )
+        ?.remove();
+
+      if (payload.success === true) {
+        const confirmedOrderId =
+          String(payload.orderId || pendingOrderId);
+
+        saveOrderForSuccess(confirmedOrderId);
+        setShowSuccess(true);
+        return;
+      }
+
+      alert(
+        payload.message ||
+          "لم نتمكن من تسجيل الطلب. من فضلك حاول مرة أخرى."
+      );
+    }
+
+    window.addEventListener("message", handleOrderResult);
+
+    return () => {
+      window.removeEventListener("message", handleOrderResult);
+
+      if (submitTimeoutRef.current !== null) {
+        window.clearTimeout(submitTimeoutRef.current);
+      }
+    };
+  }, [form, paymentMethod, cart, subtotal, shippingCost, discount, coupon, total]);
+
 
   return (
     <>
@@ -749,9 +868,23 @@ export default function CheckoutPage() {
 
                   <div className="coupon">
                     <input
+                      type="text"
                       value={coupon}
                       onChange={(e) => setCoupon(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          applyCoupon();
+                        }
+                      }}
                       placeholder="هل لديك كود خصم؟"
+                      autoCapitalize="characters"
+                      autoCorrect="off"
+                      spellCheck={false}
+                      inputMode="text"
+                      enterKeyHint="done"
+                      dir="ltr"
+                      aria-label="كود الخصم"
                     />
                     <button type="button" onClick={applyCoupon}>
                       تطبيق
@@ -851,22 +984,10 @@ export default function CheckoutPage() {
       ) : null}
 
       <iframe
+        ref={submitFrameRef}
         name="rimal-order-submit-frame"
         title="order-submit"
         style={{ display: "none" }}
-        onLoad={() => {
-          if (!submitStartedRef.current) return;
-
-          submitStartedRef.current = false;
-          setSubmitting(false);
-          setShowSuccess(true);
-
-          document
-            .querySelector<HTMLFormElement>(
-              'form[data-rimal-order-form="true"]'
-            )
-            ?.remove();
-        }}
       />
 
       <style jsx global>{`
