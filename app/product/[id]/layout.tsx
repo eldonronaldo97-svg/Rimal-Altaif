@@ -5,6 +5,17 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
+const SITE_URL = "https://rimalaltaif.com";
+
+function absoluteUrl(path: string) {
+  if (path.startsWith("http")) return path;
+  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+function brandSlug(brand: string) {
+  return brand.trim().toLowerCase().replace(/\s+/g, "-");
+}
+
 export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
@@ -16,6 +27,10 @@ export async function generateMetadata({
     return {
       title: "المنتج غير متاح | رمال الطائف",
       description: "المنتج غير متاح حاليًا على رمال الطائف.",
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
@@ -38,20 +53,21 @@ export async function generateMetadata({
     ],
 
     alternates: {
-      canonical: `https://rimalaltaif.com/product/${product.id}`,
+      canonical: `${SITE_URL}/product/${product.id}`,
     },
 
     openGraph: {
       title: `${product.name} | ${product.brand} | رمال الطائف`,
       description:
         `${product.name} من ${product.brand} - متوفر لدى رمال الطائف بسعر ${product.price} جنيه.`,
-      url: `https://rimalaltaif.com/product/${product.id}`,
+      url: `${SITE_URL}/product/${product.id}`,
       siteName: "رمال الطائف | Rimal Altaif",
       locale: "ar_EG",
       type: "website",
+
       images: [
         {
-          url: `https://rimalaltaif.com${product.image}`,
+          url: absoluteUrl(product.image),
           alt: product.name,
         },
       ],
@@ -60,6 +76,7 @@ export async function generateMetadata({
     robots: {
       index: true,
       follow: true,
+
       googleBot: {
         index: true,
         follow: true,
@@ -68,10 +85,109 @@ export async function generateMetadata({
   };
 }
 
-export default function ProductLayout({
+export default async function ProductLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ id: string }>;
 }) {
-  return children;
+  const { id } = await params;
+
+  const product = products.find((p) => p.id === id);
+
+  if (!product) {
+    return children;
+  }
+
+  const productUrl = `${SITE_URL}/product/${product.id}`;
+
+  const brandUrl = `${SITE_URL}/brand/${brandSlug(product.brand)}`;
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+
+    name: product.name,
+
+    image: [absoluteUrl(product.image)],
+
+    description:
+      `${product.name} من ${product.brand} - ${product.size}. ` +
+      `متوفر لدى رمال الطائف.`,
+
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+
+    category: product.category,
+
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      priceCurrency: "EGP",
+      price: Number(product.price),
+
+      availability: product.stock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "الرئيسية",
+        item: SITE_URL,
+      },
+
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.brand,
+        item: brandUrl,
+      },
+
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
+  };
+
+  return (
+    <>
+      {children}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema).replace(
+            /</g,
+            "\\u003c"
+          ),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(
+            /</g,
+            "\\u003c"
+          ),
+        }}
+      />
+    </>
+  );
 }

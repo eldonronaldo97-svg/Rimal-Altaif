@@ -78,10 +78,17 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://rimalaltaif.com/#organization",
+
   name: "رمال الطائف",
   alternateName: "Rimal Altaif",
+
   url: "https://rimalaltaif.com",
-  logo: "https://rimalaltaif.com/logo.png",
+
+  logo: {
+    "@type": "ImageObject",
+    url: "https://rimalaltaif.com/logo.png",
+  },
 };
 
 const websiteSchema = {

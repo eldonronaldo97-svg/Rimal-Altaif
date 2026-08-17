@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/products";
 
+const SITE_URL = "https://rimalaltaif.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const uniqueProducts = Array.from(
     new Map(
@@ -8,77 +10,87 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ).values()
   );
 
-  const productUrls: MetadataRoute.Sitemap =
-    uniqueProducts.map((product) => ({
-      url: `https://rimalaltaif.com/product/${product.id}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    }));
-
   const uniqueBrands = Array.from(
     new Set(
       products
         .map((product) => product.brand)
         .filter(Boolean)
+        .map((brand) =>
+          brand.trim().toLowerCase().replace(/\s+/g, "-")
+        )
     )
   );
 
-  const brandUrls: MetadataRoute.Sitemap =
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: SITE_URL,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1,
+    },
+
+    {
+      url: `${SITE_URL}/shop`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+
+    {
+      url: `${SITE_URL}/men`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/women`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/unisex`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/best-sellers`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/latest-release`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+  ];
+
+  const brandPages: MetadataRoute.Sitemap =
     uniqueBrands.map((brand) => ({
-      url: `https://rimalaltaif.com/brand/${brand
-        .toLowerCase()
-        .replace(/\s+/g, "-")}`,
+      url: `${SITE_URL}/brand/${brand}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     }));
 
-  return [
-    {
-      url: "https://rimalaltaif.com",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    {
-      url: "https://rimalaltaif.com/shop",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: "https://rimalaltaif.com/men",
+  const productPages: MetadataRoute.Sitemap =
+    uniqueProducts.map((product) => ({
+      url: `${SITE_URL}/product/${product.id}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
-    },
-    {
-      url: "https://rimalaltaif.com/women",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://rimalaltaif.com/unisex",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://rimalaltaif.com/best-sellers",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://rimalaltaif.com/latest-release",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+    }));
 
-    ...brandUrls,
-    ...productUrls,
+  return [
+    ...staticPages,
+    ...brandPages,
+    ...productPages,
   ];
 }
