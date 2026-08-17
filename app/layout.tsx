@@ -81,6 +81,7 @@ const organizationSchema = {
   name: "رمال الطائف",
   alternateName: "Rimal Altaif",
   url: "https://rimalaltaif.com",
+  logo: "https://rimalaltaif.com/logo.png",
 };
 
 const websiteSchema = {
