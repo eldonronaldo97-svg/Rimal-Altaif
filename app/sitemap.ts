@@ -16,6 +16,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
+  const uniqueBrands = Array.from(
+    new Set(
+      products
+        .map((product) => product.brand)
+        .filter(Boolean)
+    )
+  );
+
+  const brandUrls: MetadataRoute.Sitemap =
+    uniqueBrands.map((brand) => ({
+      url: `https://rimalaltaif.com/brand/${brand
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }));
+
   return [
     {
       url: "https://rimalaltaif.com",
@@ -23,7 +41,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1,
     },
+    {
+      url: "https://rimalaltaif.com/shop",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: "https://rimalaltaif.com/men",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://rimalaltaif.com/women",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://rimalaltaif.com/unisex",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://rimalaltaif.com/best-sellers",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://rimalaltaif.com/latest-release",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
 
+    ...brandUrls,
     ...productUrls,
   ];
 }
