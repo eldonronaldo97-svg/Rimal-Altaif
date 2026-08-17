@@ -37,376 +37,430 @@ export default function ProductPage() {
     );
   }
 
+  /* =========================
+     PRODUCT SEO STRUCTURED DATA
+  ========================= */
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+
+    name: product.name,
+
+    image: [
+      `https://rimalaltaif.com${product.image}`,
+    ],
+
+    description: `${product.name} من ${product.brand} - متوفر للشراء من رمال الطائف.`,
+
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+
+    category: product.category,
+
+    sku: product.id,
+
+    offers: {
+      "@type": "Offer",
+      url: `https://rimalaltaif.com/product/${product.id}`,
+      priceCurrency: "EGP",
+      price: product.price,
+      availability: product.stock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+
+      seller: {
+        "@type": "Organization",
+        name: "رمال الطائف",
+        url: "https://rimalaltaif.com",
+      },
+    },
+  };
+
   return (
-    <main
-      style={{
-        background: "#fff",
-        minHeight: "100vh",
-        paddingBottom: 140,
-      }}
-    >
-      <div
+    <>
+      {/* Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema).replace(
+            /</g,
+            "\\u003c"
+          ),
+        }}
+      />
+
+      <main
         style={{
-          padding: "14px 14px 70px",
-          maxWidth: 1600,
-          margin: "0 auto",
+          background: "#fff",
+          minHeight: "100vh",
+          paddingBottom: 140,
         }}
       >
-        {/* IMAGE */}
-<div
-  style={{
-    background: "#f7f7f7",
-    borderRadius: 12,
-    marginTop: 16,
-    width: "100%",
-    minHeight: 420,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "hidden",
-    position: "relative",
-  }}
->
-  {!product.stock && (
-    <div
-      style={{
-        position: "absolute",
-        top: 12,
-        left: 12,
-        zIndex: 10,
-        background: "#000",
-        color: "#fff",
-        fontSize: 10,
-        letterSpacing: 2,
-        padding: "8px 12px",
-      }}
-    >
-      نفذت الكمية
-    </div>
-  )}
-
-  <PhotoProvider
-  maskOpacity={0.95}
-  bannerVisible={false}
->
-  <PhotoView src={product.image}>
-    <img
-      src={product.image}
-      alt={product.name}
-      style={{
-        width: "100%",
-        maxWidth: 420,
-        height: "auto",
-        objectFit: "contain",
-        display: "block",
-        margin: "0 auto",
-        cursor: "zoom-in",
-      }}
-    />
-  </PhotoView>
-</PhotoProvider>
-</div>
-
-        {/* INFO */}
         <div
           style={{
-            textAlign: "left",
+            padding: "14px 14px 70px",
+            maxWidth: 1600,
+            margin: "0 auto",
           }}
         >
-          <p
-            style={{
-              fontSize: 10,
-              letterSpacing: "4px",
-              textTransform: "uppercase",
-              color: "#777",
-              marginBottom: 12,
-            }}
-          >
-            {product.brand}
-          </p>
-
-          <h1
-  style={{
-    fontSize: 32,
-    fontWeight: 300,
-    lineHeight: 1.1,
-    marginBottom: 12,
-  }}
->
-  {product.name}
-</h1>
-
-<div
-  style={{
-    display: "inline-block",
-    padding: "5px 12px",
-    border: "1px solid #ddd",
-    borderRadius: 999,
-    background: "#fafafa",
-    color: "#666",
-    fontSize: 13,
-    fontWeight: 600,
-    marginBottom: 18,
-  }}
->
-  {product.size}
-</div>
-
-<p
-  style={{
-    fontSize: 22,
-    marginBottom: 22,
-    letterSpacing: "2px",
-  }}
->
-  {product.price} جنيه
-</p>
-          <p
-            style={{
-              color: "#666",
-              lineHeight: 1.7,
-              marginBottom: 34,
-              fontSize: 14,
-            }}
-          >
-            عطر فاخر بتركيبة مميزة وثبات ممتاز
-            وفوحان جذاب يمنحك تجربة عطرية
-            استثنائية تناسب مختلف المناسبات.
-          </p>
-
+          {/* IMAGE */}
           <div
             style={{
-              borderTop: "1px solid #eee",
-              paddingTop: 22,
+              background: "#f7f7f7",
+              borderRadius: 12,
+              marginTop: 16,
+              width: "100%",
+              minHeight: 420,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              position: "relative",
             }}
           >
-            <p
-              style={{
-                marginBottom: 10,
-                fontSize: 14,
-              }}
+            {!product.stock && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 12,
+                  left: 12,
+                  zIndex: 10,
+                  background: "#000",
+                  color: "#fff",
+                  fontSize: 10,
+                  letterSpacing: 2,
+                  padding: "8px 12px",
+                }}
+              >
+                نفذت الكمية
+              </div>
+            )}
+
+            <PhotoProvider
+              maskOpacity={0.95}
+              bannerVisible={false}
             >
-              الفئة: {product.category}
-            </p>
-
-            <p
-              style={{
-                fontSize: 14,
-              }}
-            >
-              التوفر:{" "}
-              {product.stock
-                ? "متوفر"
-                : "نفذت الكمية"}
-            </p>
-          </div>
-        </div>
-
-        <div
-  style={{
-    marginTop: 40,
-    borderTop: "1px solid #eee",
-    paddingTop: 24,
-    display: "grid",
-    gap: 18,
-    paddingBottom: 20,
-  }}
->
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-    }}
-  >
-    <ShieldCheck size={20} />
-    <span>منتجات أصلية 100%</span>
-  </div>
-
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-    }}
-  >
-    <Truck size={20} />
-    <span>شحن لجميع محافظات مصر</span>
-  </div>
-
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-    }}
-  >
-    <Gift size={20} />
-    <span>تغليف فاخر وآمن</span>
-  </div>
-
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-    }}
-  >
-    <MessageCircle size={20} />
-    <span>خدمة عملاء عبر واتساب</span>
-  </div>
-</div>
-
-        {/* RELATED */}
-        <div
-          style={{
-            marginTop: 80,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 300,
-              marginBottom: 22,
-              textAlign: "left",
-            }}
-          >
-            قد يعجبك ايضًا
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2,1fr)",
-              gap: 8,
-              textAlign: "left",
-            }}
-          >
-            {products
-  .filter(
-    (p) =>
-      p.brand === product.brand &&
-      p.id !== product.id
-  )
-  .sort((a, b) => {
-    if (a.stock === b.stock) return 0;
-    return a.stock ? -1 : 1;
-  })
-  .slice(0, 4)
-  .map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/product/${p.id}`}
+              <PhotoView src={product.image}>
+                <img
+                  src={product.image}
+                  alt={product.name}
                   style={{
-                    textDecoration: "none",
-                    color: "#000",
+                    width: "100%",
+                    maxWidth: 420,
+                    height: "auto",
+                    objectFit: "contain",
+                    display: "block",
+                    margin: "0 auto",
+                    cursor: "zoom-in",
                   }}
-                >
-                  <div
+                />
+              </PhotoView>
+            </PhotoProvider>
+          </div>
+
+          {/* INFO */}
+          <div
+            style={{
+              textAlign: "left",
+            }}
+          >
+            <p
+              style={{
+                fontSize: 10,
+                letterSpacing: "4px",
+                textTransform: "uppercase",
+                color: "#777",
+                marginBottom: 12,
+              }}
+            >
+              {product.brand}
+            </p>
+
+            <h1
+              style={{
+                fontSize: 32,
+                fontWeight: 300,
+                lineHeight: 1.1,
+                marginBottom: 12,
+              }}
+            >
+              {product.name}
+            </h1>
+
+            <div
+              style={{
+                display: "inline-block",
+                padding: "5px 12px",
+                border: "1px solid #ddd",
+                borderRadius: 999,
+                background: "#fafafa",
+                color: "#666",
+                fontSize: 13,
+                fontWeight: 600,
+                marginBottom: 18,
+              }}
+            >
+              {product.size}
+            </div>
+
+            <p
+              style={{
+                fontSize: 22,
+                marginBottom: 22,
+                letterSpacing: "2px",
+              }}
+            >
+              {product.price} جنيه
+            </p>
+
+            <p
+              style={{
+                color: "#666",
+                lineHeight: 1.7,
+                marginBottom: 34,
+                fontSize: 14,
+              }}
+            >
+              عطر فاخر بتركيبة مميزة وثبات ممتاز
+              وفوحان جذاب يمنحك تجربة عطرية
+              استثنائية تناسب مختلف المناسبات.
+            </p>
+
+            <div
+              style={{
+                borderTop: "1px solid #eee",
+                paddingTop: 22,
+              }}
+            >
+              <p
+                style={{
+                  marginBottom: 10,
+                  fontSize: 14,
+                }}
+              >
+                الفئة: {product.category}
+              </p>
+
+              <p
+                style={{
+                  fontSize: 14,
+                }}
+              >
+                التوفر:{" "}
+                {product.stock
+                  ? "متوفر"
+                  : "نفذت الكمية"}
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              marginTop: 40,
+              borderTop: "1px solid #eee",
+              paddingTop: 24,
+              display: "grid",
+              gap: 18,
+              paddingBottom: 20,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <ShieldCheck size={20} />
+              <span>منتجات أصلية 100%</span>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <Truck size={20} />
+              <span>شحن لجميع محافظات مصر</span>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <Gift size={20} />
+              <span>تغليف فاخر وآمن</span>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <MessageCircle size={20} />
+              <span>خدمة عملاء عبر واتساب</span>
+            </div>
+          </div>
+
+          {/* RELATED */}
+          <div
+            style={{
+              marginTop: 80,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 28,
+                fontWeight: 300,
+                marginBottom: 22,
+                textAlign: "left",
+              }}
+            >
+              قد يعجبك ايضًا
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2,1fr)",
+                gap: 8,
+                textAlign: "left",
+              }}
+            >
+              {products
+                .filter(
+                  (p) =>
+                    p.brand === product.brand &&
+                    p.id !== product.id
+                )
+                .sort((a, b) => {
+                  if (a.stock === b.stock) return 0;
+                  return a.stock ? -1 : 1;
+                })
+                .slice(0, 4)
+                .map((p) => (
+                  <Link
+                    key={p.id}
+                    href={`/product/${p.id}`}
                     style={{
-                      background: "#f7f7f7",
-                      padding: 12,
+                      textDecoration: "none",
+                      color: "#000",
                     }}
                   >
-                    <img
-                      src={p.image}
-                      alt={p.name}
+                    <div
                       style={{
-                        width: "100%",
-                        height: 170,
-                        objectFit: "contain",
-                      }}
-                    />
-
-                    <h3
-                      style={{
-                        marginTop: 12,
-                        fontSize: 13,
-                        fontWeight: 500,
-                        lineHeight: 1.4,
+                        background: "#f7f7f7",
+                        padding: 12,
                       }}
                     >
-                      {p.name}
-                    </h3>
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        style={{
+                          width: "100%",
+                          height: 170,
+                          objectFit: "contain",
+                        }}
+                      />
 
-                    <p
-                      style={{
-                        marginTop: 5,
-                        color: "#666",
-                        fontSize: 12,
-                      }}
-                    >
-                      EGP {p.price}
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                      <h3
+                        style={{
+                          marginTop: 12,
+                          fontSize: 13,
+                          fontWeight: 500,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {p.name}
+                      </h3>
+
+                      <p
+                        style={{
+                          marginTop: 5,
+                          color: "#666",
+                          fontSize: 12,
+                        }}
+                      >
+                        EGP {p.price}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+            </div>
           </div>
         </div>
-      </div>
 
+        {/* FIXED BUTTONS */}
 
-{/* FIXED BUTTONS */}
-
-      {/* FIXED BUTTONS */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          background: "#fff",
-          padding: 12,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 10,
-          borderTop: "1px solid #eee",
-          zIndex: 100,
-        }}
-      >
-        <button
-  onClick={() =>
-    add({
-      id: product.id,
-      name: product.name,
-      image: product.image,
-      price: product.price,
-    })
-  }
-  style={{
-    height: 52,
-    background: "#000",
-    color: "#fff",
-    border: "none",
-    fontSize: 11,
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-  }}
->
-  
-  اضف للسلة
-</button>
-
-        <a
-          href="https://wa.me/201000000000"
-          target="_blank"
+        <div
           style={{
-            height: 52,
-            border: "1px solid #000",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textDecoration: "none",
-            color: "#000",
-            fontSize: 11,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100%",
             background: "#fff",
+            padding: 12,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 10,
+            borderTop: "1px solid #eee",
+            zIndex: 100,
           }}
         >
-          واتساب
-        </a>
-      </div>
-    </main>
+          <button
+            onClick={() =>
+              add({
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                price: product.price,
+              })
+            }
+            style={{
+              height: 52,
+              background: "#000",
+              color: "#fff",
+              border: "none",
+              fontSize: 11,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+            }}
+          >
+            اضف للسلة
+          </button>
+
+          <a
+            href="https://wa.me/201000000000"
+            target="_blank"
+            style={{
+              height: 52,
+              border: "1px solid #000",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
+              color: "#000",
+              fontSize: 11,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              background: "#fff",
+            }}
+          >
+            واتساب
+          </a>
+        </div>
+      </main>
+    </>
   );
 }
