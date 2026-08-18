@@ -2,16 +2,38 @@
 
 import { useEffect, useState } from "react";
 
+const POPUP_KEY = "rimal_welcome_popup_seen";
+
 export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   const closePopup = () => {
-    localStorage.setItem("rimal_welcome_popup_seen", "true");
+    sessionStorage.setItem(POPUP_KEY, "true");
     setIsOpen(false);
   };
 
   useEffect(() => {
-    const popupSeen = localStorage.getItem("rimal_welcome_popup_seen");
+    const navigation = performance.getEntriesByType(
+      "navigation"
+    )[0] as PerformanceNavigationTiming | undefined;
+
+    const navigationType = navigation?.type;
+
+    /*
+      Reload:
+      نظهر الـ Popup من جديد حتى لو كان ظهر قبل كده.
+    */
+    if (navigationType === "reload") {
+      sessionStorage.removeItem(POPUP_KEY);
+      setIsOpen(true);
+      return;
+    }
+
+    /*
+      أول دخول للموقع:
+      نظهر الـ Popup.
+    */
+    const popupSeen = sessionStorage.getItem(POPUP_KEY);
 
     if (!popupSeen) {
       setIsOpen(true);
@@ -21,7 +43,10 @@ export default function WelcomePopup() {
   if (!isOpen) return null;
 
   return (
-    <div className="welcome-overlay" onClick={closePopup}>
+    <div
+      className="welcome-overlay"
+      onClick={closePopup}
+    >
       <div
         className="welcome-popup"
         onClick={(e) => e.stopPropagation()}
