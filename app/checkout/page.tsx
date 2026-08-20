@@ -197,7 +197,7 @@ export default function CheckoutPage() {
     // نحفظ القيمة بشكل موحد مهما كان المتصفح أو لوحة المفاتيح.
     setCoupon(code);
 
-    if (code === "RIMAL10") {
+    if (false && code === "RIMAL10") {
       const eligibleSubtotal = cart.reduce((sum, item) => {
         const id = String(item.id ?? "").trim().toLowerCase();
 

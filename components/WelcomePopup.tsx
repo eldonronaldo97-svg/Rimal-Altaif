@@ -39,7 +39,8 @@ export default function WelcomePopup() {
       setIsOpen(true);
     }
   }, []);
-
+  
+  if (true) return null;
   if (!isOpen) return null;
 
   return (
