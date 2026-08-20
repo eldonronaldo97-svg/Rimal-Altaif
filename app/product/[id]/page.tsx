@@ -419,26 +419,31 @@ export default function ProductPage() {
           }}
         >
           <button
-            onClick={() =>
-              add({
-                id: product.id,
-                name: product.name,
-                image: product.image,
-                price: product.price,
-              })
-            }
-            style={{
-              height: 52,
-              background: "#000",
-              color: "#fff",
-              border: "none",
-              fontSize: 11,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-            }}
-          >
-            اضف للسلة
-          </button>
+  onClick={() => {
+    if (!product.stock) return;
+
+    add({
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      price: product.price,
+    });
+  }}
+  disabled={!product.stock}
+  style={{
+    height: 52,
+    background: product.stock ? "#000" : "#e5e5e5",
+    color: product.stock ? "#fff" : "#777",
+    border: "none",
+    fontSize: 11,
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    cursor: product.stock ? "pointer" : "not-allowed",
+    opacity: product.stock ? 1 : 0.8,
+  }}
+>
+  {product.stock ? "اضف للسلة" : "نفذت الكمية"}
+</button>
 
           <a
             href="https://wa.me/201000000000"
