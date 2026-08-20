@@ -123,6 +123,28 @@ export const products = [
     stock: true,
     bestSeller: true,
   },
+  {
+    id: "d11",
+    name: "Cullinan Diamond Iris",
+    brand: "Ibraq",
+    size: "150ml",
+    price: 1450,
+    oldPrice: 2250,
+    image: "/products/fbcea5f6-6fb7-49ab-9b60-82fb3f6c0f61-1000x1000-tBHglJ1nRjhHY0cnHTd7tBmiQ539p6gNEjVbtlq2.webp",
+    category: "Men",
+    stock: true,
+  },
+  {
+    id: "d12",
+    name: "Balas rose",
+    brand: "Ibraq",
+    size: "150ml",
+    price: 1450,
+    oldPrice: 2250,
+    image: "/products/76fbd974-eb5c-40c9-bf3f-dd4f8893097e-1000x1000-nQLajCJNkYiblOW9nbww9OPnZV1v5QsGZiEz7iUu.webp",
+    category: "Men",
+    stock: true,
+  },
 
   // 🚬 TOBACCO COLLECTION
   {
