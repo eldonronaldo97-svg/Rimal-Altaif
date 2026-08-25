@@ -249,7 +249,7 @@ export const products = [
     bestSeller: true,
   },
    // Assaf Main Collection
-
+ 
   {
     id: "a53",
     name: "Miss Arrogate Diva",
@@ -259,7 +259,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/564d87f1-9467-47d7-8bbd-4dbbf6475568_900x900.webp",
-    createdAt: "2026-08-25T14:35:28",
   }, 
   {
     id: "a52",
@@ -270,7 +269,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/276c6eef-282e-4848-bf1d-3fcde0dbe6bf-1000x1000-Rbql80At7hh3Di1kfbtJopQMtZB7nKn0niQfJHiJ.webp",
-    createdAt: "2026-08-25T14:35:29",
   }, 
   {
     id: "a51",
@@ -281,7 +279,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/1c668420-3d0d-44fa-84de-12f04e8394b9-1000x1000-oXNN7qa4ibbLe0HRGt6AB4QIO0IBba2B2ySHyGdH.webp",
-    createdAt: "2026-08-25T14:35:30",
   }, 
   {
     id: "a50",
@@ -292,7 +289,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/72a0e83c-cd06-4943-8e86-c6ac5c7ffff3_900x900.webp",
-    createdAt: "2026-08-25T14:35:31",
   },
   {
     id: "a48",
@@ -303,7 +299,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/40435517-58c7-444a-87f3-0a4c96b6fd87_900x900.webp",
-    createdAt: "2026-08-25T14:35:32",
   },
   {
     id: "a47",
@@ -314,7 +309,6 @@ export const products = [
     stock: true,
     price: 1999,
     image: "/products/assaf/11ad4cc6-f11a-464d-8792-100eacda5ce2-1000x1000-djNIw25Xy4lXP8woZVGWzWXCPSINNJT4yO7qXuxj.webp",
-    createdAt: "2026-08-25T14:35:33",
   },
   {
     id: "a1",
@@ -1700,7 +1694,16 @@ export const products = [
     image: "/products/675dc48e-2825-4eab-a7e5-f9811f4a53fc-1000x1000-AqHoCgiQJMQfJs8cSEwJrOGYEhEVdSHKO9bimVDX.webp",
     category: "Men",
     stock: true,
-    createdAt: "2026-08-25T14:35:27",
+  },
+  {
+    id: "a48",
+    name: "Wild Colt Boss",
+    brand: "Assaf",
+    size: "200ml",
+    category: "Men",
+    stock: true,
+    price: 1999,
+    image: "/products/assaf/40435517-58c7-444a-87f3-0a4c96b6fd87_900x900.webp",
   },
   ];
 
