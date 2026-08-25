@@ -49,38 +49,64 @@ export const metadata: Metadata = {
 };
 
 export default function LatestReleasePage() {
-  const latestProducts = [...products]
-    .sort((a: any, b: any) => {
-      const aNew = !!a.addedAt;
-      const bNew = !!b.addedAt;
+  // ترتيب المنتجات:
+  // 1️⃣ جديد + متاح
+  // 2️⃣ قديم + متاح
+  // 3️⃣ جديد + غير متاح
+  // 4️⃣ قديم + غير متاح
 
-      // 1️⃣ المتاح يظهر قبل غير المتاح
-      if (a.stock !== b.stock) {
-        return a.stock ? -1 : 1;
-      }
+  const sortedProducts = [...products].sort((a: any, b: any) => {
+    const aNew = !!a.addedAt;
+    const bNew = !!b.addedAt;
 
-      // 2️⃣ داخل نفس حالة المخزون:
-      // المنتج الجديد يظهر قبل القديم
-      if (aNew !== bNew) {
-        return aNew ? -1 : 1;
-      }
+    // المتاح أولاً
+    if (a.stock !== b.stock) {
+      return a.stock ? -1 : 1;
+    }
 
-      // 3️⃣ لو الاتنين منتجات جديدة:
-      // الأحدث بالتاريخ يظهر أولاً
-      if (aNew && bNew) {
-        const dateDiff =
-          new Date(b.addedAt).getTime() -
-          new Date(a.addedAt).getTime();
+    // الجديد قبل القديم
+    if (aNew !== bNew) {
+      return aNew ? -1 : 1;
+    }
 
-        if (dateDiff !== 0) {
-          return dateDiff;
-        }
-      }
+    // لو الاتنين جديد:
+    // الأحدث بالتاريخ أولاً
+    if (aNew && bNew) {
+      const dateA = new Date(a.addedAt).getTime();
+      const dateB = new Date(b.addedAt).getTime();
 
-      // 4️⃣ المنتجات القديمة تفضل بترتيبها الأصلي
-      return 0;
-    })
-    .slice(0, 50);
+      return dateB - dateA;
+    }
+
+    // المنتجات القديمة:
+    // الحفاظ على ترتيبها الأصلي
+    return 0;
+  });
+
+  // نضمن إن المنتجات الجديدة لها الأولوية
+  // قبل تطبيق حد الـ 50 منتج
+  const newAvailable = sortedProducts.filter(
+    (p: any) => p.addedAt && p.stock
+  );
+
+  const oldAvailable = sortedProducts.filter(
+    (p: any) => !p.addedAt && p.stock
+  );
+
+  const newUnavailable = sortedProducts.filter(
+    (p: any) => p.addedAt && !p.stock
+  );
+
+  const oldUnavailable = sortedProducts.filter(
+    (p: any) => !p.addedAt && !p.stock
+  );
+
+  const finalProducts = [
+    ...newAvailable,
+    ...oldAvailable,
+    ...newUnavailable,
+    ...oldUnavailable,
+  ].slice(0, 50);
 
   return (
     <>
@@ -107,7 +133,7 @@ export default function LatestReleasePage() {
             paddingBottom: 30,
           }}
         >
-          {latestProducts.map((p: any) => (
+          {finalProducts.map((p: any) => (
             <ProductCard
               key={p.id}
               p={p}
