@@ -7,33 +7,19 @@ import { products } from "../../lib/products";
 
 export default function LatestReleasePage() {
   const latestProducts = [...products]
-    .map((product: any, index) => ({
-      product,
-      index,
-    }))
-    .sort((a, b) => {
+    .filter((product: any) => product.createdAt)
+    .sort((a: any, b: any) => {
       // المتاح يظهر أولًا
-      if (a.product.stock !== b.product.stock) {
-        return a.product.stock ? -1 : 1;
+      if (a.stock !== b.stock) {
+        return a.stock ? -1 : 1;
       }
 
-      // الأحدث يظهر أولًا
-      const dateA = a.product.createdAt
-        ? new Date(a.product.createdAt).getTime()
-        : 0;
+      // الأحدث حسب التاريخ والساعة والدقيقة والثانية
+      const dateA = new Date(a.createdAt).getTime();
+      const dateB = new Date(b.createdAt).getTime();
 
-      const dateB = b.product.createdAt
-        ? new Date(b.product.createdAt).getTime()
-        : 0;
-
-      if (dateA !== dateB) {
-        return dateB - dateA;
-      }
-
-      // لو مفيش تاريخ، نحافظ على ترتيب المنتج الحالي
-      return b.index - a.index;
+      return dateB - dateA;
     })
-    .map(({ product }) => product)
     .slice(0, 50);
 
   return (
