@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import MobileBottomBar from "../../components/MobileBottomBar";
@@ -7,55 +5,36 @@ import ProductCard from "../../components/ProductCard";
 
 import { products } from "../../lib/products";
 
-export const metadata: Metadata = {
-  title: "أحدث الإصدارات | عطور جديدة | رمال الطائف",
-
-  description:
-    "اكتشف أحدث إصدارات العطور لدى رمال الطائف. عطور جديدة رجالية ونسائية وعطور للجنسين في مصر.",
-
-  keywords: [
-    "أحدث العطور",
-    "عطور جديدة",
-    "أحدث إصدارات العطور",
-    "عطور رجالي جديدة",
-    "عطور نسائي جديدة",
-    "رمال الطائف",
-    "Rimal Altaif",
-    "عطور أصلية",
-  ],
-
-  alternates: {
-    canonical: "https://rimalaltaif.com/latest-release",
-  },
-
-  openGraph: {
-    title: "أحدث الإصدارات | رمال الطائف",
-    description:
-      "اكتشف أحدث إصدارات العطور لدى رمال الطائف.",
-    url: "https://rimalaltaif.com/latest-release",
-    siteName: "رمال الطائف | Rimal Altaif",
-    locale: "ar_EG",
-    type: "website",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
-};
-
 export default function LatestReleasePage() {
   const latestProducts = [...products]
-    .reverse()
-    .slice(0, 50)
-    .sort((a: any, b: any) => {
-      if (a.stock === b.stock) return 0;
-      return a.stock ? -1 : 1;
-    });
+    .map((product: any, index) => ({
+      product,
+      index,
+    }))
+    .sort((a, b) => {
+      // المتاح يظهر أولًا
+      if (a.product.stock !== b.product.stock) {
+        return a.product.stock ? -1 : 1;
+      }
+
+      // الأحدث يظهر أولًا
+      const dateA = a.product.createdAt
+        ? new Date(a.product.createdAt).getTime()
+        : 0;
+
+      const dateB = b.product.createdAt
+        ? new Date(b.product.createdAt).getTime()
+        : 0;
+
+      if (dateA !== dateB) {
+        return dateB - dateA;
+      }
+
+      // لو مفيش تاريخ، نحافظ على ترتيب المنتج الحالي
+      return b.index - a.index;
+    })
+    .map(({ product }) => product)
+    .slice(0, 50);
 
   return (
     <>
@@ -69,7 +48,7 @@ export default function LatestReleasePage() {
               fontWeight: 700,
             }}
           >
-            أحدث الأصدارات
+            أحدث الإصدارات
           </h1>
         </div>
 
@@ -79,7 +58,6 @@ export default function LatestReleasePage() {
             gridTemplateColumns:
               "repeat(auto-fill,minmax(160px,1fr))",
             gap: 12,
-            paddingBottom: 30,
           }}
         >
           {latestProducts.map((p: any) => (
