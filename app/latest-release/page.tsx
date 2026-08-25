@@ -7,16 +7,21 @@ import { products } from "../../lib/products";
 
 export default function LatestReleasePage() {
   const latestProducts = [...products]
-    .filter((product: any) => product.createdAt)
     .sort((a: any, b: any) => {
       // المتاح يظهر أولًا
       if (a.stock !== b.stock) {
         return a.stock ? -1 : 1;
       }
 
-      // الأحدث حسب التاريخ والساعة والدقيقة والثانية
-      const dateA = new Date(a.createdAt).getTime();
-      const dateB = new Date(b.createdAt).getTime();
+      // الأحدث يظهر أولًا حسب:
+      // السنة + الشهر + اليوم + الساعة + الدقيقة + الثانية
+      const dateA = a.createdAt
+        ? new Date(a.createdAt).getTime()
+        : 0;
+
+      const dateB = b.createdAt
+        ? new Date(b.createdAt).getTime()
+        : 0;
 
       return dateB - dateA;
     })
