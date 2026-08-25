@@ -482,21 +482,29 @@ button {
 
 .mobile-bar {
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
 
-  height: 65px;
-  
+  height: calc(65px + env(safe-area-inset-bottom));
 
-  background: white;
+  padding-bottom: env(safe-area-inset-bottom);
+
+  background: #fff;
   border-top: 1px solid #eee;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  z-index: 9999;
+  z-index: 999999;
+
+  /* منع البار من التأثر بسلوك الصفحة أثناء الـ scroll */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  /* تحسين التعامل مع متصفحات الموبايل */
+  will-change: transform;
 }
 
 .mobile-item {
