@@ -50,12 +50,37 @@ export const metadata: Metadata = {
 
 export default function LatestReleasePage() {
   const latestProducts = [...products]
-    .reverse()
-    .slice(0, 50)
     .sort((a: any, b: any) => {
-      if (a.stock === b.stock) return 0;
-      return a.stock ? -1 : 1;
-    });
+      const aNew = !!a.addedAt;
+      const bNew = !!b.addedAt;
+
+      // 1️⃣ المتاح يظهر قبل غير المتاح
+      if (a.stock !== b.stock) {
+        return a.stock ? -1 : 1;
+      }
+
+      // 2️⃣ داخل نفس حالة المخزون:
+      // المنتج الجديد يظهر قبل القديم
+      if (aNew !== bNew) {
+        return aNew ? -1 : 1;
+      }
+
+      // 3️⃣ لو الاتنين منتجات جديدة:
+      // الأحدث بالتاريخ يظهر أولاً
+      if (aNew && bNew) {
+        const dateDiff =
+          new Date(b.addedAt).getTime() -
+          new Date(a.addedAt).getTime();
+
+        if (dateDiff !== 0) {
+          return dateDiff;
+        }
+      }
+
+      // 4️⃣ المنتجات القديمة تفضل بترتيبها الأصلي
+      return 0;
+    })
+    .slice(0, 50);
 
   return (
     <>
