@@ -20,6 +20,35 @@ function sortByStock(items: any[]) {
   });
 }
 
+function sortLatestProducts(items: any[]) {
+  return [...items].sort((a, b) => {
+    const aNew = !!a.addedAt;
+    const bNew = !!b.addedAt;
+
+    // 1️⃣ المتاح قبل غير المتاح
+    if (a.stock !== b.stock) {
+      return a.stock ? -1 : 1;
+    }
+
+    // 2️⃣ الجديد قبل القديم
+    if (aNew !== bNew) {
+      return aNew ? -1 : 1;
+    }
+
+    // 3️⃣ لو الاتنين جديد:
+    // الأحدث بالتاريخ أولاً
+    if (aNew && bNew) {
+      const dateA = new Date(a.addedAt).getTime();
+      const dateB = new Date(b.addedAt).getTime();
+
+      return dateB - dateA;
+    }
+
+    // 4️⃣ المنتجات القديمة تحافظ على ترتيبها الأصلي
+    return 0;
+  });
+}
+
 export default function Home() {
   const bestSellers = homeBestSellers
     .map((id) =>
@@ -27,9 +56,9 @@ export default function Home() {
     )
     .filter(Boolean);
 
-  const latestProducts = [...products]
-    .reverse()
-    .slice(0, 15);
+  // أحدث الإصدارات:
+  // جديد متاح → قديم متاح → جديد غير متاح → قديم غير متاح
+  const latestProducts = sortLatestProducts(products).slice(0, 15);
 
   const featuredProducts =
     products.slice(0, 15);
@@ -52,7 +81,7 @@ export default function Home() {
       />
 
       <WelcomePopup />
-      
+
       <Navbar />
 
       <HeroSlider />
@@ -66,7 +95,7 @@ export default function Home() {
 
       <ProductSlider
         title="أحدث الإصدارات"
-        products={sortByStock(latestProducts)}
+        products={latestProducts}
       />
 
       <ProductSlider
