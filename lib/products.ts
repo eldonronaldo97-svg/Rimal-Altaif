@@ -1601,6 +1601,7 @@ export const products = [
     image: "/products/mira-amour-100ml-eau-de-parfum-le-bonheur.webp",
     category: "Wonen",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m2",
@@ -1612,6 +1613,7 @@ export const products = [
     image: "/products/s-l1600 (4).webp",
     category: "Women",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m3",
@@ -1623,6 +1625,7 @@ export const products = [
     image: "/products/Screenshot2026-02-10at5.28.47PM.webp",
     category: "Unisex",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m4",
@@ -1634,6 +1637,7 @@ export const products = [
     image: "/products/Le-Falcone-Niche-Hayba-Majesty-eau-de-parfum-100ml-3.webp",
     category: "Men",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m5",
@@ -1645,6 +1649,7 @@ export const products = [
     image: "/products/Le-Falcone-Niche-Mirsaal-Valentine-eau-de-parfum-100ml-2.webp",
     category: "Unisex",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m6",
@@ -1656,6 +1661,7 @@ export const products = [
     image: "/products/Screenshot 2026-08-16 024313.png",
     category: "Men",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m7",
@@ -1667,6 +1673,7 @@ export const products = [
     image: "/products/WHITE-BG_c7b2df8a-2516-48c0-a178-3c309480d6b3_800x.webp",
     category: "Men",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m8",
@@ -1678,6 +1685,7 @@ export const products = [
     image: "/products/parfum-arabiyat-prestige-mouda-high-end-edp-100ml-uniseks-6a43ef14558ae.webp",
     category: "Unisex",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m9",
@@ -1689,6 +1697,7 @@ export const products = [
     image: "/products/clx6rz0430vya01gi8r4ie2xv_pikaso_enhance__none_2K_Standard_r_c___3_.jpeg",
     category: "Unisex",
     stock: true,
+    addedAt: "2026-08-20",
   },
   {
     id: "m10",
@@ -1700,6 +1709,7 @@ export const products = [
     image: "/products/675dc48e-2825-4eab-a7e5-f9811f4a53fc-1000x1000-AqHoCgiQJMQfJs8cSEwJrOGYEhEVdSHKO9bimVDX.webp",
     category: "Men",
     stock: true,
+    addedAt: "2026-08-20",
   },
   ];
 
