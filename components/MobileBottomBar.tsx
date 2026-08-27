@@ -20,24 +20,59 @@ export default function MobileBottomBar() {
 
     if (!viewport) return;
 
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" &&
+        navigator.maxTouchPoints > 1);
+
+    const isChromeIOS =
+      isIOS &&
+      /CriOS/i.test(navigator.userAgent);
+
     const updateBarPosition = () => {
-      const bottomOffset =
+      let bottomOffset =
         window.innerHeight -
         viewport.height -
         viewport.offsetTop;
 
+      /*
+       * Chrome على iPhone أحيانًا يحسب الـ visualViewport
+       * بشكل مختلف أثناء ظهور/اختفاء شريط المتصفح.
+       *
+       * نستخدم قيمة أكثر تحفظًا حتى لا يرتفع الـBottom Bar
+       * لنصفه تحت شريط المتصفح.
+       */
+      if (isChromeIOS) {
+        bottomOffset = Math.min(
+          Math.max(0, bottomOffset),
+          0
+        );
+      } else {
+        bottomOffset = Math.max(0, bottomOffset);
+      }
+
       document.documentElement.style.setProperty(
         "--mobile-bar-bottom",
-        `${Math.max(0, bottomOffset)}px`
+        `${bottomOffset}px`
       );
     };
 
     updateBarPosition();
 
-    viewport.addEventListener("resize", updateBarPosition);
-    viewport.addEventListener("scroll", updateBarPosition);
+    viewport.addEventListener(
+      "resize",
+      updateBarPosition
+    );
 
-    window.addEventListener("resize", updateBarPosition);
+    viewport.addEventListener(
+      "scroll",
+      updateBarPosition
+    );
+
+    window.addEventListener(
+      "resize",
+      updateBarPosition
+    );
 
     return () => {
       viewport.removeEventListener(
