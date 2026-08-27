@@ -485,8 +485,7 @@ button {
 
   left: 0;
   right: 0;
-
-  bottom: var(--mobile-bar-bottom, 0px);
+  bottom: 0;
 
   height: 65px;
 
@@ -499,8 +498,19 @@ button {
 
   z-index: 999999;
 
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translate3d(
+    0,
+    var(--mobile-bar-offset, 0px),
+    0
+  );
+
+  -webkit-transform: translate3d(
+    0,
+    var(--mobile-bar-offset, 0px),
+    0
+  );
+
+  will-change: transform;
 }
 
 .mobile-item {

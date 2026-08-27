@@ -20,46 +20,21 @@ export default function MobileBottomBar() {
 
     if (!viewport) return;
 
-    const userAgent = navigator.userAgent;
-
-    const isIOS =
-      /iPad|iPhone|iPod/.test(userAgent) ||
-      (navigator.platform === "MacIntel" &&
-        navigator.maxTouchPoints > 1);
-
-    const isChromeIOS =
-      isIOS && /CriOS/i.test(userAgent);
-
     const updateBarPosition = () => {
-      let bottomOffset = 0;
+      /*
+       * نحاكي position: device-fixed
+       * بحيث يظل البار مثبتًا داخل الـ visual viewport
+       * حتى مع ظهور واختفاء شريط المتصفح.
+       */
 
-      if (isChromeIOS) {
-        /*
-         * Chrome على iPhone:
-         * لا نعتمد على offsetTop لأنه يسبب
-         * تحريك البار لمكان خاطئ أثناء ظهور
-         * شريط Chrome السفلي.
-         */
-        bottomOffset = Math.max(
-          0,
-          window.innerHeight - viewport.height
-        );
-      } else {
-        /*
-         * Safari و Google وباقي المتصفحات:
-         * نستخدم الحساب الحالي الذي يعمل بشكل صحيح.
-         */
-        bottomOffset = Math.max(
-          0,
-          window.innerHeight -
-            viewport.height -
-            viewport.offsetTop
-        );
-      }
+      const offset =
+        viewport.height -
+        window.innerHeight +
+        viewport.offsetTop;
 
       document.documentElement.style.setProperty(
-        "--mobile-bar-bottom",
-        `${bottomOffset}px`
+        "--mobile-bar-offset",
+        `${offset}px`
       );
     };
 
@@ -80,6 +55,11 @@ export default function MobileBottomBar() {
       updateBarPosition
     );
 
+    window.addEventListener(
+      "scroll",
+      updateBarPosition
+    );
+
     return () => {
       viewport.removeEventListener(
         "resize",
@@ -96,8 +76,13 @@ export default function MobileBottomBar() {
         updateBarPosition
       );
 
+      window.removeEventListener(
+        "scroll",
+        updateBarPosition
+      );
+
       document.documentElement.style.removeProperty(
-        "--mobile-bar-bottom"
+        "--mobile-bar-offset"
       );
     };
   }, []);
