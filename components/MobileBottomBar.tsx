@@ -20,35 +20,41 @@ export default function MobileBottomBar() {
 
     if (!viewport) return;
 
+    const userAgent = navigator.userAgent;
+
     const isIOS =
-      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      /iPad|iPhone|iPod/.test(userAgent) ||
       (navigator.platform === "MacIntel" &&
         navigator.maxTouchPoints > 1);
 
     const isChromeIOS =
-      isIOS &&
-      /CriOS/i.test(navigator.userAgent);
+      isIOS && /CriOS/i.test(userAgent);
 
     const updateBarPosition = () => {
-      let bottomOffset =
-        window.innerHeight -
-        viewport.height -
-        viewport.offsetTop;
+      let bottomOffset = 0;
 
-      /*
-       * Chrome على iPhone أحيانًا يحسب الـ visualViewport
-       * بشكل مختلف أثناء ظهور/اختفاء شريط المتصفح.
-       *
-       * نستخدم قيمة أكثر تحفظًا حتى لا يرتفع الـBottom Bar
-       * لنصفه تحت شريط المتصفح.
-       */
       if (isChromeIOS) {
-        bottomOffset = Math.min(
-          Math.max(0, bottomOffset),
-          0
+        /*
+         * Chrome على iPhone:
+         * لا نعتمد على offsetTop لأنه يسبب
+         * تحريك البار لمكان خاطئ أثناء ظهور
+         * شريط Chrome السفلي.
+         */
+        bottomOffset = Math.max(
+          0,
+          window.innerHeight - viewport.height
         );
       } else {
-        bottomOffset = Math.max(0, bottomOffset);
+        /*
+         * Safari و Google وباقي المتصفحات:
+         * نستخدم الحساب الحالي الذي يعمل بشكل صحيح.
+         */
+        bottomOffset = Math.max(
+          0,
+          window.innerHeight -
+            viewport.height -
+            viewport.offsetTop
+        );
       }
 
       document.documentElement.style.setProperty(

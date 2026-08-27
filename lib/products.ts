@@ -322,10 +322,11 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    stock: false,
-    price: 2300,
-    oldPrice: 2850,
+    stock: true,
+    price: 2050,
+    oldPrice: 2450,
     image: "/products/assaf/Arrogate_Addict_Elixir.jpg",
+    addedAt: "2026-08-27",
   },
 
   {
@@ -391,10 +392,10 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Women",
-    stock: false,
+    stock: true,
     bestSeller: true,
-    price: 2250,
-    oldPrice: 2750,
+    price: 1999,
+    oldPrice: 2650,
     image: "/products/assaf/arrogate-pink.jpg",
   },
 
@@ -462,8 +463,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "unisex",
-    stock: false,
-    price: 2000,
+    stock: true,
+    price: 1850,
     image: "/products/assaf/Dangerous_Arrogate.jpg",
   },
 
@@ -485,7 +486,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: true,
-    price: 1850,
+    price: 1899,
     image: "/products/assaf/Frankel_Black_Elixir.jpg",
   },
 
@@ -496,7 +497,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: false,
-    price: 1850,
+    price: 1899,
     image: "/products/assaf/Frankel_Blue_Elixir.jpg",
   },
 
@@ -528,8 +529,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    stock: false,
-    price: 1850,
+    stock: true,
+    price: 1899,
     image: "/products/assaf/frankel-silver-elixir.jpg",
   },
 
