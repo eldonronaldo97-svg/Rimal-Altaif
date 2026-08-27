@@ -397,6 +397,7 @@ export const products = [
     price: 1999,
     oldPrice: 2650,
     image: "/products/assaf/arrogate-pink.jpg",
+    addedAt: "2026-08-27",
   },
 
   {
@@ -496,7 +497,7 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    stock: false,
+    stock: true,
     price: 1899,
     image: "/products/assaf/Frankel_Blue_Elixir.jpg",
   },

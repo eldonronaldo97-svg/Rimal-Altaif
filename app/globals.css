@@ -480,8 +480,22 @@ button {
    MOBILE BOTTOM BAR
 ========================= */
 
-.mobile-bar {
+.mobile-bar-viewport {
   position: fixed;
+
+  left: 0;
+  right: 0;
+
+  top: var(--mobile-viewport-top, 0px);
+  height: var(--mobile-viewport-height, 100vh);
+
+  z-index: 999999;
+
+  pointer-events: none;
+}
+
+.mobile-bar {
+  position: absolute;
 
   left: 0;
   right: 0;
@@ -496,19 +510,7 @@ button {
   justify-content: space-around;
   align-items: center;
 
-  z-index: 999999;
-
-  transform: translate3d(
-    0,
-    var(--mobile-bar-offset, 0px),
-    0
-  );
-
-  -webkit-transform: translate3d(
-    0,
-    var(--mobile-bar-offset, 0px),
-    0
-  );
+  pointer-events: auto;
 }
 
 .mobile-item {
