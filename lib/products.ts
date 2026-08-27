@@ -1592,18 +1592,7 @@ export const products = [
     stock: true,
     bestSeller: true,
   },
-  {
-    id: "o5",
-    name: "Any Tow Diamond",
-    brand: "Ibraq",
-    size: "300ml",
-    price: 2699,
-    oldPrice: 3350,
-    image: "/products/ChatGPT Image 15 أغسطس 2026، 09_06_58 ص.png",
-    category: "Men",
-    stock: true,
-    bestSeller: true,
-  },
+  
   // 💎 mix COLLECTION
   {
     id: "m1",
