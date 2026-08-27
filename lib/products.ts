@@ -1016,7 +1016,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Dkhoon_Rose.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk18",
@@ -1137,7 +1137,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/4be38dc1-d258-4e45-af4e-64514d3e669d-thumbnail-770x770.webp",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk30",
