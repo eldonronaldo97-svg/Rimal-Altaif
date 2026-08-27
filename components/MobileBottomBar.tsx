@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { useCart } from "../lib/store";
 
 import {
@@ -13,6 +14,52 @@ import {
 
 export default function MobileBottomBar() {
   const cart = useCart((s) => s.cart);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+
+    if (!viewport) return;
+
+    const updateBarPosition = () => {
+      const bottomOffset =
+        window.innerHeight -
+        viewport.height -
+        viewport.offsetTop;
+
+      document.documentElement.style.setProperty(
+        "--mobile-bar-bottom",
+        `${Math.max(0, bottomOffset)}px`
+      );
+    };
+
+    updateBarPosition();
+
+    viewport.addEventListener("resize", updateBarPosition);
+    viewport.addEventListener("scroll", updateBarPosition);
+
+    window.addEventListener("resize", updateBarPosition);
+
+    return () => {
+      viewport.removeEventListener(
+        "resize",
+        updateBarPosition
+      );
+
+      viewport.removeEventListener(
+        "scroll",
+        updateBarPosition
+      );
+
+      window.removeEventListener(
+        "resize",
+        updateBarPosition
+      );
+
+      document.documentElement.style.removeProperty(
+        "--mobile-bar-bottom"
+      );
+    };
+  }, []);
 
   return (
     <div className="mobile-bar">
