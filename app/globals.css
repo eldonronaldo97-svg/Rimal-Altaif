@@ -497,6 +497,18 @@ button {
   align-items: center;
 
   z-index: 999999;
+
+  transform: translate3d(
+    0,
+    var(--mobile-bar-offset, 0px),
+    0
+  );
+
+  -webkit-transform: translate3d(
+    0,
+    var(--mobile-bar-offset, 0px),
+    0
+  );
 }
 
 .mobile-item {
