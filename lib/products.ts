@@ -256,7 +256,7 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Women",
-    stock: true,
+    stock: false,
     price: 1999,
     image: "/products/assaf/564d87f1-9467-47d7-8bbd-4dbbf6475568_900x900.webp",
     addedAt: "2026-08-20",
@@ -279,7 +279,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: true,
-    price: 1999,
+    price: 1950,
     image: "/products/assaf/1c668420-3d0d-44fa-84de-12f04e8394b9-1000x1000-oXNN7qa4ibbLe0HRGt6AB4QIO0IBba2B2ySHyGdH.webp",
     addedAt: "2026-08-24",
   }, 
@@ -290,7 +290,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: true,
-    price: 1999,
+    price: 1950,
     image: "/products/assaf/72a0e83c-cd06-4943-8e86-c6ac5c7ffff3_900x900.webp",
     addedAt: "2026-08-23",
   },
@@ -709,7 +709,7 @@ export const products = [
     category: "Men",
     stock: true,
     bestSeller: true,
-    price: 2000,
+    price: 1999,
     image: "/products/assaf/strike-black-assaf-arrogate-150ml.jpg",
   },
 
@@ -917,7 +917,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/AbuDhabi.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk9",
@@ -994,7 +994,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Couture.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk16",
@@ -1067,7 +1067,7 @@ export const products = [
     "name": "Khaylan",
     "brand": "Dkhoon",
     "size": "100ml",
-     "price": 1350,
+     "price": 1399,
     "oldPrice": 2000,
     "image": "/products/dkhoon/Khaylan.jpg",
     "category": "Men",
