@@ -8,10 +8,10 @@ import "swiper/css/pagination";
 
 export default function HeroSlider() {
   const banners = [
-    "/banner1.jpg",
-    "/banner2.jpg",
-    "/banner3.jpg",
-    "/banner4.jpg",
+    "/ChatGPT Image 27 أغسطس 2026، 01_09_47 م.jpg",
+    "/ChatGPT Image 27 أغسطس v2026، 01_18_52 م.jpg",
+    "/ChatGPT Image 27 أغسطس 2026، 03_27_29 م.jpg",
+    "/ChatGPT Image 27 أغسطس 2026، 03_27_14 م.jpg",
   ];
 
   return (
