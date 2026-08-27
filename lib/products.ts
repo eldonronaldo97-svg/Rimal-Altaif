@@ -241,7 +241,7 @@ export const products = [
     name: "Tobacco Collection",
     brand: "Ibraq",
     size: "20ml",
-    price: 2600,
+    price: 2650,
     oldPrice: 3200,
     image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
     category: "Unisex",
