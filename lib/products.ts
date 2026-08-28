@@ -1568,31 +1568,6 @@ export const products = [
     stock: true,
     bestSeller: true,
   },
-  {
-    id: "o3",
-    name: "Any Dkhoon + Hawas Ice",
-    brand: "RIMAL ALTAIF",
-    size: "200ml",
-    price: 2899,
-    oldPrice: 3400,
-    image: "/products/1fc12641-b48a-40e4-808b-3a07cacd271e.png",
-    category: "Men",
-    stock: true,
-    bestSeller: true,
-  },
-  {
-    id: "o4",
-    name: "Any Tobacco + 9pm Rebel",
-    brand: "RIMAL ALTAIF",
-    size: "200ml",
-    price: 2899,
-    oldPrice: 3350,
-    image: "/products/ChatGPT Image 15 أغسطس 2026، 09_06_58 ص.png",
-    category: "Men",
-    stock: true,
-    bestSeller: true,
-  },
-  
   // 💎 mix COLLECTION
   {
     id: "m1",
@@ -1719,8 +1694,8 @@ export const products = [
 export const homeBestSellers = [
   "o1", // GHALIA OFFER
   "o2", // any diamound + 9pm nightout
-  "o3", // Any Dkhoon + Hawas Ice
-  "o4", // Any Tobacco + 9pm Rebel
+  "a1", // Arrogate Addict Elixir
+  "a47", // Arrogate Pink Diva
   "M1", // musk collection
   "A2", // 9PM nightout
   "a35",  // strike black
