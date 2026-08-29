@@ -1469,7 +1469,7 @@ export const products = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
     price: 1550,
     oldPrice: 2200,
@@ -1539,7 +1539,7 @@ export const products = [
     oldPrice: 2200,
     image: "/products/61hDO6ICiyL.jpg",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
   },
 
@@ -1553,7 +1553,7 @@ export const products = [
     oldPrice: 3550,
     image: "/products/ChatGPT Image 15 أغسطس 2026، 06_38_06 ص.png",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
   },
   {
@@ -1565,7 +1565,7 @@ export const products = [
     oldPrice: 3350,
     image: "/products/0475de46-cfb8-455a-ad72-39fac249b68a.png",
     category: "Men",
-    stock: true,
+    stock: false,
     bestSeller: true,
   },
   // 💎 mix COLLECTION
