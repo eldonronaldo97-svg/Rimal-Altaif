@@ -289,7 +289,7 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    stock: true,
+    stock: false,
     price: 1950,
     image: "/products/assaf/72a0e83c-cd06-4943-8e86-c6ac5c7ffff3_900x900.webp",
     addedAt: "2026-08-23",
