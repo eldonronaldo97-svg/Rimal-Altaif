@@ -840,7 +840,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Balqees.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk2",
@@ -851,7 +851,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Sapphire.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk3",
@@ -928,7 +928,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Signature_Gold.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk10",
@@ -961,7 +961,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Signature_Silver.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk13",
@@ -1027,7 +1027,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Aura.jpg",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk19",
@@ -1038,7 +1038,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Tiamo.jpg",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk20",
@@ -1071,7 +1071,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Khaylan.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk23",
@@ -1104,7 +1104,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/Khalifa.jpg",
     "category": "Men",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk26",
@@ -1159,7 +1159,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/d9a84d7d-64eb-48c6-b9a6-5c4574be1e0a.webp",
     "category": "Unisex",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk32",
@@ -1170,7 +1170,7 @@ export const products = [
     "oldPrice": 2000,
     "image": "/products/dkhoon/1000163849.webp",
     "category": "Women",
-    "stock": true
+    "stock": false
   },
   {
     "id": "dk33",
@@ -1481,7 +1481,7 @@ export const products = [
     brand: "Afnan",
     size: "100ml",
     category: "Unisex",
-    stock: true,
+    stock: false,
     price: 1550,
     oldPrice: 2200,
     image: "/products/9pm-rebel-afnan.jpg",
