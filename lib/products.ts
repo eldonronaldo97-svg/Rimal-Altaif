@@ -1535,11 +1535,11 @@ export const products = [
     name: "Hawas Ice",
     brand: "RASASI",
     size: "100ml",
-    price: 1550,
+    price: 1499,
     oldPrice: 2200,
     image: "/products/61hDO6ICiyL.jpg",
     category: "Men",
-    stock: false,
+    stock: true,
     bestSeller: true,
   },
 
@@ -1693,7 +1693,7 @@ export const products = [
 
 export const homeBestSellers = [
   "o1", // GHALIA OFFER
-  "o2", // any diamound + 9pm nightout
+  "H1", // Hawas Ice
   "a53", // Miss Arrogate Diva
   "a52", // Addict Blue
   "M1", // musk collection
