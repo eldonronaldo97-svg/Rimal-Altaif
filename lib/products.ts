@@ -256,8 +256,8 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Women",
-    stock: false,
-    price: 1999,
+    stock: true,
+    price: 1899,
     image: "/products/assaf/564d87f1-9467-47d7-8bbd-4dbbf6475568_900x900.webp",
     addedAt: "2026-08-20",
   }, 
@@ -268,7 +268,7 @@ export const products = [
     size: "125ml",
     category: "Men",
     stock: true,
-    price: 1999,
+    price: 1899,
     image: "/products/assaf/276c6eef-282e-4848-bf1d-3fcde0dbe6bf-1000x1000-Rbql80At7hh3Di1kfbtJopQMtZB7nKn0niQfJHiJ.webp",
     addedAt: "2026-08-22",
   }, 
@@ -279,7 +279,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: true,
-    price: 1950,
+    price: 1899,
     image: "/products/assaf/1c668420-3d0d-44fa-84de-12f04e8394b9-1000x1000-oXNN7qa4ibbLe0HRGt6AB4QIO0IBba2B2ySHyGdH.webp",
     addedAt: "2026-08-24",
   }, 
@@ -289,8 +289,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    stock: false,
-    price: 1950,
+    stock: true,
+    price: 1899,
     image: "/products/assaf/72a0e83c-cd06-4943-8e86-c6ac5c7ffff3_900x900.webp",
     addedAt: "2026-08-23",
   },
@@ -301,7 +301,7 @@ export const products = [
     size: "200ml",
     category: "Men",
     stock: true,
-    price: 1999,
+    price: 1899,
     image: "/products/assaf/40435517-58c7-444a-87f3-0a4c96b6fd87_900x900.webp",
     addedAt: "2026-08-25",
   },
@@ -312,7 +312,7 @@ export const products = [
     size: "200ml",
     category: "Women",
     stock: true,
-    price: 1999,
+    price: 1899,
     image: "/products/assaf/11ad4cc6-f11a-464d-8792-100eacda5ce2-1000x1000-djNIw25Xy4lXP8woZVGWzWXCPSINNJT4yO7qXuxj.webp",
     addedAt: "2026-08-21",
   },
@@ -322,7 +322,7 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    stock: true,
+    stock: false,
     price: 2050,
     oldPrice: 2450,
     image: "/products/assaf/Arrogate_Addict_Elixir.jpg",
@@ -1694,8 +1694,8 @@ export const products = [
 export const homeBestSellers = [
   "o1", // GHALIA OFFER
   "o2", // any diamound + 9pm nightout
-  "a1", // Arrogate Addict Elixir
-  "a47", // Arrogate Pink Diva
+  "a53", // Miss Arrogate Diva
+  "a52", // Addict Blue
   "M1", // musk collection
   "A2", // 9PM nightout
   "a35",  // strike black
