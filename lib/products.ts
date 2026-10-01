@@ -394,7 +394,7 @@ export const products = [
     category: "Women",
     stock: true,
     bestSeller: true,
-    price: 1999,
+    price: 1899,
     oldPrice: 2650,
     image: "/products/assaf/arrogate-pink.jpg",
     addedAt: "2026-08-27",
@@ -541,8 +541,8 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    stock: false,
-    price: 2000,
+    stock: true,
+    price: 1999,
     image: "/products/assaf/glitch.jpg",
   },
 
@@ -696,8 +696,8 @@ export const products = [
     brand: "Assaf",
     size: "200ml",
     category: "Women",
-    stock: false,
-    price: 2200,
+    stock: true,
+    price: 1850,
     image: "/products/assaf/Pink_Queen.jpg",
   },
 
@@ -709,7 +709,7 @@ export const products = [
     category: "Men",
     stock: true,
     bestSeller: true,
-    price: 1999,
+    price: 1899,
     image: "/products/assaf/strike-black-assaf-arrogate-150ml.jpg",
   },
 
@@ -719,8 +719,8 @@ export const products = [
     brand: "Assaf",
     size: "150ml",
     category: "unisex",
-    stock: false,
-    price: 1999,
+    stock: true,
+    price: 1899,
     image: "/products/assaf/risk-comete.jpg",
   },
 
@@ -770,13 +770,13 @@ export const products = [
 
   {
     id: "a41",
-    name: "Wild Colt",
+    name: "Wild Colt elixir",
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    stock: false,
-    price: 1850,
-    image: "/products/assaf/Wild_Colt.jpg",
+    stock: true,
+    price: 1899,
+    image: "/products/assaf/4863d319-163b-4afb-81b4-67f6ed6a5e3d-1000x1000-cJqgWVHFKL6m2wFJq3BqKFZLCajAGtFkke8Bn6ce.webp",
   },
 
   {
@@ -817,7 +817,7 @@ export const products = [
     brand: "Assaf",
     size: "100ml",
     category: "Men",
-    stock: true,
+    stock: false,
     price: 1150,
     image: "/products/assaf/Frankel Elixer.webp",
   },
