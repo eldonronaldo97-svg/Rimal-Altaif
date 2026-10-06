@@ -1572,7 +1572,7 @@ export const products = [
     name: "Any Diamound + Hawas Ice",
     brand: "RIMAL ALTAIF",
     size: "250ml",
-    price: 2850,
+    price: 2799,
     oldPrice: 3350,
     image: "/products/عطر هاواس آيس ومجموعة الألماس、】【.png",
     category: "Men",
