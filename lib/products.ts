@@ -189,7 +189,7 @@ export const products = [
     oldPrice: 2350,
     image: "/products/diamond-4.jpg",
     category: "Men",
-    stock: false,
+    stock: true,
   },
   {
     id: "t5",
@@ -200,7 +200,7 @@ export const products = [
     oldPrice: 2350,
     image: "/products/diamond-5.jpg",
     category: "Men",
-    stock: false,
+    stock: true,
   },
   {
     id: "t6",
@@ -241,12 +241,23 @@ export const products = [
     name: "Tobacco Collection",
     brand: "Ibraq",
     size: "20ml",
-    price: 2650,
+    price: 2500,
     oldPrice: 3200,
     image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
     category: "Unisex",
     stock: false,
     bestSeller: true,
+  },
+  {
+    id: "t10",
+    name: "Arabian Tobacco",
+    brand: "Ibraq",
+    size: "100ml",
+    price: 1350,
+    oldPrice: 2350,
+    image: "/products/63eb8a84-f43a-4963-b4c5-3cc6b5cc9028-1000x1000-15XAIUTT2eTTNsBaS17x8PZuL5YdEIp6oyzB9s08.webp",
+    category: "Men",
+    stock: true,
   },
    // Assaf Main Collection
  
@@ -1546,14 +1557,14 @@ export const products = [
    // 💎 Offer COLLECTION
    {
     id: "o1",
-    name: "Ghalia Offer",
-    brand: "RIMAL ALTAIF",
-    size: "200ml",
-    price: 2999,
-    oldPrice: 3550,
-    image: "/products/ChatGPT Image 15 أغسطس 2026، 06_38_06 ص.png",
+    name: "Miss diva + Addict blue",
+    brand: "Assaf",
+    size: "275ml",
+    price: 3499,
+    oldPrice: 3999,
+    image: "/products/زجاجتا عطر أنيقتان باللونين الأزرق والوردي.png",
     category: "Men",
-    stock: false,
+    stock: true,
     bestSeller: true,
   },
   {
@@ -1692,7 +1703,7 @@ export const products = [
   ];
 
 export const homeBestSellers = [
-  "o1", // GHALIA OFFER
+  "o1", // Miss diva + Addict blue
   "H1", // Hawas Ice
   "a53", // Miss Arrogate Diva
   "a52", // Addict Blue
