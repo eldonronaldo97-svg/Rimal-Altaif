@@ -1563,20 +1563,32 @@ export const products = [
     price: 3499,
     oldPrice: 3999,
     image: "/products/زجاجتا عطر أنيقتان باللونين الأزرق والوردي.png",
-    category: "Men",
+    category: "Unisex",
     stock: true,
     bestSeller: true,
   },
   {
     id: "o2",
-    name: "Any Diamound + 9pm Nightout",
+    name: "Any Diamound + Hawas Ice",
     brand: "RIMAL ALTAIF",
     size: "250ml",
-    price: 2899,
+    price: 2850,
     oldPrice: 3350,
-    image: "/products/0475de46-cfb8-455a-ad72-39fac249b68a.png",
+    image: "/products/عطر هاواس آيس ومجموعة الألماس、】【.png",
     category: "Men",
-    stock: false,
+    stock: true,
+    bestSeller: true,
+  },
+  {
+    id: "o3",
+    name: "Any Tobacco + White Heart",
+    brand: "RIMAL ALTAIF",
+    size: "200ml",
+    price: 1999,
+    oldPrice: 2500,
+    image: "/products/عطر القلب الأبيض ومجموعة التبغ الملونة.png",
+    category: "Unisex",
+    stock: true,
     bestSeller: true,
   },
   // 💎 mix COLLECTION
@@ -1704,6 +1716,8 @@ export const products = [
 
 export const homeBestSellers = [
   "o1", // Miss diva + Addict blue
+  "o2", // Any Diamound + Hawas Ice
+  "o3", // Any Tobacco + White Heart
   "H1", // Hawas Ice
   "a53", // Miss Arrogate Diva
   "a52", // Addict Blue
