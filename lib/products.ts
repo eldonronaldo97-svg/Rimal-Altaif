@@ -1710,7 +1710,7 @@ export const products = [
     image: "/products/675dc48e-2825-4eab-a7e5-f9811f4a53fc-1000x1000-AqHoCgiQJMQfJs8cSEwJrOGYEhEVdSHKO9bimVDX.webp",
     category: "Men",
     stock: true,
-    addedAt: "2026-08-20",
+    addedAt: "2026-08-30",
   },
   {
     id: "m11",
@@ -1719,7 +1719,7 @@ export const products = [
     size: "100ml",
     price: 699,
     oldPrice: 999,
-    image: "/products/675dc48e-2825-4eab-a7e5-f9811f4a53fc-1000x1000-AqHoCgiQJMQfJs8cSEwJrOGYEhEVdSHKO9bimVDX.webp",
+    image: "/products/image.jpg",
     category: "Men",
     stock: true,
     addedAt: "2026-10-7",
