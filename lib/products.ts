@@ -241,11 +241,11 @@ export const products = [
     name: "Tobacco Collection",
     brand: "Ibraq",
     size: "20ml",
-    price: 2500,
+    price: 2499,
     oldPrice: 3200,
     image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
     category: "Unisex",
-    stock: false,
+    stock: true,
     bestSeller: true,
   },
   {
@@ -1730,6 +1730,7 @@ export const homeBestSellers = [
   "o1", // Miss diva + Addict blue
   "o2", // Any Diamound + Hawas Ice
   "o3", // Any Tobacco + White Heart
+  "t9", // Tobacco Collection
   "H1", // Hawas Ice
   "a53", // Miss Arrogate Diva
   "a52", // Addict Blue
