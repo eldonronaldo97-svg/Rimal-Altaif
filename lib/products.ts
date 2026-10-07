@@ -1712,6 +1712,18 @@ export const products = [
     stock: true,
     addedAt: "2026-08-20",
   },
+  {
+    id: "m11",
+    name: "قلب ابيض",
+    brand: "ALMAS",
+    size: "100ml",
+    price: 699,
+    oldPrice: 999,
+    image: "/products/675dc48e-2825-4eab-a7e5-f9811f4a53fc-1000x1000-AqHoCgiQJMQfJs8cSEwJrOGYEhEVdSHKO9bimVDX.webp",
+    category: "Men",
+    stock: true,
+    addedAt: "2026-10-7",
+  },
   ];
 
 export const homeBestSellers = [
