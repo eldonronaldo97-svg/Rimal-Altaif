@@ -349,7 +349,7 @@ export const products = [
     stock: false,
     price: 2250,
     oldPrice: 2650,
-    image: "/products/assaf/Arrogate_Blue_De.jpg",
+    image: "/products/assaf/5739d338-1a1e-4028-8eaa-1cf6d0e37a49-1000x1000-q06brKaZHFVpwXjRlSyoqrdxNWOv1f2lXHWXa72S.webp",
   },
 
   {
@@ -361,7 +361,7 @@ export const products = [
     stock: false,
     price: 2000,
     oldPrice: 2350,
-    image: "/products/assaf/Arrogate_Comete.jpg",
+    image: "/products/assaf/20cdc0d4-8a66-403d-8d72-32abbed52f6a-1000x1000-bEhkMClj3g8oKK6sg48ysLWHFSdRa3KBv7AUbfa0.webp",
   },
 
   {
@@ -383,7 +383,7 @@ export const products = [
     category: "Men",
     stock: false,
     price: 2100,
-    image: "/products/assaf/arrogate-addict.jpg",
+    image: "/products/assaf/585d44d3-a3b5-40e6-b160-ef8ed1950763-912.16216216216x1000-82laPuOKhRNwO9faWWUxbMSuEDmc7mf4isKE7Uvl.webp",
   },
 
   {
@@ -394,7 +394,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2100,
-    image: "/products/assaf/arrogate-girl.jpg",
+    image: "/products/assaf/77cb254f-ec2b-4622-9f51-c6ef288b9962-912.16216216216x1000-Thn2gsgHVR2CCE80qp3hvRupJgWQQYetzqeFOkSs.webp",
   },
 
   {
@@ -407,7 +407,7 @@ export const products = [
     bestSeller: true,
     price: 1899,
     oldPrice: 2650,
-    image: "/products/assaf/arrogate-pink.jpg",
+    image: "/products/assaf/e695d0ab-6f74-4d98-8655-e237af403967-1000x1000-ZZC45Zi1sxV09e2maCd3yrlrqHE7aQ3ejk19ws4F.webp",
     addedAt: "2026-08-27",
   },
 
@@ -477,7 +477,7 @@ export const products = [
     category: "unisex",
     stock: true,
     price: 1850,
-    image: "/products/assaf/Dangerous_Arrogate.jpg",
+    image: "/products/assaf/49d675dd-1440-4a8c-9a92-82f8da9e0904-1000x1000-W4GzTiNnGQvYBHUGVCG7yftW28Kcxr0xQxlRlvKN.webp",
   },
 
   {
@@ -599,7 +599,7 @@ export const products = [
     category: "Women",
     stock: false,
     price: 2050,
-    image: "/products/assaf/Miss_Arrogate.jpg",
+    image: "/products/assaf/a2b0fe3e-daee-4ad8-922c-02ac53635e2e-1000x1000-eILLANmgQ7suG7WnmnA1FZM4J4vIbq6KGrlRrpf5.webp",
   },
 
   {
