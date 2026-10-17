@@ -1726,6 +1726,18 @@ export const products = [
     stock: true,
     addedAt: "2026-10-7",
   },
+  {
+    id: "m12",
+    name: "AURA",
+    brand: "ALMAS",
+    size: "100ml",
+    price: 850,
+    oldPrice: 999,
+    image: "/products/22bc307f-500a-4fed-a7ac-85e32939767a.webp",
+    category: "Men",
+    stock: true,
+    addedAt: "2026-10-17",
+  },
   ];
 
 export const homeBestSellers = [
