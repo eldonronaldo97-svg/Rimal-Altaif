@@ -40,7 +40,7 @@ export default function BrandSlider() {
     },
     {
       name: "Jean Antoine",
-      image: "/brands/566213401_1234268948733098_6662441443911875311_n.jpg",
+      image: "/brands/jean_antoine_cropped.jpg",
     },
     {
       name: "Le Bonheur",
