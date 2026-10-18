@@ -9,7 +9,7 @@ const productData = [
     oldPrice: 5000,
     image: "/products/3e2d2c76-a107-4e33-8943-5d4b0f3cb2f1-1000x1000-12XwCUurtCS6OyiKmzyyXumP3PGJ4ZkOYIveZMxL.webp",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -58,7 +58,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/tobacco-2.jpg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -94,7 +94,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/tobacco-5.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -106,7 +106,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/tobacco-6.jpg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -118,7 +118,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/tobacco-7.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -130,7 +130,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/diamond-0.jpg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -143,7 +143,7 @@ const productData = [
     oldPrice: 2250,
     image: "/products/fbcea5f6-6fb7-49ab-9b60-82fb3f6c0f61-1000x1000-tBHglJ1nRjhHY0cnHTd7tBmiQ539p6gNEjVbtlq2.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -169,7 +169,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/diamond-1.jpg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -193,7 +193,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/diamond-3.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -205,7 +205,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/diamond-4.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -217,7 +217,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/diamond-5.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -242,7 +242,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/diamond-8.jpg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -266,7 +266,7 @@ const productData = [
     oldPrice: 3200,
     image: "/products/f87d28b1-5c25-4f5c-8014-b8486955e435-1000x1000-2c6V4LTKTgxO5Gr0ojghAAHleOZjVgqKTzSFMESy.webp",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -279,7 +279,7 @@ const productData = [
     oldPrice: 2350,
     image: "/products/63eb8a84-f43a-4963-b4c5-3cc6b5cc9028-1000x1000-15XAIUTT2eTTNsBaS17x8PZuL5YdEIp6oyzB9s08.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
    // Assaf Main Collection
@@ -290,7 +290,7 @@ const productData = [
     brand: "Assaf",
     size: "150ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 9, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1899,
     image: "/products/assaf/564d87f1-9467-47d7-8bbd-4dbbf6475568_900x900.webp",
@@ -302,7 +302,7 @@ const productData = [
     brand: "Assaf",
     size: "125ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 15, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     image: "/products/assaf/276c6eef-282e-4848-bf1d-3fcde0dbe6bf-1000x1000-Rbql80At7hh3Di1kfbtJopQMtZB7nKn0niQfJHiJ.webp",
@@ -314,7 +314,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1899,
     image: "/products/assaf/1c668420-3d0d-44fa-84de-12f04e8394b9-1000x1000-oXNN7qa4ibbLe0HRGt6AB4QIO0IBba2B2ySHyGdH.webp",
@@ -326,7 +326,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1899,
     image: "/products/assaf/72a0e83c-cd06-4943-8e86-c6ac5c7ffff3_900x900.webp",
@@ -338,7 +338,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1899,
     image: "/products/assaf/40435517-58c7-444a-87f3-0a4c96b6fd87_900x900.webp",
@@ -350,7 +350,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1899,
     image: "/products/assaf/11ad4cc6-f11a-464d-8792-100eacda5ce2-1000x1000-djNIw25Xy4lXP8woZVGWzWXCPSINNJT4yO7qXuxj.webp",
@@ -376,7 +376,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     oldPrice: 2650,
@@ -415,7 +415,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     image: "/products/assaf/585d44d3-a3b5-40e6-b160-ef8ed1950763-912.16216216216x1000-82laPuOKhRNwO9faWWUxbMSuEDmc7mf4isKE7Uvl.webp",
@@ -518,7 +518,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1850,
     image: "/products/assaf/49d675dd-1440-4a8c-9a92-82f8da9e0904-1000x1000-W4GzTiNnGQvYBHUGVCG7yftW28Kcxr0xQxlRlvKN.webp",
@@ -554,7 +554,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     image: "/products/assaf/Frankel_Blue_Elixir.jpg",
@@ -590,7 +590,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     image: "/products/assaf/frankel-silver-elixir.jpg",
@@ -614,7 +614,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1750,
     image: "/products/assaf/Gris_Erik.jpg",
@@ -638,7 +638,7 @@ const productData = [
     brand: "Assaf",
     size: "150ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
     price: 1850,
@@ -735,7 +735,7 @@ const productData = [
     brand: "Assaf",
     size: "150ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1850,
     image: "/products/assaf/pegasus-aura.jpg",
@@ -771,7 +771,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1850,
     image: "/products/assaf/Pink_Queen.jpg",
@@ -856,7 +856,7 @@ const productData = [
     brand: "Assaf",
     size: "200ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 5, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     image: "/products/assaf/4863d319-163b-4afb-81b4-67f6ed6a5e3d-1000x1000-cJqgWVHFKL6m2wFJq3BqKFZLCajAGtFkke8Bn6ce.webp",
@@ -923,6 +923,7 @@ const productData = [
     "id": "dk1",
     "name": "Balqees",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -934,6 +935,7 @@ const productData = [
     "id": "dk2",
     "name": "Sapphire",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -945,6 +947,7 @@ const productData = [
     "id": "dk3",
     "name": "Dkhoon Oud",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -956,6 +959,7 @@ const productData = [
     "id": "dk4",
     "name": "Khayal",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -967,6 +971,7 @@ const productData = [
     "id": "dk5",
     "name": "Dubai",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -978,6 +983,7 @@ const productData = [
     "id": "dk6",
     "name": "Doha Skyline",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -989,6 +995,7 @@ const productData = [
     "id": "dk7",
     "name": "Muscat",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1000,6 +1007,7 @@ const productData = [
     "id": "dk8",
     "name": "AbuDhabi",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1011,6 +1019,7 @@ const productData = [
     "id": "dk9",
     "name": "Signature Gold",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1022,6 +1031,7 @@ const productData = [
     "id": "dk10",
     "name": "Signature Black",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1033,6 +1043,7 @@ const productData = [
     "id": "dk11",
     "name": "Signature White",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1044,6 +1055,7 @@ const productData = [
     "id": "dk12",
     "name": "Signature Silver",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1055,6 +1067,7 @@ const productData = [
     "id": "dk13",
     "name": "Shiny",
     "brand": "Dkhoon",
+    quantity: 1,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1066,6 +1079,7 @@ const productData = [
     "id": "dk14",
     "name": "Dkhoon Desert",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1499,
     "oldPrice": 2000,
@@ -1077,6 +1091,7 @@ const productData = [
     "id": "dk15",
     "name": "Couture",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1088,6 +1103,7 @@ const productData = [
     "id": "dk16",
     "name": "No One",
     "brand": "Dkhoon",
+    quantity: 1,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1099,6 +1115,7 @@ const productData = [
     "id": "dk17",
     "name": "Dkhoon Rose",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1499,
     "oldPrice": 2000,
@@ -1110,6 +1127,7 @@ const productData = [
     "id": "dk18",
     "name": "Aura",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1121,6 +1139,7 @@ const productData = [
     "id": "dk19",
     "name": "Tiamo",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1132,6 +1151,7 @@ const productData = [
     "id": "dk20",
     "name": "Dkhoon Amber",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1499,
     "oldPrice": 2000,
@@ -1143,6 +1163,7 @@ const productData = [
     "id": "dk21",
     "name": "Haneet",
     "brand": "Dkhoon",
+    quantity: 2,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1154,6 +1175,7 @@ const productData = [
     "id": "dk22",
     "name": "Khaylan",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1399,
     "oldPrice": 2000,
@@ -1165,6 +1187,7 @@ const productData = [
     "id": "dk23",
     "name": "Dkhoon Leather",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1499,
     "oldPrice": 2000,
@@ -1176,6 +1199,7 @@ const productData = [
     "id": "dk24",
     "name": "Crown Black",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1187,6 +1211,7 @@ const productData = [
     "id": "dk25",
     "name": "Khalifa",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1198,6 +1223,7 @@ const productData = [
     "id": "dk26",
     "name": "Zayed",
     "brand": "Dkhoon",
+    quantity: 2,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1209,6 +1235,7 @@ const productData = [
     "id": "dk27",
     "name": "So Sweety",
     "brand": "Dkhoon",
+    quantity: 1,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1220,6 +1247,7 @@ const productData = [
     "id": "dk29",
     "name": "Signature rose gold",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1499,
     "oldPrice": 2000,
@@ -1231,6 +1259,7 @@ const productData = [
     "id": "dk30",
     "name": "private 2 december",
     "brand": "Dkhoon",
+    quantity: 2,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1242,6 +1271,7 @@ const productData = [
     "id": "dk31",
     "name": "vanilla wood",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1450,
     "oldPrice": 2000,
@@ -1253,6 +1283,7 @@ const productData = [
     "id": "dk32",
     "name": "Dkhoon queen",
     "brand": "Dkhoon",
+    quantity: 0,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1264,6 +1295,7 @@ const productData = [
     "id": "dk33",
     "name": "Dkhoon solo",
     "brand": "Dkhoon",
+    quantity: 2,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1275,6 +1307,7 @@ const productData = [
     "id": "dk34",
     "name": "Dkhoon blue",
     "brand": "Dkhoon",
+    quantity: 1,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1286,6 +1319,7 @@ const productData = [
     "id": "dk35",
     "name": "gold tears",
     "brand": "Dkhoon",
+    quantity: 2,
     "size": "100ml",
      "price": 1350,
     "oldPrice": 2000,
@@ -1311,7 +1345,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1250,
     oldPrice: 1750,
@@ -1347,7 +1381,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1050,
     oldPrice: 1500,
@@ -1383,7 +1417,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1100,
     oldPrice: 1500,
@@ -1406,7 +1440,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1100,
     oldPrice: 1500,
@@ -1441,7 +1475,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 850,
     image: "/products/ragba_sheikh.jpg",
@@ -1452,7 +1486,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 899,
     image: "/products/81um4vm8mOL._AC_UF894,1000_QL80_.jpg",
@@ -1463,7 +1497,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1199,
     image: "/products/81RDRroz8gL.jpg",
@@ -1474,7 +1508,7 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 5, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1599,
     oldPrice: 2300,
@@ -1557,7 +1591,7 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1650,
     oldPrice: 2200,
@@ -1621,7 +1655,7 @@ const productData = [
     oldPrice: 2000,
     image: "/products/Untitled-1_c44241f2-02f3-4bb1-afd0-26e04ab231f4.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -1633,7 +1667,7 @@ const productData = [
     oldPrice: 2000,
     image: "/products/o.112706.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -1645,7 +1679,7 @@ const productData = [
     oldPrice: 2000,
     image: "/products/hawas-malibu-prod-duplicado-m7ti-7561.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -1657,7 +1691,7 @@ const productData = [
     oldPrice: 2200,
     image: "/products/61hDO6ICiyL.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 10, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -1672,7 +1706,7 @@ const productData = [
     oldPrice: 3999,
     image: "/products/زجاجتا عطر أنيقتان باللونين الأزرق والوردي.png",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 9, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -1685,7 +1719,7 @@ const productData = [
     oldPrice: 3350,
     image: "/products/عطر هاواس آيس ومجموعة الألماس、】【.png",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 10, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -1698,7 +1732,7 @@ const productData = [
     oldPrice: 2500,
     image: "/products/عطر القلب الأبيض ومجموعة التبغ الملونة.png",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -1712,7 +1746,7 @@ const productData = [
     oldPrice: 2300,
     image: "/products/mira-amour-100ml-eau-de-parfum-le-bonheur.webp",
     category: "Wonen",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1725,7 +1759,7 @@ const productData = [
     oldPrice: 2300,
     image: "/products/s-l1600 (4).webp",
     category: "Women",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1738,7 +1772,7 @@ const productData = [
     oldPrice: 1900,
     image: "/products/Screenshot2026-02-10at5.28.47PM.webp",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1751,7 +1785,7 @@ const productData = [
     oldPrice: 1900,
     image: "/products/Le-Falcone-Niche-Hayba-Majesty-eau-de-parfum-100ml-3.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1764,7 +1798,7 @@ const productData = [
     oldPrice: 1900,
     image: "/products/Le-Falcone-Niche-Mirsaal-Valentine-eau-de-parfum-100ml-2.webp",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1777,7 +1811,7 @@ const productData = [
     oldPrice: 1900,
     image: "/products/Screenshot 2026-08-16 024313.png",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1790,7 +1824,7 @@ const productData = [
     oldPrice: 2400,
     image: "/products/WHITE-BG_c7b2df8a-2516-48c0-a178-3c309480d6b3_800x.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1803,7 +1837,7 @@ const productData = [
     oldPrice: 2400,
     image: "/products/parfum-arabiyat-prestige-mouda-high-end-edp-100ml-uniseks-6a43ef14558ae.webp",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1816,7 +1850,7 @@ const productData = [
     oldPrice: 2400,
     image: "/products/clx6rz0430vya01gi8r4ie2xv_pikaso_enhance__none_2K_Standard_r_c___3_.jpeg",
     category: "Unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-08-20",
   },
@@ -1842,7 +1876,7 @@ const productData = [
     oldPrice: 999,
     image: "/products/image.jpg",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-10-7",
   },
@@ -1855,7 +1889,7 @@ const productData = [
     oldPrice: 999,
     image: "/products/22bc307f-500a-4fed-a7ac-85e32939767a.webp",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
     addedAt: "2026-10-17",
   },
