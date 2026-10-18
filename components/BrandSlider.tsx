@@ -34,6 +34,10 @@ export default function BrandSlider() {
       name: "rasasi",
       image: "/brands/NTcxUrKbnUPbWDChASFFN8pYcqgnLS4XySm2BsRR.webp",
     },  
+    {
+      name: "ALMAS",
+      image: "/brands/1jL1WnyKurrKHWxaZbRzu4co0jVwQhBp2g9Xv1Rc.png",
+    }, 
   ];
 
   return (
