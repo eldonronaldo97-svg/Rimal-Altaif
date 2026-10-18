@@ -21,6 +21,9 @@ export default function ProductPage() {
     (p) => p.id === id
   );
 
+  const available = Number(product?.quantity ?? 0);
+  const inStock = available > 0;
+
   if (!product) {
     return (
       <div
@@ -67,7 +70,7 @@ export default function ProductPage() {
       url: `https://rimalaltaif.com/product/${product.id}`,
       priceCurrency: "EGP",
       price: product.price,
-      availability: product.stock
+      availability: inStock
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
       itemCondition: "https://schema.org/NewCondition",
@@ -122,7 +125,7 @@ export default function ProductPage() {
               position: "relative",
             }}
           >
-            {!product.stock && (
+            {!inStock && (
               <div
                 style={{
                   position: "absolute",
@@ -251,7 +254,7 @@ export default function ProductPage() {
                 }}
               >
                 التوفر:{" "}
-                {product.stock
+                {inStock
                   ? "متوفر"
                   : "نفذت الكمية"}
               </p>
@@ -420,29 +423,30 @@ export default function ProductPage() {
         >
           <button
   onClick={() => {
-    if (!product.stock) return;
+    if (!inStock) return;
 
-    add({
+    const added = add({
       id: product.id,
       name: product.name,
       image: product.image,
       price: product.price,
     });
+    if (!added) window.alert(useCart.getState().message);
   }}
-  disabled={!product.stock}
+  disabled={!inStock}
   style={{
     height: 52,
-    background: product.stock ? "#000" : "#e5e5e5",
-    color: product.stock ? "#fff" : "#777",
+    background: inStock ? "#000" : "#e5e5e5",
+    color: inStock ? "#fff" : "#777",
     border: "none",
     fontSize: 11,
     letterSpacing: "2px",
     textTransform: "uppercase",
-    cursor: product.stock ? "pointer" : "not-allowed",
-    opacity: product.stock ? 1 : 0.8,
+    cursor: inStock ? "pointer" : "not-allowed",
+    opacity: inStock ? 1 : 0.8,
   }}
 >
-  {product.stock ? "اضف للسلة" : "نفذت الكمية"}
+  {inStock ? "اضف للسلة" : "نفذت الكمية"}
 </button>
 
           <a

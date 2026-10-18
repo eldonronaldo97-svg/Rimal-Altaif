@@ -3,6 +3,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
+import { products } from "@/lib/products";
 
 type CartItem = {
   id?: string | number;
@@ -345,6 +346,20 @@ export default function CheckoutPage() {
   async function submitOrder() {
     if (!cart.length) {
       alert("السلة فارغة، أضف منتجًا أولًا.");
+      return;
+    }
+
+    // إعادة التحقق من الكميات قبل إرسال الطلب. الكمية الفعلية تُدخل في lib/products.ts.
+    const stockProblems = cart.flatMap((item) => {
+      const product = products.find((p) => p.id === String(item.id ?? ""));
+      const available = Number(product?.quantity ?? 0);
+      const requested = getQuantity(item);
+      if (!product || available <= 0) return [`${getName(item)}: نفذت الكمية أو المنتج غير متاح.`];
+      if (requested > available) return [`${getName(item)}: المطلوب ${requested} والمتاح ${available} فقط.`];
+      return [];
+    });
+    if (stockProblems.length) {
+      alert(`راجع كميات المنتجات قبل إتمام الطلب:\n\n${stockProblems.join("\n")}`);
       return;
     }
 

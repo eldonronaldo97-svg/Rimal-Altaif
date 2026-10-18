@@ -5,16 +5,19 @@ import { useCart } from "../lib/store";
 
 export default function ProductCard({ p }: any) {
   const add = useCart((s) => s.add);
+  const available = Number(p.quantity ?? 0);
+  const inStock = available > 0;
 
   const handleAdd = () => {
-    if (!p.stock) return;
+    if (!inStock) return;
 
-    add({
+    const added = add({
       id: p.id,
       name: p.name,
       image: p.image,
       price: p.price,
     });
+    if (!added) window.alert(useCart.getState().message);
   };
 
   return (
@@ -25,7 +28,7 @@ export default function ProductCard({ p }: any) {
         className="product-image-link"
       >
         <div className="product-image">
-          {!p.stock && (
+          {!inStock && (
             <span className="sold-out-badge">
               SOLD OUT
             </span>
@@ -74,10 +77,10 @@ export default function ProductCard({ p }: any) {
         <button
           type="button"
           className="product-btn"
-          disabled={!p.stock}
+          disabled={!inStock}
           onClick={handleAdd}
         >
-          {p.stock ? "أضف للسلة" : "نفذت الكمية"}
+          {inStock ? "أضف للسلة" : "نفذت الكمية"}
         </button>
       </div>
     </article>
