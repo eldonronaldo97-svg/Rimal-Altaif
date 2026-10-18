@@ -37,7 +37,15 @@ export default function BrandSlider() {
     {
       name: "ALMAS",
       image: "/brands/1jL1WnyKurrKHWxaZbRzu4co0jVwQhBp2g9Xv1Rc.png",
-    }, 
+    },
+    {
+      name: "Jean Antoine",
+      image: "/brands/566213401_1234268948733098_6662441443911875311_n.jpg",
+    },
+    {
+      name: "Le Bonheur",
+      image: "/brands/469366716_122191195130252013_7758349878183580185_n.jpg",
+    },  
   ];
 
   return (
