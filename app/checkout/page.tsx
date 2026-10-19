@@ -3,7 +3,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
-
+import { products } from "@/lib/products";
+import { useCart } from "@/lib/store";
 
 type CartItem = {
   id?: string | number;
@@ -349,35 +350,13 @@ export default function CheckoutPage() {
       return;
     }
 
-    // Always validate against the live Google Sheets inventory immediately before submission.
-    let liveProducts: Array<{ id: string; quantity: number }>;
-    try {
-      const inventoryResponse = await fetch("/api/inventory", { cache: "no-store" });
-      if (!inventoryResponse.ok) throw new Error("تعذر الاتصال بالمخزون");
-      const inventoryData = await inventoryResponse.json();
-      if (!inventoryData?.success || !Array.isArray(inventoryData.products)) {
-        throw new Error("بيانات المخزون غير صالحة");
-      }
-      liveProducts = inventoryData.products.map((item: any) => ({
-        id: String(item?.id ?? "").trim(),
-        quantity: Number(item?.quantity),
-      }));
-    } catch (error) {
-      alert("مش قادرين نتحقق من المخزون دلوقتي. من فضلك حاول تاني بعد شوية، ولم يتم إرسال الطلب.");
-      return;
-    }
-
+    // إعادة التحقق من الكميات قبل إرسال الطلب. الكمية الفعلية تُدخل في lib/products.ts.
     const stockProblems = cart.flatMap((item) => {
-      const id = String(item.id ?? "").trim();
-      const product = liveProducts.find((p) => p.id === id);
-      const available = Number(product?.quantity);
+      const product = products.find((p) => p.id === String(item.id ?? ""));
+      const available = Number(product?.quantity ?? 0);
       const requested = getQuantity(item);
-      if (!product || !Number.isFinite(available) || available <= 0) {
-        return [`${getName(item)}: نفذت الكمية أو المنتج غير موجود في المخزون.`];
-      }
-      if (requested > available) {
-        return [`${getName(item)}: المطلوب ${requested} والمتاح ${available} فقط.`];
-      }
+      if (!product || available <= 0) return [`${getName(item)}: نفذت الكمية أو المنتج غير متاح.`];
+      if (requested > available) return [`${getName(item)}: المطلوب ${requested} والمتاح ${available} فقط.`];
       return [];
     });
     if (stockProblems.length) {
@@ -570,7 +549,16 @@ export default function CheckoutPage() {
         const confirmedOrderId =
           String(payload.orderId || pendingOrderId);
 
+        // Save the confirmed order before clearing the cart.
         saveOrderForSuccess(confirmedOrderId);
+
+        // Clear both the Zustand store and any legacy cart keys only after
+        // Google Apps Script confirms that the order was recorded.
+        useCart.getState().clear();
+        for (const key of ["cartItems", "shoppingCart", "rimalCart"]) {
+          localStorage.removeItem(key);
+        }
+        setCart([]);
         setShowSuccess(true);
         return;
       }
