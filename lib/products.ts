@@ -1870,7 +1870,7 @@ const productData = [
   {
     id: "m11",
     name: "قلب ابيض",
-    brand: "ALMAS",
+    brand: "jean antoine",
     size: "100ml",
     price: 699,
     oldPrice: 999,
@@ -1883,7 +1883,7 @@ const productData = [
   {
     id: "m12",
     name: "AURA",
-    brand: "ALMAS",
+    brand: "jean antoine",
     size: "100ml",
     price: 850,
     oldPrice: 999,
