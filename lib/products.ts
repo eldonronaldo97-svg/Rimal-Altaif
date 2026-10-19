@@ -1895,6 +1895,19 @@ const productData = [
   },
   // 💎 mix COLLECTION
   {
+    id: "v5",
+    name: "INTO THE SEA",
+    brand: "Laverne",
+    size: "200ml",
+    price: 1799,
+    oldPrice: 2299,
+    image: "/products/3A6ckpQEF6suMowSdG4VqBHwlCZvXsHbhJiZADe2.webp",
+    category: "Unisex",
+    quantity: 2, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-18",
+  },
+  {
     id: "v4",
     name: "FEARLESS",
     brand: "Laverne",
