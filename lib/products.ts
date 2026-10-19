@@ -1655,7 +1655,7 @@ const productData = [
     oldPrice: 2000,
     image: "/products/Untitled-1_c44241f2-02f3-4bb1-afd0-26e04ab231f4.webp",
     category: "Men",
-    quantity: 2, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
   },
   {
@@ -1691,7 +1691,7 @@ const productData = [
     oldPrice: 2200,
     image: "/products/61hDO6ICiyL.jpg",
     category: "Men",
-    quantity: 2, // أدخل عدد القطع المتاحة هنا
+    quantity: 10, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
