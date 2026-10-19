@@ -101,30 +101,30 @@ const websiteSchema = {
   inLanguage: "ar-EG",
 };
 
-
-const INVENTORY_URL =
+const INVENTORY_SOURCE_URL =
   "https://script.google.com/macros/s/AKfycbxHhrvzHZEvGfnhCwbH_e7IgF1ahwjm6VXfGKHjPsuC99PcU9dC5Hf59WK15CLIHCNO/exec?action=inventory";
 
 async function getInitialInventory(): Promise<Record<string, number> | null> {
   try {
-    const response = await fetch(INVENTORY_URL, {
-      headers: { Accept: "application/json" },
+    const response = await fetch(INVENTORY_SOURCE_URL, {
       next: { revalidate: 15 },
+      headers: { Accept: "application/json" },
     });
     if (!response.ok) return null;
     const data = await response.json();
     if (data?.success !== true || !Array.isArray(data.products)) return null;
-    const result: Record<string, number> = {};
+
+    const quantities: Record<string, number> = {};
     for (const item of data.products) {
       const id = String(item?.id ?? "").trim();
       const quantity = Number(item?.quantity);
       if (id && Number.isFinite(quantity) && quantity >= 0) {
-        result[id] = Math.floor(quantity);
+        quantities[id] = Math.floor(quantity);
       }
     }
-    return result;
+    return quantities;
   } catch (error) {
-    console.error("Initial inventory fetch failed:", error);
+    console.error("Could not load initial inventory:", error);
     return null;
   }
 }
@@ -134,14 +134,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const initialInventory = await getInitialInventory();
   return (
     <html lang="ar" dir="rtl">
       <body className={`${montserrat.className} ${ibmArabic.variable}`}>
-        {children}
-
-        <FloatingCart />
-
-        <LayoutContent />
+        <InventoryProvider initialInventory={initialInventory}>
+          {children}
+          <FloatingCart />
+          <LayoutContent />
+        </InventoryProvider>
 
         {/* Google Structured Data */}
         <script
