@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useLiveInventory } from "../lib/inventory-client";
+import { useLiveInventory } from "@/components/InventoryProvider";
 import { useCart } from "../lib/store";
 
 export default function ProductCard({ p }: any) {
   const add = useCart((s) => s.add);
   const liveQuantity = useLiveInventory(p?.id);
-  const inStock = liveQuantity !== null && liveQuantity > 0;
+  const inStock = typeof liveQuantity === "number" && liveQuantity > 0;
+  const inventoryUnavailable = liveQuantity === null || liveQuantity === undefined;
 
   const handleAdd = () => {
     if (!inStock) return;
@@ -19,7 +20,7 @@ export default function ProductCard({ p }: any) {
     <article className="product-card">
       <Link href={`/product/${p.id}`} className="product-image-link">
         <div className="product-image">
-          {liveQuantity === 0 && <span className="sold-out-badge">SOLD OUT</span>}
+          {liveQuantity === 0 && <span className="sold-out-badge">نفذت الكمية</span>}
           <img src={p.image} alt={p.name} className="product-image-img" />
         </div>
       </Link>
@@ -34,7 +35,7 @@ export default function ProductCard({ p }: any) {
           )}
         </div>
         <button type="button" className="product-btn" disabled={!inStock} onClick={handleAdd}>
-          {liveQuantity === null ? "جاري التحقق من المخزون..." : inStock ? "أضف للسلة" : "نفذت الكمية"}
+          {inventoryUnavailable ? "المخزون غير متاح مؤقتًا" : inStock ? "أضف للسلة" : "نفذت الكمية"}
         </button>
       </div>
     </article>

@@ -2,6 +2,7 @@ import "./globals.css";
 import { Montserrat } from "next/font/google";
 import FloatingCart from "@/components/FloatingCart";
 import LayoutContent from "@/components/LayoutContent";
+import InventoryProvider from "@/components/InventoryProvider";
 import { IBM_Plex_Sans_Arabic } from "next/font/google";
 
 import type { Metadata, Viewport } from "next";
@@ -100,7 +101,35 @@ const websiteSchema = {
   inLanguage: "ar-EG",
 };
 
-export default function RootLayout({
+
+const INVENTORY_URL =
+  "https://script.google.com/macros/s/AKfycbxHhrvzHZEvGfnhCwbH_e7IgF1ahwjm6VXfGKHjPsuC99PcU9dC5Hf59WK15CLIHCNO/exec?action=inventory";
+
+async function getInitialInventory(): Promise<Record<string, number> | null> {
+  try {
+    const response = await fetch(INVENTORY_URL, {
+      headers: { Accept: "application/json" },
+      next: { revalidate: 15 },
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    if (data?.success !== true || !Array.isArray(data.products)) return null;
+    const result: Record<string, number> = {};
+    for (const item of data.products) {
+      const id = String(item?.id ?? "").trim();
+      const quantity = Number(item?.quantity);
+      if (id && Number.isFinite(quantity) && quantity >= 0) {
+        result[id] = Math.floor(quantity);
+      }
+    }
+    return result;
+  } catch (error) {
+    console.error("Initial inventory fetch failed:", error);
+    return null;
+  }
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
