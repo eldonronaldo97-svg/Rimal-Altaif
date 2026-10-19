@@ -381,7 +381,7 @@ const productData = [
     price: 1999,
     oldPrice: 2650,
     image: "/products/assaf/5739d338-1a1e-4028-8eaa-1cf6d0e37a49-1000x1000-q06brKaZHFVpwXjRlSyoqrdxNWOv1f2lXHWXa72S.webp",
-    addedAt: "2026-10-13",
+    addedAt: "2026-10-12",
   },
 
   {
@@ -419,7 +419,7 @@ const productData = [
     stock: true,
     price: 1999,
     image: "/products/assaf/585d44d3-a3b5-40e6-b160-ef8ed1950763-912.16216216216x1000-82laPuOKhRNwO9faWWUxbMSuEDmc7mf4isKE7Uvl.webp",
-    addedAt: "2026-10-14",
+    addedAt: "2026-10-13",
   },
 
   {
@@ -1891,7 +1891,7 @@ const productData = [
     category: "Men",
     quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-10-17",
+    addedAt: "2026-10-14",
   },
   // 💎 mix COLLECTION
   {
@@ -1905,7 +1905,7 @@ const productData = [
     category: "Unisex",
     quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-10-18",
+    addedAt: "2026-10-16",
   },
   {
     id: "v4",
@@ -1918,7 +1918,7 @@ const productData = [
     category: "Unisex",
     quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-10-18",
+    addedAt: "2026-10-15",
   },
   {
     id: "v3",
@@ -1931,7 +1931,7 @@ const productData = [
     category: "Unisex",
     quantity: 3, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-10-18",
+    addedAt: "2026-10-17",
   },
   {
     id: "v2",
