@@ -56,7 +56,7 @@ export const useCart = create<CartStore>((set, get) => ({
     const cart = get().cart.map((i) => ({ ...i }));
     const existing = cart.find((i) => i.id === item.id);
     const nextQty = (existing?.qty ?? 0) + 1;
-    if (nextQty > available) { set({ message: `المتاح من المنتج ${available} قطعة فقط` }); return false; }
+    if (nextQty > available) { set({ message: "الكمية المطلوبة اكثر من الحد المسموح به" }); return false; }
     if (existing) existing.qty = nextQty;
     else cart.push({ ...item, qty: 1 });
     save(cart); set({ cart, message: "تمت إضافة المنتج للسلة" }); return true;
@@ -66,7 +66,7 @@ export const useCart = create<CartStore>((set, get) => ({
     const cart = get().cart.map((i) => ({ ...i }));
     const item = cart.find((i) => i.id === id);
     if (!item) return false;
-    if (item.qty + 1 > available) { set({ message: `المتاح من المنتج ${available} قطعة فقط` }); return false; }
+    if (item.qty + 1 > available) { set({ message: "الكمية المطلوبة اكثر من الحد المسموح به" }); return false; }
     item.qty += 1; save(cart); set({ cart, message: "" }); return true;
   },
   decrease(id) {
