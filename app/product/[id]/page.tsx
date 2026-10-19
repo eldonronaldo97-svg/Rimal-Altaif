@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/store";
+import { useLiveInventory } from "@/lib/inventory-client";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import {
@@ -21,8 +22,9 @@ export default function ProductPage() {
     (p) => p.id === id
   );
 
-  const available = Number(product?.quantity ?? 0);
-  const inStock = available > 0;
+  const liveQuantity = useLiveInventory(product?.id);
+  const available = liveQuantity ?? 0;
+  const inStock = liveQuantity !== null && liveQuantity > 0;
 
   if (!product) {
     return (
@@ -254,9 +256,11 @@ export default function ProductPage() {
                 }}
               >
                 التوفر:{" "}
-                {inStock
-                  ? "متوفر"
-                  : "نفذت الكمية"}
+                {liveQuantity === null
+                  ? "جاري التحقق من المخزون..."
+                  : inStock
+                    ? `متوفر (${available} قطعة)`
+                    : "نفذت الكمية"}
               </p>
             </div>
           </div>
@@ -426,7 +430,7 @@ export default function ProductPage() {
     if (!inStock) return;
 
     const added = add({
-      id: product.id,
+      id: String(product.id),
       name: product.name,
       image: product.image,
       price: product.price,
@@ -446,7 +450,7 @@ export default function ProductPage() {
     opacity: inStock ? 1 : 0.8,
   }}
 >
-  {inStock ? "اضف للسلة" : "نفذت الكمية"}
+  {liveQuantity === null ? "جاري التحقق من المخزون..." : inStock ? "اضف للسلة" : "نفذت الكمية"}
 </button>
 
           <a

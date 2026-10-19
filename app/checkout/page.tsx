@@ -3,7 +3,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { products } from "@/lib/products";
+
 
 type CartItem = {
   id?: string | number;
@@ -349,13 +349,35 @@ export default function CheckoutPage() {
       return;
     }
 
-    // إعادة التحقق من الكميات قبل إرسال الطلب. الكمية الفعلية تُدخل في lib/products.ts.
+    // Always validate against the live Google Sheets inventory immediately before submission.
+    let liveProducts: Array<{ id: string; quantity: number }>;
+    try {
+      const inventoryResponse = await fetch("/api/inventory", { cache: "no-store" });
+      if (!inventoryResponse.ok) throw new Error("تعذر الاتصال بالمخزون");
+      const inventoryData = await inventoryResponse.json();
+      if (!inventoryData?.success || !Array.isArray(inventoryData.products)) {
+        throw new Error("بيانات المخزون غير صالحة");
+      }
+      liveProducts = inventoryData.products.map((item: any) => ({
+        id: String(item?.id ?? "").trim(),
+        quantity: Number(item?.quantity),
+      }));
+    } catch (error) {
+      alert("مش قادرين نتحقق من المخزون دلوقتي. من فضلك حاول تاني بعد شوية، ولم يتم إرسال الطلب.");
+      return;
+    }
+
     const stockProblems = cart.flatMap((item) => {
-      const product = products.find((p) => p.id === String(item.id ?? ""));
-      const available = Number(product?.quantity ?? 0);
+      const id = String(item.id ?? "").trim();
+      const product = liveProducts.find((p) => p.id === id);
+      const available = Number(product?.quantity);
       const requested = getQuantity(item);
-      if (!product || available <= 0) return [`${getName(item)}: نفذت الكمية أو المنتج غير متاح.`];
-      if (requested > available) return [`${getName(item)}: المطلوب ${requested} والمتاح ${available} فقط.`];
+      if (!product || !Number.isFinite(available) || available <= 0) {
+        return [`${getName(item)}: نفذت الكمية أو المنتج غير موجود في المخزون.`];
+      }
+      if (requested > available) {
+        return [`${getName(item)}: المطلوب ${requested} والمتاح ${available} فقط.`];
+      }
       return [];
     });
     if (stockProblems.length) {
