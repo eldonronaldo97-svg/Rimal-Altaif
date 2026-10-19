@@ -1893,6 +1893,59 @@ const productData = [
     stock: true,
     addedAt: "2026-10-17",
   },
+  // 💎 mix COLLECTION
+  {
+    id: "v4",
+    name: "FEARLESS",
+    brand: "Laverne",
+    size: "200ml",
+    price: 1799,
+    oldPrice: 2299,
+    image: "/products/Uv4ucTd5L1DMVacFZp2ikn32d6DrwghKeEmHyKcT.webp",
+    category: "Unisex",
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-18",
+  },
+  {
+    id: "v3",
+    name: "LA’DOR SANTORINI",
+    brand: "Laverne",
+    size: "200ml",
+    price: 1799,
+    oldPrice: 2299,
+    image: "/products/OWxtPvX9Q10n1sPhuSIDlUFXrg6R8axHMCKck7Jv.webp",
+    category: "Unisex",
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-18",
+  },
+  {
+    id: "v2",
+    name: "ATLANTIS",
+    brand: "Laverne",
+    size: "200ml",
+    price: 1799,
+    oldPrice: 2299,
+    image: "/products/SMjyF7qtk5LwnDj7AiFlZhAPwyai8CtigjvxZtyN.webp",
+    category: "Unisex",
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-18",
+  },
+  {
+    id: "v1",
+    name: "LA’DOR BAKHUR CLASSIC",
+    brand: "Laverne",
+    size: "200ml",
+    price: 1999,
+    oldPrice: 2499,
+    image: "/products/ZO1VLa6hMWRnT1KifUvusg8aRk5QAOTjqKt5wvhP.jpg",
+    category: "Unisex",
+    quantity: 3, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-19",
+  },
   ];
 
 // المخزون الرقمي هو المصدر الأساسي للتوفر؛ غيّر quantity لكل منتج فقط.
