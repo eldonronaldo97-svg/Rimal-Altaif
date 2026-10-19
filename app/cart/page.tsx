@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "../../lib/store";
 import { products } from "../../lib/products";
 
-const STOCK_LIMIT_MESSAGE = "الكمية المطلوبة اكثر من الحد المسموح به";
+const STOCK_LIMIT_MESSAGE = "الكمية المطلوبة أكثر من الحد المسموح به";
 
 export default function CartPage() {
   const cart = useCart((s) => s.cart);
@@ -28,8 +28,7 @@ export default function CartPage() {
   const handleIncrease = (id: string) => {
     const ok = increase(id);
     if (!ok) {
-      const message = useCart.getState().message || STOCK_LIMIT_MESSAGE;
-      setQuantityErrors((previous) => ({ ...previous, [id]: message }));
+      setQuantityErrors((previous) => ({ ...previous, [id]: STOCK_LIMIT_MESSAGE }));
       clearMessage();
       return;
     }
@@ -98,7 +97,6 @@ export default function CartPage() {
                   <button type="button" onClick={() => handleDecrease(item.id)} aria-label={`تقليل كمية ${item.name}`} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, minWidth: 38, border: "1px solid #bbb", background: "#fff", color: "#111", borderRadius: 999, fontSize: 22, lineHeight: 1, cursor: "pointer", padding: 0 }}>−</button>
                   <span style={{ minWidth: 20, textAlign: "center", fontWeight: 700 }}>{item.qty}</span>
                   <button type="button" onClick={() => handleIncrease(item.id)} aria-label={`زيادة كمية ${item.name}`} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 38, height: 38, minWidth: 38, border: "1px solid #111", background: canIncrease ? "#111" : "#fff", color: canIncrease ? "#fff" : "#111", borderRadius: 999, fontSize: 22, lineHeight: 1, cursor: "pointer", padding: 0 }}>+</button>
-                  <span style={{ color: "#666", fontSize: 13 }}>المتاح: {available}</span>
                 </div>
 
                 {quantityErrors[item.id] && (
