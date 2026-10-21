@@ -1904,7 +1904,7 @@ const productData = [
     category: "Men",
     quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-08-30",
+    addedAt: "2026-10-21",
   },
   // 💎 mix COLLECTION
   {
