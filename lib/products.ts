@@ -1893,6 +1893,19 @@ const productData = [
     stock: true,
     addedAt: "2026-10-14",
   },
+  {
+    id: "m13",
+    name: "ULTA EXTRAIT 50",
+    brand: "ALMAS",
+    size: "100ml",
+    price: 1350,
+    oldPrice: 1500,
+    image: "/products/9367730b-6d47-4008-a2be-d5fe175e05bb-1000x1000-aornNVuYDm8ICSOMldgcZaXCoDlBLdKtQKK5QOaS.webp",
+    category: "Men",
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-08-30",
+  },
   // 💎 mix COLLECTION
   {
     id: "v5",
