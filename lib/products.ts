@@ -1906,6 +1906,19 @@ const productData = [
     stock: true,
     addedAt: "2026-10-21",
   },
+  {
+    id: "m14",
+    name: "BLACK CAVALIER VI",
+    brand: "Le Bonheur",
+    size: "100ml",
+    price: 1899,
+    oldPrice: 2300,
+    image: "/products/aMN7ZugCHIBT7pmSmU88DvxTO38CdYFfgmvYQg8S.webp",
+    category: "Wonen",
+    quantity: 5, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    addedAt: "2026-10-20",
+  },
   // 💎 mix COLLECTION
   {
     id: "v5",
