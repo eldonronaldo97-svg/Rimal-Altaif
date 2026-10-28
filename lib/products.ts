@@ -1510,7 +1510,7 @@ const productData = [
     category: "Men",
     quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1599,
+    price: 1750,
     oldPrice: 2300,
     image: "/products/rare-reef-afnan.jpg",
     addedAt: "2026-10-28",
