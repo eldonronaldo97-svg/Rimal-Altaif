@@ -1513,6 +1513,7 @@ const productData = [
     price: 1599,
     oldPrice: 2300,
     image: "/products/rare-reef-afnan.jpg",
+    addedAt: "2026-10-28",
   },
   {
     id: "A4",
@@ -1520,11 +1521,12 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: false,
-    price: 2799,
+    quantity: 12, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    price: 2650,
     oldPrice: 3650,
     image: "/products/supremacy-collectors-edition-afnan.jpg",
+    addedAt: "2026-10-29",
   },
   {
     id: "A5",
@@ -1544,10 +1546,11 @@ const productData = [
     size: "100ml",
     category: "Men",
     quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: false,
-    price: 1899,
+    stock: true,
+    price: 1999,
     oldPrice: 2400,
     image: "/products/turathi-blue-afnan.jpg",
+    addedAt: "2026-10-29",
   },
   {
     id: "A7",
@@ -1593,7 +1596,7 @@ const productData = [
     category: "Men",
     quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1650,
+    price: 1750,
     oldPrice: 2200,
     image: "/products/9pm-elixir-afnan.jpg",
   },
@@ -1603,11 +1606,12 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: false,
-    price: 1650,
+    quantity: 12, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    price: 1750,
     oldPrice: 2200,
     image: "/products/9pm-afnan-classic.jpg",
+    addedAt: "2026-10-28",
   },
   {
     id: "A2",
@@ -1615,12 +1619,13 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: false,
+    quantity: 48, // أدخل عدد القطع المتاحة هنا
+    stock: true,
     bestSeller: true,
-    price: 1550,
+    price: 1750,
     oldPrice: 2200,
     image: "/products/9pm-nightout-afnan.jpg",
+    addedAt: "2026-10-29",
   },
   {
     id: "A8",
@@ -1630,7 +1635,7 @@ const productData = [
     category: "Unisex",
     quantity: 0, // أدخل عدد القطع المتاحة هنا
     stock: false,
-    price: 1550,
+    price: 1750,
     oldPrice: 2200,
     image: "/products/9pm-rebel-afnan.jpg",
   },
