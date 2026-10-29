@@ -27,6 +27,9 @@ export default function ProductSlider({
       case "عطور للجنسين":
         return "/unisex";
 
+      case "Bundles":
+      case "الباقات":
+        return "/bundles";
       case "All Products":
       case "جميع المنتجات":
         return "/shop";
