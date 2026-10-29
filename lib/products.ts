@@ -1550,7 +1550,7 @@ const productData = [
     price: 1999,
     oldPrice: 2400,
     image: "/products/turathi-blue-afnan.jpg",
-    addedAt: "2026-10-28",
+    addedAt: "2026-10-29",
   },
   {
     id: "A7",
@@ -1735,7 +1735,7 @@ const productData = [
     size: "225ml",
     price: 3399,
     oldPrice: 2500,
-    image: "/products/عطر القلب الأبيض ومجموعة التبغ الملونة.png",
+    image: "/products/عطران فاخران بإضاءة استوديو بيضاء.png",
     category: "Unisex",
     quantity: 15, // أدخل عدد القطع المتاحة هنا
     stock: true,
