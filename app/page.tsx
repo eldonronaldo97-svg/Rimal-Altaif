@@ -89,19 +89,18 @@ export default function Home() {
       <BrandSlider />
 
       
+      <ProductSlider
+        title="الباقات"
+        products={sortByStock(
+          products.filter((p) => /^o/i.test(p.id))
+        )}
+      />
 
       <ProductSlider
         title="الأكثر مبيعًا"
         products={sortByStock(bestSellers)}
       />
 
-<ProductSlider
-        title="الباقات"
-        products={sortByStock(
-          products.filter((p) => /^o/i.test(p.id))
-        )}
-      />
-      
       <ProductSlider
         title="أحدث الإصدارات"
         products={latestProducts}
