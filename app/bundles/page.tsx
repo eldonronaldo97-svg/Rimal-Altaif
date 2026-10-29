@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import MobileBottomBar from "../../components/MobileBottomBar";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function BundlesPage() {
   const bundles = products
-    .filter((p: any) => ["o1", "o2", "o3", "o4"].includes(p.id))
+    .filter((p: any) => /^o/i.test(p.id))
     .sort((a: any, b: any) => {
       if (a.stock === b.stock) return 0;
       return a.stock ? -1 : 1;

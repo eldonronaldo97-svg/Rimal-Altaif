@@ -98,7 +98,7 @@ export default function Home() {
 <ProductSlider
         title="الباقات"
         products={sortByStock(
-          products.filter((p) => ["o1", "o2", "o3", "o4"].includes(p.id))
+          products.filter((p) => /^o/i.test(p.id))
         )}
       />
       
