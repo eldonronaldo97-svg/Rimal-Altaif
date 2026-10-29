@@ -91,16 +91,17 @@ export default function Home() {
       
 
       <ProductSlider
+        title="الأكثر مبيعًا"
+        products={sortByStock(bestSellers)}
+      />
+
+<ProductSlider
         title="الباقات"
         products={sortByStock(
           products.filter((p) => ["o1", "o2", "o3", "o4"].includes(p.id))
         )}
       />
-      <ProductSlider
-        title="الأكثر مبيعًا"
-        products={sortByStock(bestSellers)}
-      />
-
+      
       <ProductSlider
         title="أحدث الإصدارات"
         products={latestProducts}
