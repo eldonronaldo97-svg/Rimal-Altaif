@@ -1545,12 +1545,12 @@ const productData = [
     brand: "Afnan",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 12, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1999,
     oldPrice: 2400,
     image: "/products/turathi-blue-afnan.jpg",
-    addedAt: "2026-10-29",
+    addedAt: "2026-10-28",
   },
   {
     id: "A7",
@@ -1717,27 +1717,40 @@ const productData = [
   },
   {
     id: "o2",
-    name: "Any Diamound + Hawas Ice",
+    name: "9pm night out + Hawas Ice",
     brand: "RIMAL ALTAIF",
-    size: "250ml",
-    price: 2799,
-    oldPrice: 3350,
-    image: "/products/عطر هاواس آيس ومجموعة الألماس、】【.png",
+    size: "200ml",
+    price: 3199,
+    oldPrice: 3499,
+    image: "/products/ChatGPT Image 15 أغسطس 2026، 06_38_06 ص.png",
     category: "Men",
-    quantity: 10, // أدخل عدد القطع المتاحة هنا
+    quantity: 9, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
   {
     id: "o3",
-    name: "Any Tobacco + White Heart",
+    name: "9pm night out + Addict blue",
     brand: "RIMAL ALTAIF",
-    size: "200ml",
-    price: 1999,
+    size: "225ml",
+    price: 3399,
     oldPrice: 2500,
     image: "/products/عطر القلب الأبيض ومجموعة التبغ الملونة.png",
     category: "Unisex",
-    quantity: 6, // أدخل عدد القطع المتاحة هنا
+    quantity: 15, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    bestSeller: true,
+  },
+  {
+    id: "o4",
+    name: "9pm night out + Turathi Blue",
+    brand: "RIMAL ALTAIF",
+    size: "225ml",
+    price: 3499,
+    oldPrice: 3750,
+    image: "/products/زجاجتا عطر فاخرتان بالأسود والأزرق.png",
+    category: "Unisex",
+    quantity: 12, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
   },
@@ -2119,6 +2132,7 @@ export const homeBestSellers = [
   "o1", // Miss diva + Addict blue
   "o2", // Any Diamound + Hawas Ice
   "o3", // Any Tobacco + White Heart
+  "o4", // 
   "t9", // Tobacco Collection
   "H1", // Hawas Ice
   "a53", // Miss Arrogate Diva
