@@ -1440,7 +1440,7 @@ const productData = [
     brand: "Lattafa",
     size: "100ml",
     category: "Men",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
+    quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
     price: 1100,
     oldPrice: 1500,
@@ -1453,7 +1453,7 @@ const productData = [
     size: "100ml",
     category: "Women",
     quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: true,
+    stock: false,
     price: 1350,
     oldPrice: 1750,
     image: "/products/eclaire-lattafa.jpg",
@@ -1477,7 +1477,7 @@ const productData = [
     category: "Women",
     quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 850,
+    price: 799,
     image: "/products/ragba_sheikh.jpg",
   },
   {
@@ -1488,7 +1488,7 @@ const productData = [
     category: "Unisex",
     quantity: 2, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 899,
+    price: 799,
     image: "/products/81um4vm8mOL._AC_UF894,1000_QL80_.jpg",
   },
   {
@@ -1510,7 +1510,7 @@ const productData = [
     category: "Men",
     quantity: 4, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1750,
+    price: 1699,
     oldPrice: 2300,
     image: "/products/rare-reef-afnan.jpg",
     addedAt: "2026-10-28",
@@ -1523,7 +1523,7 @@ const productData = [
     category: "Men",
     quantity: 12, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 2750,
+    price: 2599,
     oldPrice: 3650,
     image: "/products/supremacy-collectors-edition-afnan.jpg",
     addedAt: "2026-10-29",
@@ -1547,7 +1547,7 @@ const productData = [
     category: "Men",
     quantity: 12, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1999,
+    price: 1899,
     oldPrice: 2400,
     image: "/products/turathi-blue-afnan.jpg",
     addedAt: "2026-10-29",
@@ -1596,7 +1596,7 @@ const productData = [
     category: "Men",
     quantity: 1, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1750,
+    price: 1599,
     oldPrice: 2200,
     image: "/products/9pm-elixir-afnan.jpg",
   },
@@ -1608,7 +1608,7 @@ const productData = [
     category: "Men",
     quantity: 12, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 1750,
+    price: 1599,
     oldPrice: 2200,
     image: "/products/9pm-afnan-classic.jpg",
     addedAt: "2026-10-28",
@@ -1622,7 +1622,7 @@ const productData = [
     quantity: 48, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
-    price: 1750,
+    price: 1650,
     oldPrice: 2200,
     image: "/products/9pm-nightout-afnan.jpg",
     addedAt: "2026-10-29",
@@ -1656,7 +1656,7 @@ const productData = [
     name: "Hawas Elixir",
     brand: "RASASI",
     size: "100ml",
-    price: 1599,
+    price: 1550,
     oldPrice: 2000,
     image: "/products/Untitled-1_c44241f2-02f3-4bb1-afd0-26e04ab231f4.webp",
     category: "Men",
@@ -1668,7 +1668,7 @@ const productData = [
     name: "Hawas Kobra",
     brand: "RASASI",
     size: "100ml",
-    price: 1599,
+    price: 1550,
     oldPrice: 2000,
     image: "/products/o.112706.jpg",
     category: "Men",
@@ -1680,7 +1680,7 @@ const productData = [
     name: "Hawas Malibu",
     brand: "RASASI",
     size: "100ml",
-    price: 1599,
+    price: 1550,
     oldPrice: 2000,
     image: "/products/hawas-malibu-prod-duplicado-m7ti-7561.webp",
     category: "Men",
@@ -1692,7 +1692,7 @@ const productData = [
     name: "Hawas Ice",
     brand: "RASASI",
     size: "100ml",
-    price: 1650,
+    price: 1550,
     oldPrice: 2200,
     image: "/products/61hDO6ICiyL.jpg",
     category: "Men",
