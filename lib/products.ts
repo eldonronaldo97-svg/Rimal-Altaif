@@ -1622,7 +1622,7 @@ const productData = [
     quantity: 48, // أدخل عدد القطع المتاحة هنا
     stock: true,
     bestSeller: true,
-    price: 1650,
+    price: 1750,
     oldPrice: 2200,
     image: "/products/9pm-nightout-afnan.jpg",
     addedAt: "2026-10-29",
