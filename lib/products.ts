@@ -1645,9 +1645,9 @@ const productData = [
     brand: "Assaf",
     size: "150ml",
     category: "unisex",
-    quantity: 0, // أدخل عدد القطع المتاحة هنا
-    stock: false,
-    price: 1800,
+    quantity: 4, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    price: 1850,
     image: "/products/assaf/Rebel_Enable.jpg",
   },
   // 💎 HAWAS COLLECTION
