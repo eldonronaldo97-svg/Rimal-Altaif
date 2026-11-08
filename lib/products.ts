@@ -1649,6 +1649,7 @@ const productData = [
     stock: true,
     price: 1850,
     image: "/products/assaf/Rebel_Enable.jpg",
+    addedAt: "2026-11-8",
   },
   // 💎 HAWAS COLLECTION
   {
