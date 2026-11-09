@@ -292,7 +292,7 @@ const productData = [
     category: "Unisex",
     quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    price: 3300,
+    price: 3299,
     oldPrice: 4400,
     image: "/products/assaf/2e783642-5729-483a-8f8e-24e71a9fb849-original.webp",
     addedAt: "2026-11-9",
@@ -1976,7 +1976,7 @@ const productData = [
     category: "Men",
     quantity: 6, // أدخل عدد القطع المتاحة هنا
     stock: true,
-    addedAt: "2026-10-21",
+    addedAt: "2026-11-8",
   },
   {
     id: "m14",
