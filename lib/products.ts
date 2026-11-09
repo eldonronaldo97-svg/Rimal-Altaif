@@ -2183,6 +2183,7 @@ export const products = productData.map((product) => ({
 }));
 
 export const homeBestSellers = [
+  "a56", // Risk Collection Box
   "o1", // Miss diva + Addict blue
   "o2", // Any Diamound + Hawas Ice
   "o3", // Any Tobacco + White Heart
