@@ -283,6 +283,20 @@ const productData = [
     stock: true,
   },
    // Assaf Main Collection
+
+   {
+    id: "a56",
+    name: "Risk Collection Box",
+    brand: "Assaf",
+    size: "250ml",
+    category: "Unisex",
+    quantity: 6, // أدخل عدد القطع المتاحة هنا
+    stock: true,
+    price: 3300,
+    oldPrice: 4400,
+    image: "/products/assaf/2e783642-5729-483a-8f8e-24e71a9fb849-original.webp",
+    addedAt: "2026-11-9",
+  },
  
   {
     id: "a53",
